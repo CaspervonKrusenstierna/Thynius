@@ -2,16 +2,13 @@ namespace ThermisClient
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            LogicAbstraction logicAbstraction = new LogicAbstraction();
+            var Form = new Form1(logicAbstraction);
+            Application.Run(Form);
         }
     }
 }
