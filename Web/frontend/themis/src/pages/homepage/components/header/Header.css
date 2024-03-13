@@ -1,0 +1,30 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    width:80vw;
+    margin:auto;
+    height:110px;
+    max-width: 1300px;
+}
+
+.Sticky{
+    position:fixed;
+    justify-content: space-around;
+    width:100vw;
+    max-width: none;
+    z-index: 999;
+}
+
+.Header-Container{
+    height:110px;
+    z-index: 5;
+}
+
+.Header-ButtonContainer{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}

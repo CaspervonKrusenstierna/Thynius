@@ -1,0 +1,13 @@
+.NavBarConditionalRedirect{
+    background: transparent;
+    border: transparent;
+    font-size: 21px;
+    font-weight: 100;
+    transition-duration: 0.3s;
+    z-index: 9;
+}
+.NavBarConditionalRedirect:hover{
+    color: var(--ThemeLight);
+    cursor: pointer;
+    margin-top: 7px;
+}

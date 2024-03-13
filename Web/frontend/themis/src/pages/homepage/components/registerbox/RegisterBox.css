@@ -1,0 +1,55 @@
+.RegisterBox{
+    display: flex;
+    flex-direction: column;
+    pointer-events: all;
+    position: absolute;
+    align-items: center;
+    left: calc(50vw - 250px);
+    top: calc(50vh - 350px);
+    z-index: 1001;
+    width: 500px;
+    height: 645px;
+    border-radius: 14px;
+    background: white;
+}
+
+.ExitButtonContainer{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.inputcontainer-register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    height: 600px;
+}
+
+@media screen and (max-height: 700px) {
+    .RegisterBox{
+        top: calc(50vh - 200px);
+    }
+  }
+  @media screen and (max-width: 700px) {
+    .RegisterBox{
+        width: 400px;
+        left: calc(50vw - 200px);
+    }
+  }
+
+  @media screen and (max-width: 400px) {
+    .RegisterBox{
+        width: 350px;
+        left: calc(50vw - 175px);
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .RegisterBox{
+        width: 320px;
+        left: calc(50vw - 160px);
+    }
+  }

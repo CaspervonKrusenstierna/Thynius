@@ -1,0 +1,14 @@
+.SubmitButton{
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: var(--ThemeLight);
+    font-size: 20px;
+    transition-duration: 0.5s;
+    font-weight: 600;
+}
+.SubmitButton:hover{
+    cursor:pointer;
+    background-color: var(--ThemeLighter);
+}

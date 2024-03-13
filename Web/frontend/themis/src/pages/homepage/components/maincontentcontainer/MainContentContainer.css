@@ -1,0 +1,9 @@
+.MainContentContainer{
+    display:flex;
+    flex-direction: column;
+    width:80vw;
+    max-width: 1300px;
+    height: 1000px;
+    margin:auto;
+    align-items: center;
+}

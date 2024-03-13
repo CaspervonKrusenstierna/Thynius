@@ -1,0 +1,17 @@
+.HomePage{
+    z-index: 2;
+}
+.HomePage-unfocus{
+    pointer-events: none;
+    user-select: none;
+}
+.DarknessEffect{
+    z-index: 1000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    
+}
