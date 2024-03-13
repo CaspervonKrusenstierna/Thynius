@@ -15,12 +15,24 @@ namespace ThermisClient
         {
             this.comms = new Communication();
             this.injector = new DllInjector();
-            injector.Inject("WINWORD", "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisDll\\x64\\Debug\\ThemisDll.dll");
 
         }
         public bool onLogin(String Username, String Password)
         {
             return comms.Login(Username, Password);
+        }
+        public bool isLoggedIn()
+        {
+            return false;
+        }
+
+        public bool isProcessRunning(string ProcessName)
+        {
+            return true;
+        }
+        public ThermisClient.DllInjectionResult Inject(string sProcName, string sDllPath)
+        {
+            return injector.Inject(sProcName, sDllPath);
         }
     }
 }
