@@ -25,7 +25,10 @@ namespace ThermisClient
                     {
                         NeedToReinject = true;
                     }
-                    // Add tracking status to the child form
+                    else
+                    {
+                        // Add tracking status to the child form
+                    }
                 }
                 else
                 {

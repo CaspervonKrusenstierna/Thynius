@@ -1,0 +1,14 @@
+.NavBarRedirect{
+    color: black;
+    transition-duration: 0.3s;
+    font-size: 21px;
+    font-weight: 300;
+    text-decoration: none;
+    z-index: 9;
+}
+
+.NavBarRedirect:hover{
+    color: #FA5B35;
+    cursor: pointer;
+    margin-top: 7px;
+}

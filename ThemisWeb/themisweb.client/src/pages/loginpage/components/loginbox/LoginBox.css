@@ -1,0 +1,65 @@
+.LoginBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: all;
+    position: absolute;
+    left: calc(50vw - 250px);
+    top: calc(50vh - 300px);
+    z-index: 1001;
+    width: 500px;
+    border-radius: 14px;
+    background: white;
+}
+
+.ExitButtonContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.inputcontainer-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px;
+    width: 80%;
+    margin-top: 30px;
+}
+
+.LoginBox-BottomContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-height: 700px) {
+    .LoginBox {
+        top: calc(50vh - 200px);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .LoginBox {
+        width: 450px;
+        left: calc(50vw - 200px);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .LoginBox {
+        width: 350px;
+        left: calc(50vw - 175px);
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .LoginBox {
+        width: 320px;
+        left: calc(50vw - 160px);
+    }
+}

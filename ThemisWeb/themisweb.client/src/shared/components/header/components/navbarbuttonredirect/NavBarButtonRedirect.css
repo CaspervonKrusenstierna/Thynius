@@ -1,0 +1,38 @@
+.NavBarButtonRedirect{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    height:50px;
+    width: 125px;
+    background-color: #FA5B35;
+    color: black;
+    transition-duration: 0.2s;
+    z-index: 9;
+    border: none;
+}
+.NavBarButtonRedirect:hover{
+    cursor: pointer;
+    background-color: rgba(255, 123, 90, 0.706);
+    
+}
+.NavBarButtonRedirect-png{
+    width:20px;
+}
+.NavBarButtonRedirect-text{
+    font-size: 18px;
+}
+
+
+  @media screen and (max-width: 550px) {
+    .NavBarButtonRedirect{
+        height:45px;
+        width: 100px;
+    }
+    .NavBarButtonRedirect-png{
+        width:15px
+    }
+    .NavBarButtonRedirect-text{
+        font-size: 14px;
+    }
+  }

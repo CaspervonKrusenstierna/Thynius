@@ -1,0 +1,27 @@
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using ThemisWeb.Server.Interfaces;
+using ThemisWeb.Server.Models;
+using System.Diagnostics;
+using System.Reflection.Emit;
+using System.Reflection.Metadata;
+
+namespace ReactApp1.Server.Data
+{
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
+        {
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
+
+        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<ApplicationUser> Users { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Submittment> Submittments { get; set; }
+    }
+}
