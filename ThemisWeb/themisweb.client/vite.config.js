@@ -43,10 +43,19 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
+            '^/register': {
+                target,
+                secure: false
+            },
+            '^/login': {
+                target,
+                secure: false
+            },
+            '^/account/getsessioninfo': {
                 target,
                 secure: false
             }
+
         },
         port: 5173,
         https: {

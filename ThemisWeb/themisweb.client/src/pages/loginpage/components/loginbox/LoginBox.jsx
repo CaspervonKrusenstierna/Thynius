@@ -10,12 +10,13 @@ const LoginBox = () => {
     const [error, setError] = useState();
     const Email = useRef("");
     const Password = useRef("");
+    const RememberMe = useRef(false);
     const navigate = useNavigate();
     async function onLoginSubmit() {
-        const response = await useLogin(Email.current, Password.current);
+        const response = await useLogin(Email.current, Password.current, RememberMe.current);
 
         if (response.ok) {
-            navigate("/")
+            navigate("/dashboard")
         }
         response.json().then(res => { setError(JSON.stringify(res.title)) })
     }
@@ -30,7 +31,7 @@ const LoginBox = () => {
                 <Input onChange={(e) => { Email.current = e.target.value }} label="Användarnamn" img={UserImg}></Input>
                 <Input hide={true} onChange={(e) => { Password.current = e.target.value }} label="Lösenord" img={UnlockImg}></Input>
                 <div className='LoginBox-BottomContainer'>
-                    <CheckBoxButton onChange={() => { }} text="Kom ihåg mig"></CheckBoxButton>
+                    <CheckBoxButton onChange={(value) => { RememberMe.current = value }} text="Kom ihåg mig"></CheckBoxButton>
                     <AnchorButton text="Glömt ditt lösenord?" onClick={() => { navigate("forgotpassword") }}></AnchorButton>
                 </div>
                 <SubmitButton onClick={onLoginSubmit} text="Logga in"></SubmitButton>

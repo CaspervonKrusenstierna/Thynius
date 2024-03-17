@@ -24,27 +24,6 @@ namespace ThemisWeb.Server.Controllers
             this._userManager = userManager;
         }
 
-        [Authorize]
-        [Route("/InitializeAccount")]
-        [HttpPatch]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> InitializeAccount() // assign the user to an org to initialize the account
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            string Email = user.NormalizedEmail;
-
-            Organization org = await _organizationRepository.GetByEmailExtensionAsync(Email.Split("@")?[1]);
-            if (org == null)
-            {
-                return StatusCode(404);
-            }
-            user.OrganizationEmailExtension = org.EmailExtension;
-            _userRepository.Update(user);
-
-            return StatusCode(200);
-        }
-
         [HttpPost]
         public async Task<IActionResult> CreateOrganization(string EmailExtension)
         {
@@ -70,5 +49,20 @@ namespace ThemisWeb.Server.Controllers
             return StatusCode(400);
         }
 
+        [HttpDelete]
+        public async Task<IActionResult> DeleteOrganization(string EmailExtension)
+        {
+            Organization org = await _organizationRepository.GetByEmailExtensionAsync(EmailExtension);
+            if (org == null)
+            {
+                return StatusCode(400);
+            }
+            bool result = _organizationRepository.Delete(org);
+            if (!result)
+            {
+                return StatusCode(500);
+            }
+            return Ok();
+        }
     }
 }

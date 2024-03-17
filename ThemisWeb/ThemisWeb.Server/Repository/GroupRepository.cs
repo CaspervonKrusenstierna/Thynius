@@ -12,19 +12,19 @@ namespace ThemisWeb.Server.Repository
         {
             this._context = context;
         }
-        public bool Add(Group classtoadd)
+        public bool Add(Group group)
         {
-            _context.Add(classtoadd);
+            _context.Add(group);
             return Save();
         }
-        public bool Update(Group classtoupdate)
+        public bool Update(Group group)
         {
-            _context.Update(classtoupdate);
+            _context.Update(group);
             return Save();
         }
-        public bool Delete(Group classtodelete)
+        public bool Delete(Group group)
         {
-            _context.Update(classtodelete);
+            _context.Update(group);
             return Save();
         }
         public bool Save()
@@ -33,6 +33,10 @@ namespace ThemisWeb.Server.Repository
             return saved > 0;
         }
 
+        public async Task<IEnumerable<Group>> GetUserGroups(string userId)
+        {
+            return _context.Groups.Where(i => i.Users.First(c => c.Id == userId) != null).ToList();
+        }
         public async Task<Group> GetByIdAsync(int id)
         {
             return await _context.Groups.FindAsync(id);

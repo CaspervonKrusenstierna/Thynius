@@ -9,6 +9,6 @@ namespace ThemisWeb.Server.Models
         [Key]
         public string EmailExtension { get; set; }
 
-        public ICollection<ApplicationUser> Users = new List<ApplicationUser>();
+        public ICollection<ApplicationUser> Users = [];
     }
 }

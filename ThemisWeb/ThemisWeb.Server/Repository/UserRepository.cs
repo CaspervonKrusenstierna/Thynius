@@ -27,10 +27,20 @@ namespace ThemisWeb.Server.Repository
             return await _context.Users.FindAsync(id);
         }
 
-        public bool AddUserToGroup(ApplicationUser user, int GroupId)
+        public bool AddUserToGroup(ApplicationUser user, Group group)
         {
-            user.Groupes.Add(_context.Groups.FirstOrDefault(c => c.Id == GroupId));
+            user.Groups.Add(_context.Groups.FirstOrDefault(c => c == group));
             return Update(user);
+        }
+
+        public bool RemoveUserFromGroup(ApplicationUser user, Group group)
+        {
+            user.Groups.Remove(_context.Groups.FirstOrDefault(c => c == group));
+            return Update(user);
+        }          
+        public async Task<IEnumerable<ApplicationUser>> GetGroupUsers(Group group)
+        {
+            return await _context.Users.Include(i => i.Groups).Where(i => i.Groups.Contains(group)).ToListAsync();
         }
         public bool Add(ApplicationUser user)
         {

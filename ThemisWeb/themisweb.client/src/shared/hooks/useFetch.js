@@ -9,6 +9,6 @@ export default function useFetch(url, method, body) {
         },
         redirect: "follow",
         referrerPolicy: "no-referrer",
-        body: JSON.stringify(body)
+        body: body ? JSON.stringify(body) : null
     });
 }

@@ -10,6 +10,6 @@ namespace ThemisWeb.Server.Models
         public string? OrganizationEmailExtension { get; set; }
         public Organization? Organization { get; set; }
 
-        public ICollection<Group> Groups { get; set; }
+        public ICollection<Group> Groups { get; set; } = [];
     }
 }

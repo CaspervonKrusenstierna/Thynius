@@ -12,8 +12,8 @@ using ReactApp1.Server.Data;
 namespace ThemisWeb.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240317115114_second")]
-    partial class second
+    [Migration("20240317135425_dicky")]
+    partial class dicky
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -239,6 +239,9 @@ namespace ThemisWeb.Server.Migrations
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ManagerId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -258,25 +261,6 @@ namespace ThemisWeb.Server.Migrations
                     b.HasKey("EmailExtension");
 
                     b.ToTable("Organizations");
-                });
-
-            modelBuilder.Entity("ThemisWeb.Server.Models.Submittment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Submittments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -342,13 +326,13 @@ namespace ThemisWeb.Server.Migrations
             modelBuilder.Entity("ThemisWeb.Server.Models.Group", b =>
                 {
                     b.HasOne("ThemisWeb.Server.Models.ApplicationUser", null)
-                        .WithMany("Groupes")
+                        .WithMany("Groups")
                         .HasForeignKey("ApplicationUserId");
                 });
 
             modelBuilder.Entity("ThemisWeb.Server.Models.ApplicationUser", b =>
                 {
-                    b.Navigation("Groupes");
+                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }

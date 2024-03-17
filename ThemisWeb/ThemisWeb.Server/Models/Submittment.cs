@@ -6,19 +6,20 @@ namespace ThemisWeb.Server.Models
     public class Submittment
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; } 
 
         [ForeignKey("ApplicationUser")]
-        public int ApplicationUserId { get; set; }
+        public string OwnerId { get; set; }
 
         ApplicationUser Owner;
 
-        [ForeignKey("Group")]
-        public int GroupId { get; set; }
-        Group GroupSubmittedTo { get; set; }
-
-
-        byte[] _RawData;
+        [ForeignKey("Task")]
+        public int AssignmentId { get; set; }
+        Assignment AssignmentSubmittedTo { get; set; }
+        public String Title { get; set; }
+        public String TimeSubmitted {  get; set; }
+        public byte[] _RawData { get; set; }
 
     }
 }

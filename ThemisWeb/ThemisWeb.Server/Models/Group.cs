@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ThemisWeb.Server.Models
@@ -11,10 +12,14 @@ namespace ThemisWeb.Server.Models
         public string Name { get; set; }
 
         [ForeignKey("ApplicationUser")]
-        public string ManagerId;
-        ApplicationUser Manager { get; set; }
+        public string? ManagerId { get; set; }
+        ApplicationUser? Manager { get; set; }
 
-        List<ApplicationUser> Users { get; set; }
+        public string DateCreated { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; } = [];
+
+        public ICollection<Assignment> Tasks { get; set; } = [];
+
 
     }
 }

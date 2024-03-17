@@ -145,3 +145,4 @@ C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\Th
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug\net8.0\ThemisWeb.Server.pdb
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug\net8.0\ThemisWeb.Server.genruntimeconfig.cache
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug\net8.0\ref\ThemisWeb.Server.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\Newtonsoft.Json.dll

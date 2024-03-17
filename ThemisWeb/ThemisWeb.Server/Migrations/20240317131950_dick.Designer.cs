@@ -12,8 +12,8 @@ using ReactApp1.Server.Data;
 namespace ThemisWeb.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240317093443_initial")]
-    partial class initial
+    [Migration("20240317131950_dick")]
+    partial class dick
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -226,6 +226,26 @@ namespace ThemisWeb.Server.Migrations
                     b.HasIndex("OrganizationEmailExtension");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("ThemisWeb.Server.Models.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ManagerId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Groups");
                 });
 
             modelBuilder.Entity("ThemisWeb.Server.Models.Organization", b =>

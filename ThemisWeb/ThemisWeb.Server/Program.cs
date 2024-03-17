@@ -28,7 +28,7 @@ namespace ThemisWeb.Server
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<IGroupRepository, GroupRepository>();
-            //builder.Services.AddScoped<ISubmittmentRepository, SubmittmentRepository>();
+            builder.Services.AddScoped<ISubmittmentRepository, SubmittmentRepository>();
 
             var app = builder.Build();
 
