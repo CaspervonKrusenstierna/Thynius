@@ -9,9 +9,10 @@ import GroupsViewPage from './pages/groupsviewpage/GroupsViewPage';
 import GroupPage from './pages/grouppage/GroupPage';
 import "./index.css"
 
+export const sessionInfoContext = createContext();
+
 function App() {
     let sessionInfo = useSessionInfo();
-    const sessionInfoContext = createContext();
 
     return (
         <sessionInfoContext.Provider value={sessionInfo}>

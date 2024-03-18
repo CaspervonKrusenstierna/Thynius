@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "rZIVR0DVAMY6F4jeHPJ3Ai1ePoV4yuogWtPbeMxNgRU=",
+  "Hash": "6tPpOid4gHJMdaXASTH+JUUc6oXEBOiNeT2wkb7I3gU=",
   "Source": "ThemisWeb.Server",
   "BasePath": "_content/ThemisWeb.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\themisweb.client\\themisweb.client.esproj",
+      "Identity": "C:\\Users\\casvon0103\\Documents\\GitHub\\Themis\\ThemisWeb\\themisweb.client\\themisweb.client.esproj",
       "Version": 2,
       "Source": "themisweb.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
