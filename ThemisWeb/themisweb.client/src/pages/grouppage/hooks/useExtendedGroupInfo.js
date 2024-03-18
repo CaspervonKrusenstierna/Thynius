@@ -1,1 +1,5 @@
-console.log("Hello World!")
+import useFetch from "../../../shared/hooks/useFetch";
+
+export default function useExtendedGroupInfo(groupId) {
+    
+}

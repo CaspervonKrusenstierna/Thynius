@@ -7,9 +7,10 @@ import useSessionInfo from './shared/hooks/useSessionInfo';
 import React, { createContext, useEffect } from 'react';
 import GroupsViewPage from './pages/groupsviewpage/GroupsViewPage';
 
+export const sessionInfoContext = createContext();
+
 function App() {
     let sessionInfo = useSessionInfo();
-    const sessionInfoContext = createContext();
 
     return (
         <sessionInfoContext.Provider value={sessionInfo}>

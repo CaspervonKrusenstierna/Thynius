@@ -1,10 +1,17 @@
-import {useParams } from "react-router-dom"
+import "GroupsViewPage.css"
+import GroupsViewHeader from "./components/groupsviewheader/GroupsViewHeader";
+import GroupsViewContainer from "./components/groupsviewcontainer/GroupsViewContainer";
+import useGroupsInfo from "./hooks/useGroupsInfo";
+
 
 function GroupsViewPage() {
-    const { id } = useParams();
+    const groupsInfo = useGroupsInfo();
 
     return (
-        <p>Hello world!</p>
+        <div className="Page">
+            <GroupsViewHeader></GroupsViewHeader>
+            <GroupsViewContainer></GroupsViewContainer>
+        </div>
     );
 }
 
