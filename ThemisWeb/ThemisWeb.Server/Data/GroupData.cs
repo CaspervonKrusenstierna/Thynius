@@ -1,12 +1,12 @@
 ﻿namespace ThemisWeb.Server.Data
 {
-    public struct GroupData
+    public class GroupData
     {
         public int Id { get; set; }
         public string Name { get; set; }
     }
 
-    public struct GroupDataExtended
+    public class GroupDataExtended
     {
         public int Id { get; set; }
         public string Name { get; set; }

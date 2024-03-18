@@ -3,12 +3,12 @@
     height: 50px;
     border-radius: 10px;
     border-color: transparent;
-    background-color: #FA5B35;
+    background-color: var(--themeMainColor);
     font-size: 20px;
     transition-duration: 0.5s;
     font-weight: 600;
 }
 .SubmitButton:hover{
     cursor:pointer;
-    background-color: #fa5c35e2;
+    background-color: var(--themeLightColor);
 }

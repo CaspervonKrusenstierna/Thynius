@@ -1,0 +1,11 @@
+.Footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--themeMainColor);
+    width: 100%;
+}
+.Footer-Wave-Img{
+    background-color: white;
+    width: 100%;
+}

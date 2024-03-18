@@ -54,6 +54,10 @@ export default defineConfig({
             '^/account/getsessioninfo': {
                 target,
                 secure: false
+            },
+            '^/groups/getusergroups': {
+                target,
+                secure: false
             }
 
         },

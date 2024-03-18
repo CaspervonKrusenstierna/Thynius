@@ -15,7 +15,7 @@ namespace ThemisWeb.Server.Models
         public string? ManagerId { get; set; }
         ApplicationUser? Manager { get; set; }
 
-        public string DateCreated { get; set; }
+        public string? DateCreated { get; set; }
         public ICollection<ApplicationUser> Users { get; set; } = [];
 
         public ICollection<Assignment> Tasks { get; set; } = [];

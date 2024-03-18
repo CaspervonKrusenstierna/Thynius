@@ -32,7 +32,7 @@
     border-radius: 6px;
     margin-left: 6px;
     position: absolute;
-    background-color: #FA5B35;
+    background-color: var(--themeMainColor);
     width: 50px;
     height: 50px;
 }

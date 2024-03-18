@@ -1,0 +1,11 @@
+.DashboardNavItem{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+    text-decoration: none;
+}
+
+.DashboardNavItem-Img{
+    height: 30px;
+    width: auto;
+}

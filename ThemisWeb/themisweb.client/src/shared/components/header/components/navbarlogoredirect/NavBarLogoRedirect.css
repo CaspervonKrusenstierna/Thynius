@@ -1,5 +1,5 @@
 .NavBarLogoRedirect{
-    color: #FA5B35;
+    color: var(--themeMainColor);
     font-size: 42px;
     font-weight: bold;
 }

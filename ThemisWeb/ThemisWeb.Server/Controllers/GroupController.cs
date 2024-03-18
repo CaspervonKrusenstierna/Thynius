@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using ThemisWeb.Server.Data;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
+using System.Text.Json;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -64,10 +64,10 @@ namespace ThemisWeb.Server.Controllers
 
         [HttpGet]
         [Route("getusergroups")]
-        public async Task<IEnumerable<String>> GetUserGroupIds(string userId)
+        public async Task<string> GetUserGroupIds(string userId)
         {
             IEnumerable<Group> Groups =  await _groupRepository.GetUserGroups(userId);
-            return Groups.Select(group => JsonConvert.SerializeObject(new GroupData {Id=group.Id, Name=group.Name}));
+            return JsonSerializer.Serialize(Groups.Select(group => (new GroupData { Id = group.Id, Name = group.Name })));
         }
 
         [HttpGet]
@@ -97,8 +97,7 @@ namespace ThemisWeb.Server.Controllers
             GroupDataExtended dataToReturn = new GroupDataExtended { Id=group.Id, Name=group.Name, DateCreated=group.DateCreated};
             dataToReturn.userDatas = groupUsers.Select(i => new UserData { ID = i.Id, Username = i.UserName });
             dataToReturn.assignmentDatas = groupAssignments.Select(i => new AssignmentData {ID = i.Id, Name = i.Name, DueDate = i.DueDate });
-
-            return JsonConvert.SerializeObject(dataToReturn);
+            return JsonSerializer.Serialize(dataToReturn);
         }
     }
 }

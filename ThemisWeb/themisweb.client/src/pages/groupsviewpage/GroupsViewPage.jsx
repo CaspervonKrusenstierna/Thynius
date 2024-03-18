@@ -1,17 +1,14 @@
-import "GroupsViewPage.css"
-import GroupsViewHeader from "./components/groupsviewheader/GroupsViewHeader";
-import GroupsViewContainer from "./components/groupsviewcontainer/GroupsViewContainer";
-import useGroupsInfo from "./hooks/useGroupsInfo";
 
+import "../../shared/styles/Page.css"
+import DashboardHeader from "../../shared/components/dashboardheader/DashboardHeader";
+import GroupsView from "./components/groupsview/GroupsView";
 
 function GroupsViewPage() {
-    const groupsInfo = useGroupsInfo();
-
     return (
-        <div className="Page">
-            <GroupsViewHeader></GroupsViewHeader>
-            <GroupsViewContainer></GroupsViewContainer>
-        </div>
+        <div className='Page-Container'>
+        <DashboardHeader></DashboardHeader>
+        <GroupsView></GroupsView>
+      </div>
     );
 }
 

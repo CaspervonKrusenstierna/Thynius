@@ -1,5 +1,10 @@
 /* This style is used for the pages that are next to the sidebar such as groupsviewpage */
 
 .Page{
-    
+    width: 100%;
+}
+
+.Page-Container{
+    display: flex;
+    flex-direction: column;
 }

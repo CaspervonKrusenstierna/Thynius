@@ -3,16 +3,17 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { HomePage, LoginPage, RegisterPage } from "./pages";
-import useSessionInfo from './shared/hooks/useSessionInfo';
 import React, { createContext, useEffect } from 'react';
 import GroupsViewPage from './pages/groupsviewpage/GroupsViewPage';
 import GroupPage from './pages/grouppage/GroupPage';
 import "./index.css"
+import DashboardHome from './pages/dashboardhome/DashboardHome';
+import useSessionInfo from "./shared/hooks/useSessionInfo"
 
 export const sessionInfoContext = createContext();
 
 function App() {
-    let sessionInfo = useSessionInfo();
+    const sessionInfo = useSessionInfo();
 
     return (
         <sessionInfoContext.Provider value={sessionInfo}>
@@ -21,8 +22,9 @@ function App() {
                     <Route path="/" element={<HomePage></HomePage>}></Route>
                     <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
                     <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-                    <Route path="/group/:id" element={<GroupPage></GroupPage>}></Route>
-                    <Route path="/groupsview" element={<GroupsViewPage></GroupsViewPage>}></Route>
+                    <Route path="/dashboard/home" element={<DashboardHome></DashboardHome>}></Route>
+                    <Route path="/dashboard/group/:id" element={<GroupPage></GroupPage>}></Route>
+                    <Route path="/dashboard/groups" element={<GroupsViewPage></GroupsViewPage>}></Route>
                 </Routes>
             </BrowserRouter >
         </sessionInfoContext.Provider>

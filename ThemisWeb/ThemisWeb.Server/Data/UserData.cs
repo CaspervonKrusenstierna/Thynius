@@ -1,6 +1,6 @@
 ﻿namespace ThemisWeb.Server.Data
 {
-    public struct UserData
+    public class UserData
     {
         public string Username;
         public string ID;

@@ -13,3 +13,7 @@ body, html{
   overflow-x: hidden;
   max-width: 100%;
 }
+:root{
+  --themeMainColor:  #FA5B35;
+  --themeLightColor: white;
+}

@@ -1,0 +1,9 @@
+.FooterMainContent{
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    justify-content: space-between;
+    width: 1300px;
+    padding-top: 35px;
+    padding-bottom: 190px;
+}

@@ -1,0 +1,12 @@
+.GroupsViewHeader{
+    display: flex;
+    flex-direction: row;
+    width: 1200px;
+    height: 100px;
+    align-items: center;
+    justify-content: flex-start;
+}
+.GroupsViewHeader-Title{
+    font-size: 22px;
+    font-weight: bold;
+}

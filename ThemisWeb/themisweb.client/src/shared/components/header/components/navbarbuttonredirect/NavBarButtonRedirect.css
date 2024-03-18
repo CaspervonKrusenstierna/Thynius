@@ -5,7 +5,7 @@
     border-radius: 10px;
     height:50px;
     width: 125px;
-    background-color: #FA5B35;
+    background-color: var(--themeMainColor);
     color: black;
     transition-duration: 0.2s;
     z-index: 9;

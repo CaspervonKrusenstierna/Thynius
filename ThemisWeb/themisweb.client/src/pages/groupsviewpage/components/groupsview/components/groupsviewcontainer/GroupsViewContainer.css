@@ -1,0 +1,11 @@
+.GroupsViewContainer{
+    display: flex;
+    flex-direction: column;
+}
+.GroupsViewContainer-Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 1200px;
+}
