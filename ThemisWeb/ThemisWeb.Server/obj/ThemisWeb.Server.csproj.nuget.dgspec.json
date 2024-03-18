@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\casvon0103\\Documents\\GitHub\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj": {}
+    "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\casvon0103\\Documents\\GitHub\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj": {
+    "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\casvon0103\\Documents\\GitHub\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
+        "projectUniqueName": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
         "projectName": "ThemisWeb.Server",
-        "projectPath": "C:\\Users\\casvon0103\\Documents\\GitHub\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
-        "packagesPath": "C:\\Users\\casvon0103\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\casvon0103\\Documents\\GitHub\\Themis\\ThemisWeb\\ThemisWeb.Server\\obj\\",
+        "projectPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
+        "packagesPath": "C:\\Users\\Cappe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\casvon0103\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Cappe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
