@@ -1,0 +1,24 @@
+.WaveContainerBox{
+    z-index: 1;
+    position: absolute;
+    width: 1250px;
+    height: 1250px;
+    left: calc(100vw - 930px);
+    top: -220px;
+}
+.WaveBackgroundBox{
+    z-index: 0;
+    position: absolute;
+    width: 1250px;
+    height: 700px;
+    left: calc(100vw - 900px);
+    top: -245px;
+    background-image: linear-gradient(60deg, #ff3c00, #ff4d20, #ff631b 70%);
+    transform: rotate(48deg);
+}
+  @media screen and (max-width: 900px) {
+    .WaveBackgroundBox, .WaveContainerBox{
+        width: 0px;
+        height: 0px;
+    }
+  }
