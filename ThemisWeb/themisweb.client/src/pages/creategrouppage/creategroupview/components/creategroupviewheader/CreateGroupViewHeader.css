@@ -1,0 +1,11 @@
+.CreateGroupViewHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 700px;
+    height: 150px;
+    align-items: center;
+    font-weight: bold;
+    font-size: 22px;
+    
+}

@@ -40,6 +40,7 @@ namespace ThemisWeb.Server.Controllers
             {
                 return StatusCode(404);
             }
+            await _userManager.AddToRoleAsync(user, "VerifiedUser");
             user.OrganizationEmailExtension = org.EmailExtension;
             _userRepository.Update(user);
 
@@ -59,7 +60,64 @@ namespace ThemisWeb.Server.Controllers
         public async Task<String> GetSessionInfo()
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            return JsonConvert.SerializeObject(new UserData{ ID = user.Id, Username = user.UserName });
+            var roles = await _userManager.GetRolesAsync(user);
+            int highestRoleLevel = 0;
+            foreach (var role in roles)
+            {
+                int currentRowLevel = 0;
+                if(role == "Teacher")
+                {
+                    currentRowLevel = 1;
+                }
+                if(role == "OrganizationAdmin")
+                {
+                    currentRowLevel = 2;
+                }
+                if(role == "Admin")
+                {
+                    currentRowLevel = 3;
+                }
+                if(currentRowLevel > highestRoleLevel)
+                {
+                    highestRoleLevel = currentRowLevel;
+                }
+
+            }
+            return JsonConvert.SerializeObject(new UserData{ ID = user.Id, Username = user.UserName, RoleLevel = highestRoleLevel});
         }
+
+        [Route("adduserrrole/organizationadmin")]
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> AddOrganizationAdminRole(string userId)
+        {
+            ApplicationUser user = await _userRepository.GetByIdAsync(userId);
+            if(user == null)
+            {
+                return BadRequest();
+            }
+            await _userManager.AddToRoleAsync(user, "OrganizationAdmin");
+            return Ok();
+        }
+
+        [Route("adduserrrole/teacher")]
+        [HttpPost]
+        [Authorize(Roles = "Admin, OrganizationAdmin")]
+        public async Task<IActionResult> AddTeacherRole(string userId)
+        {
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            ApplicationUser user = await _userRepository.GetByIdAsync(userId);
+            if (user == null)
+            {
+                return BadRequest();
+            }
+            if(callingUser.OrganizationEmailExtension != user.OrganizationEmailExtension)
+            {
+                return Unauthorized();
+            }
+            await _userManager.AddToRoleAsync(user, "Teacher");
+            return Ok();
+        }
+
     }
 }

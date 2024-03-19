@@ -11,7 +11,7 @@ using ThemisWeb.Server.Models;
 namespace ThemisWeb.Server.Controllers
 {
     [Route("/users")]
-    [Authorize]
+    [Authorize(Roles = "VerifiedUser")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;

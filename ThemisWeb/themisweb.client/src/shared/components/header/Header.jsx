@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavBarButtonRedirect, NavBarLogoRedirect} from "./components"
 import { useNavigate } from "react-router-dom";
 import "./Header.css"
+import { sessionInfoContext } from '../../../App';
 
 const Header = (props) => {
   const [GroupName, setGroupName] = useState("Header");
-    const navigate = useNavigate();
+  const sessionInfo = useContext(sessionInfoContext);
+  const navigate = useNavigate();
 
     useEffect(() => {
         function OnScroll() {
@@ -27,7 +29,7 @@ const Header = (props) => {
             <div className={GroupName}>
                 <NavBarLogoRedirect></NavBarLogoRedirect>
                     <div className='Header-ButtonContainer'>
-                        {props.loggedIn ? <NavBarButtonRedirect text="Dashboard" onClick={() => { navigate("/dashboard") }}></NavBarButtonRedirect> :
+                        {sessionInfo?.ID ? <NavBarButtonRedirect text="Dashboard" onClick={() => { navigate("/dashboard/home") }}></NavBarButtonRedirect> :
                             <>
                             <NavBarButtonRedirect onClick={() => { navigate("/login") }} text="Login"></NavBarButtonRedirect>
                             <NavBarButtonRedirect onClick={() => { navigate("/register") }} text="Register"></NavBarButtonRedirect>

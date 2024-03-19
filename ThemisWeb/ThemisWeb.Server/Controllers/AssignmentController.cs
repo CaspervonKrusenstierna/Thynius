@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
 
 namespace ThemisWeb.Server.Controllers
 {
+    [Authorize(Roles = "verifieduser")]
+    
     public class AssignmentController : Controller
     {
         IAssignmentRepository _assignmentRepository;

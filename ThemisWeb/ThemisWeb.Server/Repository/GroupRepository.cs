@@ -35,7 +35,7 @@ namespace ThemisWeb.Server.Repository
 
         public async Task<IEnumerable<Group>> GetUserGroups(string userId)
         {
-            return _context.Groups.Where(i => i.Users.First(c => c.Id == userId) != null).ToList();
+            return _context.Groups.Where(i => (i.Users.First(c => (c.Id == userId)) != null || i.ManagerId == userId)).ToList();
         }
         public async Task<Group> GetByIdAsync(int id)
         {

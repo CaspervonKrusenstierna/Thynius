@@ -1,0 +1,15 @@
+.CreateGroupViewContent{
+    width: 700px;
+}
+
+.CreateGroupViewContent-TopContainer{
+    width: 100%;
+}
+.CreateGroupViewContent-BottomContainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 300px;
+    justify-content: flex-end;
+    align-items: center;
+}

@@ -35,10 +35,10 @@ const RegisterBox = () => {
                 </div>
                 <div className='inputcontainer-register'>
                     {error && <ErrorMessage message={error}></ErrorMessage>}
-                    <Input onChange={(e) => { Username.current = e.target.value }} label="Användarnamn" img={UserImg}></Input>
+                    <Input onChange={(e) => { Username.current = e.target.value }} label="AnvÃ¤ndarnamn" img={UserImg}></Input>
                     <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={EnvelopeImg}></Input>
-                    <Input hide={true} onChange={(e) => { Password.current = e.target.value }} label="Lösenord" img={UnlockImg}></Input>
-                    <Input hide={true} onChange={(e) => { ConfirmPassword.current = e.target.value }} label="Bekräfta lösenord" img={UnlockImg}></Input>
+                    <Input hide={true} onChange={(e) => { Password.current = e.target.value }} label="LÃ¶senord" img={UnlockImg}></Input>
+                    <Input hide={true} onChange={(e) => { ConfirmPassword.current = e.target.value }} label="BekrÃ¤fta lÃ¶senord" img={UnlockImg}></Input>
                     <SubmitButton onClick={onSubmit} text="Registrera"></SubmitButton>
                 </div>
             </div>

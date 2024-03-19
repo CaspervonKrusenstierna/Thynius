@@ -12,15 +12,15 @@ namespace ThemisWeb.Server
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
             
             object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddAuthorization();
-            builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -52,7 +52,37 @@ namespace ThemisWeb.Server
 
             app.MapFallbackToFile("/index.html");
 
+            using(var scope = app.Services.CreateScope())
+            {
+                RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                UserManager<ApplicationUser> userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+                var roles = new[] { "Admin", "OrganizationAdmin", "Teacher", "VerifiedUser" };
+
+                foreach (var role in roles)
+                {
+                    if(!await roleManager.RoleExistsAsync(role))
+                    {
+                        await roleManager.CreateAsync(new IdentityRole(role));      
+                    }
+                }
+
+                string AdminAccEmail = "cappelappe@outlook.com";
+                string AdminAccPassword = "Dalmas0099!";
+ 
+                if (await userManager.FindByEmailAsync(AdminAccEmail) == null)
+                {
+                    var user = new ApplicationUser();
+                    user.UserName = AdminAccEmail;
+                    user.Email = AdminAccEmail;
+
+                    await userManager.CreateAsync(user, AdminAccPassword);
+                    await userManager.AddToRoleAsync(user, "Admin");
+                    await userManager.AddToRoleAsync(user, "VerifiedUser");
+                }
+
+            }
             app.Run();
+
         }
     }
 }

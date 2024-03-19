@@ -1,0 +1,12 @@
+.VerticalInput{
+    display: flex;
+    flex-direction: column;
+}
+.VerticalInput-Title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.VerticalInput-Input{
+    height: 30px;
+    width: 150px;
+}

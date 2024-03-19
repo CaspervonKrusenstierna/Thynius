@@ -5,7 +5,7 @@ import GroupsView from "./components/groupsview/GroupsView";
 
 function GroupsViewPage() {
     return (
-        <div className='Page-Container'>
+      <div className='Page-Container'>
         <DashboardHeader></DashboardHeader>
         <GroupsView></GroupsView>
       </div>

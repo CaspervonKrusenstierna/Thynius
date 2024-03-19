@@ -1,11 +1,15 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import "../../shared/styles/Page.css"
+import GroupPageView from './components/grouppageview/GroupPageView'
+import DashboardHeader from '../../shared/components/dashboardheader/DashboardHeader'
 
 const GroupPage = () => {
-  const { GroupId } = useParams();
-  return (
-    <div>GroupPage</div>
-  )
+    return (
+      <div className='Page-Container'>
+        <DashboardHeader></DashboardHeader>
+        <GroupPageView></GroupPageView>
+      </div>
+  );
 }
 
 export default GroupPage

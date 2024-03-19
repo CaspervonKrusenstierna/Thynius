@@ -5,7 +5,10 @@
 .GroupsViewContainer-Row{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    gap: 20px;
+    justify-content: space-between;
     width: 1200px;
+}
+.Filler{
+    width: 275px;
+    height: 245px;
 }

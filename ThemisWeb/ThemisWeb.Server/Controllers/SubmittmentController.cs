@@ -6,7 +6,7 @@ using ThemisWeb.Server.Models;
 
 namespace ThemisWeb.Server.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "VerifiedUser")]
     [Route("/submittment")]
     public class SubmittmentController : Controller
     {

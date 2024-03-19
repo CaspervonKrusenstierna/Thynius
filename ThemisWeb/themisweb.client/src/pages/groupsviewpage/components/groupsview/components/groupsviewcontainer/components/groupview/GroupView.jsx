@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const GroupView = (props) => {
   return (
-    <Link className='GroupView' to={"/groups/" + props.groupId}>
+    <Link className='GroupView' to={"/dashboard/group/" + props.groupId}>
       <img className='GroupView-Img' src={props.img}></img>
       <p className='GroupView-Text'>{props.name}</p>
     </Link>

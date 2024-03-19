@@ -10,7 +10,6 @@ C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\Th
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\spa.proxy.json
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\appsettings.json
-C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\ThemisWeb.Server.staticwebassets.runtime.json
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\ThemisWeb.Server.exe
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\ThemisWeb.Server.deps.json
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\ThemisWeb.Server.runtimeconfig.json

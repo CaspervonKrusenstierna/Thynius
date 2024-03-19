@@ -8,8 +8,7 @@ using System.Text.Json;
 
 namespace ThemisWeb.Server.Controllers
 {
-    [Route("/groups")]
-    [Authorize]
+    [Route("group")]
     public class GroupController : Controller
     {
         private readonly IGroupRepository _groupRepository;
@@ -23,8 +22,13 @@ namespace ThemisWeb.Server.Controllers
             _userManager = userManager;
         }
         [HttpPost]
+        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
         public async Task<IActionResult> CreateGroup(string GroupName)
         {
+            if(GroupName == null)
+            {
+                return BadRequest();
+            }
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             Group newGroup = new Group();
@@ -39,6 +43,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
         public async Task<IActionResult> DeleteGroup(int groupId)
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
@@ -64,6 +69,7 @@ namespace ThemisWeb.Server.Controllers
 
         [HttpGet]
         [Route("getusergroups")]
+        [Authorize(Roles = "VerifiedUser")]
         public async Task<string> GetUserGroupIds(string userId)
         {
             IEnumerable<Group> Groups =  await _groupRepository.GetUserGroups(userId);
@@ -72,7 +78,7 @@ namespace ThemisWeb.Server.Controllers
 
         [HttpGet]
         [Route("getgroupinfo")]
-
+        [Authorize(Roles = "VerifiedUser")]
         public async Task<string> GetGroupInfo(int groupId)
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
@@ -85,7 +91,7 @@ namespace ThemisWeb.Server.Controllers
             }
             IEnumerable<ApplicationUser> groupUsers = await _userRepository.GetGroupUsers(group); // doing this should be fine because groups should not consist of many people
 
-            if(!groupUsers.Contains(user))
+            if(!groupUsers.Contains(user) && !(group.ManagerId == user.Id))
             {
                 HttpContext.Response.StatusCode = 401;
                 return null;

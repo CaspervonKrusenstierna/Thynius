@@ -1,0 +1,7 @@
+.CreateGroupView{
+    padding-top: 100px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+}

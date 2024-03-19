@@ -3,7 +3,9 @@ import "./GroupHeader.css"
 
 const GroupHeader = (props) => {
   return (
-    <div className='GroupHeader'>GroupHeader</div>
+    <div className='GroupHeader'>
+      <p className='GroupHeader-Title'>{props.groupName}</p>
+    </div>
   )
 }
 

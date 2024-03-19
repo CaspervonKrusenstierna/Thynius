@@ -1,0 +1,25 @@
+.DashboardUserComponent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    gap: 20px;
+}
+.DashboardUserComponent:hover{
+    cursor: pointer;
+}
+.DashboardUserComponent-TextContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2px;
+}
+.DashboardUserComponent-Text{
+    font-size: 14px;
+}
+.DashboardUserComponent-Icon{
+}
+.DashboardUserComponent-ArrowIcon{
+    height: 20px;
+}

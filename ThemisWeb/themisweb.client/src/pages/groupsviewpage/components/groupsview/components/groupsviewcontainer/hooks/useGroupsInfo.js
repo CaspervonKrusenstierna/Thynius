@@ -7,7 +7,7 @@ export default function useGroupsInfo() {
     const sessionInfo = useContext(sessionInfoContext);
     useEffect(() => {
         if(sessionInfo != null){
-            useFetch("/groups/getusergroups?userId=" + sessionInfo.ID, "GET").then(i => i.json()).then(i => {console.log(i); setGroupsInfo(i)});
+            useFetch("/group/getusergroups?userId=" + sessionInfo.ID, "GET").then(i => i.json()).then(i => {setGroupsInfo(i)});
         }
     }, [sessionInfo])
     return groupsInfo

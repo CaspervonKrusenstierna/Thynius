@@ -9,6 +9,8 @@ import GroupPage from './pages/grouppage/GroupPage';
 import "./index.css"
 import DashboardHome from './pages/dashboardhome/DashboardHome';
 import useSessionInfo from "./shared/hooks/useSessionInfo"
+import CreateGroupPage from './pages/creategrouppage/CreateGroupPage';
+import CalendarPage from './pages/calendarpage/CalendarPage';
 
 export const sessionInfoContext = createContext();
 
@@ -23,8 +25,10 @@ function App() {
                     <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
                     <Route path="/login" element={<LoginPage></LoginPage>}></Route>
                     <Route path="/dashboard/home" element={<DashboardHome></DashboardHome>}></Route>
+                    <Route path="/dashboard/calendar" element={<CalendarPage></CalendarPage>}></Route>
                     <Route path="/dashboard/group/:id" element={<GroupPage></GroupPage>}></Route>
                     <Route path="/dashboard/groups" element={<GroupsViewPage></GroupsViewPage>}></Route>
+                    <Route path="/dashboard/creategroup" element={<CreateGroupPage></CreateGroupPage>}></Route>
                 </Routes>
             </BrowserRouter >
         </sessionInfoContext.Provider>
