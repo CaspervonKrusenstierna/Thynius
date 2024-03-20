@@ -65,8 +65,10 @@ export default defineConfig({
             }, '^/group/getgroupinfo': {
                 target,
                 secure: false
+            }, '^/users/getsearchusers': {
+                target,
+                secure: false
             }
-
 
         },
         port: 5173,

@@ -1,0 +1,36 @@
+.UserSearch{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+}
+.UserSearch-Input{
+    font-size: 15px;
+    height: 50px;
+    border: none;
+    outline: none;
+}
+
+.UserSearch-Img{
+    height: 23px;
+}
+.UserSearch-Text{
+    font-size: 15px;
+}
+.UserSearch:hover{
+    cursor:text;
+}
+.SearchBar{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.ShowInputSearchBar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 500px;
+}

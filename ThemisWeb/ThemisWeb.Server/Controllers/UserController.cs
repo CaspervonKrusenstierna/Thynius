@@ -108,5 +108,19 @@ namespace ThemisWeb.Server.Controllers
             IEnumerable<ApplicationUser> ToReturn =  await _userRepository.GetGroupUsers(group);
             return ToReturn.Select(i => JsonConvert.SerializeObject(new UserData{ Username = i.UserName, ID = i.Id  }));
         }
+
+        [HttpGet]
+        [Route("/users/getsearchusers")]
+        public async Task<string> GetSearchUsers(string Search, int Max=3, bool includeSelf = false)
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            string org = user.OrganizationEmailExtension;
+            IEnumerable<ApplicationUser> SearchResult = await _userRepository.GetSearchUsers(Search,org,Max);
+            if (includeSelf)
+            {
+                return JsonConvert.SerializeObject(SearchResult.Select(i => i.UserName));
+            }
+            return JsonConvert.SerializeObject(SearchResult.Where(i => i.UserName != user.UserName).Select(i => new { username=i.UserName, email=i.Email, id=i.Id }));
+        }
     }
 }

@@ -1,0 +1,9 @@
+.GroupMembersView{
+    border-radius: 5px;
+    width: 250px;
+    height: 300px;
+}
+.GroupMembersView-Title{
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -42,6 +42,10 @@ namespace ThemisWeb.Server.Repository
         {
             return await _context.Users.Include(i => i.Groups).Where(i => i.Groups.Contains(group)).ToListAsync();
         }
+        public async Task<IEnumerable<ApplicationUser>> GetSearchUsers(string search, string organization, int max)
+        {
+            return await _context.Users.Where(i => i.OrganizationEmailExtension == organization && i.UserName.StartsWith(search)).Take(max).ToListAsync();
+        }
         public bool Add(ApplicationUser user)
         {
             _context.Add(user);

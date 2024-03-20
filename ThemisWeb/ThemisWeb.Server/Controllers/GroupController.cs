@@ -5,6 +5,9 @@ using ThemisWeb.Server.Data;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
 using System.Text.Json;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -29,6 +32,8 @@ namespace ThemisWeb.Server.Controllers
             {
                 return BadRequest();
             }
+
+
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             Group newGroup = new Group();
@@ -39,6 +44,7 @@ namespace ThemisWeb.Server.Controllers
             {
                 return StatusCode(500);
             }
+
             return Ok();
         }
 
@@ -73,7 +79,7 @@ namespace ThemisWeb.Server.Controllers
         public async Task<string> GetUserGroupIds(string userId)
         {
             IEnumerable<Group> Groups =  await _groupRepository.GetUserGroups(userId);
-            return JsonSerializer.Serialize(Groups.Select(group => (new GroupData { Id = group.Id, Name = group.Name })));
+            return System.Text.Json.JsonSerializer.Serialize(Groups.Select(group => (new GroupData { Id = group.Id, Name = group.Name })));
         }
 
         [HttpGet]
@@ -103,7 +109,7 @@ namespace ThemisWeb.Server.Controllers
             GroupDataExtended dataToReturn = new GroupDataExtended { Id=group.Id, Name=group.Name, DateCreated=group.DateCreated};
             dataToReturn.userDatas = groupUsers.Select(i => new UserData { ID = i.Id, Username = i.UserName });
             dataToReturn.assignmentDatas = groupAssignments.Select(i => new AssignmentData {ID = i.Id, Name = i.Name, DueDate = i.DueDate });
-            return JsonSerializer.Serialize(dataToReturn);
+            return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
         }
     }
 }

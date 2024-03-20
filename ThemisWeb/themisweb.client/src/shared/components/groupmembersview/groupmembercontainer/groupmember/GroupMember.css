@@ -1,0 +1,18 @@
+.GroupMember{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
+    height: 50px;
+}
+.GroupMember-DeleteButton{
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+}
+.GroupMember-DeleteButton:hover{
+    cursor: pointer;
+}

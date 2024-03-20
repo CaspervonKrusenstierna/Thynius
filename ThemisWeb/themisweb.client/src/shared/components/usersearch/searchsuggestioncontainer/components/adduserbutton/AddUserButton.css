@@ -1,0 +1,14 @@
+.AddUserButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+.AddUserButton-Img{
+    height: 30px;
+}
+.AddUserButton:hover{
+    cursor: pointer;
+}
