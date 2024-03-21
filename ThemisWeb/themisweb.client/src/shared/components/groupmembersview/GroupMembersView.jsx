@@ -5,6 +5,7 @@ import GroupMemberContainer from './groupmembercontainer/GroupMemberContainer'
 
 const GroupMembersView = (props) => {
   const [groupMembers, setGroupMembers] = useState([]);
+
   function onAddMember(Member){
     let memberAlreadyInList = false;
     for(let i = 0; groupMembers.length > i; i++){
@@ -19,6 +20,7 @@ const GroupMembersView = (props) => {
         setGroupMembers(temp);
     }
   }
+  
   function onDeleteMember(Member){
     for(let i = 0; groupMembers.length > i; i++){
         if(groupMembers[i] == Member){
