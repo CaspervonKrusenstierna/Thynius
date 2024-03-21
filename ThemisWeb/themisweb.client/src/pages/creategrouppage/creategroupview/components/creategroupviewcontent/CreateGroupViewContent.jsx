@@ -13,7 +13,7 @@ const CreateGroupViewContent = () => {
     const groupMemberIds = useRef([]);
     const navigator = useNavigate();
     const cachedOnSubmitClick = useCallback(async () => {
-        const response = await useFetch("/group?GroupName=" + groupName.current + "&Users=", "POST");
+        const response = await useFetch("/group", "POST", JSON.stringify({GroupData: ({GroupName: groupName.current, UserIds: groupMemberIds.current})}));
         if(response.ok){
             navigator("/dashboard/groups");
         }

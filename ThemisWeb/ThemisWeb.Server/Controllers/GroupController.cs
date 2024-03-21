@@ -33,7 +33,6 @@ namespace ThemisWeb.Server.Controllers
                 return BadRequest();
             }
 
-
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             Group newGroup = new Group();
