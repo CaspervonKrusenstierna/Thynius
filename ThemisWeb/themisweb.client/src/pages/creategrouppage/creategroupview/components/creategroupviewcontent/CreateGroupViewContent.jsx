@@ -8,32 +8,31 @@ import { useNavigate } from 'react-router-dom'
 import GroupMembersView from '../../../../../shared/components/groupmembersview/GroupMembersView'
 
 const CreateGroupViewContent = () => {
+    const groupName = useRef("");
     const [errorMessage, setErrorMessage] = useState();
-
-    const groupToCreateInfo = useRef({groupName: "", groupMemberIds: []})
-
+    const groupMemberIds = useRef([]);
     const navigator = useNavigate();
-
-    onSubmitClick = async () => {
-        const response = await useFetch("/group", "POST", groupToCreateInfo.current);
+    const cachedOnSubmitClick = useCallback(async () => {
+        const response = await useFetch("/group", "POST", JSON.stringify({GroupData: ({GroupName: groupName.current, UserIds: groupMemberIds.current})}));
         if(response.ok){
             navigator("/dashboard/groups");
         }
         response.json().then(s => {setErrorMessage(s.Title)});
-    };
+    }, [groupName.Val])
 
     const updateGroupMembers = (GroupMembers) => {
-        groupToCreateInfo.current.groupMemberIds = GroupMembers.map(GroupMember => GroupMember.id);
-    }
-    const updateGroupName = (groupName) => {
-        groupToCreateInfo.current.groupName = groupName;
+        let temp = [];
+        for(let i = 0; GroupMembers.length > i; i++){
+            temp.push(GroupMembers[i].id);
+        }
+        groupMemberIds.current = temp;
     }
 
   return (
     <div className='CreateGroupViewContent'>
         <div className='CreateGroupViewContent-TopContainer'>
             {errorMessage ? <ErrorMessage message={errorMessage}></ErrorMessage> : <></>}
-            <VerticalInput onChange={(e) => {updateGroupName(e.target.value)}}Title="Namn"></VerticalInput>
+            <VerticalInput onChange={(e) => {groupName.current=e.target.value}}Title="Namn"></VerticalInput>
             <GroupMembersView setGroupMembers={updateGroupMembers}></GroupMembersView>
         </div>
         <div className='CreateGroupViewContent-BottomContainer'>
