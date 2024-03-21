@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useFetch from "../../../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 
 export default function useSearchSuggestions(search) {

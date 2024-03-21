@@ -1,6 +1,6 @@
 import React from 'react'
 import "./SearchSuggestionContainer.css"
-import useSearchSuggestions from './useSearchSuggestions'
+import useSearchSuggestions from '../useSearchSuggestions'
 import SearchSuggestion from './components/searchsuggestion/SearchSuggestion';
 
 const SearchSuggestionContainer = (props) => {
