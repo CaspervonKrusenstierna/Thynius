@@ -1,0 +1,7 @@
+.GroupSidebarNavigationItem{
+    text-decoration: none;
+}
+.GroupSidebarNavigationItem-Text{
+    font-size: 20px;
+    font-weight: bold;
+}

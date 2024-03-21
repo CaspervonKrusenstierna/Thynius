@@ -8,7 +8,7 @@ const GroupMembersView = (props) => {
   function onAddMember(Member){
     let memberAlreadyInList = false;
     for(let i = 0; groupMembers.length > i; i++){
-        if(groupMembers[i] == Member){
+        if(groupMembers[i].username == Member.username){
             memberAlreadyInList = true;
         }
     } 

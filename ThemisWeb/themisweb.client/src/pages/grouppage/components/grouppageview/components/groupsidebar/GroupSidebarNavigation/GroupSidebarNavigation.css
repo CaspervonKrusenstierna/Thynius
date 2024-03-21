@@ -1,0 +1,8 @@
+.GroupSidebarNavigation{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    gap: 10px;
+    margin-top: 100px;
+    width: 100px;
+}

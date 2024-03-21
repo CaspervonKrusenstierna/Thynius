@@ -6,8 +6,10 @@ import CreateGroupViewContent from './components/creategroupviewcontent/CreateGr
 const CreateGroupView = () => {
   return (
     <div className='CreateGroupView'>
+      <div className='CreateGroupContainer'>
         <CreateGroupViewHeader></CreateGroupViewHeader>
         <CreateGroupViewContent></CreateGroupViewContent>
+      </div>
     </div>
   )
 }

@@ -5,7 +5,7 @@ import { PlusSolid } from '../../../../../assets'
 const AddUserButton = (props) => {
   return (
     <button onClick={props.onClick} className='AddUserButton'>
-        <img className="AddUserButton-Img" src={PlusSolid}></img>
+      <p className='AddUserButton-Text'>Lägg Till</p>
     </button>
   )
 }

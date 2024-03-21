@@ -3,12 +3,15 @@
     justify-content: center;
     align-items: center;
     border: none;
-    width: 30px;
+    width: 100px;
     height: 30px;
-}
-.AddUserButton-Img{
-    height: 30px;
+    border: 2px solid #222222;
+    border-radius: 4px;
 }
 .AddUserButton:hover{
     cursor: pointer;
+}
+.AddUserButton-Text{
+    font-size: 16px;
+    font-weight: bold;
 }

@@ -12,7 +12,7 @@
         public string Name { get; set; }
         public string DateCreated { get; set; }
         public UserData ManagerData { get; set; }
-        public IEnumerable<UserData> userDatas { get; set; }
-        public IEnumerable<AssignmentData> assignmentDatas { get; set; }
+        public IEnumerable<dynamic> userDatas { get; set; }
+        public IEnumerable<dynamic> assignmentDatas { get; set; }
     }
 }

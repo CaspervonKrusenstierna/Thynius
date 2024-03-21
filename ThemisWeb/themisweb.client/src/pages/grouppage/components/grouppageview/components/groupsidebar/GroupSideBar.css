@@ -1,0 +1,14 @@
+.GroupSideBar{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    align-items: center;
+}
+.GroupSideBar-Title{
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+}
+.AlignerDiv{
+    width: 100px;
+}

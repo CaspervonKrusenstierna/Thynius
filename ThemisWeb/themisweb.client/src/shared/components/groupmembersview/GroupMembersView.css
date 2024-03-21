@@ -1,7 +1,7 @@
 .GroupMembersView{
     border-radius: 5px;
-    width: 250px;
     height: 300px;
+    border-radius: 4px;
 }
 .GroupMembersView-Title{
     font-size: 18px;

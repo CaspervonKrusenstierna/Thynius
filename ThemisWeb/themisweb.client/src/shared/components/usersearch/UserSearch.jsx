@@ -3,29 +3,61 @@ import "./UserSearch.css"
 import { MagnifyingClass } from '../../assets';
 import SearchSuggestionContainer from './searchsuggestioncontainer/SearchSuggestionContainer';
 import AddUserButton from './searchsuggestioncontainer/components/adduserbutton/AddUserButton';
+import useSearchSuggestions from './useSearchSuggestions';
 
 const UserSearch = (props) => {
-  const [showInput, setShowInput] = useState(true);
+  const [showInput, setShowInput] = useState(false);
   const [textInput, setTextInput] = useState("");
-  const [forceReactRerender, setForceReactRerender] = useState(false);
-  const isManipulated = useRef(true); // used to check if the user that is being added is a real user.
+  const [searchSuggestions, setSearchSuggestions] = useSearchSuggestions(textInput);
+  const [disableSearchSuggestions, setDisableSearchSuggestions] = useState(false);
+
   const currUser = useRef();
+
+  function onSearchSuggestionSelect(chosenSearchSuggestion){
+    currUser.current = chosenSearchSuggestion;
+    setTextInput(chosenSearchSuggestion.username);
+    setDisableSearchSuggestions(true);
+  }
+
+  function onInputBlur(e){
+    if(textInput == ""){
+      setShowInput(false);
+    }
+    else if(e.relatedTarget?.className != "SearchSuggestion"){
+      setSearchSuggestions([]);
+    }
+  }
+
+  function onAddUser(){
+    if(currUser.current){
+      props.onSubmit(currUser.current);
+      setSearchSuggestions([]);
+    }
+  }
+
+  function onInputChange(newValue){
+    currUser.current = null;
+    setDisableSearchSuggestions(false);
+    setTextInput(newValue);
+  }
+
   return (
     <div onClick={() => {setShowInput(true)}} className='UserSearch'>
         {showInput ? 
-        <div className='ShowInputSearchBar'><input id="SearchInput" value={textInput} autoFocus={true} onChange={(s) => {isManipulated.current = true; setTextInput(s.target.value)}} className='UserSearch-Input'></input>
-            <AddUserButton onClick={() => {if(!isManipulated.current){props.onSubmit(currUser.current)}}}></AddUserButton>
+        <div className='ShowInputSearchBar'><input id="SearchInput" onBlur={onInputBlur}value={textInput} autoFocus={true} onChange={(s) => {onInputChange(s.target.value)}} className='UserSearch-Input'></input>
+            <AddUserButton onClick={onAddUser}></AddUserButton>
         </div>
-        : 
+        : <div className='NonSelectedSearchBarContainer'>
         <div className='SearchBar'>
             <img className="UserSearch-Img" src={MagnifyingClass}></img>
             <p className='UserSearch-Text'>Sök</p>
         </div>
+        <AddUserButton onClick={onAddUser}></AddUserButton></div>
         }
 
-        {(textInput != "" ) ? <SearchSuggestionContainer onChoose={(s) => {isManipulated.current = false; currUser.current = s; setTextInput(s.username); setForceReactRerender(!forceReactRerender)}} search={textInput} disable={!isManipulated.current}></SearchSuggestionContainer> : <></>}
+        {!disableSearchSuggestions ? <SearchSuggestionContainer textInput={textInput} onChoose={onSearchSuggestionSelect} searchSuggestions={searchSuggestions}></SearchSuggestionContainer> : <></>}
     </div>
   )
-}// the t and slice stuff is used to force react to rerender 
+}
 
 export default UserSearch

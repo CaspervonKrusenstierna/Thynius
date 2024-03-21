@@ -2,16 +2,18 @@ import React from 'react'
 import "./GroupPageView.css"
 import { useParams } from 'react-router-dom'
 import useExtendedGroupInfo from './hooks/useExtendedGroupInfo'
-import GroupHeader from './components/groupheader/GroupHeader'
 import GroupMainContent from './components/groupmaincontent/GroupMainContent'
+import GroupSideBar from './components/groupsidebar/GroupSideBar'
 
 const GroupPageView = () => {
-  let { id } = useParams();
+  let { id, page } = useParams();
   const groupInfo = useExtendedGroupInfo(id);
   return (
     <div className='GroupPageView'>
-        <GroupHeader groupName={groupInfo?.Name}></GroupHeader>
-        <GroupMainContent></GroupMainContent>
+      <div className='GroupContainer'>
+        <GroupSideBar groupId={id} GroupName={groupInfo?.Name}></GroupSideBar>
+        <GroupMainContent Page={page}></GroupMainContent>
+      </div>
     </div>
   )
 }

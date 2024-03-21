@@ -8,35 +8,33 @@ import { useNavigate } from 'react-router-dom'
 import GroupMembersView from '../../../../../shared/components/groupmembersview/GroupMembersView'
 
 const CreateGroupViewContent = () => {
-    const groupName = useRef("");
     const [errorMessage, setErrorMessage] = useState();
-    const groupMemberIds = useRef([]);
+    const groupInfo = useRef({groupName: "", groupMembers: []});
     const navigator = useNavigate();
-    const cachedOnSubmitClick = useCallback(async () => {
-        const response = await useFetch("/group?GroupName=" + groupName.current + "&Users=", "POST");
+    const onSubmitClick = async () =>{
+        const response = await useFetch("/group?GroupName="+groupInfo.current.groupName, "POST", groupInfo.current.groupMembers);
         if(response.ok){
             navigator("/dashboard/groups");
         }
         response.json().then(s => {setErrorMessage(s.Title)});
-    }, [groupName.Val])
+    }
 
-    const updateGroupMembers = (GroupMembers) => {
-        let temp = [];
-        for(let i = 0; GroupMembers.length > i; i++){
-            temp.push(GroupMembers[i].id);
-        }
-        groupMemberIds.current = temp;
+    const updateGroupMembers = (newGroupMembers) => {
+        groupInfo.current.groupMembers = newGroupMembers.map(s => s.id);
+    }
+    const updateGroupName = (newGroupName) => {
+        groupInfo.current.groupName = newGroupName;
     }
 
   return (
     <div className='CreateGroupViewContent'>
         <div className='CreateGroupViewContent-TopContainer'>
             {errorMessage ? <ErrorMessage message={errorMessage}></ErrorMessage> : <></>}
-            <VerticalInput onChange={(e) => {groupName.current=e.target.value}}Title="Namn"></VerticalInput>
+            <VerticalInput onChange={(e) => {updateGroupName(e.target.value)}}Title="Namn"></VerticalInput>
             <GroupMembersView setGroupMembers={updateGroupMembers}></GroupMembersView>
         </div>
         <div className='CreateGroupViewContent-BottomContainer'>
-            <CreateGroupSubmitButton onClick={cachedOnSubmitClick}></CreateGroupSubmitButton>
+            <CreateGroupSubmitButton onClick={onSubmitClick}></CreateGroupSubmitButton>
         </div>
     </div>
   )

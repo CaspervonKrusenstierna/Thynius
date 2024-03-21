@@ -8,6 +8,7 @@ using System.Text.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using ThemisWeb.Server.Repository;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -25,27 +26,38 @@ namespace ThemisWeb.Server.Controllers
             _userManager = userManager;
         }
         [HttpPost]
-        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
-        public async Task<IActionResult> CreateGroup(string GroupName)
+        public async Task<IActionResult> CreateGroup(string GroupName, [FromBody]List<String> GroupUsers)
         {
-            if(GroupName == null)
+            if(GroupName == null || GroupUsers == null)
             {
                 return BadRequest();
             }
-
 
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             Group newGroup = new Group();
             newGroup.Name = GroupName;
             newGroup.ManagerId = user.Id;
-            
             if (!_groupRepository.Add(newGroup))
             {
                 return StatusCode(500);
             }
+            foreach (string userId in GroupUsers)
+            {
+                ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
+                if(currUser == null)
+                {
+                    return BadRequest();
+                }
+                if(currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
+                {
+                    return Unauthorized();
+                }
+                _userRepository.AddUserToGroup(currUser, newGroup);
+            }
 
             return Ok();
+            //return StatusCode(200);
         }
 
         [HttpDelete]
@@ -84,7 +96,6 @@ namespace ThemisWeb.Server.Controllers
 
         [HttpGet]
         [Route("getgroupinfo")]
-        [Authorize(Roles = "VerifiedUser")]
         public async Task<string> GetGroupInfo(int groupId)
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
@@ -107,8 +118,8 @@ namespace ThemisWeb.Server.Controllers
             ApplicationUser Manager = await _userRepository.GetByIdAsync(group.ManagerId);
 
             GroupDataExtended dataToReturn = new GroupDataExtended { Id=group.Id, Name=group.Name, DateCreated=group.DateCreated};
-            dataToReturn.userDatas = groupUsers.Select(i => new UserData { ID = i.Id, Username = i.UserName });
-            dataToReturn.assignmentDatas = groupAssignments.Select(i => new AssignmentData {ID = i.Id, Name = i.Name, DueDate = i.DueDate });
+            dataToReturn.userDatas = groupUsers.Select(i => new { i.Id, i.UserName });
+            dataToReturn.assignmentDatas = groupAssignments.Select(i => new {i.Id, i.Name, i.DueDate });
             return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
         }
     }
