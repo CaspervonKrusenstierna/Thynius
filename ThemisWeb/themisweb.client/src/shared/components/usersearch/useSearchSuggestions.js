@@ -7,5 +7,5 @@ export default function useSearchSuggestions(search) {
     useEffect(() => {
         useFetch("/users/getsearchusers?search=" + search, "GET").then(s => s.json()).then(s => {setSearchResults(s)});
     }, [search])
-    return searchResults;
+    return [searchResults, setSearchResults];
 }

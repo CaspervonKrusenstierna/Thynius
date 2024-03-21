@@ -9,9 +9,9 @@ import useSearchSuggestions from './useSearchSuggestions';
 const UserSearch = (props) => {
   const [showInput, setShowInput] = useState(true);
   const [textInput, setTextInput] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useSearchSuggestions(textInput);
 
   const currUser = useRef();
-  const searchSuggestions = useSearchSuggestions(textInput);
 
   function onSearchSuggestionSelect(chosenSearchSuggestion){
     currUser.current = chosenSearchSuggestion;
@@ -22,6 +22,7 @@ const UserSearch = (props) => {
   function onAddUser(){
     if(currUser.current){
       props.onSubmit(currUser.current);
+      setSearchSuggestions([]);
     }
   }
 
