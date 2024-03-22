@@ -1,0 +1,9 @@
+.UserComponentDropDownItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    text-decoration: none;
+}

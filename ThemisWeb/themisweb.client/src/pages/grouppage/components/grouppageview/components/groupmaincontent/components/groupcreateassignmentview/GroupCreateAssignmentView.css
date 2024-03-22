@@ -1,0 +1,32 @@
+.rdp {
+    margin: 0px;
+  }
+.my-selected:not([disabled]) { 
+    border: 2px solid currentColor;
+}
+.my-today { 
+    font-weight: bold;
+    font-size: 140%; 
+}
+.GroupCreateAssignmentView{
+}
+.CreateAssignment-DaypickerContainer-Text{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 5px;
+    padding-bottom: 20px;
+}
+
+.GroupCreateAssignmentView-Top{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 160px;
+    height: 400px;
+    margin-left: 80px;
+}
+
+.GroupCreateAssignmentView-Bottom{
+    display: flex;
+    height: 100px;
+}

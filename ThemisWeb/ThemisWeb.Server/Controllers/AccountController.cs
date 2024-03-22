@@ -24,6 +24,7 @@ namespace ThemisWeb.Server.Controllers
             _userManager = userManager;
             _organizationRepository = organizationRepository;
             _userRepository = userRepository;
+            _signInManager = signInManager;
         }
 
         [Route("initializeaccount")]
@@ -60,30 +61,8 @@ namespace ThemisWeb.Server.Controllers
         public async Task<String> GetSessionInfo()
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            var roles = await _userManager.GetRolesAsync(user);
-            int highestRoleLevel = 0;
-            foreach (var role in roles)
-            {
-                int currentRowLevel = 0;
-                if(role == "Teacher")
-                {
-                    currentRowLevel = 1;
-                }
-                if(role == "OrganizationAdmin")
-                {
-                    currentRowLevel = 2;
-                }
-                if(role == "Admin")
-                {
-                    currentRowLevel = 3;
-                }
-                if(currentRowLevel > highestRoleLevel)
-                {
-                    highestRoleLevel = currentRowLevel;
-                }
-
-            }
-            return JsonConvert.SerializeObject(new UserData{ ID = user.Id, Username = user.UserName, RoleLevel = highestRoleLevel});
+            int roleLevel = await _userRepository.GetUserRoleLevel(user);
+            return JsonConvert.SerializeObject(new UserData{ ID = user.Id, Username = user.UserName, RoleLevel = roleLevel});
         }
 
         [Route("adduserrrole/organizationadmin")]

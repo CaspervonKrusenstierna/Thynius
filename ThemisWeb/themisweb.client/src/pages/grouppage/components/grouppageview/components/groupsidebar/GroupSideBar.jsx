@@ -6,7 +6,7 @@ const GroupSideBar = (props) => {
   return (
     <div className='GroupSideBar'>
         <div className='AlignerDiv'>
-            <p className='GroupSideBar-Title'>{props.GroupName}</p>
+          <p className='GroupSideBar-Title'>{props.GroupName}</p>
         </div>
         <GroupSidebarNavigation groupId={props.groupId}></GroupSidebarNavigation>
     </div>

@@ -1,7 +1,8 @@
 .GroupPageView{
+    display: flex;
+    justify-content: center;
     width: 100%;
     margin-top: 100px;
-    margin-left: 350px;
 }
 .GroupContainer{
     padding-top: 50px;
@@ -9,6 +10,7 @@
     flex-direction: row;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 1000px;
-    height: 600px;
+    height: 700px;
+    overflow-y: scroll;
     margin-bottom: 5px;
 }

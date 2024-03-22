@@ -1,0 +1,30 @@
+.CreateAssignmentButtonContainer{
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100px;
+}
+.CreateAssignmentButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    border-radius: 3px;
+    height: 50px;
+    gap: 20px;
+    border: none;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+.CreateAssignmentButton-Img{
+    width: 30px;
+    height: 30px;
+}
+.CreateAssignmentButton-Text{
+    font-size: 20px;
+    font-weight: bold;
+}
+.CreateAssignmentButton:hover{
+    cursor: pointer;
+}

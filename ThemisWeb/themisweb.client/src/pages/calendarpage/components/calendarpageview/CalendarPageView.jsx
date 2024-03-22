@@ -1,8 +1,9 @@
 import React from 'react'
+import "./CalendarPageView.css"
 
 const CalendarPageView = () => {
   return (
-    <div>CalendarPageView</div>
+    <div className='CalendarPageView'>CalendarPageView</div>
   )
 }
 

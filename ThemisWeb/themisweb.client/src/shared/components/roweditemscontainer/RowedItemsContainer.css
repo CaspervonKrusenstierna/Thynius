@@ -1,0 +1,10 @@
+.RowedItemsContainer{
+    display: flex;
+    flex-direction: column;
+}
+.RowedItemsContainer-Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

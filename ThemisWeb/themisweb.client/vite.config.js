@@ -41,6 +41,9 @@ export default defineConfig({
             '@': fileURLToPath(new URL('./src', import.meta.url))
         }
     },
+    optimizeDeps: {
+        exclude: ['react-day-picker']
+    },
     server: {
         proxy: {
             '^/register': {
@@ -66,6 +69,12 @@ export default defineConfig({
                 target,
                 secure: false
             }, '^/users/getsearchusers': {
+                target,
+                secure: false
+            },'^/account/logout': {
+                target,
+                secure: false
+            }, '^/assignment': {
                 target,
                 secure: false
             }

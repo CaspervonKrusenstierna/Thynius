@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
+using System.Data;
 using System.Reflection.Metadata.Ecma335;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
@@ -9,9 +11,11 @@ namespace ThemisWeb.Server.Repository
     public class UserRepository : IUserRepository
     {
         private readonly ApplicationDbContext _context;
-        public UserRepository(ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public UserRepository(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
         public async Task<IEnumerable<ApplicationUser>> GetOrganizationUsers(string organization)
         {
@@ -45,6 +49,34 @@ namespace ThemisWeb.Server.Repository
         public async Task<IEnumerable<ApplicationUser>> GetSearchUsers(string search, string organization, int max)
         {
             return await _context.Users.Where(i => i.OrganizationEmailExtension == organization && i.UserName.StartsWith(search)).Take(max).ToListAsync();
+        }
+
+        public async Task<int> GetUserRoleLevel(ApplicationUser user)
+        {
+            var roles = await _userManager.GetRolesAsync(user);
+            int highestRoleLevel = 0;
+            foreach (var role in roles)
+            {
+                int currentRowLevel = 0;
+                if (role == "Teacher")
+                {
+                    currentRowLevel = 1;
+                }
+                if (role == "OrganizationAdmin")
+                {
+                    currentRowLevel = 2;
+                }
+                if (role == "Admin")
+                {
+                    currentRowLevel = 3;
+                }
+                if (currentRowLevel > highestRoleLevel)
+                {
+                    highestRoleLevel = currentRowLevel;
+                }
+
+            }
+            return highestRoleLevel;
         }
         public bool Add(ApplicationUser user)
         {

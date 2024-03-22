@@ -6,8 +6,7 @@ using ThemisWeb.Server.Models;
 
 namespace ThemisWeb.Server.Controllers
 {
-    [Authorize(Roles = "verifieduser")]
-    
+    [Route("/assignment")]
     public class AssignmentController : Controller
     {
         IAssignmentRepository _assignmentRepository;
@@ -39,6 +38,7 @@ namespace ThemisWeb.Server.Controllers
             Assignment newAssignment = new Assignment();
             newAssignment.Name = AssignmentName; // **TODO** Check if sql injection is possible
             newAssignment.GroupId = groupId;
+            newAssignment.DueDate = dueDate;
             
 
             if (!_assignmentRepository.Add(newAssignment))

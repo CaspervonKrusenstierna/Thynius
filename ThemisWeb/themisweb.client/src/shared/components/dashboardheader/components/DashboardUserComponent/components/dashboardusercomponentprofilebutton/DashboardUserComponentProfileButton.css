@@ -1,0 +1,28 @@
+.DashboardUserComponentProfileButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    width: 250px;
+}
+.DashboardUserComponentProfileButton:hover{
+    cursor: pointer;
+}
+.DashboardUserComponentProfileButton-TextContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 50px;
+    gap: 2px;
+}
+.DashboardUserComponentProfileButton-Text{
+    font-size: 14px;
+}
+.DashboardUserComponentProfileButton-Icon{
+}
+.DashboardUserComponentProfileButton-ArrowIcon{
+    margin-left: 20px;
+    height: 17px;
+}

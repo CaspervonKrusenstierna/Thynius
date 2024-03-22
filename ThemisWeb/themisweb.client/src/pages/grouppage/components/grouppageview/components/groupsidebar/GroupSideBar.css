@@ -5,7 +5,7 @@
     align-items: center;
 }
 .GroupSideBar-Title{
-    position: absolute;
+    height: 0px;
     font-size: 25px;
     font-weight: bold;
 }

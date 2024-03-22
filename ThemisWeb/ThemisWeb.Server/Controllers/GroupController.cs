@@ -120,6 +120,7 @@ namespace ThemisWeb.Server.Controllers
             GroupDataExtended dataToReturn = new GroupDataExtended { Id=group.Id, Name=group.Name, DateCreated=group.DateCreated};
             dataToReturn.userDatas = groupUsers.Select(i => new { i.Id, i.UserName });
             dataToReturn.assignmentDatas = groupAssignments.Select(i => new {i.Id, i.Name, i.DueDate });
+            dataToReturn.ManagerData = new { Manager.Id,Manager.UserName};
             return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
         }
     }

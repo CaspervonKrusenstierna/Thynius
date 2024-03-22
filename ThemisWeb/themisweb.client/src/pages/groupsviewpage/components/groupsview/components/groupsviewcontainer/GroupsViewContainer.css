@@ -1,14 +1,3 @@
 .GroupsViewContainer{
-    display: flex;
-    flex-direction: column;
-}
-.GroupsViewContainer-Row{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     width: 1200px;
-}
-.Filler{
-    width: 275px;
-    height: 245px;
 }

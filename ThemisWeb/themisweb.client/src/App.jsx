@@ -1,16 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
-import { HomePage, LoginPage, RegisterPage } from "./pages";
 import React, { createContext, useEffect } from 'react';
-import GroupsViewPage from './pages/groupsviewpage/GroupsViewPage';
-import GroupPage from './pages/grouppage/GroupPage';
+import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CalendarPage, CreateGroupPage, DashboardHomePage } from "./pages";
 import "./index.css"
-import DashboardHome from './pages/dashboardhome/DashboardHome';
+import './App.css';
 import useSessionInfo from "./shared/hooks/useSessionInfo"
-import CreateGroupPage from './pages/creategrouppage/CreateGroupPage';
-import CalendarPage from './pages/calendarpage/CalendarPage';
+import TextsViewPage from './pages/textsviewpage/TextsViewPage';
 
 export const sessionInfoContext = createContext();
 
@@ -24,11 +20,13 @@ function App() {
                     <Route path="/" element={<HomePage></HomePage>}></Route>
                     <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
                     <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-                    <Route path="/dashboard/home" element={<DashboardHome></DashboardHome>}></Route>
+                    <Route path="/dashboard/home" element={<DashboardHomePage></DashboardHomePage>}></Route>
                     <Route path="/dashboard/calendar" element={<CalendarPage></CalendarPage>}></Route>
                     <Route path="/dashboard/group/:id/:page" element={<GroupPage></GroupPage>}></Route>
                     <Route path="/dashboard/groups" element={<GroupsViewPage></GroupsViewPage>}></Route>
                     <Route path="/dashboard/creategroup" element={<CreateGroupPage></CreateGroupPage>}></Route>
+                    <Route path="/dashboard/profile" element={<ProfilePage></ProfilePage>}></Route>
+                    <Route path="/dashboard/texts" element={<TextsViewPage></TextsViewPage>}></Route>
                 </Routes>
             </BrowserRouter >
         </sessionInfoContext.Provider>

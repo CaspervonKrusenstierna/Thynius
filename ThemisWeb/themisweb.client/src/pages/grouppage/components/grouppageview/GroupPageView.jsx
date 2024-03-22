@@ -11,11 +11,11 @@ const GroupPageView = () => {
   return (
     <div className='GroupPageView'>
       <div className='GroupContainer'>
-        <GroupSideBar groupId={id} GroupName={groupInfo?.Name}></GroupSideBar>
-        <GroupMainContent Page={page}></GroupMainContent>
+        <GroupSideBar groupId={id} GroupName={groupInfo?.Name}></GroupSideBar> 
+        <GroupMainContent groupInfo={groupInfo} Page={page}></GroupMainContent> 
       </div>
     </div>
   )
-}
+}// some prop drilling but cba useContext for a depth of 2
 
 export default GroupPageView
