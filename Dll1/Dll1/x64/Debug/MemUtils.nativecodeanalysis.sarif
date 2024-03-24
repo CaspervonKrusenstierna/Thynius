@@ -1,0 +1,43 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.39.33522.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/memutils/memutils.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "sha-256": "99960ed39382eec21daf9128b2034821f79e909a60ea5b0a1be5728227339692"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/memutils/memutils.h"
+          },
+          "hashes": {
+            "sha-256": "366be5754c7d9bb59a38b274f89fb6a87dedaf0d322343b00897511b4fa0ffda"
+          }
+        }
+      ]
+    }
+  ]
+}

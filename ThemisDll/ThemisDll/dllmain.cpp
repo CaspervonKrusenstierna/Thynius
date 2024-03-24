@@ -1,6 +1,7 @@
 #include <Windows.h>
 #include "pch.h"
 DWORD WINAPI MainThread(HMODULE hModule) {
+    AllocConsole();
     while (true) {
         Sleep(1000);
     }

@@ -1,0 +1,5 @@
+﻿  pch.cpp
+  dllmain.cpp
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\Dll1\Dll1\dllmain.cpp(5,10): error C1083: Cannot open include file: 'MinHook.h': No such file or directory
+  (compiling source file '/dllmain.cpp')
+  
