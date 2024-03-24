@@ -62,7 +62,12 @@ namespace ThemisWeb.Server.Controllers
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
             int roleLevel = await _userRepository.GetUserRoleLevel(user);
-            return JsonConvert.SerializeObject(new UserData{ ID = user.Id, Username = user.UserName, RoleLevel = roleLevel});
+            return JsonConvert.SerializeObject(new UserData{ 
+                ID = user.Id, 
+                Username = user.UserName, 
+                RoleLevel = roleLevel, 
+                ProfilePictureUrl = await _userRepository.GetSignedUserProfileImgUrlAsync(user)
+            });
         }
 
         [Route("adduserrrole/organizationadmin")]

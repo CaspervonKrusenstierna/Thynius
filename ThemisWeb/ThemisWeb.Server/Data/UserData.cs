@@ -5,5 +5,6 @@
         public string Username;
         public string ID;
         public int RoleLevel;
+        public string ProfilePictureUrl;
     }
 }

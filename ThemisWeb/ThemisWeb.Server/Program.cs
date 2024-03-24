@@ -6,6 +6,7 @@ using ThemisWeb.Server.Models;
 using Microsoft.Extensions.DependencyInjection;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Repository;
+using Amazon.S3;
 
 
 namespace ThemisWeb.Server
@@ -17,8 +18,10 @@ namespace ThemisWeb.Server
             var builder = WebApplication.CreateBuilder(args);
 
             var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
-            
+            var AWSOptions = builder.Configuration.GetAWSOptions();
+
             object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
+            builder.Services.AddDefaultAWSOptions(AWSOptions);
             builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
@@ -30,6 +33,8 @@ namespace ThemisWeb.Server
             builder.Services.AddScoped<IGroupRepository, GroupRepository>();
             builder.Services.AddScoped<ISubmittmentRepository, SubmittmentRepository>();
             builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+
+            builder.Services.AddAWSService<IAmazonS3>();
 
             var app = builder.Build();
 

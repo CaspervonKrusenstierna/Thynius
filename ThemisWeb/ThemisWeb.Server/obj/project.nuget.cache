@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "14UQHIePu/V6a1iDyB7yem3FZ1++88D1aulthxHqNBBfYIa2Cese0wb5KcH8uKt/wcFCP2zr4zQDYV1Fs1tuyg==",
+  "dgSpecHash": "8ZKj3h0VPJpGxpRuSmjUBuJOFi1j8keBXH+JjmwcbtNaVGeVPQijfRrVkUFzUv4/m2cGq4Tak8i29dF7S16BUA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Cappe\\.nuget\\packages\\awssdk.core\\3.7.303\\awssdk.core.3.7.303.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\awssdk.extensions.netcore.setup\\3.7.300\\awssdk.extensions.netcore.setup.3.7.300.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\awssdk.s3\\3.7.307.1\\awssdk.s3.3.7.307.1.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

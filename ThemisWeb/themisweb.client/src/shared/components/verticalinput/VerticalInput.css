@@ -7,8 +7,18 @@
     font-size: 18px;
 }
 .VerticalInput-Input{
-    height: 35px;
-    width: 150px;
+    height: 50px;
+    width: 200px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
+
+@media screen and (max-width: 800px) {
+    .VerticalInput-Input{
+        height: 50px;
+        width: 300px;
+    }
+    .VerticalInput-Title{
+        font-size: 25px;
+    }
+  }

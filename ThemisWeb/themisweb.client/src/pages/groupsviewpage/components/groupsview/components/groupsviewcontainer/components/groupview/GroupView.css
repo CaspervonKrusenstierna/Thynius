@@ -21,3 +21,19 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+
+@media screen and (max-width: 650px) {
+    .GroupView{
+        width: 320px;
+        height: 275px;
+    }
+    .GroupView-Img{
+        height: 185px;
+        width: 185px;
+    }
+    .GroupView-Text{
+        font-size: 20px;
+        font-weight: bold;
+    }
+  }

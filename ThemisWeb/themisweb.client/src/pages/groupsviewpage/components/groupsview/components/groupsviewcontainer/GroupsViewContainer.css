@@ -1,3 +1,21 @@
 .GroupsViewContainer{
     width: 1200px;
 }
+
+@media screen and (max-width: 1400px) {
+    .GroupsViewContainer{
+        width: 900px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .GroupsViewContainer{
+        width: 600px;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .GroupsViewContainer{
+        width: 500px;
+    }
+  }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Amazon.S3;
+using Amazon.S3.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
 using System.Data;
@@ -12,10 +14,14 @@ namespace ThemisWeb.Server.Repository
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        public UserRepository(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+        private readonly IAmazonS3 _amazonS3;
+        private readonly IConfiguration _configurationManager;
+        public UserRepository(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IAmazonS3 amazonS3, IConfiguration configurationManager)
         {
             _context = context;
             _userManager = userManager;
+            _amazonS3 = amazonS3;
+            _configurationManager = configurationManager;
         }
         public async Task<IEnumerable<ApplicationUser>> GetOrganizationUsers(string organization)
         {
@@ -51,6 +57,38 @@ namespace ThemisWeb.Server.Repository
             return await _context.Users.Where(i => i.OrganizationEmailExtension == organization && i.UserName.StartsWith(search)).Take(max).ToListAsync();
         }
 
+        public async Task<PutObjectResponse> UploadUserProfilePictureAsync(ApplicationUser user, IFormFile profilepicture)
+        {
+            var putObjectRequest = new PutObjectRequest
+            {
+                BucketName = _configurationManager["BucketName"],
+                Key = $"profile_images/{user.Id}",
+                ContentType = profilepicture.ContentType,
+                InputStream = profilepicture.OpenReadStream()
+            };
+            return await _amazonS3.PutObjectAsync(putObjectRequest);
+        }
+        public async Task<DeleteObjectResponse> DeleteUserProfilePictureAsync(ApplicationUser user)
+        {
+            var deleteObjectRequest = new DeleteObjectRequest
+            {
+                BucketName = _configurationManager["BucketName"],
+                Key = $"profile_images/{user.Id}"
+            };
+            return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
+        }
+
+        public async Task<string> GetSignedUserProfileImgUrlAsync(ApplicationUser user)
+        {
+            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
+            {
+                BucketName = _configurationManager["BucketName"],
+                Key = $"profile_images/{user.Id}",
+                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
+
+            };
+            return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
+        }
         public async Task<int> GetUserRoleLevel(ApplicationUser user)
         {
             var roles = await _userManager.GetRolesAsync(user);

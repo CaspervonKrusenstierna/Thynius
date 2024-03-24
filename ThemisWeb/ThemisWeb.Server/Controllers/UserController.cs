@@ -122,5 +122,15 @@ namespace ThemisWeb.Server.Controllers
             }
             return JsonConvert.SerializeObject(SearchResult.Where(i => i.UserName != user.UserName).Select(i => new { username=i.UserName, email=i.Email, id=i.Id }));
         }
+
+        [HttpPost]
+        [Route("/users/profilepicture")]
+        public async Task<IActionResult> SetUserProfilePicture([FromBody]IFormFile picture)
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            await _userRepository.DeleteUserProfilePictureAsync(user);
+            await _userRepository.UploadUserProfilePictureAsync(user, picture);
+            return Ok();
+        }
     }
 }

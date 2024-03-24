@@ -44,7 +44,7 @@ const UserSearch = (props) => {
   return (
     <div onClick={() => {setShowInput(true)}} className='UserSearch'>
         {showInput ? 
-        <div className='ShowInputSearchBar'><input id="SearchInput" onBlur={onInputBlur}value={textInput} autoFocus={true} onChange={(s) => {onInputChange(s.target.value)}} className='UserSearch-Input'></input>
+        <div className='ShowInputSearchBar'><input id="SearchInput" autoComplete="off" onBlur={onInputBlur}value={textInput} autoFocus={true} onChange={(s) => {onInputChange(s.target.value)}} className='UserSearch-Input'></input>
             <AddUserButton onClick={onAddUser}></AddUserButton>
         </div>
         : <div className='NonSelectedSearchBarContainer'>

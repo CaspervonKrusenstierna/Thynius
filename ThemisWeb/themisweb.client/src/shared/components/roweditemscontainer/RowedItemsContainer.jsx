@@ -28,7 +28,9 @@ const RowedItemsContainer = (props) => {
 
   return (
     <div className='RowedItemsContainer'>
-      {rows.map(i => {return <div className='RowedItemsContainer-Row'>{i.map(j => j=="Filler" ? props.Filler : j)}</div>})}
+      {props.ItemsPerRow >= 2 ? rows.map(i => {return <div className='RowedItemsContainer-Row'>{i.map(j => j=="Filler" ? props.Filler : j)}</div>}) : 
+      <div className='RowedItemsContainer-OneColumnEdition'>{rows.map(i => {return i[0]})}</div>
+      }
     </div>);
 }
 

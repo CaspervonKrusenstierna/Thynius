@@ -1,8 +1,9 @@
 .GroupPageView{
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
-    margin-top: 100px;
+    height: calc(100vh - 50px);
 }
 .GroupContainer{
     padding-top: 50px;
@@ -14,3 +15,17 @@
     overflow-y: scroll;
     margin-bottom: 5px;
 }
+
+
+@media screen and (max-width: 1100px) {
+    .GroupContainer{
+        width: 800px;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    .GroupContainer{
+        width: 600px;
+    }
+  }
+

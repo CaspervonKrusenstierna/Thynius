@@ -11,5 +11,7 @@ namespace ThemisWeb.Server.Models
         public Organization? Organization { get; set; }
 
         public ICollection<Group> Groups { get; set; } = [];
+
+        public string? ProfilePictureUrl;
     }
 }

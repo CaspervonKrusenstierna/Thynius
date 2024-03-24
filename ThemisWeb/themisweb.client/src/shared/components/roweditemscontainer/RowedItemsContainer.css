@@ -8,3 +8,10 @@
     justify-content: space-between;
     width: 100%;
 }
+
+.RowedItemsContainer-OneColumnEdition{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}

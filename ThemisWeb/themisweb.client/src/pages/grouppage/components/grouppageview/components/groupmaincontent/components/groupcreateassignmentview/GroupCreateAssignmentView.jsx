@@ -20,7 +20,7 @@ const GroupCreateAssignmentView = (props) => {
             <VerticalInput Title="Namn" onChange={(s) => {assignmentName.current = s.target.value}}></VerticalInput>
             <div className='CreateAssignment-DaypickerContainer'>
                 <p className='CreateAssignment-DaypickerContainer-Text'>Sista inlämningsdatum</p>
-                <DayPicker modifiersClassNames={{selected: 'my-selected',today: 'my-today'}} mode="single" selected={selectedDate}  onSelect={setSelectedDate}></DayPicker>
+                <DayPicker modifiersClassNames={{selected: 'my-selected', today: 'my-today'}} mode="single" selected={selectedDate}  onSelect={setSelectedDate}></DayPicker>
             </div>
         </div>
         <div className='GroupCreateAssignmentView-Bottom'>

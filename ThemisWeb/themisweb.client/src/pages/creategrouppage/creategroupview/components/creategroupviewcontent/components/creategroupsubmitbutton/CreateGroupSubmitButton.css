@@ -22,3 +22,12 @@
 .CreateGroupSubmitButton:hover{
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+    .CreateGroupSubmitButton{
+        width: 200px;
+    }
+    .CreateGroupSubmitButton-Text{
+        font-size: 24px;
+    }
+  }

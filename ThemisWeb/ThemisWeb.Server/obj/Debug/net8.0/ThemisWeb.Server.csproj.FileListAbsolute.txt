@@ -293,3 +293,6 @@ C:\Users\casvon0103\Documents\GitHub\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug
 C:\Users\casvon0103\Documents\GitHub\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug\net8.0\ThemisWeb.Server.pdb
 C:\Users\casvon0103\Documents\GitHub\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug\net8.0\ThemisWeb.Server.genruntimeconfig.cache
 C:\Users\casvon0103\Documents\GitHub\Themis\ThemisWeb\ThemisWeb.Server\obj\Debug\net8.0\ref\ThemisWeb.Server.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\AWSSDK.Core.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\AWSSDK.S3.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\AWSSDK.Extensions.NETCore.Setup.dll

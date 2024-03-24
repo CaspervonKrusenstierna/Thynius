@@ -19,16 +19,17 @@ namespace ThemisWeb.Server.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IAssignmentRepository _assignmentRepository;
         private readonly UserManager<ApplicationUser> _userManager;
-        public GroupController(IGroupRepository groupRepository, IAssignmentRepository assignmentRepository, IUserRepository userRepository, UserManager<ApplicationUser> userManager) { 
+        public GroupController(IGroupRepository groupRepository, IAssignmentRepository assignmentRepository, IUserRepository userRepository, UserManager<ApplicationUser> userManager)
+        {
             _groupRepository = groupRepository;
             _userRepository = userRepository;
             _assignmentRepository = assignmentRepository;
             _userManager = userManager;
         }
         [HttpPost]
-        public async Task<IActionResult> CreateGroup(string GroupName, [FromBody]List<String> GroupUsers)
+        public async Task<IActionResult> CreateGroup(string GroupName, [FromBody] List<String> GroupUsers)
         {
-            if(GroupName == null || GroupUsers == null)
+            if (GroupName == null || GroupUsers == null)
             {
                 return BadRequest();
             }
@@ -45,11 +46,11 @@ namespace ThemisWeb.Server.Controllers
             foreach (string userId in GroupUsers)
             {
                 ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
-                if(currUser == null)
+                if (currUser == null)
                 {
                     return BadRequest();
                 }
-                if(currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
+                if (currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
                 {
                     return Unauthorized();
                 }
@@ -57,7 +58,6 @@ namespace ThemisWeb.Server.Controllers
             }
 
             return Ok();
-            //return StatusCode(200);
         }
 
         [HttpDelete]
@@ -67,11 +67,11 @@ namespace ThemisWeb.Server.Controllers
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
             Group toDelete = await _groupRepository.GetByIdAsync(groupId);
 
-            if(toDelete == null)
+            if (toDelete == null)
             {
                 return BadRequest();
             }
-            if(toDelete.ManagerId != user.Id)
+            if (toDelete.ManagerId != user.Id)
             {
                 return Unauthorized();
             }
@@ -90,8 +90,14 @@ namespace ThemisWeb.Server.Controllers
         [Authorize(Roles = "VerifiedUser")]
         public async Task<string> GetUserGroupIds(string userId)
         {
-            IEnumerable<Group> Groups =  await _groupRepository.GetUserGroups(userId);
-            return System.Text.Json.JsonSerializer.Serialize(Groups.Select(group => (new GroupData { Id = group.Id, Name = group.Name })));
+            IEnumerable<Group> Groups = await _groupRepository.GetUserGroups(userId);
+
+            return System.Text.Json.JsonSerializer.Serialize(
+            Groups.Select(async group => (new GroupData { 
+                Id = group.Id, 
+                Name = group.Name, 
+                PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
+            })));
         }
 
         [HttpGet]
@@ -108,7 +114,7 @@ namespace ThemisWeb.Server.Controllers
             }
             IEnumerable<ApplicationUser> groupUsers = await _userRepository.GetGroupUsers(group); // doing this should be fine because groups should not consist of many people
 
-            if(!groupUsers.Contains(user) && !(group.ManagerId == user.Id))
+            if (!groupUsers.Contains(user) && !(group.ManagerId == user.Id))
             {
                 HttpContext.Response.StatusCode = 401;
                 return null;
@@ -117,11 +123,32 @@ namespace ThemisWeb.Server.Controllers
             IEnumerable<Assignment> groupAssignments = await _assignmentRepository.GetByGroupIdAsync(groupId);
             ApplicationUser Manager = await _userRepository.GetByIdAsync(group.ManagerId);
 
-            GroupDataExtended dataToReturn = new GroupDataExtended { Id=group.Id, Name=group.Name, DateCreated=group.DateCreated};
+            GroupDataExtended dataToReturn = new GroupDataExtended { Id = group.Id, Name = group.Name, DateCreated = group.DateCreated };
             dataToReturn.userDatas = groupUsers.Select(i => new { i.Id, i.UserName });
-            dataToReturn.assignmentDatas = groupAssignments.Select(i => new {i.Id, i.Name, i.DueDate });
-            dataToReturn.ManagerData = new { Manager.Id,Manager.UserName};
+            dataToReturn.assignmentDatas = groupAssignments.Select(i => new { i.Id, i.Name, i.DueDate });
+            dataToReturn.ManagerData = new { Manager.Id, Manager.UserName };
             return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
         }
+
+        [HttpPost]
+        [Route("/groups/profilepicture")]
+        public async Task<IActionResult> SetGroupPicture(int GroupId, [FromBody] IFormFile picture)
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            Group group = await _groupRepository.GetByIdAsync(GroupId);
+
+            if (group == null) {
+                return BadRequest();
+            }
+            if(user.Id != group.ManagerId)
+            {
+                return Unauthorized();
+            }
+
+            await _groupRepository.DeleteGroupPictureAsync(group);
+            await _groupRepository.UploadGroupPictureAsync(group, picture);
+            return Ok();
+        }
+
     }
 }

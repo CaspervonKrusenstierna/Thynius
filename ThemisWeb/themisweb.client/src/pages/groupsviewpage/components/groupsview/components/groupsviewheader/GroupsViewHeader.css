@@ -10,3 +10,22 @@
     font-size: 22px;
     font-weight: bold;
 }
+
+@media screen and (max-width: 1400px) {
+    .GroupsViewHeader{
+        width: 900px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .GroupsViewHeader{
+        width: 600px;
+    }
+  }
+
+
+  @media screen and (max-width: 650px) {
+    .GroupsViewHeader{
+        width: 400px;
+    }
+  }

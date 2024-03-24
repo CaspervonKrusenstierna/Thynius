@@ -12,3 +12,17 @@
 .AlignerDiv{
     width: 100px;
 }
+
+
+@media screen and (max-width: 800px) {
+    .GroupSideBar{
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        align-items: center;
+    }
+    .GroupSideBar-Title{
+
+        font-size: 23px;
+    }
+  }

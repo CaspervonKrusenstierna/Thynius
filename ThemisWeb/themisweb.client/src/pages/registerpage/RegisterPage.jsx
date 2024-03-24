@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { DarknessEffect } from "../../shared/components"
 import { Header } from "../../shared/components";
 import MainContentContainer from "../../shared/components/maincontentcontainer/MainContentContainer";
@@ -5,6 +6,9 @@ import WaveBackgroundBox from "../../shared/components/wavebackgroundbox/WaveBac
 import RegisterBox from "./components/registerbox/RegisterBox";
 
 function RegisterPage() {
+    useEffect(() => {
+        window.scrollTo(0,0);
+    }, [])
     return (
         <>
          <WaveBackgroundBox></WaveBackgroundBox>

@@ -12,6 +12,7 @@
     justify-content: center;
     width: 220px;
     border-radius: 3px;
+    margin-top: 5px;
     height: 50px;
     gap: 20px;
     border: none;
@@ -28,3 +29,10 @@
 .CreateAssignmentButton:hover{
     cursor: pointer;
 }
+
+
+@media screen and (max-width: 800px) {
+    .CreateAssignmentButtonContainer{
+        justify-content: center;
+    }
+  }
