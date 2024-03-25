@@ -12,11 +12,11 @@ namespace ThemisWeb.Server.Repository
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configurationManager;
         private readonly IAmazonS3 _amazonS3;
-        public GroupRepository(ApplicationDbContext context, IAmazonS3 amazonS3, IConfiguration configurationManager)
+        public GroupRepository(ApplicationDbContext context, /* IAmazonS3 amazonS3*/ IConfiguration configurationManager)
         {
             this._context = context;
             this._configurationManager = configurationManager;
-            this._amazonS3 = amazonS3;
+           // this._amazonS3 = amazonS3;
         }
         public bool Add(Group group)
         {
@@ -48,7 +48,7 @@ namespace ThemisWeb.Server.Repository
             return await _context.Groups.FindAsync(id);
         }
 
-        public async Task<PutObjectResponse> UploadGroupPictureAsync(Group group, IFormFile groupPicture)
+        /*public async Task<PutObjectResponse> UploadGroupPictureAsync(Group group, IFormFile groupPicture)
         {
             var putObjectRequest = new PutObjectRequest
             {
@@ -78,6 +78,6 @@ namespace ThemisWeb.Server.Repository
 
         };
             return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
-        }
+        }*/
     }
 }

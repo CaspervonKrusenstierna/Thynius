@@ -3,9 +3,14 @@
     flex-direction: row;
     width: 150px;
     text-decoration: none;
+    justify-content: center;
+    align-items: center;
 }
 
 .DashboardNavItem-Img{
     height: 30px;
     width: auto;
+}
+.DashboardNavItem-Text{
+    font-size: 18px;
 }

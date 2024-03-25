@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ThemisWeb.Server.Data;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
 using System.Text.Json;
@@ -9,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Security.Claims;
 using ThemisWeb.Server.Repository;
+using ThemisWeb.Server.Common;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -93,10 +93,10 @@ namespace ThemisWeb.Server.Controllers
             IEnumerable<Group> Groups = await _groupRepository.GetUserGroups(userId);
 
             return System.Text.Json.JsonSerializer.Serialize(
-            Groups.Select(async group => (new GroupData { 
+            Groups.Select(group => (new GroupData { 
                 Id = group.Id, 
-                Name = group.Name, 
-                PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
+                Name = group.Name
+                //PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
             })));
         }
 
@@ -128,26 +128,6 @@ namespace ThemisWeb.Server.Controllers
             dataToReturn.assignmentDatas = groupAssignments.Select(i => new { i.Id, i.Name, i.DueDate });
             dataToReturn.ManagerData = new { Manager.Id, Manager.UserName };
             return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
-        }
-
-        [HttpPost]
-        [Route("/groups/profilepicture")]
-        public async Task<IActionResult> SetGroupPicture(int GroupId, [FromBody] IFormFile picture)
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            Group group = await _groupRepository.GetByIdAsync(GroupId);
-
-            if (group == null) {
-                return BadRequest();
-            }
-            if(user.Id != group.ManagerId)
-            {
-                return Unauthorized();
-            }
-
-            await _groupRepository.DeleteGroupPictureAsync(group);
-            await _groupRepository.UploadGroupPictureAsync(group, picture);
-            return Ok();
         }
 
     }

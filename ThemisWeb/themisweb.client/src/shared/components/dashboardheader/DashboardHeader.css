@@ -29,7 +29,7 @@
     gap: 30px;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 650px) {
     .NavBarButtonRedirect{
         height:45px;
         width: 100px;
@@ -39,5 +39,16 @@
     }
     .NavBarButtonRedirect-text{
         font-size: 14px;
+    }
+
+    .DashboardHeader-Left{
+        width: 80%;
+    }
+    .DashboardHeader-Middle{
+        font-size: 0px;
+        width: 0%;
+    }
+    .DashboardHeader-Right{
+        width: 20%;
     }
   }

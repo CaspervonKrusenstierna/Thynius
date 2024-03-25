@@ -12,7 +12,6 @@ const DashboardUserComponentDropDown = () => {
   return (
     <div className='DashboardUserComponentDropDown'>
         <UserComponentDropDownItem link="/dashboard/profile" text="Profil"></UserComponentDropDownItem>
-        <UserComponentDropDownItem link="/dashboard/texts" text="Mina Texter"></UserComponentDropDownItem>
         <UserComponentDropDownItem onClick={onLogoutClick} link="/" text="Logga ut"></UserComponentDropDownItem>
     </div>
   )

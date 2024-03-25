@@ -7,9 +7,9 @@ const DashboardUserComponent = () => {
   const [showDropDown, setShowDropdown] = useState(false);
 
 
-function onButtonClick(){
-  setShowDropdown(!showDropDown);
-}
+  function onButtonClick(){
+    setShowDropdown(!showDropDown);
+  }
 
   return (
     <div className='DashboardUserComponent'>

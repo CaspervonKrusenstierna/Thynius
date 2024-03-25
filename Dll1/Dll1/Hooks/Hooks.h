@@ -7,7 +7,7 @@
 #include <MinHook.h>
 
 typedef enum CMD(__cdecl* CmdPasteCf)(struct IDataObject*, struct _SEL*, unsigned short, struct CA*, enum TBPK, unsigned short, int, unsigned short*, int*, int);
-typedef void(__cdecl* PasteHookCallback)(std::string ClipboardContent);
+typedef void(__cdecl* PasteHookCallback)(std::wstring ClipboardContent);
 
 typedef void(__thiscall* InsertTextAtSelection)(PVOID, wchar_t);
 typedef void(__cdecl* InsertHookCallback)(wchar_t);

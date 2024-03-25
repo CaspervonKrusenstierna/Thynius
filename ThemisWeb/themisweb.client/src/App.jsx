@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { createContext, useEffect } from 'react';
-import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CalendarPage, CreateGroupPage, DashboardHomePage } from "./pages";
+import React, { createContext } from 'react';
+import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CreateGroupPage, DashboardHomePage } from "./pages";
 import "./index.css"
 import './App.css';
 import useSessionInfo from "./shared/hooks/useSessionInfo"
@@ -21,7 +21,6 @@ function App() {
                     <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
                     <Route path="/login" element={<LoginPage></LoginPage>}></Route>
                     <Route path="/dashboard/home" element={<DashboardHomePage></DashboardHomePage>}></Route>
-                    <Route path="/dashboard/calendar" element={<CalendarPage></CalendarPage>}></Route>
                     <Route path="/dashboard/group/:id/:page" element={<GroupPage></GroupPage>}></Route>
                     <Route path="/dashboard/groups" element={<GroupsViewPage></GroupsViewPage>}></Route>
                     <Route path="/dashboard/creategroup" element={<CreateGroupPage></CreateGroupPage>}></Route>

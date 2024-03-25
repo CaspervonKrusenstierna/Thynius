@@ -33,6 +33,9 @@
     <ClInclude Include="Data\Data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ThemisSessionData\ThemisSessionData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Data\Data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ThemisSessionData\ThemisSessionData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

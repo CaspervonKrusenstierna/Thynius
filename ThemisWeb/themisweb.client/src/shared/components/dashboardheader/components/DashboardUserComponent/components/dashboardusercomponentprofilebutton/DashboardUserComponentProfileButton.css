@@ -34,11 +34,14 @@
   }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 650px) {
     .DashboardUserComponentProfileButton-Text{
         font-size: 14px;
     }
     .DashboardUserComponentProfileButton-ArrowIcon{
         margin-left: 10px;
+    }
+    .DashboardUserComponentProfileButton{
+        width: 100%;
     }
   }

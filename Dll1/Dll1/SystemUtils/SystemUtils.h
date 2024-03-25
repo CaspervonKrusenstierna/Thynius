@@ -1,4 +1,4 @@
 #include <iostream>
 #include <Windows.h>
 
-std::string GetClipboardText();
+std::wstring GetClipboardText();

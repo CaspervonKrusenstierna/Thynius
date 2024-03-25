@@ -7,8 +7,8 @@ const DashboardHeader = () => {
     <div className='DashboardHeader'>
       <div className='DashboardHeader-Left'>
         <DashboardNavItem title="Home" link="/dashboard/home"></DashboardNavItem>
-        <DashboardNavItem title="Groups" link="/dashboard/groups"></DashboardNavItem>
-        <DashboardNavItem title="Calendar" link="/dashboard/calendar"></DashboardNavItem>
+        <DashboardNavItem title="Grupper" link="/dashboard/groups"></DashboardNavItem>
+        <DashboardNavItem title="Texter" link="/dashboard/texts"></DashboardNavItem>
       </div>
       <div className='DashboardHeader-Middle'>M</div>
       <div className='DashboardHeader-Right'><DashboardUserComponent></DashboardUserComponent></div>

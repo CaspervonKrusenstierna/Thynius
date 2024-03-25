@@ -5,7 +5,6 @@ export { default as ForgotPasswordPage } from "./forgotpasswordpage/ForgotPasswo
 export { default as GroupsViewPage } from "./groupsviewpage/GroupsViewPage"
 export { default as ProfilePage } from "./profilepage/ProfilePage"
 export { default as GroupPage} from "./grouppage/GroupPage"
-export { default as CalendarPage } from "./calendarpage/CalendarPage"
 export { default as CreateGroupPage } from "./creategrouppage/CreateGroupPage"
 export { default as DashboardHomePage } from "./dashboardhome/DashboardHome"
 

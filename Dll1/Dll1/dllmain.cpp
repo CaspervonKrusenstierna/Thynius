@@ -1,28 +1,35 @@
 
-#include <Windows.h>
-#include <iostream>
-#include <string>
-#include <stdio.h>
-#include <fstream>
+
 #include "Comms/Comms.h"
 #include "Hooks/Hooks.h"
 #include "Data/Data.h"
+#include "ThemisSessionData/ThemisSessionData.h"
 
-int count = 0;
-void MyTextInputFunc(wchar_t input) {
-    std::ofstream myfile;
-    myfile.open("C:\\file.txt");
-    myfile << "InsertCount: " << count << std::endl;
-    myfile << "Input: " << input << std::endl;
-    myfile.close();
-    count++;
+Comms* comms;
+Hooks* hooks;
+ThemisSessionData* themisSessionData;
+Data* data;
+
+void OnTextInputFunc(wchar_t input) {
+    if (_wcsnicmp(reinterpret_cast<const wchar_t*>(input), L"8", 1)) {
+        themisSessionData->LogInput(ActionType::DELETESELECTION, L"", data->GetSelection());
+    }
+    else {
+        themisSessionData->LogInput(ActionType::ADDCHAR, &input, data->GetSelection());
+    }
+}
+void OnPasteFunc(std::wstring PastedText){
+    themisSessionData->LogInput(ActionType::PASTE, PastedText, data->GetSelection());
 }
 
 DWORD WINAPI MainThread(HMODULE hModule){
-    Comms* comms = new Comms();
-    Hooks* hooks = new Hooks();
-    Data* data = new Data();
-    hooks->HookOnTextInput(MyTextInputFunc);
+    comms = new Comms();
+    hooks = new Hooks();
+    data = new Data();
+    themisSessionData = new ThemisSessionData();
+
+    hooks->HookOnTextInput(OnTextInputFunc);
+    hooks->HookOnPasteText(OnPasteFunc);
 
     while (true) {
 

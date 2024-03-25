@@ -1,15 +1,15 @@
 #include "SystemUtils.h"
 
-std::string GetClipboardText()
+std::wstring GetClipboardText()
 {
     if (!OpenClipboard(nullptr)) {
         return NULL;
     }
 
     HANDLE hData = GetClipboardData(CF_TEXT);
-    char* pszText = static_cast<char*>(GlobalLock(hData));
+    wchar_t* pszText = static_cast<wchar_t*>(GlobalLock(hData));
 
-    std::string text(pszText);
+    std::wstring text(pszText);
 
     GlobalUnlock(hData);
 

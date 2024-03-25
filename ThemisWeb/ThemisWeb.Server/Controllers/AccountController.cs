@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using ThemisWeb.Server.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
-using ThemisWeb.Server.Data;
+using ThemisWeb.Server.Common;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -66,7 +66,7 @@ namespace ThemisWeb.Server.Controllers
                 ID = user.Id, 
                 Username = user.UserName, 
                 RoleLevel = roleLevel, 
-                ProfilePictureUrl = await _userRepository.GetSignedUserProfileImgUrlAsync(user)
+               // ProfilePictureUrl = await _userRepository.GetSignedUserProfileImgUrlAsync(user)
             });
         }
 
