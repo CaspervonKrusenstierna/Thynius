@@ -26,7 +26,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateSubmittment(string submittmentTitle, int assignmentId)
+        public async Task<IActionResult> CreateSubmittment(int textId, int assignmentId)
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
             Assignment assignmentToAddTo = await _assignmentRepository.GetByIdAsync(assignmentId);
@@ -44,7 +44,7 @@ namespace ThemisWeb.Server.Controllers
             
             Submittment newSubmittment = new Submittment();
             newSubmittment.AssignmentId = assignmentId;
-            newSubmittment.Title = submittmentTitle; // **TODO** CHECK IF SQL INJECTION IS POSSIBLE AND ASSERT GOOD TEXT CHARACTERS IN GENERAL
+            newSubmittment.UserTextId = textId;
 
             if (!_submittmentRepository.Add(newSubmittment))
             {

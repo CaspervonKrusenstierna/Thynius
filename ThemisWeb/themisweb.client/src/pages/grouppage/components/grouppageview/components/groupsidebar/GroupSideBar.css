@@ -1,12 +1,12 @@
 .GroupSideBar{
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 20%;
     align-items: center;
 }
 .GroupSideBar-Title{
     height: 0px;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
 }
 .AlignerDiv{

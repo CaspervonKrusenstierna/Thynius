@@ -22,7 +22,8 @@ namespace ReactApp1.Server.Data
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<ApplicationUser> Users { get; set; }
         public DbSet<Group> Groups { get; set; }
-
+        public DbSet<UserText> UserTexts { get; set; }
+        public DbSet<TextSession> TextSessions { get; set; }
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<Submittment> Submittments { get; set; }
     }

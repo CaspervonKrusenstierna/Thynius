@@ -9,17 +9,17 @@ namespace ThemisWeb.Server.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; } 
 
-        [ForeignKey("ApplicationUser")]
-        public string OwnerId { get; set; }
-
-        ApplicationUser Owner;
-
-        [ForeignKey("Task")]
+        [ForeignKey("Assignment")]
         public int AssignmentId { get; set; }
         Assignment AssignmentSubmittedTo { get; set; }
-        public String Title { get; set; }
+
+        [ForeignKey("UserText")]
+        public int UserTextId { get; set; }
+        UserText Text { get; set; }
+
         public String TimeSubmitted {  get; set; }
-        public byte[] _RawData { get; set; }
+
+
 
     }
 }

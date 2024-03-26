@@ -36,5 +36,10 @@ namespace ThemisWeb.Server.Common
 
             return ms;
         }
+
+        public string GetUserTextRawContent(IFormFile formFile)
+        {
+            return "";
+        }
     }
 }

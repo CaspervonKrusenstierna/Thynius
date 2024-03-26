@@ -6,14 +6,14 @@
     height: 50px;
     align-items: center;
     justify-content: center;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border-radius: 2px;
     gap: 20px;
 }
 .CreateGroupButton-Text{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
 }
 .CreateGroupButton-Img{
-    height: 30px;
+    height: 23px;
 }

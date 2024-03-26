@@ -8,9 +8,11 @@ namespace ThemisWeb.Server.Repository
     public class SubmittmentRepository : ISubmittmentRepository
     {
         ApplicationDbContext _context;
-        public SubmittmentRepository(ApplicationDbContext context)
+        IUserTextRepository _userTextRepository;
+        public SubmittmentRepository(ApplicationDbContext context, IUserTextRepository userTextRepository)
         {
             _context = context;
+            _userTextRepository = userTextRepository;
         }
 
         public async Task<IEnumerable<Submittment>> GetAssignmentSubmittments(Assignment assignment) {
@@ -19,7 +21,8 @@ namespace ThemisWeb.Server.Repository
 
         public async Task<IEnumerable<Submittment>> GetUserSubmittments(ApplicationUser user)
         {
-            return await _context.Submittments.Where(i => i.OwnerId == user.Id).ToListAsync();
+            IEnumerable<int> userTextIds = await _context.UserTexts.Where(i => i.UserId == user.Id).Select(i => i.Id).ToListAsync();
+            return await _context.Submittments.Where(i => userTextIds.Contains(i.UserTextId)).ToListAsync();
         }
         public bool Add(Submittment submittment)
         {

@@ -2,11 +2,10 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { createContext } from 'react';
-import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CreateGroupPage, DashboardHomePage } from "./pages";
+import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CreateGroupPage, DashboardHomePage, TextsViewPage } from "./pages";
 import "./index.css"
 import './App.css';
 import useSessionInfo from "./shared/hooks/useSessionInfo"
-import TextsViewPage from './pages/textsviewpage/TextsViewPage';
 
 export const sessionInfoContext = createContext();
 

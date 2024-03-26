@@ -12,7 +12,7 @@ const GroupAssignmentsView = (props) => {
   return (
     <div className='GroupAssignmentsView'>
         {props.Manager?.Id == SessionInfo?.Id ? <CreateAssignmentButton groupId={props.groupInfo?.Id}></CreateAssignmentButton> : <></>}
-        <RowedItemsContainer ItemsPerRow={assignmentsPerRowCount}  Filler={<div className='Filler'></div>}
+        <RowedItemsContainer ItemsPerRow={assignmentsPerRowCount}  Filler={<div className='Assignment-Filler'></div>}
         Items={props.groupInfo?.assignmentDatas?.map(s => <AssignmentView assignmentId={s.Id} assignmentName={s.Name} groupId={props.groupInfo?.Id}></AssignmentView>)}></RowedItemsContainer>
     </div>
   )

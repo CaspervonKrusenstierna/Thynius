@@ -42,7 +42,6 @@ namespace ThemisWeb.Server.Repository
             user.Groups.Add(_context.Groups.FirstOrDefault(c => c == group));
             return Update(user);
         }
-
         public bool RemoveUserFromGroup(ApplicationUser user, Group group)
         {
             user.Groups.Remove(_context.Groups.FirstOrDefault(c => c == group));

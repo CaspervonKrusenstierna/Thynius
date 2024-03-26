@@ -26,14 +26,11 @@ namespace ThemisWeb.Server.Controllers
             _assignmentRepository = assignmentRepository;
             _userManager = userManager;
         }
-        [HttpPost]
-        public async Task<IActionResult> CreateGroup(string GroupName, [FromBody] List<String> GroupUsers)
-        {
-            if (GroupName == null || GroupUsers == null)
-            {
-                return BadRequest();
-            }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
+        public async Task<IActionResult> CreateGroup(string GroupName, [FromBody] List<String> GroupUsers, [FromBody] IFormFile GroupImage)
+        {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             Group newGroup = new Group();
@@ -55,6 +52,58 @@ namespace ThemisWeb.Server.Controllers
                     return Unauthorized();
                 }
                 _userRepository.AddUserToGroup(currUser, newGroup);
+            }
+
+            return Ok();
+        }
+        [HttpPut]
+        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
+        public async Task<IActionResult> EditGroup(int GroupId, string GroupName, [FromBody] List<String> GroupUsers, [FromBody] IFormFile GroupImage)
+        {
+
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            Group group = await _groupRepository.GetByIdAsync(GroupId);
+            if(group == null)
+            {
+                return BadRequest();
+            }
+            if(group.ManagerId != user.Id)
+            {
+                return Unauthorized();
+            }
+
+            group.Name = GroupName;
+
+            IEnumerable<ApplicationUser> OldGroupUsers = await _userRepository.GetGroupUsers(group);
+            IEnumerable<ApplicationUser> NewGroupUsers = [];
+            foreach(string userId in GroupUsers)
+            {
+                ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
+                if (currUser == null)
+                {
+                    return BadRequest();
+                }
+                if (currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
+                {
+                    return Unauthorized();
+                }
+                NewGroupUsers.Append(currUser);
+            }
+
+            foreach(ApplicationUser olduser in OldGroupUsers)
+            {
+                if (!NewGroupUsers.Contains(olduser))
+                {
+                    _userRepository.RemoveUserFromGroup(olduser, group);
+                }
+            }
+            foreach(ApplicationUser newUser in NewGroupUsers)
+            {
+                IEnumerable<Group> userGroups = await _groupRepository.GetUserGroups(user.Id);
+                if (!userGroups.Contains(group))
+                {
+                    _userRepository.AddUserToGroup(newUser, group);
+                }
             }
 
             return Ok();
@@ -86,22 +135,6 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpGet]
-        [Route("getusergroups")]
-        [Authorize(Roles = "VerifiedUser")]
-        public async Task<string> GetUserGroupIds(string userId)
-        {
-            IEnumerable<Group> Groups = await _groupRepository.GetUserGroups(userId);
-
-            return System.Text.Json.JsonSerializer.Serialize(
-            Groups.Select(group => (new GroupData { 
-                Id = group.Id, 
-                Name = group.Name
-                //PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
-            })));
-        }
-
-        [HttpGet]
-        [Route("getgroupinfo")]
         public async Task<string> GetGroupInfo(int groupId)
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
@@ -129,6 +162,23 @@ namespace ThemisWeb.Server.Controllers
             dataToReturn.ManagerData = new { Manager.Id, Manager.UserName };
             return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
         }
+
+
+        [HttpGet]
+        [Route("getusergroups")]
+        [Authorize(Roles = "VerifiedUser")]
+        public async Task<string> GetUserGroupIds(string userId)
+        {
+            IEnumerable<Group> Groups = await _groupRepository.GetUserGroups(userId);
+
+            return System.Text.Json.JsonSerializer.Serialize(
+            Groups.Select(group => (new GroupData { 
+                Id = group.Id, 
+                Name = group.Name
+                //PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
+            })));
+        }
+
 
     }
 }

@@ -7,4 +7,4 @@ export { default as ProfilePage } from "./profilepage/ProfilePage"
 export { default as GroupPage} from "./grouppage/GroupPage"
 export { default as CreateGroupPage } from "./creategrouppage/CreateGroupPage"
 export { default as DashboardHomePage } from "./dashboardhome/DashboardHome"
-
+export { default as TextsViewPage } from "./textsviewpage/TextsViewPage"

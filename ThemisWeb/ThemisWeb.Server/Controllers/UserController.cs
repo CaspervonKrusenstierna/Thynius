@@ -40,60 +40,6 @@ namespace ThemisWeb.Server.Controllers
             return ToReturn.Select(C => JsonConvert.SerializeObject(new UserData {ID = C.Id, Username = C.UserName}));
         }
 
-        [HttpPost]
-        [Route("addusertogroup")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> AddUserToGroup(string UserId, int GroupId)
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User); // user making request
-            Group group = await _groupRepository.GetByIdAsync(GroupId);
-            ApplicationUser userToAdd = await _userRepository.GetByIdAsync(UserId);
-            if (userToAdd == null || group == null)
-            {
-                return BadRequest();
-            }
-            if(user.Id != group.ManagerId)
-            {
-                return Unauthorized();
-            }
-
-            bool result = _userRepository.AddUserToGroup(userToAdd, group);
-            if (!result)
-            {
-                return StatusCode(500);
-            }
-
-            return Ok();
-        }
-
-        [HttpDelete]
-        [Route("removeuserfromgroup")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> RemoveUserFromGroup(string UserId, int GroupId)
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User); // user making request
-            Group group = await _groupRepository.GetByIdAsync(GroupId);
-            ApplicationUser userToAdd = await _userRepository.GetByIdAsync(UserId);
-            if (userToAdd == null || group == null)
-            {
-                return BadRequest();
-            }
-            if (user.Id != group.ManagerId)
-            {
-                return Unauthorized();
-            }
-
-            bool result = _userRepository.RemoveUserFromGroup(userToAdd, group);
-            if (!result)
-            {
-                return StatusCode(500);
-            }
-
-            return Ok();
-        }
-
         [HttpGet]
         [Route("groupids")]
         public async Task<IEnumerable<string>> GetGroupIds(int GroupId)
