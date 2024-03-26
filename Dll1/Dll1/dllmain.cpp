@@ -22,14 +22,23 @@ void OnPasteFunc(std::wstring PastedText){
     themisSessionData->LogInput(ActionType::PASTE, PastedText, data->GetSelection());
 }
 
+int count = 0;
+void OnSaveFunc() {
+    std::ofstream myfile;
+    myfile.open("C:\\file.txt");
+    myfile << "InsertCount: " << "Hooked!" << count << std::endl;
+    myfile.close();
+    count++;
+}
+
 DWORD WINAPI MainThread(HMODULE hModule){
     comms = new Comms();
     hooks = new Hooks();
     data = new Data();
     themisSessionData = new ThemisSessionData();
 
-    hooks->HookOnTextInput(OnTextInputFunc);
-    hooks->HookOnPasteText(OnPasteFunc);
+
+    hooks->HookSave(OnSaveFunc);
 
     while (true) {
 

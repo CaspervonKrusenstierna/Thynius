@@ -1,5 +1,10 @@
-﻿namespace ThemisWeb.Server.Common
+﻿using System;
+using System.Collections.Generic;
+
+namespace ThemisWeb.Server.Common
 {
+    public class DataClasses
+    {
         public class GroupData
         {
             public int Id { get; set; }
@@ -32,4 +37,30 @@
             public int RoleLevel;
             public string ProfilePictureUrl;
         }
-}
+
+        public enum ActionType
+        {
+            ADDCHAR = 0,
+            DELETESELECTION = 1,
+            PASTE = 2
+        };
+
+        public struct Selection
+        {
+            public UInt32 SelectionStart;
+            public UInt32 SelectionEnd;
+        };
+
+        public struct Input
+        {
+            public ActionType _ActionType;
+            public string ActionContent;
+            public Selection _Selection;
+            public UInt64 relativeTimePointMs;
+        }
+        public struct ThemisSessionData
+        {
+            public IEnumerable<Input> inputs;
+        }
+    }
+  }

@@ -1,8 +1,10 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Collections;
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-
+using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Common
 {
@@ -37,9 +39,20 @@ namespace ThemisWeb.Server.Common
             return ms;
         }
 
-        public string GetUserTextRawContent(IFormFile formFile)
+
+        public string GetUserTextRawContent(ThemisSessionData sessionData)
         {
-            return "";
+            string toReturn = "";
+            foreach(Input input in sessionData.inputs)
+            {
+                switch (input._ActionType)
+                {
+                    case ActionType.ADDCHAR: toReturn.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
+                    case ActionType.DELETESELECTION: toReturn.Remove((int)input._Selection.SelectionStart, (int)input._Selection.SelectionStart - (int)input._Selection.SelectionEnd);  break;
+                    case ActionType.PASTE: toReturn.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
+                }
+            }
+            return toReturn;
         }
     }
 }
