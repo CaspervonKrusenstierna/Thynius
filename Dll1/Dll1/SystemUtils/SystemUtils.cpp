@@ -6,7 +6,7 @@ std::wstring GetClipboardText()
         return NULL;
     }
 
-    HANDLE hData = GetClipboardData(CF_TEXT);
+    HANDLE hData = GetClipboardData(CF_UNICODETEXT);
     wchar_t* pszText = static_cast<wchar_t*>(GlobalLock(hData));
 
     std::wstring text(pszText);

@@ -1,8 +1,10 @@
-#include <Windows.h>
+#pragma once
+#include <windows.h>
 #include <stdio.h>
 #include <conio.h>
 #include <tchar.h>
 #include <iostream>
+#include <fstream>
 
 #define BUF_SIZE 512
 
@@ -13,6 +15,8 @@ private:
 public:
 	Comms();
 	~Comms();
-	DWORD SendMessage(std::wstring szMsg);
+	LPTSTR pBuf;
+	HANDLE hMapFile;
+	void SendMessageW(const wchar_t* szMsg);
 };
 HANDLE OpenPipe();

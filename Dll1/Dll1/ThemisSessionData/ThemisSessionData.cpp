@@ -13,5 +13,6 @@ void ThemisSessionData::LogInput(ActionType _ActionType, std::wstring ActionCont
 	toPush._ActionType = _ActionType;
 	toPush.ActionContent = ActionContent;
 	toPush.relativeTimePointMs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>(std::chrono::system_clock::now() - this->startTime)).count();
+	toPush._Selection = _Selection;
 	this->sessionData.SessionInputs.push_back(toPush);
 }

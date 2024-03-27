@@ -4,6 +4,7 @@
 #include "Hooks/Hooks.h"
 #include "Data/Data.h"
 #include "ThemisSessionData/ThemisSessionData.h"
+#include "./Nlohmann/json.hpp"
 
 Comms* comms;
 Hooks* hooks;
@@ -11,11 +12,11 @@ ThemisSessionData* themisSessionData;
 Data* data;
 
 void OnTextInputFunc(wchar_t input) {
-    if (_wcsnicmp(reinterpret_cast<const wchar_t*>(input), L"8", 1)) {
+    if (input == 8) {
         themisSessionData->LogInput(ActionType::DELETESELECTION, L"", data->GetSelection());
     }
     else {
-        themisSessionData->LogInput(ActionType::ADDCHAR, &input, data->GetSelection());
+        themisSessionData->LogInput(ActionType::ADDCHAR, std::wstring(&input, 1), data->GetSelection());
     }
 }
 void OnPasteFunc(std::wstring PastedText){
@@ -24,11 +25,24 @@ void OnPasteFunc(std::wstring PastedText){
 
 int count = 0;
 void OnSaveFunc() {
+    std::vector<Input> inputs = themisSessionData->GetSessionData().SessionInputs;
+
+    nlohmann::json result;
+    for (int i = 0; inputs.size() > i; i++) {
+        Input currInput = inputs[i];
+        nlohmann::json j;
+        j["ActionContent"] = currInput.ActionContent;
+        j["ActionType"] = currInput._ActionType;
+        j["Selection"] = { currInput._Selection.SelectionStart, currInput._Selection.SelectionEnd };
+        j["RelativeTimeMs"] = currInput.relativeTimePointMs;
+        result.push_back(j);
+    }
     std::ofstream myfile;
-    myfile.open("C:\\file.txt");
-    myfile << "InsertCount: " << "Hooked!" << count << std::endl;
+    myfile.open("C:\\Program Files\\Themis\\Data.txt");
+    myfile << result;
     myfile.close();
-    count++;
+    std::wstring SaveMessage = L"Save";
+    comms->SendMessageW((SaveMessage + std::to_wstring(count)).c_str());
 }
 
 DWORD WINAPI MainThread(HMODULE hModule){
@@ -37,13 +51,11 @@ DWORD WINAPI MainThread(HMODULE hModule){
     data = new Data();
     themisSessionData = new ThemisSessionData();
 
-
+    hooks->HookOnPasteText(OnPasteFunc);
+    hooks->HookOnTextInput(OnTextInputFunc);
     hooks->HookSave(OnSaveFunc);
 
-    while (true) {
-
-        Sleep(1000);
-    }
+    return 0;
 }
 BOOL APIENTRY DllMain(HMODULE hModule,
     DWORD  ul_reason_for_call,

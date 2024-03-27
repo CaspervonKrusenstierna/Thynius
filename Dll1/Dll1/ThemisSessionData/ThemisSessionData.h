@@ -1,7 +1,9 @@
+#pragma once
 #include <stdio.h>
 #include <string>
 #include <chrono>
 #include <vector>
+#include <fstream>
 #include "../Data/Data.h"
 
 enum ActionType {
@@ -27,6 +29,7 @@ class ThemisSessionData {
         ThemisSessionData();
         SessionData GetSessionData();
         void LogInput(ActionType _ActionType, std::wstring ActionContent, Selection _Selection);
+
     private:
         SessionData sessionData;
         std::chrono::system_clock::time_point startTime;

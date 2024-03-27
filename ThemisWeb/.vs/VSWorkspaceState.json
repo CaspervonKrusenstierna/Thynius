@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\ThemisWeb.Server",
+    "\\ThemisWeb.Server\\Controllers",
     "\\ThemisWeb.Server\\Repository"
   ],
-  "SelectedNode": "\\ThemisWeb.sln",
+  "SelectedNode": "\\ThemisWeb.Server\\Controllers\\AccountController.cs",
   "PreviewInSolutionExplorer": false
 }
