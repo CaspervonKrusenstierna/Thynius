@@ -20,7 +20,7 @@ namespace ThemisWeb.Server.Repository
         }
         public async Task<IEnumerable<UserText>> GetUserTexts(ApplicationUser user)
         {
-            return await _context.UserTexts.Where(t => t.UserId == user.Id).ToListAsync();
+            return await _context.UserTexts.Where(t => t.OwnerId == user.Id).ToListAsync();
         }
 
         public async Task<UserText> GetByIdAsync(int id)

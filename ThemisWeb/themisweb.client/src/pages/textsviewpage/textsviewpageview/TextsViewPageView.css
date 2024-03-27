@@ -1,4 +1,32 @@
 .TextsViewPageView{
-    height: 500px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+
+}
+.TextsContainer{
+    width: 1200px;
+}
+@media screen and (max-width: 1400px) {
+    .TextsContainer{
+        width: 900px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .TextsContainer{
+        width: 600px;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .TextsContainer{
+        width: 500px;
+    }
+  }
+
+.TextFiller{
+    
 }

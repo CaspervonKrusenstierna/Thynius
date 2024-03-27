@@ -4,7 +4,7 @@ import GroupView from './components/groupview/GroupView'
 import useGroupsInfo from './hooks/useGroupsInfo'
 import RowedItemsContainer from '../../../../../../shared/components/roweditemscontainer/RowedItemsContainer'
 import { useEffect, useState } from "react"
-import useDynamicGroupsRowCount from "./useDynamicGroupsRowCount"
+import useDynamicGroupsRowCount from "./hooks/useDynamicGroupsRowCount"
 
 const GroupsViewContainer = () => {
   const groupsPerRow = useDynamicGroupsRowCount(); // changes group per row count depending on the width of viewport

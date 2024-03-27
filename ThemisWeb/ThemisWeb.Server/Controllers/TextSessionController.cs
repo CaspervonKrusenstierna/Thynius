@@ -4,6 +4,7 @@ using ThemisWeb.Server.Models;
 
 namespace ThemisWeb.Server.Controllers
 {
+    [Route("/textsession")]
     public class TextSessionController : Controller
     {
         private readonly ITextSessionRepository _textSessionRepository;

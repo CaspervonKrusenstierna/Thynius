@@ -13,7 +13,7 @@ namespace ThemisWeb.Server.Models
         public string Title { get; set; }
 
         [ForeignKey("ApplicationUser")]
-        public string UserId { get; set; }
+        public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
 
         public ICollection<TextSession> Sessions = [];

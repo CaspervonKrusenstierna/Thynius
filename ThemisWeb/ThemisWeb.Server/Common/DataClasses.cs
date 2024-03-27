@@ -28,8 +28,6 @@ namespace ThemisWeb.Server.Common
             public int ID;
             public string DueDate;
         }
-
-
         public class UserData
         {
             public string Username;

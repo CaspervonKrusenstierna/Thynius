@@ -77,8 +77,11 @@ export default defineConfig({
             }, '^/assignment': {
                 target,
                 secure: false
+            },
+            '^/user/usertexts': {
+                target,
+                secure: false
             }
-
         },
         port: 5173,
         https: {

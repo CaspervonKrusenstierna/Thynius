@@ -21,7 +21,7 @@ namespace ThemisWeb.Server.Repository
 
         public async Task<IEnumerable<Submittment>> GetUserSubmittments(ApplicationUser user)
         {
-            IEnumerable<int> userTextIds = await _context.UserTexts.Where(i => i.UserId == user.Id).Select(i => i.Id).ToListAsync();
+            IEnumerable<int> userTextIds = await _context.UserTexts.Where(i => i.OwnerId == user.Id).Select(i => i.Id).ToListAsync();
             return await _context.Submittments.Where(i => userTextIds.Contains(i.UserTextId)).ToListAsync();
         }
         public bool Add(Submittment submittment)

@@ -5,6 +5,7 @@
     height: 100px;
     align-items: center;
     justify-content: space-between;
+    border-radius: 10px;
 }
 .GroupsViewHeader-Title{
     font-size: 26px;

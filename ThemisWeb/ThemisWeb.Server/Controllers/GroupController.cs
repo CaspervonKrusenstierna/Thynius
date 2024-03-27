@@ -9,6 +9,7 @@ using Newtonsoft.Json;
 using System.Security.Claims;
 using ThemisWeb.Server.Repository;
 using ThemisWeb.Server.Common;
+using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Controllers
 {

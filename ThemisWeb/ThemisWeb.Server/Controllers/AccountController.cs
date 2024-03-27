@@ -8,6 +8,7 @@ using ThemisWeb.Server.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using ThemisWeb.Server.Common;
+using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Controllers
 {

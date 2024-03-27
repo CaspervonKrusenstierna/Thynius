@@ -26,16 +26,14 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateUserText(string TextTitle, int SessionId)
+        [Authorize(Roles = "VerifiedUser")]
+        public async Task<IActionResult> CreateUserText(string TextTitle)
         {
-            TextSession session = await _textSessionRepository.GetByIdAsync(SessionId);
-            if (session == null)
-            {
-                return BadRequest();
-            }
-            
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+
             UserText text = new UserText();
             text.Title = TextTitle;
+            text.OwnerId = user.Id;
             
             _userTextRepository.Add(text);
             return Ok();
@@ -85,12 +83,20 @@ namespace ThemisWeb.Server.Controllers
             throw new NotImplementedException();
         }
 
-        [Route("usertexts")]
+        [Route("/user/usertexts")]
         [HttpGet]
         [Authorize(Roles = "VerifiedUser")]
-        public async Task<IEnumerable<UserText>> getUserTexts() { 
+        public async Task<string> getUserTexts(string userId) {
+            
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
-            return await _userTextRepository.GetUserTexts(callingUser);
+            ApplicationUser userToAccess = await _userRepository.GetByIdAsync(userId);
+            if(callingUser != userToAccess)
+            {
+                HttpContext.Response.StatusCode = 401;
+                return null;
+            }
+            IEnumerable<UserText> texts =  await _userTextRepository.GetUserTexts(userToAccess);
+            return System.Text.Json.JsonSerializer.Serialize(texts.Select(i => new { i.Id, i.Title}));
         }
 
     }

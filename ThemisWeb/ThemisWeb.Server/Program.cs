@@ -33,6 +33,8 @@ namespace ThemisWeb.Server
             builder.Services.AddScoped<IGroupRepository, GroupRepository>();
             builder.Services.AddScoped<ISubmittmentRepository, SubmittmentRepository>();
             builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
+            builder.Services.AddScoped<IUserTextRepository, UserTextRepository>();
+            builder.Services.AddScoped<ITextSessionRepository, TextSessionRepository>();
 
             //builder.Services.AddAWSService<IAmazonS3>();
 

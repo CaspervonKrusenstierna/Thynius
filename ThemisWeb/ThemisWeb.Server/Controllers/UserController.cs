@@ -8,6 +8,7 @@ using System.Text.Json.Serialization;
 using ThemisWeb.Server.Common;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
+using static ThemisWeb.Server.Common.DataClasses;
 namespace ThemisWeb.Server.Controllers
 {
     [Route("/users")]

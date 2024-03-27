@@ -2,7 +2,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { createContext } from 'react';
-import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CreateGroupPage, DashboardHomePage, TextsViewPage } from "./pages";
+import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage, ProfilePage, CreateGroupPage, DashboardHomePage, TextsViewPage, TextViewPage } from "./pages";
 import "./index.css"
 import './App.css';
 import useSessionInfo from "./shared/hooks/useSessionInfo"
@@ -25,6 +25,7 @@ function App() {
                     <Route path="/dashboard/creategroup" element={<CreateGroupPage></CreateGroupPage>}></Route>
                     <Route path="/dashboard/profile" element={<ProfilePage></ProfilePage>}></Route>
                     <Route path="/dashboard/texts" element={<TextsViewPage></TextsViewPage>}></Route>
+                    <Route path="/dashboard/text/:id" element={<TextViewPage></TextViewPage>}></Route>
                 </Routes>
             </BrowserRouter >
         </sessionInfoContext.Provider>
