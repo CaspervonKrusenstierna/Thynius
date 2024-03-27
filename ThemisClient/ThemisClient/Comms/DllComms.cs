@@ -29,7 +29,6 @@ namespace ThermisClient.Comms
                     string message = System.Text.Encoding.Unicode.GetString(bytes, 0, bytes.Length);
                     if(message != lastMessage)
                     {
-                        Debug.WriteLine(message);
                         lastMessage = message;
                     }
                     Thread.Sleep(100);

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThemisWeb.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b687b8a4656ddba7c5eefba89f205ee7cd9ee02")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4574d06a5d9269fcc5c9ad57fb27bfb45dbbb79a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThemisWeb.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThemisWeb.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

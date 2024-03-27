@@ -3,15 +3,23 @@
   "WorkspaceRootPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisclient\\themisclient\\comms\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|solutionrelative:themisclient\\comms\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisclient\\themisclient\\comms\\dllcomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|solutionrelative:themisclient\\comms\\dllcomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisclient\\themisclient\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\themisclient\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|solutionrelative:themisclient\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\themisclient\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|solutionrelative:themisclient\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisclient\\themisclient\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\themisclient\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CF2F0C74-E38F-45E4-9A2D-548E4039B71C}|ThemisClient\\ThemisClient.csproj|solutionrelative:themisclient\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -34,37 +42,64 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ServerComms.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\Comms\\ServerComms.cs",
+              "RelativeDocumentMoniker": "ThemisClient\\Comms\\ServerComms.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\Comms\\ServerComms.cs",
+              "RelativeToolTip": "ThemisClient\\Comms\\ServerComms.cs",
+              "ViewState": "AQIAADoAAAAAAAAAAAAgwD0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T19:30:46.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "DllComms.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\Comms\\DllComms.cs",
               "RelativeDocumentMoniker": "ThemisClient\\Comms\\DllComms.cs",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\Comms\\DllComms.cs",
               "RelativeToolTip": "ThemisClient\\Comms\\DllComms.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACMAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-27T16:33:47.026Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\App.xaml",
+              "RelativeDocumentMoniker": "ThemisClient\\App.xaml",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\App.xaml",
+              "RelativeToolTip": "ThemisClient\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-03-27T16:45:11.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "DllInjector.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\DllInjector.cs",
               "RelativeDocumentMoniker": "ThemisClient\\DllInjector.cs",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\DllInjector.cs",
               "RelativeToolTip": "ThemisClient\\DllInjector.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAAA0wAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T16:33:42.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-27T16:33:42.374Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "ThemisClient\\AssemblyInfo.cs",
@@ -72,12 +107,11 @@
               "RelativeToolTip": "ThemisClient\\AssemblyInfo.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-22T15:04:56.622Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-22T15:04:56.622Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "ThemisClient",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\ThemisClient.csproj",
               "RelativeDocumentMoniker": "ThemisClient\\ThemisClient.csproj",
@@ -89,7 +123,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\MainWindow.xaml",
               "RelativeDocumentMoniker": "ThemisClient\\MainWindow.xaml",
@@ -100,7 +134,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "ThemisClient\\MainWindow.xaml.cs",
@@ -109,10 +143,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-22T15:03:20.79Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             }
           ]
         }
