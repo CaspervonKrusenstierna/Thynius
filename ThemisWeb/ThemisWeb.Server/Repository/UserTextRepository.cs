@@ -39,7 +39,7 @@ namespace ThemisWeb.Server.Repository
            };
            return await _amazonS3.PutObjectAsync(putObjectRequest);
        }
-       public Task<DeleteObjectResponse> S3RawContentDelete(UserText text, IFormFile rawContent)
+       public Task<DeleteObjectResponse> S3RawContentDelete(UserText text)
        {
            var deleteObjectRequest = new DeleteObjectRequest
            {
@@ -73,6 +73,7 @@ namespace ThemisWeb.Server.Repository
         }
         public bool Delete(UserText text)
         {
+            //S3RawContentDelete(text)
             _context.Remove(text);
             return Save();
         }

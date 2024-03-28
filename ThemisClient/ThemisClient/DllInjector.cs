@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
- 
-namespace ThermisClient
+
+namespace ThemisClient
 {
     public enum DllInjectionResult
     {
@@ -17,29 +17,29 @@ namespace ThermisClient
 
     public class DllInjector
     {
-        static readonly IntPtr INTPTR_ZERO = (IntPtr)0;
+        static readonly nint INTPTR_ZERO = 0;
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr OpenProcess(uint dwDesiredAccess, int bInheritHandle, uint dwProcessId);
+        static extern nint OpenProcess(uint dwDesiredAccess, int bInheritHandle, uint dwProcessId);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern int CloseHandle(IntPtr hObject);
+        static extern int CloseHandle(nint hObject);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr GetProcAddress(IntPtr hModule, string lpProcName);
+        static extern nint GetProcAddress(nint hModule, string lpProcName);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr GetModuleHandle(string lpModuleName);
+        static extern nint GetModuleHandle(string lpModuleName);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr VirtualAllocEx(IntPtr hProcess, IntPtr lpAddress, IntPtr dwSize, uint flAllocationType, uint flProtect);
+        static extern nint VirtualAllocEx(nint hProcess, nint lpAddress, nint dwSize, uint flAllocationType, uint flProtect);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, int lpNumberOfBytesWritten);
+        static extern int WriteProcessMemory(nint hProcess, nint lpBaseAddress, byte[] buffer, uint size, int lpNumberOfBytesWritten);
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr CreateRemoteThread(IntPtr hProcess, IntPtr lpThreadAttribute, IntPtr dwStackSize, IntPtr lpStartAddress,
-            IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);
+        static extern nint CreateRemoteThread(nint hProcess, nint lpThreadAttribute, nint dwStackSize, nint lpStartAddress,
+            nint lpParameter, uint dwCreationFlags, nint lpThreadId);
 
         static DllInjector _instance;
 
@@ -91,21 +91,21 @@ namespace ThermisClient
 
         bool bInject(uint pToBeInjected, string sDllPath)
         {
-            IntPtr hndProc = OpenProcess((0x2 | 0x8 | 0x10 | 0x20 | 0x400), 1, pToBeInjected);
+            nint hndProc = OpenProcess(0x2 | 0x8 | 0x10 | 0x20 | 0x400, 1, pToBeInjected);
 
             if (hndProc == INTPTR_ZERO)
             {
                 return false;
             }
 
-            IntPtr lpLLAddress = GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
+            nint lpLLAddress = GetProcAddress(GetModuleHandle("kernel32.dll"), "LoadLibraryA");
 
             if (lpLLAddress == INTPTR_ZERO)
             {
                 return false;
             }
 
-            IntPtr lpAddress = VirtualAllocEx(hndProc, (IntPtr)null, (IntPtr)sDllPath.Length, (0x1000 | 0x2000), 0X40);
+            nint lpAddress = VirtualAllocEx(hndProc, (nint)null, sDllPath.Length, 0x1000 | 0x2000, 0X40);
 
             if (lpAddress == INTPTR_ZERO)
             {
@@ -119,7 +119,7 @@ namespace ThermisClient
                 return false;
             }
 
-            if (CreateRemoteThread(hndProc, (IntPtr)null, INTPTR_ZERO, lpLLAddress, lpAddress, 0, (IntPtr)null) == INTPTR_ZERO)
+            if (CreateRemoteThread(hndProc, (nint)null, INTPTR_ZERO, lpLLAddress, lpAddress, 0, (nint)null) == INTPTR_ZERO)
             {
                 return false;
             }

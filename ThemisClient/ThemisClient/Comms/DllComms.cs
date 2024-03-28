@@ -10,36 +10,61 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ThermisClient.Comms
+namespace ThemisClient.Comms
 {
-    class DllComms
+    class DllComms : IDisposable
     {
         private Thread CommThread;
+        private System.IO.MemoryMappedFiles.MemoryMappedFile MappedFile;
+        private System.IO.MemoryMappedFiles.MemoryMappedViewAccessor MFAccessor;
+        private ushort SleepBetweenCommsCheck;
 
+        private bool DisposedValue;
+        private bool ExitCommThreadMain = false;
         private void CommThreadMain()
         {
-            var mappedFile = System.IO.MemoryMappedFiles.MemoryMappedFile.CreateNew("Global\\ThemisIPC", 256 * sizeof(char));
-            using (var accessor = mappedFile.CreateViewAccessor())
+            MappedFile = System.IO.MemoryMappedFiles.MemoryMappedFile.CreateNew("Global\\ThemisIPC", 256 * sizeof(char));
+            MFAccessor = MappedFile.CreateViewAccessor();
+
+            string lastMessage = "";
+            while (!ExitCommThreadMain)
             {
-                string lastMessage = "";
-                while (true)
+                var bytes = new byte[MFAccessor.Capacity];
+                MFAccessor.ReadArray(0, bytes, 0, bytes.Length);
+                string message = Encoding.Unicode.GetString(bytes, 0, bytes.Length);
+                if (message != lastMessage)
                 {
-                    var bytes = new byte[accessor.Capacity];
-                    accessor.ReadArray<byte>(0, bytes, 0, bytes.Length);
-                    string message = System.Text.Encoding.Unicode.GetString(bytes, 0, bytes.Length);
-                    if(message != lastMessage)
-                    {
-                        lastMessage = message;
-                    }
-                    Thread.Sleep(100);
+                    lastMessage = message;
                 }
+                Thread.Sleep(SleepBetweenCommsCheck);
             }
+
         }
-
-        public DllComms() {
-            this.CommThread = new Thread(CommThreadMain);
+        public DllComms(ushort SleepBetweenCommsCheck = 100)
+        {
+            this.SleepBetweenCommsCheck = SleepBetweenCommsCheck;
+            CommThread = new Thread(CommThreadMain);
             CommThread.Start();
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!DisposedValue)
+            {
+                if (disposing)
+                {
+                    ExitCommThreadMain = true;
+                    CommThread.Abort();
+                    MappedFile.Dispose();
+                    MFAccessor.Dispose();
+                }
 
+                DisposedValue = true;
+            }
         }
     }
 }

@@ -39,28 +39,6 @@ namespace ThemisWeb.Server.Controllers
             return Ok();
         }
 
-        [HttpPut]
-        public async Task<IActionResult> EditUserText(int UserTextId, string TextTitle)
-        {
-            UserText text = await _userTextRepository.GetByIdAsync(UserTextId);
-            if (text == null)
-            {
-                return BadRequest();
-            }
-
-            if(TextTitle != text.Title)
-            {
-                text.Title = TextTitle;
-                _userTextRepository.Update(text);
-            }
-
-            //calc new raw data
-
-            return Ok();
-
-
-        }
-
         [HttpDelete]
         public async Task<IActionResult> DeleteUserText(int textId)
         {
@@ -69,6 +47,17 @@ namespace ThemisWeb.Server.Controllers
             {
                 return BadRequest();
             }
+            IEnumerable<TextSession> sessions = await _textSessionRepository.GetUserTextSessions(userText);
+
+            foreach(TextSession session in sessions)
+            {
+                if (!_textSessionRepository.Delete(session))
+                {
+                    HttpContext.Response.StatusCode = 500;
+                    return null;
+                }
+            }
+
             if (_userTextRepository.Delete(userText))
             {
                 return Ok();
@@ -78,7 +67,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetUserText()
+        public Task<string> GetUserText(int textId)
         {
             throw new NotImplementedException();
         }
