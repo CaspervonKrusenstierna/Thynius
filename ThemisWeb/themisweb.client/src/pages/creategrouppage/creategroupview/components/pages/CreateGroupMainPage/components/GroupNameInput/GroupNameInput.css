@@ -1,0 +1,26 @@
+.GroupNameInput{
+    display: flex;
+    flex-direction: column;
+}
+.GroupNameInput-Title{
+    font-weight: bold;
+    font-size: 18px;
+}
+.GroupNameInput-Input{
+    border: 1px solid black;
+    border-radius: 3px;
+    height: 50px;
+    width: 300px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+@media screen and (max-width: 900px) {
+    .GroupNameInput-Input{
+        height: 50px;
+        width: 100%;
+    }
+    .GroupNameInput-Title{
+        font-size: 25px;
+    }
+  }

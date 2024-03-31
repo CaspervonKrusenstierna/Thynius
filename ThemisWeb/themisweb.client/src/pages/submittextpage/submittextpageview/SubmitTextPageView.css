@@ -1,0 +1,36 @@
+.SubmitTextPageView{
+    display: flex;
+    flex-direction: column;
+    width: 1250px;
+    margin-top: 130px;
+}
+.SubmitTextPageView-Header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.SubmitTextPageView-HeaderTitle{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 1400px) {
+    .SubmitTextPageView{
+        width: 900px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .SubmitTextPageView{
+        width: 600px;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .SubmitTextPageView{
+        width: 500px;
+    }
+    .SubmitTextPageView-Header{
+        justify-content: center;
+    }
+  }

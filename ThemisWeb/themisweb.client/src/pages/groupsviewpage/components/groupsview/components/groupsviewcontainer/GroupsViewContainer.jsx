@@ -11,7 +11,7 @@ const GroupsViewContainer = () => {
   const groupsInfo = useGroupsInfo();
 
   return (<div className="GroupsViewContainer">
-      {<RowedItemsContainer ItemsPerRow={groupsPerRow} Items={groupsInfo?.map(j => <GroupView groupId={j.Id} img={j.Img} name={j.Name}></GroupView>)} Filler={<div className="GroupFiller"></div>}></RowedItemsContainer>}
+      {<RowedItemsContainer ItemsPerRow={groupsPerRow} Items={groupsInfo?.map(j => <GroupView groupId={j.Id} managerId={j.ManagerId} img={j.Img} name={j.Name}></GroupView>)} Filler={<div className="GroupFiller"></div>}></RowedItemsContainer>}
       </div>
       )
 }

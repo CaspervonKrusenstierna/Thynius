@@ -23,7 +23,7 @@ namespace ThemisClient.Comms
         private bool ExitCommThreadMain = false;
         private void CommThreadMain()
         {
-            MappedFile = System.IO.MemoryMappedFiles.MemoryMappedFile.CreateNew("Global\\ThemisIPC", 256 * sizeof(char));
+            MappedFile = System.IO.MemoryMappedFiles.MemoryMappedFile.CreateNew("Global\\ThemisIPCC", 256 * sizeof(char));
             MFAccessor = MappedFile.CreateViewAccessor();
 
             string lastMessage = "";
@@ -58,7 +58,6 @@ namespace ThemisClient.Comms
                 if (disposing)
                 {
                     ExitCommThreadMain = true;
-                    CommThread.Abort();
                     MappedFile.Dispose();
                     MFAccessor.Dispose();
                 }

@@ -1,0 +1,9 @@
+.CreateGroupMembersPage{
+    padding-top: 110px;
+    width: 100%;
+}
+@media screen and (max-width: 500px) {
+    .CreateGroupMembersPage{
+        padding-top: 50px;
+    }
+  }

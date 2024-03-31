@@ -1,0 +1,35 @@
+.GroupImageSelfSelect-Container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+}
+.GroupImageSelfSelect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dotted gray;
+    border-radius: 5px;
+    width: 160px;
+    height: 160px;
+}
+.GroupImageSelfSelect-Input{
+    width: 160px;
+    height: 160px;
+    z-index: 0;
+    opacity: 0;
+}
+.GroupImageSelfSelect-Image-NonSelected{
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    position: absolute;
+}
+
+@media screen and (max-width: 900px) {
+    .GroupImageSelfSelect-Container{
+        justify-content: center;
+    }
+  }
+

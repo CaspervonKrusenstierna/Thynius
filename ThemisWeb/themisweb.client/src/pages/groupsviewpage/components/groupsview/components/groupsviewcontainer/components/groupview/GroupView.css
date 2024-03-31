@@ -1,40 +1,14 @@
-.GroupView{
+
+  .GroupView-Link{
     display: flex;
-    width: 275px;
-    height: 245px;
-    border-radius: 5px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    background-color: #fbfbfb;
-    margin-top: 10px;
-    margin-bottom: 10px;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-decoration: none;
-    gap: 5px;
-}
-.GroupView-Img{
-    height: 150px;
-    width: 150px;
-    border-radius: 5%;
-}
-.GroupView-Text{
-    font-size: 18px;
-    font-weight: bold;
-}
-
-
-@media screen and (max-width: 650px) {
-    .GroupView{
-        width: 320px;
+    justify-content: center;
+    height: 250px;
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .GroupView-Link{
         height: 275px;
-    }
-    .GroupView-Img{
-        height: 185px;
-        width: 185px;
-    }
-    .GroupView-Text{
-        font-size: 20px;
-        font-weight: bold;
-    }
+      }
   }

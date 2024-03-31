@@ -31,8 +31,10 @@ const GroupMembersView = (props) => {
   }
   return (
     <div className='GroupMembersView'>
+      <div className='GroupMembersView-Header'>
         <p className='GroupMembersView-Title'>Medlemmar</p>
         <UserSearch onSubmit={(submission) => {onAddMember(submission)}}></UserSearch>
+      </div>
         <GroupMemberContainer members={groupMembers} onMemberDelete={onDeleteMember}></GroupMemberContainer>
     </div>
   )

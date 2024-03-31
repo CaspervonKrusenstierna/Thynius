@@ -55,6 +55,12 @@ namespace ThemisWeb.Server.Repository
         {
             return await _context.Users.Where(i => i.OrganizationEmailExtension == organization && i.UserName.StartsWith(search)).Take(max).ToListAsync();
         }
+
+        public async Task<ApplicationUser> GetSubmittmentUser(Submittment submittment)
+        {
+            UserText submittmentText = await _context.UserTexts.Where(i => i.Id == submittment.AssignmentId).FirstOrDefaultAsync();
+            return await _context.Users.Where(i => i.Id == submittmentText.OwnerId).FirstOrDefaultAsync();
+        }
         /*
         public async Task<PutObjectResponse> UploadUserProfilePictureAsync(ApplicationUser user, IFormFile profilepicture)
         {

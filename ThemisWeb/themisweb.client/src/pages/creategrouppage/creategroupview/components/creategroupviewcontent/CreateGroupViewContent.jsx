@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from 'react'
 import "./CreateGroupViewContent.css"
 import VerticalInput from '../../../../../shared/components/verticalinput/VerticalInput'
 import { ErrorMessage, SubmitButton } from '../../../../../shared/components'
-import CreateGroupSubmitButton from './components/creategroupsubmitbutton/CreateGroupSubmitButton'
+import CreateGroupSubmitButton from './creategroupsubmitbutton/CreateGroupSubmitButton'
 import useFetch from '../../../../../shared/hooks/useFetch'
 import { useNavigate } from 'react-router-dom'
 import GroupMembersView from '../../../../../shared/components/groupmembersview/GroupMembersView'
@@ -18,7 +18,6 @@ const CreateGroupViewContent = () => {
         }
         response.json().then(s => {setErrorMessage(s.Title)});
     }
-
     const updateGroupMembers = (newGroupMembers) => {
         groupInfo.current.groupMembers = newGroupMembers.map(s => s.id);
     }

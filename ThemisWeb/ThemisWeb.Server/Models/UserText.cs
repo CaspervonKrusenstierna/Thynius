@@ -16,6 +16,8 @@ namespace ThemisWeb.Server.Models
         public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
 
-        public ICollection<TextSession> Sessions = [];
+        public int wordCount { get; set; }
+        public int characterCount {  get; set; }
+
     }
 }

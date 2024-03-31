@@ -3,6 +3,7 @@
     "",
     "\\ThemisWeb.Server",
     "\\ThemisWeb.Server\\Controllers",
+    "\\ThemisWeb.Server\\Models",
     "\\ThemisWeb.Server\\Repository"
   ],
   "SelectedNode": "\\ThemisWeb.sln",

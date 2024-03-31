@@ -17,9 +17,7 @@ namespace ThemisWeb.Server.Models
         public int UserTextId { get; set; }
         UserText Text { get; set; }
 
+        public int? WarningLevel {  get; set; }
         public String TimeSubmitted {  get; set; }
-
-
-
     }
 }

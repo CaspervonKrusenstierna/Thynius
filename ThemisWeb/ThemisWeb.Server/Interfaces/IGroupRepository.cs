@@ -9,9 +9,12 @@ namespace ThemisWeb.Server.Interfaces
         public bool Update(Group group);
         public bool Delete(Group group);
         public Task<IEnumerable<Group>> GetUserGroups(string userId);
+
         /*public Task<PutObjectResponse> UploadGroupPictureAsync(Group group, IFormFile groupPicture);
         public Task<DeleteObjectResponse> DeleteGroupPictureAsync(Group group);
         public Task<string> GetSignedGroupImgUrlAsync(Group group);*/
+
+        public Task<Group> GetAssignmentGroup(Assignment assignment);
         public Task<Group> GetByIdAsync(int id);
         public bool Save();
     }

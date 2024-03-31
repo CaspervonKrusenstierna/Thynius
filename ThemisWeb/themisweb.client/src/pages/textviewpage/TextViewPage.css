@@ -1,0 +1,21 @@
+.TextViewPage{
+    width: 1200px;
+    justify-content: center;
+}
+@media screen and (max-width: 1400px) {
+    .TextViewPage{
+        width: 900px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .TextViewPage{
+        width: 600px;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .TextViewPage{
+        width: 500px;
+    }
+  }

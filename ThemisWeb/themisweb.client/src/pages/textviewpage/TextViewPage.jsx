@@ -6,7 +6,9 @@ const TextViewPage = () => {
   return (
     <>
       <DashboardHeader></DashboardHeader>
+      <div style={{display: "flex", justifyContent: "center"}}>
       <TextViewPageView></TextViewPageView>
+      </div>
     </>
   )
 }

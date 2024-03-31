@@ -1,0 +1,14 @@
+.TextsHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 650px) {
+    .TextsHeader{
+        justify-content: center;
+    }
+  }

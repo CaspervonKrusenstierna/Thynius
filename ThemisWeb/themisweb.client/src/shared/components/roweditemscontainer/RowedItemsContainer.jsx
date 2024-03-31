@@ -22,7 +22,6 @@ const RowedItemsContainer = (props) => {
       }
       count++;
     }
-    console.log(temp);
     setRows(temp);
   }, [props.Items])
 

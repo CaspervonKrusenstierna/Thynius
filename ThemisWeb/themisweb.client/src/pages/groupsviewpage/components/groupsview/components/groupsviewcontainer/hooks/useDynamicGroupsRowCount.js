@@ -11,7 +11,7 @@ export default function useDynamicGroupsRowCount() {
       else if(width >= 900){
         setItemsPerRow(3)
       }
-      else if(width >= 650){
+      else if(width >= 768){
         setItemsPerRow(2);
       }
       else{

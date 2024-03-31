@@ -14,29 +14,16 @@ namespace ThemisWeb.Server.Controllers
         UserManager<ApplicationUser> _userManager;
         ISubmittmentRepository _submittmentRepository;
         IUserTextRepository _userTextRepository;
-        ITextSessionRepository _textSessionRepository;
-        public UserTextController(IUserTextRepository userTextRepository, ITextSessionRepository textSessionRepository, ISubmittmentRepository submittmentRepository, IUserRepository userRepository, IAssignmentRepository assignmentRepository, UserManager<ApplicationUser> userManager)
+        IGroupRepository _groupRepository;
+
+        public UserTextController(IUserTextRepository userTextRepository, ISubmittmentRepository submittmentRepository, IUserRepository userRepository, IAssignmentRepository assignmentRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
         {
             _submittmentRepository = submittmentRepository;
-            _textSessionRepository = textSessionRepository;
             _userRepository = userRepository;
             _userManager = userManager;
             _assignmentRepository = assignmentRepository;
             _userTextRepository = userTextRepository;
-        }
-
-        [HttpPost]
-        [Authorize(Roles = "VerifiedUser")]
-        public async Task<IActionResult> CreateUserText(string TextTitle)
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-
-            UserText text = new UserText();
-            text.Title = TextTitle;
-            text.OwnerId = user.Id;
-            
-            _userTextRepository.Add(text);
-            return Ok();
+            _groupRepository = groupRepository;
         }
 
         [HttpDelete]
@@ -47,16 +34,7 @@ namespace ThemisWeb.Server.Controllers
             {
                 return BadRequest();
             }
-            IEnumerable<TextSession> sessions = await _textSessionRepository.GetUserTextSessions(userText);
 
-            foreach(TextSession session in sessions)
-            {
-                if (!_textSessionRepository.Delete(session))
-                {
-                    HttpContext.Response.StatusCode = 500;
-                    return null;
-                }
-            }
 
             if (_userTextRepository.Delete(userText))
             {
@@ -69,6 +47,42 @@ namespace ThemisWeb.Server.Controllers
         [HttpGet]
         public Task<string> GetUserText(int textId)
         {
+            throw new NotImplementedException();
+        }
+
+        [HttpPut]
+        [Authorize(Roles = "VerifiedUser")]
+        public async Task<IActionResult> EditUserText(int charCount, int wordCount, [FromForm] IFormFile sessionData)
+        {
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            UserText text = await _userTextRepository.GetByTextData(user, charCount, wordCount);
+            if (text == null)
+            {
+                text = new UserText();
+                text.OwnerId = user.Id;
+                _userTextRepository.Add(text);
+            }
+
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("getrawcontent")]
+        [Authorize(Roles = "VerifiedUser")]
+        public async Task<string> GetUserTextRawContent(int textId)
+        {
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            UserText textToAccess = await _userTextRepository.GetByIdAsync(textId);
+            if(textToAccess == null)
+            {
+                HttpContext.Response.StatusCode = 400;
+                return null;
+            }
+            if(textToAccess.OwnerId != callingUser.Id)
+            {
+                HttpContext.Response.StatusCode = 401;
+                return null;
+            }
             throw new NotImplementedException();
         }
 
@@ -87,6 +101,6 @@ namespace ThemisWeb.Server.Controllers
             IEnumerable<UserText> texts =  await _userTextRepository.GetUserTexts(userToAccess);
             return System.Text.Json.JsonSerializer.Serialize(texts.Select(i => new { i.Id, i.Title}));
         }
-
+        
     }
 }

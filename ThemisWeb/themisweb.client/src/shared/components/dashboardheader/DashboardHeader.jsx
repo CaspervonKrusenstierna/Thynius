@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./DashboardHeader.css"
 import DashboardNavItem from './components/DashboardNavItem/DashboardNavItem'
 import DashboardUserComponent from './components/DashboardUserComponent/DashboardUserComponent'
+import { sessionInfoContext } from '../../../App'
 const DashboardHeader = () => {
+  const sessionInfo = useContext(sessionInfoContext);
+
   return (
     <div className='DashboardHeader'>
       <div className='DashboardHeader-Left'>

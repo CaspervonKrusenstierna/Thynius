@@ -1,14 +1,23 @@
-import React from 'react'
-import "./CreateGroupView.css"
-import CreateGroupViewHeader from './components/creategroupviewheader/CreateGroupViewHeader'
-import CreateGroupViewContent from './components/creategroupviewcontent/CreateGroupViewContent'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 
-const CreateGroupView = () => {
+import CreateGroupViewSideBar from './components/creategroupviewsidebar/CreateGroupViewSideBar'
+import "../../../shared/styles/DashboardContainer.css"
+import CreateGroupSubmitButton from './components/creategroupsubmitbutton/CreateGroupSubmitButton'
+import ResolveCreateGroupContent from './hooks/ResolveCreateGroupContent'
+
+
+const CreateGroupView = (props) => {
+  const pageContent = ResolveCreateGroupContent();
+
   return (
-    <div className='CreateGroupView'>
-      <div className='CreateGroupContainer'>
-        <CreateGroupViewHeader></CreateGroupViewHeader>
-        <CreateGroupViewContent></CreateGroupViewContent>
+    <div className='DashboardContainer-Container'>
+      <div className='DashboardContainer'>
+        <CreateGroupViewSideBar></CreateGroupViewSideBar>
+        <div className='DashboardContainer-Content'>
+          {pageContent}
+        </div>
+        <CreateGroupSubmitButton></CreateGroupSubmitButton>
       </div>
     </div>
   )

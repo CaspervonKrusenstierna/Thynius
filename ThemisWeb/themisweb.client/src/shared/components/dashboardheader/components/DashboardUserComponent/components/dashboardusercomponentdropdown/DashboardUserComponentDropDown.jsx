@@ -10,7 +10,7 @@ const DashboardUserComponentDropDown = () => {
         await useFetch("/account/logout", "POST");
     }
   return (
-    <div className='DashboardUserComponentDropDown'>
+    <div className='flex-column absolute mt-12 w-64'>
         <UserComponentDropDownItem link="/dashboard/profile" text="Profil"></UserComponentDropDownItem>
         <UserComponentDropDownItem onClick={onLogoutClick} link="/" text="Logga ut"></UserComponentDropDownItem>
     </div>

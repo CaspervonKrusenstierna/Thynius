@@ -48,6 +48,11 @@ namespace ThemisWeb.Server.Repository
             return await _context.Groups.FindAsync(id);
         }
 
+        public async Task<Group> GetAssignmentGroup(Assignment assignment)
+        {
+            return await _context.Groups.Where(i => i.Id == assignment.GroupId).FirstOrDefaultAsync();
+        }
+
         /*public async Task<PutObjectResponse> UploadGroupPictureAsync(Group group, IFormFile groupPicture)
         {
             var putObjectRequest = new PutObjectRequest

@@ -23,7 +23,6 @@ void OnPasteFunc(std::wstring PastedText){
     themisSessionData->LogInput(ActionType::PASTE, PastedText, data->GetSelection());
 }
 
-int count = 0;
 void OnSaveFunc() {
     std::vector<Input> inputs = themisSessionData->GetSessionData().SessionInputs;
 
@@ -37,12 +36,19 @@ void OnSaveFunc() {
         j["RelativeTimeMs"] = currInput.relativeTimePointMs;
         result.push_back(j);
     }
-    std::ofstream myfile;
-    myfile.open("C:\\Program Files\\Themis\\Data.txt");
-    myfile << result;
-    myfile.close();
-    std::wstring SaveMessage = L"Save";
-    comms->SendMessageW((SaveMessage + std::to_wstring(count)).c_str());
+    nlohmann::json metadata;
+    metadata["WordCount"] = data->GetWordCount();
+    metadata["CharCount"] = data->GetCharCount();
+
+    std::string RandomString = gen_random(12);
+    std::ofstream MetaData("C:\\Program Files\\Themis\\SessionsMetaData\\" + RandomString);
+    std::ofstream Content("C:\\Program Files\\Themis\\Sessions\\" + RandomString);
+
+    Content << result;
+    MetaData << metadata;
+
+    Content.close();
+    MetaData.close();
 }
 
 DWORD WINAPI MainThread(HMODULE hModule){

@@ -1,0 +1,10 @@
+.Submittment{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    text-decoration: none;
+}
+.Submittment-Text{
+    font-size: 18px;
+}

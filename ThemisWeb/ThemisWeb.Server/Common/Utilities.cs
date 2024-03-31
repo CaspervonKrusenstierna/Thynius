@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
+using System.Text;
 using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Common
@@ -11,7 +13,7 @@ namespace ThemisWeb.Server.Common
     public class Utilities
     {
         private List<string> _BackgroundColours = new List<string> { "339966", "3366CC", "CC33FF", "FF5050" };
-        public MemoryStream GenerateRactangle(string firstName, string lastName)
+        public MemoryStream GenerateInitialsImage(string firstName, string lastName)
         {
             var avatarString = string.Format("{0}{1}", firstName[0], lastName[0]).ToUpper();
 
@@ -39,19 +41,34 @@ namespace ThemisWeb.Server.Common
             return ms;
         }
 
-
-        public string GetUserTextRawContent(ThemisSessionData sessionData)
+        public ThemisSessionData ReadAsSessionData(IFormFile file)
         {
-            string toReturn = "";
+            var reader = new StreamReader(file.OpenReadStream());
+            string fileContent = reader.ReadToEnd();
+            reader.Dispose();
+
+            return JsonConvert.DeserializeObject<ThemisSessionData>(fileContent);
+        }
+
+
+        public async Task<TextData> GetInputsTextData(IFormFile inputsFile)
+        {
+            TextData toReturn;
+            toReturn.RawContent = "";
+
+            ThemisSessionData sessionData = ReadAsSessionData(inputsFile);
+
             foreach(Input input in sessionData.inputs)
             {
                 switch (input._ActionType)
                 {
-                    case ActionType.ADDCHAR: toReturn.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
-                    case ActionType.DELETESELECTION: toReturn.Remove((int)input._Selection.SelectionStart, (int)input._Selection.SelectionStart - (int)input._Selection.SelectionEnd);  break;
-                    case ActionType.PASTE: toReturn.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
+                    case ActionType.ADDCHAR: toReturn.RawContent.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
+                    case ActionType.DELETESELECTION: toReturn.RawContent.Remove((int)input._Selection.SelectionStart, (int)input._Selection.SelectionStart - (int)input._Selection.SelectionEnd);  break;
+                    case ActionType.PASTE: toReturn.RawContent.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
                 }
             }
+            toReturn.CharCount = toReturn.RawContent.Length;
+            toReturn.WordCount = toReturn.RawContent.Split(" ").Length;
             return toReturn;
         }
     }

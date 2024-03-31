@@ -157,7 +157,7 @@ namespace ThemisWeb.Server.Controllers
             IEnumerable<Assignment> groupAssignments = await _assignmentRepository.GetByGroupIdAsync(groupId);
             ApplicationUser Manager = await _userRepository.GetByIdAsync(group.ManagerId);
 
-            GroupDataExtended dataToReturn = new GroupDataExtended { Id = group.Id, Name = group.Name, DateCreated = group.DateCreated };
+            GroupDataExtended dataToReturn = new GroupDataExtended {Name = group.Name, DateCreated = group.DateCreated };
             dataToReturn.userDatas = groupUsers.Select(i => new { i.Id, i.UserName });
             dataToReturn.assignmentDatas = groupAssignments.Select(i => new { i.Id, i.Name, i.DueDate });
             dataToReturn.ManagerData = new { Manager.Id, Manager.UserName };
@@ -175,7 +175,8 @@ namespace ThemisWeb.Server.Controllers
             return System.Text.Json.JsonSerializer.Serialize(
             Groups.Select(group => (new GroupData { 
                 Id = group.Id, 
-                Name = group.Name
+                Name = group.Name,
+                ManagerId = group.ManagerId
                 //PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
             })));
         }

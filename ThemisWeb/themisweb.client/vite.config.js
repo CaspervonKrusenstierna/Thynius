@@ -38,12 +38,10 @@ export default defineConfig({
     plugins: [plugin()],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
+            '@': path.resolve(__dirname, "./src"),
         }
-    },
-    optimizeDeps: {
-        exclude: ['react-day-picker']
-    },
+    }
+    ,  
     server: {
         proxy: {
             '^/register': {
@@ -59,6 +57,10 @@ export default defineConfig({
                 secure: false
             },
             '^/group/getusergroups': {
+                target,
+                secure: false
+            },
+            '^/submittment': {
                 target,
                 secure: false
             },

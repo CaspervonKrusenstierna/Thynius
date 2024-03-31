@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import "./UserSearch.css"
 import { MagnifyingClass } from '../../assets';
 import SearchSuggestionContainer from './searchsuggestioncontainer/SearchSuggestionContainer';
-import AddUserButton from './searchsuggestioncontainer/components/adduserbutton/AddUserButton';
 import useSearchSuggestions from './useSearchSuggestions';
+import { Button } from "@/components/ui/button"
 
 const UserSearch = (props) => {
   const [showInput, setShowInput] = useState(false);
@@ -45,14 +45,14 @@ const UserSearch = (props) => {
     <div onClick={() => {setShowInput(true)}} className='UserSearch'>
         {showInput ? 
         <div className='ShowInputSearchBar'><input id="SearchInput" autoComplete="off" onBlur={onInputBlur}value={textInput} autoFocus={true} onChange={(s) => {onInputChange(s.target.value)}} className='UserSearch-Input'></input>
-            <AddUserButton onClick={onAddUser}></AddUserButton>
+            <Button onClick={onAddUser} className="UserSearchAddButton">Lägg till</Button>
         </div>
         : <div className='NonSelectedSearchBarContainer'>
         <div className='SearchBar'>
             <img className="UserSearch-Img" src={MagnifyingClass}></img>
             <p className='UserSearch-Text'>Sök</p>
         </div>
-        <AddUserButton onClick={onAddUser}></AddUserButton></div>
+        <Button onClick={onAddUser} className="UserSearchAddButton">Lägg till</Button></div>
         }
 
         {!disableSearchSuggestions ? <SearchSuggestionContainer textInput={textInput} onChoose={onSearchSuggestionSelect} searchSuggestions={searchSuggestions}></SearchSuggestionContainer> : <></>}

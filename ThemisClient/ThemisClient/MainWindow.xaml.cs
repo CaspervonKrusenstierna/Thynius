@@ -19,19 +19,19 @@ namespace ThemisClient
     /// </summary>
     public partial class MainWindow : Window
     {
-        private void LoginButton_Clicked(object sender, RoutedEventArgs e)
+        private async void LoginButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            bool Result = await serverComms.LoginAsync(UsernameTextBox.Text, PasswordTextBox.Password);
+            
         }
 
-        public MainWindow()
+        private ServerComms serverComms;
+        public MainWindow(ServerComms serverComms)
         {
+            this.serverComms = serverComms;
+            InitializeComponent();
+            Style = (Style)FindResource(typeof(Window));
 
-            ServerComms serverComms = new ServerComms("", "");
-            if (!serverComms.isLoggedIn()){
-                InitializeComponent();
-                Style = (Style)FindResource(typeof(Window));
-            }
         }
     }
 }

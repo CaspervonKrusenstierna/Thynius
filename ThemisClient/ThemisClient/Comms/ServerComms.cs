@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -12,63 +14,107 @@ using System.Threading.Tasks;
 
 namespace ThemisClient.Comms
 {
-    struct LoginResponse
+    struct sessionMetaData
     {
-        public string refreshToken;
-        public string accessToken;
-        public string tokenType;
-        public int expiresIn;
+        public int WordCount;
+        public int CharCount;
     }
-    class ServerComms
+    public class ServerComms
     {
-        private static HttpClient client;
-        private string CookieDataPath;
+        private string cookieDataPath;
+        private Uri baseUri;
+        private CookieContainer cookieContainer;
+        private HttpClientHandler clientHandler;
+        private HttpClient client;
         public ServerComms(string baseAddress, string CookieDataPath)
         {
-            client = new HttpClient();
-            client.BaseAddress = new Uri(baseAddress);
-            this.CookieDataPath = CookieDataPath;
+            cookieDataPath = CookieDataPath;
+            baseUri = new Uri(baseAddress);
+
+            cookieContainer = new CookieContainer();
+            LoadCookieData(baseAddress);
+            clientHandler = new HttpClientHandler { UseCookies = true, CookieContainer = cookieContainer };
+
+            client = new HttpClient(clientHandler);
+            client.BaseAddress = baseUri;
+
         }
-        public async Task<LoginResponse> LoginAsync(string _email, string _password)
+        public async Task<bool> LoginAsync(string _email, string _password)
         {
             var body = JsonContent.Create(new { email = _email, password = _password });
             var response = await client.PostAsync("/login?useCookies=true", body);
-            response.EnsureSuccessStatusCode();
-            var contentStream = await response.Content.ReadAsStreamAsync();
-            return JsonSerializer.Deserialize<LoginResponse>(contentStream);
-        }
 
-        public bool isLoggedIn()
-        {
+            response.EnsureSuccessStatusCode();
+
+            File.WriteAllText(cookieDataPath, JsonSerializer.Serialize(cookieContainer.GetCookies(baseUri).Select(i => i.ToString())));
             return true;
         }
-        public async void CreateText(string TextTitle, string DataPath)
+
+        public async Task<bool> isLoggedIn()
         {
-            var response = await client.PostAsync("/usertext?TextTitle=" + TextTitle, null);
-            response.EnsureSuccessStatusCode();
+            var response = await client.GetAsync("/account/getsessioninfo");
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            return false;
         }
 
-        public async Task<int> CreateTextSession(string DataPath, int TextId)
+        public async Task<bool> SubmitSession(string SessionPath, string MetaDataPath)
         {
-            var form = new MultipartFormDataContent();
-
-            var fs = File.OpenRead(DataPath);
-
+            var multipartFormData = new MultipartFormDataContent();
+            var fs = File.OpenRead(SessionPath);
             var streamContent = new StreamContent(fs);
-
             var fileContent = new ByteArrayContent(await streamContent.ReadAsByteArrayAsync());
             fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
+            multipartFormData.Add(fileContent, "file", Path.GetFileName(SessionPath));
 
-            form.Add(fileContent, "file", Path.GetFileName(DataPath));
+            StreamReader MetaDataStreamReader = new StreamReader(MetaDataPath);
+            string json = MetaDataStreamReader.ReadToEnd();
+            sessionMetaData MetaData = JsonSerializer.Deserialize<sessionMetaData>(json);
 
-            HttpResponseMessage response = await client.PostAsync("/textSession?sessionId=" + TextId, form);
+            HttpResponseMessage response = await client.PutAsync("/usertext?charCount=" + MetaData.CharCount + "&wordCount="+MetaData.WordCount, multipartFormData);
 
-            response.EnsureSuccessStatusCode();
+            Debug.WriteLine(response.StatusCode);
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
 
-            var stream = await response.Content.ReadAsStreamAsync();
-            var reader = new StreamReader(stream);
+            return false;
+        }
 
-            return Convert.ToInt32(reader.ReadToEnd());
+        private bool LoadCookieData(string baseAddress)
+        {
+            List<string> cookies;
+            try
+            {
+                cookies = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(cookieDataPath));
+            }
+            catch {
+                File.Create(cookieDataPath);
+                return false;
+            }
+
+            try
+            {
+                string CombinedCookieString = "";
+                int CookieCount = cookies.Count();
+                for(int i = 0; CookieCount > i; i++)
+                {
+                    CombinedCookieString += cookies[i];
+                    if(i != CookieCount-1)
+                    {
+                        CombinedCookieString += ", ";
+                    }
+                }
+                cookieContainer.SetCookies(baseUri, CombinedCookieString);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

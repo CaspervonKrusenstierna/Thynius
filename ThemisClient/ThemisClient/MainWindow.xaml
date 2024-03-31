@@ -25,7 +25,7 @@
         <StackPanel Orientation="Vertical"
                     Margin="20">
             <TextBlock Text="Logga In" 
-                       FontSize="30"
+                       FontSize="26"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontWeight="Bold"
@@ -39,7 +39,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Name="UsernamePanel" Visibility="Visible" Grid.Row="1" HorizontalAlignment="Center">
-                    <TextBlock Text="Användarnamn" 
+                    <TextBlock Text="Email" 
                        Grid.Row="1"
                        Margin="0,15"
                        FontSize="15"

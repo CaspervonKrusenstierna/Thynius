@@ -248,6 +248,10 @@ namespace ThemisWeb.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DueDate")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -321,35 +325,14 @@ namespace ThemisWeb.Server.Migrations
                     b.Property<int>("UserTextId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("WarningLevel")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AssignmentId");
 
                     b.ToTable("Submittments");
-                });
-
-            modelBuilder.Entity("ThemisWeb.Server.Models.TextSession", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("S3Link")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("TextId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Time")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TextSessions");
                 });
 
             modelBuilder.Entity("ThemisWeb.Server.Models.UserText", b =>
@@ -367,6 +350,12 @@ namespace ThemisWeb.Server.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("characterCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("wordCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

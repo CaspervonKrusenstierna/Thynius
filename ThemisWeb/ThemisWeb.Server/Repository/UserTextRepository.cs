@@ -27,13 +27,18 @@ namespace ThemisWeb.Server.Repository
         {
             return await _context.UserTexts.FindAsync(id);
         }
+        public async Task<UserText> GetByTextData(ApplicationUser user, int CharCount, int WordCount)
+        {
+            return await _context.UserTexts.Where(i => (i.OwnerId == user.Id && i.characterCount == CharCount && i.wordCount == WordCount)).FirstAsync();
+
+        }
 
         /*public Task<PutObjectResponse> S3RawContentUpload(UserText text, IFormFile rawContent);
        {
            var putObjectRequest = new PutObjectRequest
            {
                BucketName = _configurationManager["BucketName"],
-               Key = $"group_images/{group.Id}",
+               Key = $"text_rawcontent/{text.Id}",
                ContentType = groupPicture.ContentType,
                InputStream = groupPicture.OpenReadStream()
            };
@@ -44,7 +49,7 @@ namespace ThemisWeb.Server.Repository
            var deleteObjectRequest = new DeleteObjectRequest
            {
                BucketName = _configurationManager["BucketName"],
-               Key = $"raw_textcontent/{text.Id}"
+               Key = $"text_rawcontent/{text.Id}"
            };
            return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
        }
@@ -53,12 +58,44 @@ namespace ThemisWeb.Server.Repository
            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
            {
                BucketName = _configurationManager["BucketName"],
-               Key = $"raw_textcontent/{text.Id}",
+               Key = $"text_rawcontent/{text.Id}",
                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
 
        };
            return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
-       }*/
+       }
+
+        public Task<PutObjectResponse> S3InputDataUpload(UserText text, IFormFile inputData);
+        {
+           var putObjectRequest = new PutObjectRequest
+           {
+               BucketName = _configurationManager["BucketName"],
+               Key = $"text_inputdata/{text.Id}",
+               ContentType = groupPicture.ContentType,
+               InputStream = groupPicture.OpenReadStream()
+           };
+           return await _amazonS3.PutObjectAsync(putObjectRequest);
+        }
+        public Task<DeleteObjectResponse> S3InputDataDelete(UserText text)
+        {
+           var deleteObjectRequest = new DeleteObjectRequest
+           {
+               BucketName = _configurationManager["BucketName"],
+               Key = $"text_inputdata/{text.Id}"
+           };
+           return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
+        }
+        public Task<string> S3GetInputDataSignedUrlAsync(UserText text, IFormFile rawContent)
+        {
+           GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
+           {
+               BucketName = _configurationManager["BucketName"],
+               Key = $"text_inputdata/{text.Id}",
+               Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
+
+        };
+           return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
+        }*/
 
         public bool Add(UserText text)
         {
@@ -74,6 +111,7 @@ namespace ThemisWeb.Server.Repository
         public bool Delete(UserText text)
         {
             //S3RawContentDelete(text)
+            ///S3InputDataDelete(text)
             _context.Remove(text);
             return Save();
         }

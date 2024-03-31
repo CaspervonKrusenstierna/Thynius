@@ -1,0 +1,53 @@
+
+.GroupCreateAssignmentView{
+    margin-top: 150px;
+    width: 100%;
+    gap: 50px;
+}
+.CreateAssignment-DaypickerContainer-Text{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 13px;
+    padding-bottom: 20px;
+}
+.CreateAssignment-DaypickerContainer{
+    height: 500px;
+}
+
+.GroupCreateAssignmentView-Top{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    gap: 250px;
+    height: 500px;
+}
+
+.GroupCreateAssignmentView-Bottom{
+    justify-content: center;
+    display: flex;
+    height: 100px;
+}
+
+@media screen and (max-width: 1250px) {
+    .GroupCreateAssignmentView-Top{
+        gap: 100px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .GroupCreateAssignmentView{
+        margin-top: 20px;
+    }
+    .GroupCreateAssignmentView-Top{
+        margin-top: 30px;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        height: 600px;
+    }
+    .CreateAssignment-DaypickerContainer{
+        max-width: 100%;
+    }
+}
+

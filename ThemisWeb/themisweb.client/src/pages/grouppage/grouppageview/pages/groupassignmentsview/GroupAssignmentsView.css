@@ -1,0 +1,17 @@
+.Assignment-Filler{
+    width: 230px;
+    height: 200px;
+}
+.GroupAssignmentsView{
+    width: 85%;
+    margin-top: 75px;
+}
+
+
+  @media screen and (max-width: 900px) {
+    .GroupAssignmentsView{
+        margin-top: 30px;
+    }
+  }
+
+

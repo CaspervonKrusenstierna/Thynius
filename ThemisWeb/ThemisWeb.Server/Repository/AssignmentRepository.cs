@@ -9,11 +9,19 @@ namespace ThemisWeb.Server.Repository
     {
 
         private readonly ApplicationDbContext _context;
-        public AssignmentRepository(ApplicationDbContext context)
+        private readonly IGroupRepository _groupRepository;
+        public AssignmentRepository(ApplicationDbContext context, IGroupRepository groupRepository)
         {
-            this._context = context;
+            _context = context;
+            _groupRepository = groupRepository;
         }
 
+        public async Task<IEnumerable<Assignment>> GetUserAssignmentsAsync(ApplicationUser user)
+        {
+            IEnumerable<Group> userGroups = await _groupRepository.GetUserGroups(user.Id);
+            IEnumerable<int> userGroupIds = userGroups.Select(group => group.Id);
+            return await _context.Assignments.Where(i => userGroupIds.Contains(i.GroupId)).ToListAsync();
+        }
         public async Task<IEnumerable<Assignment>> GetByGroupIdAsync(int groupId)
         {
             return await _context.Assignments.Where(i => i.GroupId == groupId).ToListAsync();
