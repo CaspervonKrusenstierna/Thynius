@@ -40,36 +40,5 @@ namespace ThemisWeb.Server.Common
 
             return ms;
         }
-
-        public ThemisSessionData ReadAsSessionData(IFormFile file)
-        {
-            var reader = new StreamReader(file.OpenReadStream());
-            string fileContent = reader.ReadToEnd();
-            reader.Dispose();
-
-            return JsonConvert.DeserializeObject<ThemisSessionData>(fileContent);
-        }
-
-
-        public async Task<TextData> GetInputsTextData(IFormFile inputsFile)
-        {
-            TextData toReturn;
-            toReturn.RawContent = "";
-
-            ThemisSessionData sessionData = ReadAsSessionData(inputsFile);
-
-            foreach(Input input in sessionData.inputs)
-            {
-                switch (input._ActionType)
-                {
-                    case ActionType.ADDCHAR: toReturn.RawContent.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
-                    case ActionType.DELETESELECTION: toReturn.RawContent.Remove((int)input._Selection.SelectionStart, (int)input._Selection.SelectionStart - (int)input._Selection.SelectionEnd);  break;
-                    case ActionType.PASTE: toReturn.RawContent.Insert((int)input._Selection.SelectionStart, input.ActionContent);  break;
-                }
-            }
-            toReturn.CharCount = toReturn.RawContent.Length;
-            toReturn.WordCount = toReturn.RawContent.Split(" ").Length;
-            return toReturn;
-        }
     }
 }

@@ -17,6 +17,11 @@ namespace ThemisWeb.Server.Interfaces
         // public Task<PutObjectResponse> S3InputDataUpload(UserText text, IFormFile inputData);
         // public Task<DeleteObjectResponse> S3InputDataDelete(UserText text);
         // public Task<string> S3GetInputDataSignedUrlAsync(UserText text);
+
+        //public Task<PutObjectResponse> S3DetectionDataUpload(UserText text, IFormFile detectionData);
+        // public Task<DeleteObjectResponse> S3DetectionDataDelete(UserText text);
+        // public Task<string> S3GetDetectionDataSignedUrlAsync(UserText text);
+        public Task<IEnumerable<UserText>> GetAssignmentTextsPage(Assignment assignment, int pageIndex, int pageSize);
         public Task<UserText> GetByTextData(ApplicationUser user, int CharCount, int WordCount);
         public bool Add(UserText text);
         public bool Update(UserText text);

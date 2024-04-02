@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from '../../../../../../shared/assets';
 
 const GroupsViewHeader = () => {
-  const sessionInfo = useContext(sessionInfoContext);
+  const sessionInfo = useContext(sessionInfoContext).sessionInfo;
 
   return (
     <>

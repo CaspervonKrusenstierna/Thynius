@@ -2,12 +2,12 @@ import { useContext, useMemo } from "react";
 import { sessionInfoContext } from "../../../../App";
 
 export default function useAssignmentTabs(assignmentId, locationState) {
-    const sessionInfo = useContext(sessionInfoContext);
+    const sessionInfo = useContext(sessionInfoContext).sessionInfo;
     const GroupTabs = useMemo(() => {
         if(sessionInfo?.RoleLevel >= 1){
-            return [{state:locationState, link:`/dashboard/assignment/${assignmentId}/description`, name:"Beskrivning"}, {state:locationState, link:`/dashboard/assignment/${assignmentId}/submittments`, name:"Inlämningar"}]
+            return [{link:`/dashboard/assignment/${assignmentId}/description`, name:"Beskrivning"},{link:`/dashboard/assignment/${assignmentId}/submittments`, name:"Inlämningar"},{link:`/dashboard/assignment/${assignmentId}/notsubmitted`, name:"Ej Inlämnade"}]
         }
-        return [{state:locationState, link: `/dashboard/assignment/${assignmentId}/description`, name:"Beskrivning"}]
+        return [{link: `/dashboard/assignment/${assignmentId}/description`, name:"Beskrivning"}]
         
       }, [assignmentId, sessionInfo]);
     return GroupTabs;

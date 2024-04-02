@@ -1,6 +1,6 @@
 import React from 'react'
-import DashboardHeader from "../../shared/components/dashboardheader/DashboardHeader"
 import SubmitTextPageView from './submittextpageview/SubmitTextPageView'
+import { DashboardHeader } from '../../shared/components/dashboard'
 
 const SubmitTextPage = () => {
   return (

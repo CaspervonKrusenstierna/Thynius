@@ -43,6 +43,7 @@
         width: 100%;
     }
     .CreateAssignmentButton{
+        margin-top: 0px;
         width: 75%;
     }
     .CreateAssignmentButton-Img{
@@ -50,5 +51,8 @@
     }
     .CreateAssignmentButton-Text{
         font-size: calc(width / 12)
+    }
+    .CreateAssignmentButton-Text{
+        font-size: 16px;
     }
 }

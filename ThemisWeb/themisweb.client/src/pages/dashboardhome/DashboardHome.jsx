@@ -1,6 +1,6 @@
 import React from 'react'
-import DashboardHeader from '../../shared/components/dashboardheader/DashboardHeader'
 import DashboardHomeView from './dashboardhomeview/DashboardHomeView'
+import { DashboardHeader } from '../../shared/components/dashboard'
 
 const DashboardHome = () => {
   return (

@@ -1,10 +1,9 @@
 import React from 'react'
 import useChooseableAssignments from './hooks/useChooseableAssignments'
 import useDynamicGroupsRowCount from '../../../groupsviewpage/components/groupsview/components/groupsviewcontainer/hooks/useDynamicGroupsRowCount';
-import RowedItemsContainer from '../../../../shared/components/roweditemscontainer/RowedItemsContainer';
 import ChooseableAssignment from './chooseableassignment/ChooseableAssignment';
 import "./ChooseableAssignments.css"
-
+import { RowedItemsContainer } from '../../../../shared/components/dashboard';
 
 const ChooseableAssignments = (props) => {
   const chooseableAssignments = useChooseableAssignments();

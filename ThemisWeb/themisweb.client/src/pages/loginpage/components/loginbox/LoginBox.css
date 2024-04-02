@@ -8,7 +8,7 @@
     top: calc(50vh - 300px);
     z-index: 1001;
     width: 500px;
-    border-radius: 14px;
+    border-radius: 10px;
     background: white;
 }
 
@@ -25,7 +25,7 @@
     align-items: center;
     padding-bottom: 40px;
     width: 80%;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .LoginBox-BottomContainer {
@@ -37,29 +37,12 @@
     margin-bottom: 20px;
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (max-width: 500px) {
     .LoginBox {
-        top: calc(50vh - 200px);
+        width: 95%;
+        left: calc(50vw - 47.5%);
     }
-}
-
-@media screen and (max-width: 700px) {
-    .LoginBox {
-        width: 450px;
-        left: calc(50vw - 200px);
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .LoginBox {
-        width: 350px;
-        left: calc(50vw - 175px);
-    }
-}
-
-@media screen and (max-width: 350px) {
-    .LoginBox {
-        width: 320px;
-        left: calc(50vw - 160px);
+    .inputcontainer-login {
+        width: 90%;
     }
 }

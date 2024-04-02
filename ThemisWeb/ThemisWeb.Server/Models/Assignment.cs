@@ -16,6 +16,6 @@ namespace ThemisWeb.Server.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public string DueDate { get; set; }
-        public ICollection<Submittment> Submittments { get; set;}
+        public ICollection<UserText> Submittments { get; set;}
     }
 }

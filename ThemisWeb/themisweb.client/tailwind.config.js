@@ -1,12 +1,11 @@
+const { nextui } = require('@nextui-org/theme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{js,jsx,tsx}',
-    './components/**/*.{js,jsx,tsx}',
-    './app/**/*.{js,jsx,tsx}',
     './src/**/*.{js,jsx,tsx}',
-    "./@/components/**/*.{ts,tsx,jsx}",
+    "./node_modules/@nextui-org/theme/dist/components/input.js"
   ],
   prefix: "",
   theme: {
@@ -30,7 +29,8 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-        },
+        }
+        ,
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
@@ -77,5 +77,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), nextui()],
 }

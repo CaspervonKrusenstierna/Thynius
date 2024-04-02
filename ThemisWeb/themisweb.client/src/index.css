@@ -9,6 +9,7 @@
 }
 body{
   position: relative;
+  margin-right: 0px;
 }
 body, html{
   max-width: 100%;

@@ -1,0 +1,52 @@
+.UserSearch{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+}
+.UserSearch-Input{
+    font-size: 15px;
+    height: 50px;
+    width: 200px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+}
+
+.UserSearch-Img{
+    height: 23px;
+}
+.UserSearch-Text{
+    font-size: 15px;
+}
+.UserSearch:hover{
+    cursor:text;
+}
+.SearchBar{
+    height: 50px;
+    width: 200px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.SearchBarContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+@media screen and (max-width: 650px) {
+    .UserSearch,.UserSearch-Input, .SearchBar{
+        width: 100%;
+    }
+    .SearchBarContainer{
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    
+}

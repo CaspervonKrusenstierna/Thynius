@@ -1,6 +1,6 @@
 import React from 'react'
-import DashboardHeader from '../../shared/components/dashboardheader/DashboardHeader'
 import GroupPageView from './grouppageview/GroupPageView';
+import { DashboardHeader } from '../../shared/components/dashboard';
 
 const GroupPage = () => {
     return (

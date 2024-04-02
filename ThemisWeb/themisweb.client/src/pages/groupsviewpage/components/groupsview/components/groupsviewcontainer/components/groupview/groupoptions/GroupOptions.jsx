@@ -6,7 +6,6 @@ import {
     MenubarItem,
     MenubarMenu,
     MenubarSeparator,
-    MenubarShortcut,
     MenubarTrigger,
   } from "@/components/ui/menubar"
   import {
@@ -26,7 +25,7 @@ import { useNavigate } from 'react-router-dom'
   const GroupOptions = (props) => {
     const navigate = useNavigate()
   return (
-    <div className='absolute ml-[250px] md:ml-[215px] '>
+    <div className='absolute ml-[250px] md:ml-[210px] '>
         <Menubar>
             <MenubarMenu>
                 <MenubarTrigger>Ändra</MenubarTrigger>

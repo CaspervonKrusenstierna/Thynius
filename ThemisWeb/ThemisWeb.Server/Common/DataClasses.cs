@@ -18,7 +18,6 @@ namespace ThemisWeb.Server.Common
             public string Name { get; set; }
             public string DateCreated { get; set; }
             public dynamic ManagerData { get; set; }
-            public IEnumerable<dynamic> userDatas { get; set; }
             public IEnumerable<dynamic> assignmentDatas { get; set; }
         }
         public class AssignmentDataExtended
@@ -38,35 +37,13 @@ namespace ThemisWeb.Server.Common
             public int RoleLevel;
             public string ProfilePictureUrl;
         }
-        public enum ActionType
-        {
-            ADDCHAR = 0,
-            DELETESELECTION = 1,
-            PASTE = 2
-        };
-        public struct Selection
-        {
-            public UInt32 SelectionStart;
-            public UInt32 SelectionEnd;
-        };
 
-        public struct Input
+        public class UserTextData
         {
-            public ActionType _ActionType;
-            public string ActionContent;
-            public Selection _Selection;
-            public UInt64 relativeTimePointMs;
-        }
-        public struct ThemisSessionData
-        {
-            public IEnumerable<Input> inputs;
-        }
-
-        public struct TextData
-        {
-            public string RawContent;
-            public int WordCount;
-            public int CharCount;
+            public string OwnerName;
+            public string OwnerID;
+            public string AssignmentName;
+            public string detectionDataUrl;
         }
     }
   }

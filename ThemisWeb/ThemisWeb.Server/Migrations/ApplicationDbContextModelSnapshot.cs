@@ -307,34 +307,6 @@ namespace ThemisWeb.Server.Migrations
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Submittment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("AssignmentId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("TimeSubmitted")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("UserTextId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("WarningLevel")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AssignmentId");
-
-                    b.ToTable("Submittments");
-                });
-
             modelBuilder.Entity("ThemisWeb.Server.Models.UserText", b =>
                 {
                     b.Property<int>("Id")
@@ -343,13 +315,22 @@ namespace ThemisWeb.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("AssignmentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("OwnerId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("TimeSubmitted")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("WarningLevel")
+                        .HasColumnType("int");
 
                     b.Property<int>("characterCount")
                         .HasColumnType("int");
@@ -358,6 +339,8 @@ namespace ThemisWeb.Server.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AssignmentId");
 
                     b.HasIndex("OwnerId");
 
@@ -448,22 +431,19 @@ namespace ThemisWeb.Server.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Submittment", b =>
-                {
-                    b.HasOne("ThemisWeb.Server.Models.Assignment", null)
-                        .WithMany("Submittments")
-                        .HasForeignKey("AssignmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ThemisWeb.Server.Models.UserText", b =>
                 {
+                    b.HasOne("ThemisWeb.Server.Models.Assignment", "AssignmentSubmittedTo")
+                        .WithMany("Submittments")
+                        .HasForeignKey("AssignmentId");
+
                     b.HasOne("ThemisWeb.Server.Models.ApplicationUser", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AssignmentSubmittedTo");
 
                     b.Navigation("Owner");
                 });

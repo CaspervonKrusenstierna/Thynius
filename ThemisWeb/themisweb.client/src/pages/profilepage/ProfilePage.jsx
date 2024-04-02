@@ -1,5 +1,6 @@
 
-import DashboardHeader from "../../shared/components/dashboardheader/DashboardHeader";
+
+import { DashboardHeader } from "../../shared/components/dashboard";
 import ProfilePageView from "./profilepageview/ProfilePageView";
 
 const ProfilePage = () => {

@@ -6,7 +6,7 @@ import { ImageAvatar } from '../../../../../../../../shared/assets'
 import GroupOptions from './groupoptions/GroupOptions'
 
 const GroupView = (props) => {
-  const sessionInfo = useContext(sessionInfoContext);
+  const sessionInfo = useContext(sessionInfoContext).sessionInfo;
   return (
     <div className='flex flex-column rounded w-[320px] h-[275px] md:w-[275px] md:h-[250px] mt-[15px] shadow-light'>
       {sessionInfo?.ID == props.managerId ? <GroupOptions groupId={props.groupId}></GroupOptions> : <></>}

@@ -73,7 +73,11 @@ export default defineConfig({
             }, '^/users/getsearchusers': {
                 target,
                 secure: false
-            },'^/account/logout': {
+            }, '^/users/assignmentusers': {
+                target,
+                secure: false
+            }
+            , '^/account/logout': {
                 target,
                 secure: false
             }, '^/assignment': {
@@ -81,6 +85,9 @@ export default defineConfig({
                 secure: false
             },
             '^/user/usertexts': {
+                target,
+                secure: false
+            }, '^/usertext/submit': {
                 target,
                 secure: false
             }

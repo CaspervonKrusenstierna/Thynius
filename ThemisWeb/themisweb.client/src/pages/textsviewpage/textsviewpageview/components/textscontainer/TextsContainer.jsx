@@ -1,9 +1,9 @@
 import React from 'react'
 import useTextsInfo from './hooks/useTextsInfo';
 import useDynamicTextsRowCount from './hooks/useDynamicTextsRowCount';
-import RowedItemsContainer from '../../../../../shared/components/roweditemscontainer/RowedItemsContainer';
 import TextView from "./components/textview/TextView";
 import "./TextsContainer.css"
+import { RowedItemsContainer } from '../../../../../shared/components/dashboard';
 
 const TextsContainer = () => {
     const textsInfo = useTextsInfo();

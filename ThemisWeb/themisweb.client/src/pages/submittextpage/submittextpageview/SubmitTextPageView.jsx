@@ -10,7 +10,7 @@ const SubmitTextPageView = () => {
     const {id} = useParams();
 
     function SubmitText(assignmentId){
-      const response = useFetch("/submittment?textId=" + id + "&assignmentId=" + assignmentId, "POST").then(j => j.json());
+      const response = useFetch("/usertext/submit?textId=" + id + "&assignmentId=" + assignmentId, "POST").then(j => j.json());
     }
 
   return (

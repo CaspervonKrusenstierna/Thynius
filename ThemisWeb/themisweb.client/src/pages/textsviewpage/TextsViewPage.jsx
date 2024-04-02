@@ -1,6 +1,6 @@
 import React from 'react'
-import DashboardHeader from '../../shared/components/dashboardheader/DashboardHeader'
 import TextsViewPageView from './textsviewpageview/TextsViewPageView'
+import { DashboardHeader } from "../../shared/components/dashboard"
 
 const TextsViewPage = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
-import DashboardHeader from '../../shared/components/dashboardheader/DashboardHeader'
 import AssignmentPageView from './assignmentpageview/AssignmentPageView'
+import { DashboardHeader } from '../../shared/components/dashboard'
 
 const AssignmentPage = () => {
   return (

@@ -14,14 +14,12 @@ namespace ThemisWeb.Server.Controllers
         IAssignmentRepository _assignmentRepository;
         IGroupRepository _groupRepository;
         UserManager<ApplicationUser> _userManager;
-        ISubmittmentRepository _submittmentRepository;
         IUserRepository _userRepository;
-        public AssignmentController(IAssignmentRepository assignmentRepository, IUserRepository userRepository, ISubmittmentRepository submittmentRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
+        public AssignmentController(IAssignmentRepository assignmentRepository, IUserRepository userRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
         {
             _assignmentRepository = assignmentRepository;
             _groupRepository = groupRepository;
             _userManager = userManager;
-            _submittmentRepository = submittmentRepository;
             _userRepository = userRepository;
         }
 
@@ -44,7 +42,7 @@ namespace ThemisWeb.Server.Controllers
             }
 
             AssignmentDataExtended toReturn = new AssignmentDataExtended();
-            return JsonSerializer.Serialize(new { assignment.Description });
+            return JsonSerializer.Serialize(new { assignment.Description, assignment.Name});
         }
         [HttpPost]
         public async Task<IActionResult> CreateAssignment(int groupId, string AssignmentName, string dueDate)
@@ -100,7 +98,9 @@ namespace ThemisWeb.Server.Controllers
             return Ok();
         }
 
+
         [HttpGet]
+        [Authorize(Roles = "VerifiedUser")]
         [Route("getuserassignments")]
         public async Task<string> getUserAssignments()
         {

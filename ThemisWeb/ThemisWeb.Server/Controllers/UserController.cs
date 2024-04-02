@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using ThemisWeb.Server.Common;
@@ -18,11 +19,14 @@ namespace ThemisWeb.Server.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IGroupRepository _groupRepository;
         UserManager<ApplicationUser> _userManager;
-        public UserController(IUserRepository userRepository,IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
+        private readonly IAssignmentRepository _assignmentRepository;
+        public UserController(IUserRepository userRepository, IAssignmentRepository assignmentRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
         {
             _userRepository = userRepository;
             _groupRepository = groupRepository;
             _userManager = userManager;
+            _assignmentRepository = assignmentRepository;
+
         }
 
         [HttpGet]
@@ -60,14 +64,14 @@ namespace ThemisWeb.Server.Controllers
         [Route("/users/getsearchusers")]
         public async Task<string> GetSearchUsers(string Search, int Max=3, bool includeSelf = false)
         {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            string org = user.OrganizationEmailExtension;
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            string org = callingUser.OrganizationEmailExtension;
             IEnumerable<ApplicationUser> SearchResult = await _userRepository.GetSearchUsers(Search,org,Max);
             if (includeSelf)
             {
                 return JsonConvert.SerializeObject(SearchResult.Select(i => i.UserName));
             }
-            return JsonConvert.SerializeObject(SearchResult.Where(i => i.UserName != user.UserName).Select(i => new { username=i.UserName, email=i.Email, id=i.Id }));
+            return JsonConvert.SerializeObject(SearchResult.Where(i => i.UserName != callingUser.UserName).Select(i => new { username=i.UserName, email=i.Email, id=i.Id }));
         }
 
     }

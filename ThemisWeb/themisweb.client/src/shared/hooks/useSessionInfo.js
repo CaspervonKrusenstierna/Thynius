@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 
 export default function useSessionInfo() {
     const [sessionInfo, setSessionInfo] = useState();
+    function updateSessionInfo(){
+        useFetch("/account/getsessioninfo", "GET").then(s => {if(s.status == 401){setSessionInfo(null)}else{return s.json()}}).then(l => {setSessionInfo(l)});
 
+    }
     useEffect(() => {
-        useFetch("/account/getsessioninfo", "GET"
-        ).then(s => s.json()).then(l => {setSessionInfo(l)});
-    
+       updateSessionInfo();
     }, [])
+    
 
-    return sessionInfo;
+    return [sessionInfo, updateSessionInfo];
 }

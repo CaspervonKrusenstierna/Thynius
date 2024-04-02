@@ -1,6 +1,5 @@
 import React from 'react'
 import "./ChooseableAssignment.css"
-import { ImageAvatar } from '../../../../../shared/assets'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,6 +12,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import { ImageAvatar } from '../../../../../shared/assets'
 
 const ChooseableAssignment = (props) => {
   return (
@@ -31,7 +31,7 @@ const ChooseableAssignment = (props) => {
         </AlertDialogDescription>
       </AlertDialogHeader>
       <AlertDialogFooter className="gap-2">
-        <AlertDialogCancel>Ångra</AlertDialogCancel>
+        <AlertDialogCancel className="outline-none border-none">Ångra</AlertDialogCancel>
         <AlertDialogAction onClick={() => {props.onClick(props.Id)}} >Skicka in</AlertDialogAction>
       </AlertDialogFooter>
     </AlertDialogContent>

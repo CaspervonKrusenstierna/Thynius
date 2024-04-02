@@ -1,0 +1,37 @@
+:root{
+    overflow-y: auto;
+}
+.GroupMembersView{
+    border-radius: 5px;
+    height: 645px;
+    width: 100%;
+    overflow: hidden;
+}
+.GroupMembersView-Header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.GroupMembersView-Title{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 650px){
+    .GroupMembersView-Header{
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 5px;
+        padding-left: 20px;
+    }
+}
+@media screen and (max-width: 500px) {
+    .GroupMembersView{
+        height: 705px;
+    }
+}

@@ -1,0 +1,44 @@
+.DUCProfileButton{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border: none;
+    width: 250px;
+    gap: 10px;
+}
+.DUCProfileButton:hover{
+    cursor: pointer;
+}
+.DUCProfileButton-TextContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 50px;
+    gap: 2px;
+}
+.DUCProfileButton-Text{
+    font-size: 16px;
+}
+.DUCProfileButton-Icon{
+}
+
+
+@media screen and (max-width: 1300px) {
+    .DUCProfileButton-Text{
+        font-size: 15px;
+    }
+  }
+
+
+@media screen and (max-width: 650px) {
+    .DUCProfileButton-Text{
+        font-size: 14px;
+    }
+    .DUCProfileButton{
+        justify-content: center;
+        margin-top: 5px;
+        width: 100%;
+    }
+  }

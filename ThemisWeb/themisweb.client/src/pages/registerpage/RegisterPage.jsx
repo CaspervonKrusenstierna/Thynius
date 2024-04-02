@@ -1,9 +1,6 @@
 import { useEffect } from "react";
-import { DarknessEffect } from "../../shared/components"
-import { Header } from "../../shared/components";
-import MainContentContainer from "../../shared/components/maincontentcontainer/MainContentContainer";
-import WaveBackgroundBox from "../../shared/components/wavebackgroundbox/WaveBackgroundBox";
 import RegisterBox from "./components/registerbox/RegisterBox";
+import { DarknessEffect, Header, MainContentContainer, WaveBackgroundBox } from "../../shared/components/homepage";
 
 function RegisterPage() {
     useEffect(() => {

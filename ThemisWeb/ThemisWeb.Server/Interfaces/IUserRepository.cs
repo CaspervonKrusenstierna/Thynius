@@ -13,8 +13,6 @@ namespace ThemisWeb.Server.Interfaces
         public Task<IEnumerable<ApplicationUser>> GetSearchUsers(string search, string organization, int max);
         public Task<IEnumerable<ApplicationUser>> GetGroupUsers(Group group);
 
-        public Task<ApplicationUser> GetSubmittmentUser(Submittment submittment);
-
         /*public Task<PutObjectResponse> UploadUserProfilePictureAsync(ApplicationUser user, IFormFile profilepicture);
         public Task<DeleteObjectResponse> DeleteUserProfilePictureAsync(ApplicationUser user);
         public Task<string> GetSignedUserProfileImgUrlAsync(ApplicationUser user);*/

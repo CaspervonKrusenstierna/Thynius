@@ -1,3 +1,4 @@
+
 .SubmitTextPageView{
     display: flex;
     flex-direction: column;
@@ -26,7 +27,7 @@
     }
   }
 
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 768px) {
     .SubmitTextPageView{
         width: 500px;
     }

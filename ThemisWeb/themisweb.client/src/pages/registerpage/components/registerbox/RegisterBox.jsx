@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState } from 'react'
 import "./RegisterBox.css"
-import { Input, SubmitButton, ErrorMessage, ExitButton} from "../../../../shared/components"
+import { Input, SubmitButton} from "../../../../shared/components/homepage"
 import { UserImg, UnlockImg, EnvelopeImg } from "../../../../shared/assets"
 import useRegister from './useRegister';
 import { useNavigate } from "react-router-dom";
+import { X } from 'lucide-react';
 
 const RegisterBox = () => {
     const [error, setError] = useState();
@@ -31,11 +32,11 @@ const RegisterBox = () => {
         return (
             <div className='RegisterBox'>
                 <div className='ExitButtonContainer'>
-                    <ExitButton onClick={() => { navigate("/") }}></ExitButton>
+                    <button className='h-10 w-10' onClick={() => {navigate("/")}}><X className='w-full h-full'></X></button>
                 </div>
                 <div className='inputcontainer-register'>
-                    {error && <ErrorMessage message={error}></ErrorMessage>}
-                    <Input onChange={(e) => { Username.current = e.target.value }} label="Användarnamn" img={UserImg}></Input>
+                    <p className="text-base text-red-500 h-5">{error}</p>
+                    <Input onChange={(e) => { Username.current = e.target.value }} label="Namn" img={UserImg}></Input>
                     <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={EnvelopeImg}></Input>
                     <Input hide={true} onChange={(e) => { Password.current = e.target.value }} label="Lösenord" img={UnlockImg}></Input>
                     <Input hide={true} onChange={(e) => { ConfirmPassword.current = e.target.value }} label="Bekräfta lösenord" img={UnlockImg}></Input>

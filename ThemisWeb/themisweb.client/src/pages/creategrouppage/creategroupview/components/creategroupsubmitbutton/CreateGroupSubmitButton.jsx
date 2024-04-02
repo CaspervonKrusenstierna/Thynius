@@ -5,8 +5,8 @@ import { ArrowRight } from '../../../../../shared/assets'
 
 
 const CreateGroupSubmitButton = () => {
-  (
-    <Button className="CreateGroupSubmitButton" size="default" variant="outline">
+  return (
+    <Button className="CreateGroupSubmitButton" size="default">
         <p className='text-lg'>Skapa</p>
         <img className="h-6"src={ArrowRight}></img>
     </Button>

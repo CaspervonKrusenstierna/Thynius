@@ -16,6 +16,12 @@ namespace ThemisWeb.Server.Models
         public string OwnerId { get; set; }
         public ApplicationUser Owner { get; set; }
 
+        [ForeignKey("Assignment")]
+        public int? AssignmentId { get; set; }
+        public Assignment AssignmentSubmittedTo { get; set; }
+        public string? TimeSubmitted {  get; set; }
+
+        public int? WarningLevel { get; set; }
         public int wordCount { get; set; }
         public int characterCount {  get; set; }
 

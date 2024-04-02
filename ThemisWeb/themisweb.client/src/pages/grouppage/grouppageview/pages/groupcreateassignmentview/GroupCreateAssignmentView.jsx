@@ -3,8 +3,8 @@ import "./GroupCreateAssignmentView.css"
 import CreateAssignmentSubmitButton from './components/createassignmentsubmitbutton/CreateAssignmentSubmitButton';
 import CreateAssignmentNameInput from './components/createassignmentsnameinput/CreateAssignmentNameInput';
 import { Calendar } from "@/components/ui/calendar"
-import useFetch from '../../../../../shared/hooks/useFetch';
 import { groupinfoContext } from '../../GroupPageView';
+import useFetch from '../../../../../shared/hooks/useFetch';
 
 const GroupCreateAssignmentView = (props) => {
   const groupInfo = useContext(groupinfoContext);

@@ -1,10 +1,10 @@
 import React from 'react'
 import "../../../shared/styles/DashboardContainer.css"
 import ResolveAssignmentPageContent from './hooks/ResolveAssignmentPageContent';
-import DashboardContainerSideBar from '../../../shared/components/dashboardcontainersidebar/DashboardContainerSideBar';
 import { useLocation, useParams } from 'react-router-dom';
 import useAssignmentTabs from './hooks/useAssignmentTabs';
 import useExtendedAssignmentInfo from './hooks/useExtendedAssignmentInfo';
+import { DashboardContainerSidebar } from '../../../shared/components/dashboard';
 
 const AssignmentPageView = () => {
   const {id} = useParams();
@@ -16,7 +16,7 @@ const AssignmentPageView = () => {
   return (
     <div className='DashboardContainer-Container'>
         <div className='DashboardContainer'>
-        <DashboardContainerSideBar sidebartitle={location.state?.assignmentName} navigationtitle="Information" tabs={assignmentTabs}></DashboardContainerSideBar>
+        <DashboardContainerSidebar sidebartitle={extendedAssignmentInfo?.Name} navigationtitle="Information" tabs={assignmentTabs}></DashboardContainerSidebar>
         <div className='DashboardContainer-Content'>
           {pageContent}
         </div>

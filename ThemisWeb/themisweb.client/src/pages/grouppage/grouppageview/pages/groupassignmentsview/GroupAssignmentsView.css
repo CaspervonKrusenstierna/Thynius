@@ -4,14 +4,21 @@
 }
 .GroupAssignmentsView{
     width: 85%;
-    margin-top: 75px;
+    margin-top: 50px;
 }
 
 
-  @media screen and (max-width: 900px) {
-    .GroupAssignmentsView{
-        margin-top: 30px;
-    }
+@media screen and (max-width: 900px) {
+  .GroupAssignmentsView{
+      margin-top: 30px;
   }
+}
+
+@media screen and (max-width: 400px) {
+  .GroupAssignmentsView{
+      margin-left: 20px;
+      margin-top: 30px;
+  }
+}
 
 

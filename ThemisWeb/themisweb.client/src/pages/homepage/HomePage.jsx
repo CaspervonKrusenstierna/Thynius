@@ -1,9 +1,6 @@
 
-import { Header } from "../../shared/components/index"
-import MainContentContainer from "../../shared/components/maincontentcontainer/MainContentContainer"
-import Footer from "../../shared/components/footer/Footer"
-import WaveBackgroundBox from "../../shared/components/wavebackgroundbox/WaveBackgroundBox"
 import "./HomePage.css"
+import { WaveBackgroundBox, Header, MainContentContainer, Footer } from "../../shared/components/homepage"
 
 const HomePage = () => {
   return (

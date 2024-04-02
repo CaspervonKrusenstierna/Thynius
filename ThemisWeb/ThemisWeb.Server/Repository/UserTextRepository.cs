@@ -33,6 +33,14 @@ namespace ThemisWeb.Server.Repository
 
         }
 
+        public async Task<IEnumerable<UserText>> GetAssignmentTextsPage(Assignment assignment, int pageIndex, int pageSize)
+        {
+            var textCount = _context.UserTexts.Count();
+            var totalPages = (int)(textCount / pageSize);
+            return await _context.UserTexts.Where(i => i.AssignmentId == assignment.Id).Skip((pageIndex-1)*pageSize).Take(pageSize).ToListAsync();
+
+        }
+
         /*public Task<PutObjectResponse> S3RawContentUpload(UserText text, IFormFile rawContent);
        {
            var putObjectRequest = new PutObjectRequest
@@ -95,8 +103,39 @@ namespace ThemisWeb.Server.Repository
 
         };
            return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
-        }*/
+        }
 
+        public async Task<PutObjectResponse> S3DetectionDataUpload(UserText text, IFormFile detectionData){
+           var putObjectRequest = new PutObjectRequest
+           {
+               BucketName = _configurationManager["BucketName"],
+               Key = $"text_detectiondata/{text.Id}",
+               ContentType = groupPicture.ContentType,
+               InputStream = groupPicture.OpenReadStream()
+           };
+           return await _amazonS3.PutObjectAsync(putObjectRequest);
+        }
+
+        public async Task<DeleteObjectResponse> S3DetectionDataDelete(UserText text){
+           var deleteObjectRequest = new DeleteObjectRequest
+           {
+               BucketName = _configurationManager["BucketName"],
+               Key = $"text_detectiondata/{text.Id}"
+           };
+           return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
+        }
+
+        public async Task<string> S3GetDetectionDataSignedUrlAsync(UserText text){}{
+           GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
+           {
+               BucketName = _configurationManager["BucketName"],
+               Key = $"text_detectiondata/{text.Id}",
+               Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
+
+           };
+           return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
+        }
+        */
         public bool Add(UserText text)
         {
             _context.Add(text);
