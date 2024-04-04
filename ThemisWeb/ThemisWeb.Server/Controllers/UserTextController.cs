@@ -49,6 +49,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpGet]
+        [Route("detectiondata")]
         [Authorize(Roles = "Admin, OrganizationAdmin, Teacher")]
         public async Task<string> GetUserText(int textId)
         {
@@ -100,7 +101,8 @@ namespace ThemisWeb.Server.Controllers
                 HttpContext.Response.StatusCode = 401;
                 return null;
             }
-            throw new NotImplementedException();
+            string signedUrl = await _userTextRepository.S3GetRawContentSignedUrlAsync(textToAccess);
+            return JsonSerializer.Serialize(new { rawdatalink = signedUrl });
         }
 
         [Route("/user/usertexts")]

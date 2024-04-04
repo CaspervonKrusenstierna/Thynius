@@ -102,7 +102,10 @@ export default defineConfig({
             },'^/users/groupusers': {
                 target,
                 secure: false
-            },
+            }, '^/usertext/rawcontent': {
+                target,
+                secure: false
+            }
         },
         port: 5173,
         https: {

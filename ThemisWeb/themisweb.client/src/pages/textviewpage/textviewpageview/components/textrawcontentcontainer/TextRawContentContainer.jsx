@@ -1,9 +1,9 @@
 import React from 'react'
 import "./TextRawContentContainer.css"
 
-const TextRawContentContainer = () => {
+const TextRawContentContainer = (props) => {
   return (
-    <div className='TextRawContentContainer'>TextRawContentContainer</div>
+    <div className='TextRawContentContainer'>{props.text}</div>
   )
 }
 
