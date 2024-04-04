@@ -9,10 +9,13 @@ using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using ThemisWeb.Server.Common;
 using static ThemisWeb.Server.Common.DataClasses;
+using static ThemisWeb.Server.Common.Utilities;
+using ThemisWeb.Server.Models.Dtos;
+using System.Text.Json;
+using FluentValidation;
 
 namespace ThemisWeb.Server.Controllers
 {
-    [Authorize]
     [Route("/account")]
     public class AccountController : Controller
     {
@@ -28,37 +31,74 @@ namespace ThemisWeb.Server.Controllers
             _signInManager = signInManager;
         }
 
-        [Route("initializeaccount")]
-        [HttpPost]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> InitializeAccount() // assign the user to an org to initialize the account
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            string Email = user.NormalizedEmail;
-
-            Organization org = await _organizationRepository.GetByEmailExtensionAsync(Email.Split("@")?[1]);
-            if (org == null)
-            {
-                return StatusCode(404);
-            }
-            await _userManager.AddToRoleAsync(user, "VerifiedUser");
-            user.OrganizationEmailExtension = org.EmailExtension;
-            _userRepository.Update(user);
-
-            return StatusCode(200);
-        }
-
-        [Route("logout")]
+        [Route("/logout")]
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return Ok();
         }
+        
+        [Route("/register")]
+        [HttpPost]
+        public async Task<IActionResult> Register([FromBody]RegisterDto model)
+        {
+            RegisterValidator validator = new RegisterValidator();
+            var validateResponse = validator.Validate(model);
+            if (!validateResponse.IsValid)
+            {
+                return BadRequest();
+            }
 
-        [Route("getsessioninfo")]
+            string[] Split = model.email.Split("@");
+            string Name = Split[0];
+            string EmailExtension = Split[1];
+            Organization org = await _organizationRepository.GetByEmailExtensionAsync(EmailExtension);
+            if (org == null)
+            {
+                return BadRequest(System.Text.Json.JsonSerializer.Serialize(new {error="Organization is not valid."}));
+            }
+
+            ApplicationUser user = new ApplicationUser()
+            {
+                FullName = Name,
+                Email = model.email,
+                UserName = model.email,
+                OrganizationEmailExtension = EmailExtension,
+                PasswordHash = model.password,
+            };
+            var result = await _userManager.CreateAsync(user, user.PasswordHash!);
+            var response = await _userRepository.UploadUserProfilePictureAsync(user, Utilities.GenerateInitialsImage(Split[0], Split[1]));
+
+            if (result.Succeeded)
+            {
+                return Ok();
+            }
+
+            return BadRequest(System.Text.Json.JsonSerializer.Serialize(new { error = "Username is already taken." }));
+        }
+        [HttpPut]
+        [Authorize]
+        public async Task<IActionResult> EditProfile([FromForm] EditProfileDto model)
+        {
+            EditProfileValidator validator = new EditProfileValidator();
+            var validateResponse = validator.Validate(model);
+            if (!validateResponse.IsValid)
+            {
+                return BadRequest();
+            }
+
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            callingUser.PasswordHash = _userManager.PasswordHasher.HashPassword(callingUser, model.password);
+            callingUser.FullName = model.name;
+            _userRepository.UploadUserProfilePictureAsync(callingUser, (MemoryStream)model.profilePicture.OpenReadStream());
+            _userRepository.Update(callingUser);
+            return Ok();
+        }
+
+        [Route("/getsessioninfo")]
         [HttpGet]
+        [Authorize]
         public async Task<String> GetSessionInfo()
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
@@ -67,11 +107,11 @@ namespace ThemisWeb.Server.Controllers
                 ID = user.Id, 
                 Username = user.UserName, 
                 RoleLevel = roleLevel, 
-               // ProfilePictureUrl = await _userRepository.GetSignedUserProfileImgUrlAsync(user)
+                ProfilePictureUrl = await _userRepository.GetSignedUserProfileImgUrlAsync(user)
             });
         }
 
-        [Route("adduserrrole/organizationadmin")]
+        [Route("/adduserrrole/organizationadmin")]
         [HttpPost]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddOrganizationAdminRole(string userId)
@@ -85,7 +125,7 @@ namespace ThemisWeb.Server.Controllers
             return Ok();
         }
 
-        [Route("adduserrrole/teacher")]
+        [Route("/adduserrrole/teacher")]
         [HttpPost]
         [Authorize(Roles = "Admin, OrganizationAdmin")]
         public async Task<IActionResult> AddTeacherRole(string userId)

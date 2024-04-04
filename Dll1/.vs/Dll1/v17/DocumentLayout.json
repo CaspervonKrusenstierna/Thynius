@@ -7,129 +7,149 @@
       "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Hooks\\Hooks.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Comms\\Comms.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\ThemisSessionData\\ThemisSessionData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Data\\Data.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Data\\Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Comms\\Comms.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\MemUtils\\MemUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\SystemUtils\\SystemUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\lib\\Debug\\libMinHook.x64.lib||{25834150-CD7E-11D0-92DF-00A0C9138C45}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Dll1\\lib\\Debug\\libMinHook.x64.lib||{25834150-CD7E-11D0-92DF-00A0C9138C45}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\ThemisSessionData\\ThemisSessionData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\SystemUtils\\SystemUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\ThemisSessionData\\ThemisSessionData.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Hooks\\Hooks.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Hooks\\Hooks.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\MemUtils\\MemUtils.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Data\\Data.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Data\\Data.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Comms\\Comms.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\SystemUtils\\SystemUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\ThemisSessionData\\ThemisSessionData.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\Comms\\Comms.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\MemUtils\\MemUtils.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\framework.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\lib\\Debug\\libMinHook.x64.lib||{25834150-CD7E-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Dll1\\lib\\Debug\\libMinHook.x64.lib||{25834150-CD7E-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{2868413B-0012-411B-A260-F191D308CD1D}|Dll1\\Dll1.vcxproj|solutionrelative:Dll1\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 255,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "DockedHeight": 195,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Data.cpp",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.cpp",
-              "RelativeDocumentMoniker": "Dll1\\Data\\Data.cpp",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.cpp",
-              "RelativeToolTip": "Dll1\\Data\\Data.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACsAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-24T09:08:12.696Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "dllmain.cpp",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\dllmain.cpp",
               "RelativeDocumentMoniker": "Dll1\\dllmain.cpp",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\dllmain.cpp",
               "RelativeToolTip": "Dll1\\dllmain.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABwAAAAaAAAA",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAABYAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-22T15:24:40.34Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Comms.cpp",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.cpp",
-              "RelativeDocumentMoniker": "Dll1\\Comms\\Comms.cpp",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.cpp",
-              "RelativeToolTip": "Dll1\\Comms\\Comms.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "SystemUtils.cpp",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.cpp",
+              "RelativeDocumentMoniker": "Dll1\\SystemUtils\\SystemUtils.cpp",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.cpp",
+              "RelativeToolTip": "Dll1\\SystemUtils\\SystemUtils.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-23T10:26:24.408Z",
+              "WhenOpened": "2024-03-23T21:10:21.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MemUtils.cpp",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.cpp",
+              "RelativeDocumentMoniker": "Dll1\\MemUtils\\MemUtils.cpp",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.cpp",
+              "RelativeToolTip": "Dll1\\MemUtils\\MemUtils.cpp",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAEUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-23T10:12:29.277Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Hooks.h",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Hooks\\Hooks.h",
+              "RelativeDocumentMoniker": "Dll1\\Hooks\\Hooks.h",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Hooks\\Hooks.h",
+              "RelativeToolTip": "Dll1\\Hooks\\Hooks.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-23T20:59:50.961Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "framework.h",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\framework.h",
-              "RelativeDocumentMoniker": "Dll1\\framework.h",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\framework.h",
-              "RelativeToolTip": "Dll1\\framework.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Title": "ThemisSessionData.h",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.h",
+              "RelativeDocumentMoniker": "Dll1\\ThemisSessionData\\ThemisSessionData.h",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.h",
+              "RelativeToolTip": "Dll1\\ThemisSessionData\\ThemisSessionData.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-23T10:19:35.5Z"
+              "WhenOpened": "2024-03-25T18:35:39.487Z"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Data.cpp",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.cpp",
+              "RelativeDocumentMoniker": "Dll1\\Data\\Data.cpp",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.cpp",
+              "RelativeToolTip": "Dll1\\Data\\Data.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABLAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-03-24T09:08:12.696Z"
             },
             {
               "$type": "Document",
@@ -139,22 +159,10 @@
               "RelativeDocumentMoniker": "Dll1\\Hooks\\Hooks.cpp",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Hooks\\Hooks.cpp",
               "RelativeToolTip": "Dll1\\Hooks\\Hooks.cpp",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAAAAAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAUwCQAAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-23T20:59:56.231Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ThemisSessionData.h",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.h",
-              "RelativeDocumentMoniker": "Dll1\\ThemisSessionData\\ThemisSessionData.h",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.h",
-              "RelativeToolTip": "Dll1\\ThemisSessionData\\ThemisSessionData.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-25T18:35:39.487Z"
             },
             {
               "$type": "Document",
@@ -164,7 +172,7 @@
               "RelativeDocumentMoniker": "Dll1\\ThemisSessionData\\ThemisSessionData.cpp",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\ThemisSessionData\\ThemisSessionData.cpp",
               "RelativeToolTip": "Dll1\\ThemisSessionData\\ThemisSessionData.cpp",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAABAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-03-25T18:35:33.131Z",
               "EditorCaption": ""
@@ -172,89 +180,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "libMinHook.x64.lib",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\lib\\Debug\\libMinHook.x64.lib",
-              "RelativeDocumentMoniker": "Dll1\\lib\\Debug\\libMinHook.x64.lib",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\lib\\Debug\\libMinHook.x64.lib",
-              "RelativeToolTip": "Dll1\\lib\\Debug\\libMinHook.x64.lib",
-              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB8SURBVDhPxZMxDoAgDEXBOHE2FvWc6sLZWEtaC5EKCRGibyg/zc\u002BnKUF1AQCaZYb3HlhmGGMefl0zW2tZXTjnWOXMWGrmYz/pXLeFzpKPAhBpRu46In0T1Q5SACaWbpRI37gJ3jIuALcbNxxp6aVnLC2wpff/BNW/8BFKBcE6Q\u002BulzY11AAAAAElFTkSuQmCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "WhenOpened": "2024-03-24T09:33:11.377Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": ".gitignore",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\.gitignore",
-              "RelativeDocumentMoniker": "Dll1\\.gitignore",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\.gitignore",
-              "RelativeToolTip": "Dll1\\.gitignore",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2024-03-24T09:24:53.956Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Data.h",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.h",
-              "RelativeDocumentMoniker": "Dll1\\Data\\Data.h",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.h",
-              "RelativeToolTip": "Dll1\\Data\\Data.h",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAACAAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-24T09:08:29.937Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SystemUtils.cpp",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.cpp",
-              "RelativeDocumentMoniker": "Dll1\\SystemUtils\\SystemUtils.cpp",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.cpp",
-              "RelativeToolTip": "Dll1\\SystemUtils\\SystemUtils.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-23T21:10:21.546Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "SystemUtils.h",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.h",
               "RelativeDocumentMoniker": "Dll1\\SystemUtils\\SystemUtils.h",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\SystemUtils\\SystemUtils.h",
               "RelativeToolTip": "Dll1\\SystemUtils\\SystemUtils.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAmAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-03-23T21:10:11.851Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Hooks.h",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Hooks\\Hooks.h",
-              "RelativeDocumentMoniker": "Dll1\\Hooks\\Hooks.h",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Hooks\\Hooks.h",
-              "RelativeToolTip": "Dll1\\Hooks\\Hooks.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-23T20:59:50.961Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Comms.h",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.h",
-              "RelativeDocumentMoniker": "Dll1\\Comms\\Comms.h",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.h",
-              "RelativeToolTip": "Dll1\\Comms\\Comms.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-03-23T10:26:30.709Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 12,
               "Title": "MemUtils.h",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.h",
               "RelativeDocumentMoniker": "Dll1\\MemUtils\\MemUtils.h",
@@ -266,15 +203,92 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MemUtils.cpp",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.cpp",
-              "RelativeDocumentMoniker": "Dll1\\MemUtils\\MemUtils.cpp",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\MemUtils\\MemUtils.cpp",
-              "RelativeToolTip": "Dll1\\MemUtils\\MemUtils.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAEUAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "Data.h",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.h",
+              "RelativeDocumentMoniker": "Dll1\\Data\\Data.h",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Data\\Data.h",
+              "RelativeToolTip": "Dll1\\Data\\Data.h",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-24T09:08:29.937Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Comms.h",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.h",
+              "RelativeDocumentMoniker": "Dll1\\Comms\\Comms.h",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.h",
+              "RelativeToolTip": "Dll1\\Comms\\Comms.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-23T10:26:30.709Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Comms.cpp",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.cpp",
+              "RelativeDocumentMoniker": "Dll1\\Comms\\Comms.cpp",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\Comms\\Comms.cpp",
+              "RelativeToolTip": "Dll1\\Comms\\Comms.cpp",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-03-23T10:12:29.277Z"
+              "WhenOpened": "2024-03-23T10:26:24.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "framework.h",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\framework.h",
+              "RelativeDocumentMoniker": "Dll1\\framework.h",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\framework.h",
+              "RelativeToolTip": "Dll1\\framework.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-03-23T10:19:35.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": ".gitignore",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\.gitignore",
+              "RelativeDocumentMoniker": "Dll1\\.gitignore",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\.gitignore",
+              "RelativeToolTip": "Dll1\\.gitignore",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2024-03-24T09:24:53.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "libMinHook.x64.lib",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\lib\\Debug\\libMinHook.x64.lib",
+              "RelativeDocumentMoniker": "Dll1\\lib\\Debug\\libMinHook.x64.lib",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\Dll1\\Dll1\\lib\\Debug\\libMinHook.x64.lib",
+              "RelativeToolTip": "Dll1\\lib\\Debug\\libMinHook.x64.lib",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB8SURBVDhPxZMxDoAgDEXBOHE2FvWc6sLZWEtaC5EKCRGibyg/zc\u002BnKUF1AQCaZYb3HlhmGGMefl0zW2tZXTjnWOXMWGrmYz/pXLeFzpKPAhBpRu46In0T1Q5SACaWbpRI37gJ3jIuALcbNxxp6aVnLC2wpff/BNW/8BFKBcE6Q\u002BulzY11AAAAAElFTkSuQmCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "WhenOpened": "2024-03-24T09:33:11.377Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 55,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             }
           ]
         }

@@ -8,6 +8,7 @@ import "./index.css"
 import "./output.css"
 
 import useSessionInfo from "./shared/hooks/useSessionInfo"
+import EditGroupPage from './pages/editgrouppage/EditGroupPage';
 
 export const sessionInfoContext = createContext();
 
@@ -31,6 +32,7 @@ function App() {
                     <Route path='/dashboard/assignment/:id/:page' element={<AssignmentPage></AssignmentPage>}></Route>
                     <Route path='/dashboard/text/:id/submit' element={<SubmitTextPage></SubmitTextPage>}></Route>
                     <Route path='/dashboard/submittment/:id' element={<SubmittmentPage></SubmittmentPage>}></Route>
+                    <Route path='/dashboard/editgroup/:id/:page' element={<EditGroupPage></EditGroupPage>}></Route>
                 </Routes>
             </BrowserRouter >
         </sessionInfoContext.Provider>

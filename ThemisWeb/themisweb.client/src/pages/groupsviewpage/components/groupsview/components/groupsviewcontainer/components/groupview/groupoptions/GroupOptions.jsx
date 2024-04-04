@@ -21,7 +21,7 @@ import {
   } from "@/components/ui/alert-dialog"
 
 import { useNavigate } from 'react-router-dom'
-
+import { deleteGroup } from '../../../../../../../../../shared/network/group'
   const GroupOptions = (props) => {
     const navigate = useNavigate()
   return (
@@ -30,7 +30,7 @@ import { useNavigate } from 'react-router-dom'
             <MenubarMenu>
                 <MenubarTrigger>Ändra</MenubarTrigger>
                 <MenubarContent>
-                <MenubarItem onSelect={() => {navigate("/editgroup/general" + props.groupId)}}>Ändra Gruppinställningar</MenubarItem>
+                <MenubarItem onSelect={() => {navigate("/dashboard/editgroup/" + props.groupId + "/general", {state:{name:props.groupName,img:props.groupImg}})}}>Ändra Gruppinställningar</MenubarItem>
                 <MenubarSeparator />
 
                 <AlertDialog>
@@ -44,7 +44,7 @@ import { useNavigate } from 'react-router-dom'
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                         <AlertDialogCancel className="outline-none border-none">Ångra</AlertDialogCancel>
-                        <AlertDialogAction>Ta Bort</AlertDialogAction>
+                        <AlertDialogAction onClick={() => {deleteGroup(props.groupId)}}>Ta Bort</AlertDialogAction>
                         </AlertDialogFooter>
                     </AlertDialogContent>
                 </AlertDialog>

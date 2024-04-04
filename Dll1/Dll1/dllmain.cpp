@@ -11,6 +11,7 @@ Hooks* hooks;
 ThemisSessionData* themisSessionData;
 Data* data;
 
+
 void OnTextInputFunc(wchar_t input) {
     if (input == 8) {
         themisSessionData->LogInput(ActionType::DELETESELECTION, L"", data->GetSelection());
@@ -23,32 +24,26 @@ void OnPasteFunc(std::wstring PastedText){
     themisSessionData->LogInput(ActionType::PASTE, PastedText, data->GetSelection());
 }
 
-void OnSaveFunc() {
+void OnSaveFunc(unsigned long GUID) {
     std::vector<Input> inputs = themisSessionData->GetSessionData().SessionInputs;
 
     nlohmann::json result;
     for (int i = 0; inputs.size() > i; i++) {
         Input currInput = inputs[i];
         nlohmann::json j;
-        j["ActionContent"] = currInput.ActionContent;
+        j["ActionContent"] = to_utf8(currInput.ActionContent);
         j["ActionType"] = currInput._ActionType;
-        j["Selection"] = { currInput._Selection.SelectionStart, currInput._Selection.SelectionEnd };
+        j["SelectionStart"] = currInput._Selection.SelectionStart;
+        j["SelectionEnd"] = currInput._Selection.SelectionEnd;
         j["RelativeTimeMs"] = currInput.relativeTimePointMs;
         result.push_back(j);
     }
-    nlohmann::json metadata;
-    metadata["WordCount"] = data->GetWordCount();
-    metadata["CharCount"] = data->GetCharCount();
 
-    std::string RandomString = gen_random(12);
-    std::ofstream MetaData("C:\\Program Files\\Themis\\SessionsMetaData\\" + RandomString);
-    std::ofstream Content("C:\\Program Files\\Themis\\Sessions\\" + RandomString);
+    std::ofstream Content("C:\\Program Files\\Themis\\Sessions\\" + std::to_string(GUID));
 
     Content << result;
-    MetaData << metadata;
 
     Content.close();
-    MetaData.close();
 }
 
 DWORD WINAPI MainThread(HMODULE hModule){

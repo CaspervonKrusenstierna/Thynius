@@ -11,9 +11,9 @@ namespace ThemisWeb.Server.Models
         public string EmailExtension { get; set; }
 
         [ForeignKey("ApplicationUser")]
-        public string OwnerId { get; set; }
+        public string? OwnerId { get; set; }
 
-        ApplicationUser Owner;
+        ApplicationUser? Owner;
 
         public ICollection<ApplicationUser> Users = [];
     }

@@ -189,6 +189,10 @@ namespace ThemisWeb.Server.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
@@ -204,6 +208,7 @@ namespace ThemisWeb.Server.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("OrganizationEmailExtension")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PasswordHash")
@@ -299,7 +304,6 @@ namespace ThemisWeb.Server.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("OwnerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmailExtension");
@@ -332,11 +336,8 @@ namespace ThemisWeb.Server.Migrations
                     b.Property<int?>("WarningLevel")
                         .HasColumnType("int");
 
-                    b.Property<int>("characterCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("wordCount")
-                        .HasColumnType("int");
+                    b.Property<decimal>("guid")
+                        .HasColumnType("decimal(20,0)");
 
                     b.HasKey("Id");
 
@@ -417,7 +418,9 @@ namespace ThemisWeb.Server.Migrations
                 {
                     b.HasOne("ThemisWeb.Server.Models.Organization", "Organization")
                         .WithMany()
-                        .HasForeignKey("OrganizationEmailExtension");
+                        .HasForeignKey("OrganizationEmailExtension")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Organization");
                 });

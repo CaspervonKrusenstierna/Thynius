@@ -7,11 +7,9 @@ namespace ThemisWeb.Server.Models
     public class ApplicationUser : IdentityUser
     {
         [ForeignKey("Organization")]
-        public string? OrganizationEmailExtension { get; set; }
-        public Organization? Organization { get; set; }
-
+        public string OrganizationEmailExtension { get; set; }
+        public Organization Organization { get; set; }
+        public string FullName { get; set; }
         public ICollection<Group> Groups { get; set; } = [];
-
-        public string? ProfilePictureUrl;
     }
 }

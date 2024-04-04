@@ -1,0 +1,10 @@
+.ManageGroupMembersPage{
+    padding-top: 110px;
+    width: 100%;
+    overflow: hidden;
+}
+@media screen and (max-width: 500px) {
+    .ManageGroupMembersPage{
+        padding-top: 50px;
+    }
+  }

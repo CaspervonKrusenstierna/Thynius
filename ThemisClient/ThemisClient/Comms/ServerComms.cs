@@ -52,7 +52,7 @@ namespace ThemisClient.Comms
 
         public async Task<bool> isLoggedIn()
         {
-            var response = await client.GetAsync("/account/getsessioninfo");
+            var response = await client.GetAsync("/getsessioninfo");
             if (response.IsSuccessStatusCode)
             {
                 return true;
@@ -60,20 +60,14 @@ namespace ThemisClient.Comms
             return false;
         }
 
-        public async Task<bool> SubmitSession(string SessionPath, string MetaDataPath)
+        public async Task<bool> SubmitSession(string GUID, string SessionPath)
         {
-            var multipartFormData = new MultipartFormDataContent();
+            MultipartFormDataContent form = new MultipartFormDataContent();
             var fs = File.OpenRead(SessionPath);
-            var streamContent = new StreamContent(fs);
-            var fileContent = new ByteArrayContent(await streamContent.ReadAsByteArrayAsync());
-            fileContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
-            multipartFormData.Add(fileContent, "file", Path.GetFileName(SessionPath));
-
-            StreamReader MetaDataStreamReader = new StreamReader(MetaDataPath);
-            string json = MetaDataStreamReader.ReadToEnd();
-            sessionMetaData MetaData = JsonSerializer.Deserialize<sessionMetaData>(json);
-
-            HttpResponseMessage response = await client.PutAsync("/usertext?charCount=" + MetaData.CharCount + "&wordCount="+MetaData.WordCount, multipartFormData);
+            var stream = new StreamContent(fs);
+            form.Add(stream, "sessionData", Path.GetFileName(SessionPath));
+            form.Add(new StringContent(GUID), "guid");
+            HttpResponseMessage response = await client.PutAsync("/usertext?guid="+GUID, form);
 
             Debug.WriteLine(response.StatusCode);
             if (response.IsSuccessStatusCode)

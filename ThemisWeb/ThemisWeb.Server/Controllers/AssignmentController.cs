@@ -61,7 +61,7 @@ namespace ThemisWeb.Server.Controllers
 
 
             Assignment newAssignment = new Assignment();
-            newAssignment.Name = AssignmentName; // **TODO** Check if sql injection is possible
+            newAssignment.Name = AssignmentName;  //**TODO** Check if sql injection is possible
             newAssignment.GroupId = groupId;
             newAssignment.DueDate = dueDate;
             

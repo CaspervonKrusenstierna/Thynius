@@ -1,30 +1,32 @@
 import React, { useContext, useRef, useState } from 'react'
 import "./GroupCreateAssignmentView.css"
-import CreateAssignmentSubmitButton from './components/createassignmentsubmitbutton/CreateAssignmentSubmitButton';
-import CreateAssignmentNameInput from './components/createassignmentsnameinput/CreateAssignmentNameInput';
-import { Calendar } from "@/components/ui/calendar"
 import { groupinfoContext } from '../../GroupPageView';
 import useFetch from '../../../../../shared/hooks/useFetch';
+import { DatePicker } from './datepicker/DatePicker';
+import TimePicker from './timepicker/TimePicker';
+import { Input } from '@nextui-org/input';
+import {Textarea} from "@nextui-org/input";
 
 const GroupCreateAssignmentView = (props) => {
   const groupInfo = useContext(groupinfoContext);
   const [selectedDate, setSelectedDate] = useState();
   const assignmentName = useRef("");
+
+
   function onCreateAssignmentClick(){
     useFetch("/assignment?groupId=" + groupInfo.id + "&AssignmentName="+assignmentName.current+"&dueDate="+selectedDate, "POST")
   }
   return (
     <div className='GroupCreateAssignmentView'>
-        <div className='GroupCreateAssignmentView-Top'>
-            <CreateAssignmentNameInput Title="Namn" onChange={(s) => {assignmentName.current = s.target.value}}></CreateAssignmentNameInput>
-            <div className='CreateAssignment-DaypickerContainer'>
-                <p className='CreateAssignment-DaypickerContainer-Text'>Sista inlämningsdatum</p>
-                <Calendar onSelect={setSelectedDate} selected={selectedDate} className="rounded-md border width-[100%]" mode="single"></Calendar>
-            </div>
+      <div className='flex flex-col gap-5'>
+        <div className='flex flex-col gap-3 md:flex-row'>
+          <Input className='w-full sm:w-[280px] text-base' variant="faded" radius='sm' type='name' label="Uppgiftsnamn"></Input>
+          <DatePicker></DatePicker>
         </div>
-        <div className='GroupCreateAssignmentView-Bottom'>
-            <CreateAssignmentSubmitButton onClick={onCreateAssignmentClick}></CreateAssignmentSubmitButton>
-        </div>
+        <Textarea variant="faded" label="Beskrivning" placeholder="Beskrivning av uppgiften" className='w-full sm:w-[400px]'></Textarea>
+        <div className='h-full'></div>
+      </div>
+
     </div>
   )
 }

@@ -7,7 +7,7 @@ export const AssignmentSubmittmentsPage = () => {
   const { id } = useParams();
 
   return (
-    <div className="mt-[120px]">
+    <div className="mt-[120px] w-full">
         <SubmittmentsView  assignmentId={id}></SubmittmentsView>
     </div>
   )

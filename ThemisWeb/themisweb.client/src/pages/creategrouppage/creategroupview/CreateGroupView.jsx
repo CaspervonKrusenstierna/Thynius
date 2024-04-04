@@ -1,27 +1,34 @@
-import React, { createContext, useRef } from 'react'
-import CreateGroupViewSideBar from './components/creategroupviewsidebar/CreateGroupViewSideBar'
+import React, {useRef} from 'react'
 import "../../../shared/styles/DashboardContainer.css"
-import CreateGroupSubmitButton from './components/creategroupsubmitbutton/CreateGroupSubmitButton'
-import ResolveCreateGroupContent from './hooks/ResolveCreateGroupContent'
-
-export const createGroupContext = createContext();
+import { createGroup, editGroup } from '../../../shared/network/group'
+import { DashboardContainerSidebar } from '../../../shared/components/dashboard'
+import BottomRightContainerButton from '../../../shared/components/dashboard/bottomrightcontainerbutton/BottomRightContainerButton'
+import useManageGroupTabs from '../../../shared/hooks/useManageGroupTabs'
+import useResolveCreateGroupContent from '../../../shared/hooks/useResolveManageGroupContent'
+import { useParams } from 'react-router-dom'
 
 const CreateGroupView = (props) => {
-  const groupData = useRef({groupMembers: [], currentMembersPage: 1, groupName: "", groupImg: null})
-  const pageContent = ResolveCreateGroupContent();
+  const { id } = useParams();
+
+  const tabs = useManageGroupTabs(true, id);
+  const groupData = useRef({groupMembers: [], currentMembersPage: 1, groupName: "", groupImg: null});
+  const pageContent = useResolveCreateGroupContent(groupData);
+
+  function onCreateGroupClick(){
+    let data = groupData.current;
+    createGroup(data.groupName, data.groupMembers, data.groupImg)
+  }
   
   return (
-    <createGroupContext.Provider value={groupData}>
       <div className='DashboardContainer-Container'>
         <div className='DashboardContainer'>
-          <CreateGroupViewSideBar></CreateGroupViewSideBar>
+          <DashboardContainerSidebar sidebartitle="Skapa grupp" navigationtitle="Sektioner" tabs={tabs}></DashboardContainerSidebar>
           <div className='DashboardContainer-Content'>
             {pageContent}
           </div>
-          <CreateGroupSubmitButton></CreateGroupSubmitButton>
+          <BottomRightContainerButton onClick={onCreateGroupClick}></BottomRightContainerButton>
         </div>
       </div>
-    </createGroupContext.Provider>
   )
 }
 

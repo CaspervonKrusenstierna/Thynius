@@ -3,8 +3,11 @@
     height: 200px;
 }
 .GroupAssignmentsView{
+   display: flex;
+   flex-direction: column;
     width: 85%;
     margin-top: 50px;
+    justify-content: center;
 }
 
 

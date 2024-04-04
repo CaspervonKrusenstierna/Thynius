@@ -49,7 +49,10 @@
 }
 
 .DashboardContainer-Content{
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
+    align-items: center;
     width: 80%;
     height: 100%;
 }

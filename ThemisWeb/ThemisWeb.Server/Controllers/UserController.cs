@@ -28,7 +28,7 @@ namespace ThemisWeb.Server.Controllers
             _assignmentRepository = assignmentRepository;
 
         }
-
+        
         [HttpGet]
         [Route("organizationusers")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -61,7 +61,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpGet]
-        [Route("/users/getsearchusers")]
+        [Route("searchusers")]
         public async Task<string> GetSearchUsers(string Search, int Max=3, bool includeSelf = false)
         {
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -74,5 +74,14 @@ namespace ThemisWeb.Server.Controllers
             return JsonConvert.SerializeObject(SearchResult.Where(i => i.UserName != callingUser.UserName).Select(i => new { username=i.UserName, email=i.Email, id=i.Id }));
         }
 
+        [HttpGet]
+        [Route("groupusers")]
+        [Authorize]
+        public async Task<string> GetGroupUsers(int groupId)
+        {
+            Group group = await _groupRepository.GetByIdAsync(groupId);
+            var groupUsers = await _userRepository.GetGroupUsers(group);
+            return System.Text.Json.JsonSerializer.Serialize(groupUsers.Select(i => new {username=i.UserName, i.Id}));
+        }
     }
 }

@@ -1,15 +1,18 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
+using ThemisWeb.Server.Common;
 using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Migrations;
 using ThemisWeb.Server.Models;
+using ThemisWeb.Server.Models.Dtos;
 using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Controllers
 {
     [Route("/usertext")]
+    [Authorize]
     public class UserTextController : Controller
     {
         IAssignmentRepository _assignmentRepository;
@@ -49,34 +52,40 @@ namespace ThemisWeb.Server.Controllers
         [Authorize(Roles = "Admin, OrganizationAdmin, Teacher")]
         public async Task<string> GetUserText(int textId)
         {
-            UserTextData toReturn;
-
             UserText text = await _userTextRepository.GetByIdAsync(textId);
             ApplicationUser textOwner = await _userRepository.GetByIdAsync(text.OwnerId);
+            Assignment assignment = await _assignmentRepository.GetByIdAsync(textId);
 
-
-
+            var detectionDataUrl = await _userTextRepository.S3GetDetectionDataSignedUrlAsync(text);
+            return JsonSerializer.Serialize(new {textOwner.UserName, textOwner.Id, assignment.Name, detectionDataUrl});
         }
 
         [HttpPut]
-        [Authorize(Roles = "VerifiedUser")]
-        public async Task<IActionResult> SubmitTextSession(int charCount, int wordCount, [FromForm] IFormFile sessionData)
+        [Authorize]
+        public async Task<IActionResult> SubmitTextSession([FromForm]SubmitTextSessionDto model)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            UserText text = await _userTextRepository.GetByTextData(user, charCount, wordCount);
+            UserText text = await _userTextRepository.GetByTextData(user, model.guid);
             if (text == null)
             {
                 text = new UserText();
                 text.OwnerId = user.Id;
+                text.guid = model.guid;
+                text.Title = "";
                 _userTextRepository.Add(text);
             }
+            string RawText = ThemistTextConverter.GetInputsRawText(model.sessionData);
 
+            _userTextRepository.S3RawContentUpload(text, RawText);
             return Ok();
         }
 
         [HttpGet]
         [Route("getrawcontent")]
-        [Authorize(Roles = "VerifiedUser")]
         public async Task<string> GetUserTextRawContent(int textId)
         {
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -96,7 +105,6 @@ namespace ThemisWeb.Server.Controllers
 
         [Route("/user/usertexts")]
         [HttpGet]
-        [Authorize(Roles = "VerifiedUser")]
         public async Task<string> getUserTexts(string userId) {
             
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
@@ -111,7 +119,6 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "VerifiedUser")]
         [Route("submit")]
         public async Task<IActionResult> SubmitUserText(int textId, int assignmentId)
         {

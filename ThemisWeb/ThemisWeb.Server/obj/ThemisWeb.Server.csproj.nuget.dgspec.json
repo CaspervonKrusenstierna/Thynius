@@ -57,13 +57,17 @@
               "target": "Package",
               "version": "[3.7.307.1, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.0, )"
+            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.3, )"
             },
             "Microsoft.AspNetCore.SpaProxy": {
               "target": "Package",
-              "version": "[8.*-*, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

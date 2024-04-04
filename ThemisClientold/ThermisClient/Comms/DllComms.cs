@@ -18,7 +18,7 @@ namespace ThermisClient.Comms
 
         private void CommThreadMain()
         {
-            var mappedFile = System.IO.MemoryMappedFiles.MemoryMappedFile.CreateNew("Global\\ThemisIPC", 256 * sizeof(char));
+            var mappedFile = System.IO.MemoryMappedFiles.MemoryMappedFile.CreateNew("Global\\ThemisIPCC", 256 * sizeof(char));
             using (var accessor = mappedFile.CreateViewAccessor())
             {
                 string lastMessage = "";

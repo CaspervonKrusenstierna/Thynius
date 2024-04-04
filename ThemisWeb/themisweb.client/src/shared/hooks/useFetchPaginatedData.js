@@ -24,7 +24,6 @@ export default function useFetchPaginatedData(url, currentPage, pageSize) {
             useFetch(url+"&pageIndex="+1+"&pageSize="+pageSize*3, "GET").then(s => s.json()).then(s => resolveResponse(s, pageSize*3, 2)); // fetch 3 pages initially
         }
         else if(data.dataEndPage == null && (currentPage*pageSize >= data.pages.length-pageSize*2) && hasFetched.current == true){
-            console.log("hello");
             useFetch(url+"&pageIndex="+(currentPage+2)+"&pageSize="+pageSize, "GET").then(s => s.json()).then(s => resolveResponse(s, pageSize, currentPage+2)); // fetch 3 pages initially
         }
     }, [currentPage])

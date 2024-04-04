@@ -13,7 +13,7 @@ const SearchSuggestionContainer = (props) => {
   return (
     <div>
         <div className='SearchSuggestionContainer'>
-            {props.searchSuggestions?.map(s => <SearchSuggestion Text={s.username} onClick={() => {props.onChoose(s)}} ></SearchSuggestion>)}
+            {props.searchSuggestions?.map(s => <SearchSuggestion key={s.id} Text={s.username} onClick={() => {props.onChoose(s)}} ></SearchSuggestion>)}
         </div>
     </div>
   )

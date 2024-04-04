@@ -12,7 +12,7 @@ const DashboardUserComponent = () => {
     setShowDropdown(!showDropDown);
   }
   function onDropDownClick(e){
-    if(!document.getElementById("UserComponent").contains(e.target) && !document.getElementById("dialog").contains(e.target)){
+    if(!document.getElementById("UserComponent").contains(e.target) && !document.getElementById("dialog")?.contains(e.target)){
       setShowDropdown(false);
     }
   }

@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import "../../../shared/styles/DashboardContainer.css"
+import useSubmittmentInfo from './hooks/useSubmittmentInfo';
+import { useParams } from 'react-router-dom';
+
+export const submittmentInfoContext = createContext();
 
 const SubmittmentPageView = () => {
+  let { id } = useParams();
+  let submittmentInfo = useSubmittmentInfo(id);
+
   return (
-    <div className='DashboardContainer-Container'>
-      <div className='DashboardContainer'>
+    <submittmentInfoContext.Provider value={submittmentInfo}>
+      <div className='DashboardContainer-Container'>
+        <div className='DashboardContainer'>
+        </div>
       </div>
-    </div>
+    </submittmentInfoContext.Provider>
   )
 }
 

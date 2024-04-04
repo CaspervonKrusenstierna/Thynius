@@ -4,7 +4,6 @@ import { DayPicker } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
-
 function Calendar({
   className,
   classNames,
@@ -13,6 +12,7 @@ function Calendar({
 }) {
   return (
     (<DayPicker
+      fromDate={new Date()}
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{

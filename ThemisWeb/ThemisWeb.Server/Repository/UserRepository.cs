@@ -14,13 +14,13 @@ namespace ThemisWeb.Server.Repository
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-        //private readonly IAmazonS3 _amazonS3;
+        private readonly IAmazonS3 _amazonS3;
         private readonly IConfiguration _configurationManager;
-        public UserRepository(ApplicationDbContext context, UserManager<ApplicationUser> userManager, /*IAmazonS3 amazonS3*/ IConfiguration configurationManager)
+        public UserRepository(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IAmazonS3 amazonS3, IConfiguration configurationManager)
         {
             _context = context;
             _userManager = userManager;
-            //_amazonS3 = amazonS3;
+            _amazonS3 = amazonS3;
             _configurationManager = configurationManager;
         }
         public async Task<IEnumerable<ApplicationUser>> GetOrganizationUsers(string organization)
@@ -55,15 +55,15 @@ namespace ThemisWeb.Server.Repository
             return await _context.Users.Where(i => i.OrganizationEmailExtension == organization && i.UserName.StartsWith(search)).Take(max).ToListAsync();
         }
 
-        /*
-        public async Task<PutObjectResponse> UploadUserProfilePictureAsync(ApplicationUser user, IFormFile profilepicture)
+        
+        public async Task<PutObjectResponse> UploadUserProfilePictureAsync(ApplicationUser user, MemoryStream stream)
         {
             var putObjectRequest = new PutObjectRequest
             {
                 BucketName = _configurationManager["BucketName"],
                 Key = $"profile_images/{user.Id}",
-                ContentType = profilepicture.ContentType,
-                InputStream = profilepicture.OpenReadStream()
+                ContentType = "multipart/form-data",
+                InputStream = stream
             };
             return await _amazonS3.PutObjectAsync(putObjectRequest);
         }
@@ -83,11 +83,10 @@ namespace ThemisWeb.Server.Repository
             {
                 BucketName = _configurationManager["BucketName"],
                 Key = $"profile_images/{user.Id}",
-                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
-
+                Expires = DateTime.UtcNow.AddHours(1)
             };
             return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
-        }*/
+        }
         public async Task<int> GetUserRoleLevel(ApplicationUser user)
         {
             var roles = await _userManager.GetRolesAsync(user);

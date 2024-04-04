@@ -41,7 +41,7 @@ const Pagination = (props) => {
         <ShadowPagination>
             <PaginationContent>
             {(props.currentPage != 1) ? <PaginationPrevious href="#" text="Förra" onClick={() => {props.setCurrentPage(props.currentPage-1)}}/> : <div className='w-[82.45px]'></div>}
-                {AvailablePages?.map((i, index) => {return <PaginationLink isActive={props.currentPage==AvailablePages[index]} onClick={() => {props.setCurrentPage(AvailablePages[index])}}>{AvailablePages[index]}</PaginationLink>})}
+                {AvailablePages?.map((i, index) => {return <PaginationLink key={index} className="cursor-pointer" isActive={props.currentPage==AvailablePages[index]} onClick={() => {props.setCurrentPage(AvailablePages[index])}}>{AvailablePages[index]}</PaginationLink>})}
                 {(props.currentPage != props.highestPage && props.highestPage != 0) ? <PaginationNext href="#" text="Nästa" onClick={() => {props.setCurrentPage(props.currentPage+1)}}/> : <div className='w-[82.45px]'></div>}
             </PaginationContent>
         </ShadowPagination>

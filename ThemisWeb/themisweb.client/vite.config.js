@@ -52,7 +52,7 @@ export default defineConfig({
                 target,
                 secure: false
             },
-            '^/account/getsessioninfo': {
+            '^/getsessioninfo': {
                 target,
                 secure: false
             },
@@ -70,14 +70,14 @@ export default defineConfig({
             }, '^/group/getgroupinfo': {
                 target,
                 secure: false
-            }, '^/users/getsearchusers': {
+            }, '^/users/searchusers': {
                 target,
                 secure: false
             }, '^/users/assignmentusers': {
                 target,
                 secure: false
             }
-            , '^/account/logout': {
+            , '^/logout': {
                 target,
                 secure: false
             }, '^/assignment': {
@@ -90,7 +90,19 @@ export default defineConfig({
             }, '^/usertext/submit': {
                 target,
                 secure: false
-            }
+            }, '^/usertext': {
+                target,
+                secure: false
+            }, '^/account/register': {
+                target,
+                secure: false
+            },'^/group/miniinfo': {
+                target,
+                secure: false
+            },'^/users/groupusers': {
+                target,
+                secure: false
+            },
         },
         port: 5173,
         https: {

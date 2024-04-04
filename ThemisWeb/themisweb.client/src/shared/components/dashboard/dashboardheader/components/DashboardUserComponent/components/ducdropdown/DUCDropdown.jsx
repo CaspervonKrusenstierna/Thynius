@@ -9,7 +9,7 @@ const DUCDropdown = (props) => {
   const navigate = useNavigate();
 
   async function onLogoutClick(){
-      await useFetch("/account/logout", "POST");
+      await useFetch("/logout", "POST");
       updateSessionInfo();
       navigate("/");
   }

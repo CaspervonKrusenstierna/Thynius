@@ -22,8 +22,8 @@ namespace ThemisWeb.Server.Models
         public string? TimeSubmitted {  get; set; }
 
         public int? WarningLevel { get; set; }
-        public int wordCount { get; set; }
-        public int characterCount {  get; set; }
+
+        public UInt64 guid {  get; set; }
 
     }
 }

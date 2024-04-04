@@ -18,10 +18,9 @@ namespace ThemisWeb.Server
             var builder = WebApplication.CreateBuilder(args);
 
             var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection") ?? throw new InvalidOperationException("Connection string 'ApplicationDbContextConnection' not found.");
-           // var AWSOptions = builder.Configuration.GetAWSOptions();
 
             object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
-            //builder.Services.AddDefaultAWSOptions(AWSOptions);
+
             builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
@@ -34,13 +33,14 @@ namespace ThemisWeb.Server
             builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
             builder.Services.AddScoped<IUserTextRepository, UserTextRepository>();
 
-            //builder.Services.AddAWSService<IAmazonS3>();
+            builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
+            builder.Services.AddAWSService<IAmazonS3>();
 
             var app = builder.Build();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            app.MapIdentityApi<ApplicationUser>();
+            app.MapCustomIdentityApi<ApplicationUser>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -79,6 +79,8 @@ namespace ThemisWeb.Server
                     var user = new ApplicationUser();
                     user.UserName = AdminAccEmail;
                     user.Email = AdminAccEmail;
+                    user.FullName = "Casper vk";
+                    user.OrganizationEmailExtension = "outlook.com";
 
                     await userManager.CreateAsync(user, AdminAccPassword);
                     await userManager.AddToRoleAsync(user, "Admin");

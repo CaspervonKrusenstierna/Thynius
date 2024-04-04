@@ -1,0 +1,15 @@
+.ManageGroupMainPage{
+    padding-top: 120px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-left: 60px;
+}
+
+@media screen and (max-width: 600px) {
+    .ManageGroupMainPage{
+        padding-left: 0px;
+        padding-top: 100px;
+    }
+  }

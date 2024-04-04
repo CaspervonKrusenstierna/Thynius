@@ -10,6 +10,8 @@ using System.Security.Claims;
 using ThemisWeb.Server.Repository;
 using ThemisWeb.Server.Common;
 using static ThemisWeb.Server.Common.DataClasses;
+using ThemisWeb.Server.Models.Dtos;
+using FluentValidation;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -30,83 +32,122 @@ namespace ThemisWeb.Server.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
-        public async Task<IActionResult> CreateGroup(string GroupName, [FromBody] List<String> GroupUsers, [FromBody] IFormFile GroupImage)
+        public async Task<IActionResult> CreateGroup([FromForm]CreateGroupDto model)
         {
+            CreateGroupValidator validator = new CreateGroupValidator();
+            if (!validator.Validate(model).IsValid)
+            {
+                return BadRequest();
+            }
+
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
 
             Group newGroup = new Group();
-            newGroup.Name = GroupName;
+            newGroup.Name = model.name;
             newGroup.ManagerId = user.Id;
+
             if (!_groupRepository.Add(newGroup))
             {
-                return StatusCode(500);
+                HttpContext.Response.StatusCode = 500;
+                return null;
             }
-            foreach (string userId in GroupUsers)
+
+            if(model.users != null)
             {
-                ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
-                if (currUser == null)
+                foreach (string userId in model.users)
                 {
-                    return BadRequest();
+                    ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
+                    if (currUser == null)
+                    {
+                        _groupRepository.Delete(newGroup);
+                        return BadRequest();
+                    }
+                    if (currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
+                    {
+                        HttpContext.Response.StatusCode = 401;
+                        _groupRepository.Delete(newGroup);
+                        return Unauthorized();
+                    }
+                    _userRepository.AddUserToGroup(currUser, newGroup);
                 }
-                if (currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
-                {
-                    return Unauthorized();
-                }
-                _userRepository.AddUserToGroup(currUser, newGroup);
             }
+
+            await _groupRepository.UploadGroupPictureAsync(newGroup, model.image);
 
             return Ok();
         }
+
         [HttpPut]
         [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
-        public async Task<IActionResult> EditGroup(int GroupId, string GroupName, [FromBody] List<String> GroupUsers, [FromBody] IFormFile GroupImage)
+        public async Task<IActionResult> EditGroup([FromForm]EditGroupDto model)
         {
+            EditGroupValidator validator = new EditGroupValidator();
+            if (!validator.Validate(model).IsValid)
+            {
+                return BadRequest();
+            }
 
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            Group group = await _groupRepository.GetByIdAsync(GroupId);
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            Group group = await _groupRepository.GetByIdAsync(model.id);
             if(group == null)
             {
                 return BadRequest();
             }
-            if(group.ManagerId != user.Id)
+            if(group.ManagerId != callingUser.Id)
             {
                 return Unauthorized();
             }
 
-            group.Name = GroupName;
+            group.Name = model.name;
+            if (model.image != null)
+            {
+                await _groupRepository.DeleteGroupPictureAsync(group);
+                await _groupRepository.UploadGroupPictureAsync(group, model.image);
+            }
 
             IEnumerable<ApplicationUser> OldGroupUsers = await _userRepository.GetGroupUsers(group);
-            IEnumerable<ApplicationUser> NewGroupUsers = [];
-            foreach(string userId in GroupUsers)
-            {
-                ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
-                if (currUser == null)
-                {
-                    return BadRequest();
-                }
-                if (currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
-                {
-                    return Unauthorized();
-                }
-                NewGroupUsers.Append(currUser);
-            }
+            List<ApplicationUser> NewGroupUsers = [];
 
-            foreach(ApplicationUser olduser in OldGroupUsers)
+            if(model.users == null)
             {
-                if (!NewGroupUsers.Contains(olduser))
+                foreach (ApplicationUser olduser in OldGroupUsers)
                 {
-                    _userRepository.RemoveUserFromGroup(olduser, group);
+                  _userRepository.RemoveUserFromGroup(olduser, group);
                 }
             }
-            foreach(ApplicationUser newUser in NewGroupUsers)
+            else
             {
-                IEnumerable<Group> userGroups = await _groupRepository.GetUserGroups(user.Id);
-                if (!userGroups.Contains(group))
+                foreach (string userId in model.users)
                 {
-                    _userRepository.AddUserToGroup(newUser, group);
+                    ApplicationUser currUser = await _userRepository.GetByIdAsync(userId);
+                    if (currUser == null)
+                    {
+                        return BadRequest();
+                    }
+                    if (currUser.OrganizationEmailExtension != currUser.OrganizationEmailExtension)
+                    {
+                        return Unauthorized();
+                    }
+                    NewGroupUsers.Add(currUser);
                 }
-            }
 
+                foreach (ApplicationUser olduser in OldGroupUsers)
+                {
+                    if (!NewGroupUsers.Contains(olduser))
+                    {
+                        _userRepository.RemoveUserFromGroup(olduser, group);
+                    }
+                }
+                foreach (ApplicationUser newUser in NewGroupUsers)
+                {
+                    IEnumerable<Group> userGroups = await _groupRepository.GetUserGroups(newUser.Id);
+                    if (!userGroups.Contains(group))
+                    {
+                        _userRepository.AddUserToGroup(newUser, group);
+                    }
+                }
+            }
+            _groupRepository.Update(group);
             return Ok();
         }
 
@@ -114,18 +155,18 @@ namespace ThemisWeb.Server.Controllers
         [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
         public async Task<IActionResult> DeleteGroup(int groupId)
         {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
             Group toDelete = await _groupRepository.GetByIdAsync(groupId);
 
             if (toDelete == null)
             {
                 return BadRequest();
             }
-            if (toDelete.ManagerId != user.Id)
+            if (toDelete.ManagerId != callingUser.Id)
             {
                 return Unauthorized();
             }
-
+            _groupRepository.DeleteGroupPictureAsync(toDelete);
             bool result = _groupRepository.Delete(toDelete);
             if (!result)
             {
@@ -136,6 +177,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<string> GetGroupInfo(int groupId)
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
@@ -146,7 +188,7 @@ namespace ThemisWeb.Server.Controllers
                 HttpContext.Response.StatusCode = 400;
                 return null;
             }
-            IEnumerable<ApplicationUser> groupUsers = await _userRepository.GetGroupUsers(group); // doing this should be fine because groups should not consist of many people
+            IEnumerable<ApplicationUser> groupUsers = await _userRepository.GetGroupUsers(group);  //doing this should be fine because groups should not consist of many people
 
             if (!groupUsers.Contains(user) && !(group.ManagerId == user.Id))
             {
@@ -163,33 +205,14 @@ namespace ThemisWeb.Server.Controllers
             return System.Text.Json.JsonSerializer.Serialize(dataToReturn);
         }
 
-
         [HttpGet]
         [Route("getusergroups")]
         [Authorize(Roles = "VerifiedUser")]
-        public async Task<string> GetUserGroupIds(string userId)
+        public async Task<string> GetUserGroups(string userId)
         {
             IEnumerable<Group> Groups = await _groupRepository.GetUserGroups(userId);
 
-            return System.Text.Json.JsonSerializer.Serialize(
-            Groups.Select(group => (new GroupData { 
-                Id = group.Id, 
-                Name = group.Name,
-                ManagerId = group.ManagerId
-                //PictureLink = await _groupRepository.GetSignedGroupImgUrlAsync(group)
-            })));
+            return System.Text.Json.JsonSerializer.Serialize(Groups.Select(i => new { PictureLink=""/*_groupRepository.GetSignedGroupImgUrl(i)*/, i.Id, i.Name, i.ManagerId}));
         }
-
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        [Route("adduser")]
-        public async Task<IActionResult> AddGroupUser(string userID, int groupId)
-        {
-            Group group = await _groupRepository.GetByIdAsync(groupId);
-            ApplicationUser user = await _userRepository.GetByIdAsync(userID);
-            _userRepository.AddUserToGroup(user, group);
-            return Ok();
-        }
-
     }
 }

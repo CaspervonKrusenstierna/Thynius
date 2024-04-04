@@ -1,19 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections;
+﻿
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Text;
-using System.Text;
-using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Common
 {
-    public class Utilities
+    public static class Utilities
     {
-        private List<string> _BackgroundColours = new List<string> { "339966", "3366CC", "CC33FF", "FF5050" };
-        public MemoryStream GenerateInitialsImage(string firstName, string lastName)
+        public static List<string> _BackgroundColours = new List<string> { "339966", "3366CC", "CC33FF", "FF5050" };
+        public static MemoryStream GenerateInitialsImage(string firstName, string lastName)
         {
             var avatarString = string.Format("{0}{1}", firstName[0], lastName[0]).ToUpper();
 

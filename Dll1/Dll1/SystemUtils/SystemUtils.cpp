@@ -5,7 +5,7 @@ std::wstring GetClipboardText()
     if (!OpenClipboard(nullptr)) {
         return NULL;
     }
-
+ 
     HANDLE hData = GetClipboardData(CF_UNICODETEXT);
     wchar_t* pszText = static_cast<wchar_t*>(GlobalLock(hData));
 
@@ -31,4 +31,10 @@ std::string gen_random(const int len) {
     }
 
     return tmp_s;
+}
+
+std::string to_utf8(std::wstring& wide_string)
+{
+    static std::wstring_convert<std::codecvt_utf8<wchar_t>> utf8_conv;
+    return utf8_conv.to_bytes(wide_string);
 }

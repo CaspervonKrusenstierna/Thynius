@@ -4,6 +4,7 @@ import { sessionInfoContext } from '../../../../../../App'
 import { buttonVariants } from "@/components/ui/button"
 import { Link } from 'react-router-dom';
 import { ArrowRight } from '../../../../../../shared/assets';
+import {UserRoundPlus} from "lucide-react";
 
 const GroupsViewHeader = () => {
   const sessionInfo = useContext(sessionInfoContext).sessionInfo;
@@ -13,9 +14,9 @@ const GroupsViewHeader = () => {
     {(sessionInfo?.RoleLevel >= 1) ? 
       <div className='GroupsViewHeader'>
         <p className='GroupsViewHeader-Title'>Grupper</p> 
-        <Link to="/dashboard/creategroup/general" className={buttonVariants({ variant: "outline", size: "default"})}>
-          <p className='text-base'>Skapa Grupp</p>
-          <img src={ArrowRight} className='h-8 ml-4'></img>
+        <Link to="/dashboard/creategroup/general" className='flex flex-row gap-4 items-center h-10'>
+          <p className="text-base font-bold">Skapa Grupp</p>
+          <UserRoundPlus size={30}></UserRoundPlus>
         </Link>
       </div> : 
       <div className='GroupsViewHeader'>

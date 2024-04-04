@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "eQUHua/oCgdrP8jIpxl5dfZuNZCEvgSGaUqSOxlLq53TilPoXlP/HxCJJFYUu3h2WjtV0Xp6trylYq4eaTGNXw==",
+  "dgSpecHash": "2hMFqsA8cjajc2EyfD4EAW27GgW3q5OY/ZD/U0q6f/RghiuC/lNpMho80zdwW3TYCKUSKWn7y+OirkTgEdHF6A==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Cappe\\.nuget\\packages\\awssdk.s3\\3.7.307.1\\awssdk.s3.3.7.307.1.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.3\\microsoft.aspnetcore.cryptography.internal.8.0.3.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.3\\microsoft.aspnetcore.cryptography.keyderivation.8.0.3.nupkg.sha512",

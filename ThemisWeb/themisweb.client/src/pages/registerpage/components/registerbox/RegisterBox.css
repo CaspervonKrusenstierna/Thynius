@@ -5,7 +5,7 @@
     position: absolute;
     align-items: center;
     left: calc(50vw - 250px);
-    top: calc(50vh - 350px);
+    top: calc(50vh - 300px);
     z-index: 1001;
     width: 500px;
     border-radius: 10px;
@@ -26,18 +26,19 @@
     width: 80%;
     padding-bottom: 40px;
 }
-
-@media screen and (max-height: 700px) {
-    .RegisterBox {
-        top: 0px;
-    }
+.RegisterBox-BottomContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 500px) {
     .RegisterBox {
         width: 95%;
         left: calc(50vw - 47.5%);
-        width: 90%;
     }
 }
 

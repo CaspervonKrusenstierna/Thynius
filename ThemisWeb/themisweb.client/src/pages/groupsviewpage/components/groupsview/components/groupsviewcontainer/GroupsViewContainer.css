@@ -1,5 +1,6 @@
 .GroupsViewContainer{
     width: 1200px;
+    padding-bottom: 10px;
 }
 
 @media screen and (max-width: 1400px) {

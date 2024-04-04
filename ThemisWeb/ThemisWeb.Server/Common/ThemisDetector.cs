@@ -1,4 +1,4 @@
-﻿using static ThemisWeb.Server.Common.ThemisDetection;
+﻿
 
 namespace ThemisWeb.Server.Common
 {
@@ -45,7 +45,7 @@ namespace ThemisWeb.Server.Common
         }
 
         public 
-        ThemisDetector(IEnumerable<Input> inputs, TextData textData) { 
+        ThemisDetector(IEnumerable<Input> inputs) { 
 
             _inputs = inputs;
 
@@ -57,11 +57,11 @@ namespace ThemisWeb.Server.Common
 
             foreach (Input input in inputs)
             {
-                switch (input._ActionType)
+                switch (input.ActionType)
                 {
                     case ActionType.ADDCHAR:
                         addChars.Append(input);
-                        int timeDiff = (int)input.relativeTimePointMs - previousAddCharRelativeTime;
+                        int timeDiff = (int)input.RelativeTimeMs - previousAddCharRelativeTime;
                         if (timeDiff >= 60000)
                         {
                             extendedTypingBreaksCount++;

@@ -2,7 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\ThemisWeb.Server",
+    "\\ThemisWeb.Server\\Common",
     "\\ThemisWeb.Server\\Controllers",
+    "\\ThemisWeb.Server\\Migrations",
     "\\ThemisWeb.Server\\Models",
     "\\ThemisWeb.Server\\Repository"
   ],

@@ -13,8 +13,6 @@ const RowedItemsContainer = (props) => {
           for(let j = 0; props.ItemsPerRow-1-count > j; j++){
             currRow.push("Filler")
           }
-
-
         temp.push(currRow);
         count = 0;
         currRow = [];
@@ -27,7 +25,7 @@ const RowedItemsContainer = (props) => {
 
   return (
     <div className='RowedItemsContainer'>
-      {props.ItemsPerRow >= 2 ? rows.map(i => {return <div className='RowedItemsContainer-Row'>{i.map(j => j=="Filler" ? props.Filler : j)}</div>}) : 
+      {props.ItemsPerRow >= 2 ? rows.map((i, index) => {return <div key={index} className='RowedItemsContainer-Row'>{i.map(j => j=="Filler" ? props.Filler : j)}</div>}) : 
       <div className='RowedItemsContainer-OneColumnEdition'>{rows.map(i => {return i[0]})}</div>
       }
     </div>);

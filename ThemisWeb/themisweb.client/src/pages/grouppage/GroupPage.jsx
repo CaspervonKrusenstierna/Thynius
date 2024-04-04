@@ -5,7 +5,7 @@ import { DashboardHeader } from '../../shared/components/dashboard';
 const GroupPage = () => {
     return (
       <>
-        <DashboardHeader></DashboardHeader>
+        <DashboardHeader className></DashboardHeader>
         <GroupPageView></GroupPageView>   
       </>
   );

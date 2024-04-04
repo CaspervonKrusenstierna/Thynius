@@ -11,7 +11,7 @@ const DashboardContainerSideBar = (props) => {
         <div className='DashboardContainer-SideBar-Navigation'>
             <p className='DashboardContainer-SideBar-Navigation-Title'>{props.navigationtitle}</p>
             <div className='DashboardContainer-SideBar-Navigation-Section'>
-                {props.tabs?.map(tab => <Link className='DashboardContainer-SideBar-Navigation-Item' to={tab.link}>{tab.name}</Link>)}
+                {props.tabs?.map((tab, index) => <Link key={index} state={props.state} className='DashboardContainer-SideBar-Navigation-Item' to={tab.link}>{tab.name}</Link>)}
             </div>
         </div>
     </div>
