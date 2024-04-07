@@ -19,7 +19,7 @@ namespace ThemisWeb.Server.Models
         [ForeignKey("Assignment")]
         public int? AssignmentId { get; set; }
         public Assignment AssignmentSubmittedTo { get; set; }
-        public string? TimeSubmitted {  get; set; }
+        public DateTime? TimeSubmitted {  get; set; }
 
         public int? WarningLevel { get; set; }
 

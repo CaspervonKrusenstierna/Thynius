@@ -1,7 +1,8 @@
 import React, { createContext } from 'react'
-import "../../../shared/styles/DashboardContainer.css"
 import useSubmittmentInfo from './hooks/useSubmittmentInfo';
 import { useParams } from 'react-router-dom';
+import SubmittmentSideMenu from './components/submittmentsidemenu/SubmittmentSideMenu';
+import SubmittmentTextContainer from './components/submittmenttextcontainer/SubmittmentTextContainer';
 
 export const submittmentInfoContext = createContext();
 
@@ -11,9 +12,9 @@ const SubmittmentPageView = () => {
 
   return (
     <submittmentInfoContext.Provider value={submittmentInfo}>
-      <div className='DashboardContainer-Container'>
-        <div className='DashboardContainer'>
-        </div>
+      <div className='SubmittmentPageView'>
+        <SubmittmentSideMenu></SubmittmentSideMenu>
+        <SubmittmentTextContainer></SubmittmentTextContainer>
       </div>
     </submittmentInfoContext.Provider>
   )

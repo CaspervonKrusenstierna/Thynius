@@ -1,11 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿
+using FileHelpers;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ThemisClient.Utils
 {
@@ -16,31 +11,71 @@ namespace ThemisClient.Utils
         PASTE = 2,
         DELETECHAR = 3
     };
-    public struct Input
-    {
-
-        public ActionType ActionType;
-        public UInt32 SelectionStart;
-        public UInt32 SelectionEnd;
-        public UInt64 RelativeTimeMs;
-    }
-
     public static class Utils
     {
-        public static string ConvertJsonData(string json)
+        [DelimitedRecord(",")]
+        public class Input
         {
-            Debug.WriteLine(json);
-            IEnumerable<Input> unFiltered = Newtonsoft.Json.JsonConvert.DeserializeObject<Input[]>(json);
-            Debug.WriteLine(unFiltered.Count());
-            foreach(Input item in unFiltered)
+            [FieldQuoted('"')]
+            public string ActionContent;
+            public ActionType ActionType;
+            public UInt32 SelectionStart;
+            public UInt32 SelectionEnd;
+            public UInt64 RelativeTimeMs;
+        }
+        public static IEnumerable<Input> ReadInputs(string raw)
+        {
+
+            var fileHelperEngine = new FileHelperEngine<Input>();
+            var inputs = fileHelperEngine.ReadString(raw);
+            foreach (var input in inputs)
             {
-                Debug.WriteLine(item.ActionType);
-                Debug.WriteLine(item.RelativeTimeMs);
-                Debug.WriteLine("SELECTIONSTART:" + item.SelectionStart);
-                Debug.WriteLine("SELECTIONEND:" + item.SelectionEnd);
-                //filtered.Add(new Output { ActionType=item.ActionType, RelativeTimeMs=item.RelativeTimeMs, Selection=item.Selection, ActionContent=Encoding.Unicode.GetString(item.ActionContent)});
+                Console.WriteLine("CONTENT: " + input.ActionContent);
+                Console.WriteLine("TYPE: " + input.ActionType);
+                Console.WriteLine("SELECTSTART: " + input.SelectionStart);
+                Console.WriteLine("SELECTEND: " + input.SelectionEnd);
+                Console.WriteLine("RELATIVETIME: " + input.RelativeTimeMs);
             }
+            return inputs;
+        }
+
+        private static void InsertStringInDict(string toInsert, Dictionary<UInt32, char> dict)
+        {
+
+        }
+        private static void RemoveStringInDict(Dictionary<UInt32, char> dict) { }
+        public static string ConvertDllData(string Data)
+        {
+            Debug.WriteLine(Data);
+            Dictionary<UInt32, char> keyValuePairs = new Dictionary<UInt32, char>();
+            IEnumerable<Input> inputs = ReadInputs(Data);
+
+            foreach (var input in inputs)
+            {
+                switch (input.ActionType)
+                {
+                    case ActionType.ADDCHAR:
+                        keyValuePairs.Add(input.SelectionStart, input.ActionContent[0]);
+                        break;
+                    case ActionType.DELETESELECTION:
+                        for(UInt32 i = 0; input.SelectionEnd - input.SelectionStart > i; i++)
+                        {
+                            keyValuePairs.Remove(input.SelectionStart + i);
+                        }
+                        break;
+                    case ActionType.PASTE:
+                        for (UInt32 i = 0; input.SelectionEnd - input.SelectionStart > i; i++)
+                        {
+                            keyValuePairs.Add(input.SelectionStart + i, input.ActionContent[(int)(input.SelectionStart + i)]);
+                        }
+                        break;
+                }
+            }
+            char[] chars = new char[keyValuePairs.Count];
+            keyValuePairs.Values.CopyTo(chars, 0);
+            Debug.WriteLine(new String(chars));
             return "";
+
         }
     }
 }

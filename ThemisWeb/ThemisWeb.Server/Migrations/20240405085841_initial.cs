@@ -45,7 +45,7 @@ namespace ThemisWeb.Server.Migrations
                 columns: table => new
                 {
                     EmailExtension = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    OwnerId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    OwnerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,7 +82,7 @@ namespace ThemisWeb.Server.Migrations
                     GroupId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DueDate = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    DueDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -246,10 +246,9 @@ namespace ThemisWeb.Server.Migrations
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OwnerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     AssignmentId = table.Column<int>(type: "int", nullable: true),
-                    TimeSubmitted = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TimeSubmitted = table.Column<DateTime>(type: "datetime2", nullable: true),
                     WarningLevel = table.Column<int>(type: "int", nullable: true),
-                    wordCount = table.Column<int>(type: "int", nullable: false),
-                    characterCount = table.Column<int>(type: "int", nullable: false)
+                    guid = table.Column<decimal>(type: "decimal(20,0)", nullable: false)
                 },
                 constraints: table =>
                 {

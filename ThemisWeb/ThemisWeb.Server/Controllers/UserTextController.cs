@@ -82,11 +82,12 @@ namespace ThemisWeb.Server.Controllers
             string RawText = ThemistTextConverter.GetInputsRawText(model.sessionData);
 
             _userTextRepository.S3RawContentUpload(text, RawText);
+
             return Ok();
         }
 
         [HttpGet]
-        [Route("getrawcontent")]
+        [Route("rawcontent")]
         public async Task<string> GetUserTextRawContent(int textId)
         {
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);

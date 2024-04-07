@@ -24,6 +24,7 @@ function App() {
                     <Route path="/login" element={<LoginPage></LoginPage>}></Route>
                     <Route path="/dashboard/home" element={<DashboardHomePage></DashboardHomePage>}></Route>
                     <Route path="/dashboard/group/:id/:page" element={<GroupPage></GroupPage>}></Route>
+                    <Route path="/dashboard/group/:id/:page/:assignmentid" element={<GroupPage></GroupPage>}></Route>
                     <Route path="/dashboard/groups" element={<GroupsViewPage></GroupsViewPage>}></Route>
                     <Route path="/dashboard/creategroup/:page" element={<CreateGroupPage></CreateGroupPage>}></Route>
                     <Route path="/dashboard/profile" element={<ProfilePage></ProfilePage>}></Route>

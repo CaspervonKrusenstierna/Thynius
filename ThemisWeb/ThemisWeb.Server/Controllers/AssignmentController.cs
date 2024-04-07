@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
+using ThemisWeb.Server.Models.Dtos;
 using static ThemisWeb.Server.Common.DataClasses;
 
 namespace ThemisWeb.Server.Controllers
@@ -42,13 +44,19 @@ namespace ThemisWeb.Server.Controllers
             }
 
             AssignmentDataExtended toReturn = new AssignmentDataExtended();
-            return JsonSerializer.Serialize(new { assignment.Description, assignment.Name});
+            return JsonSerializer.Serialize(new { assignment.Description, assignment.Name, assignment.DueDate, imageURL=_assignmentRepository.GetSignedAssignmentImgUrl(assignment)});
         }
         [HttpPost]
-        public async Task<IActionResult> CreateAssignment(int groupId, string AssignmentName, string dueDate)
+        public async Task<IActionResult> CreateAssignment([FromForm]CreateAssignmentDto model)
         {
+            CreateAssignmentValidator validator = new CreateAssignmentValidator();
+            if (!validator.Validate(model).IsValid)
+            {
+                return BadRequest();
+            }
+
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
-            Group group = await _groupRepository.GetByIdAsync(groupId);
+            Group group = await _groupRepository.GetByIdAsync(model.groupId);
 
             if(group == null)
             {
@@ -61,14 +69,54 @@ namespace ThemisWeb.Server.Controllers
 
 
             Assignment newAssignment = new Assignment();
-            newAssignment.Name = AssignmentName;  //**TODO** Check if sql injection is possible
-            newAssignment.GroupId = groupId;
-            newAssignment.DueDate = dueDate;
-            
+            newAssignment.Name = model.name;
+            newAssignment.GroupId = model.groupId;
+            newAssignment.DueDate = model.dueDate;
+            newAssignment.Description = model.description;
 
             if (!_assignmentRepository.Add(newAssignment))
             {
                 return StatusCode(500);
+            }
+            _assignmentRepository.UploadAssignmentPictureAsync(newAssignment, model.image);
+            return Ok();
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> EditAssignment([FromForm]EditAssignmentDto model)
+        {
+            EditAssignmentValidator validator = new EditAssignmentValidator();
+            if (!validator.Validate(model).IsValid)
+            {
+                return BadRequest();
+            }
+
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            Assignment assignment = await _assignmentRepository.GetByIdAsync(model.assignmentId);
+            if(assignment == null)
+            {
+                return BadRequest();
+            }
+
+            Group group = await _groupRepository.GetByIdAsync(assignment.GroupId);
+
+            if (group.ManagerId != callingUser.Id)
+            {
+                return Unauthorized();
+            }
+
+            assignment.Name = model.name;
+            assignment.DueDate = model.dueDate;
+            assignment.Description = model.description;
+
+            if (!_assignmentRepository.Update(assignment))
+            {
+                return StatusCode(500);
+            }
+            if(model.image != null)
+            {
+                await _assignmentRepository.DeletAssignmentPictureAsync(assignment);
+                _assignmentRepository.UploadAssignmentPictureAsync(assignment, model.image);
             }
             return Ok();
         }
@@ -89,7 +137,7 @@ namespace ThemisWeb.Server.Controllers
                 return Unauthorized();
             }
 
-            bool result = _assignmentRepository.Delete(toDelete);
+            bool result = await _assignmentRepository.Delete(toDelete);
             if (!result)
             {
                 return StatusCode(500);

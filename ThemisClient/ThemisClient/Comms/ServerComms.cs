@@ -11,6 +11,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using ThemisClient.InputTreater;
 
 namespace ThemisClient.Comms
 {
@@ -62,6 +63,18 @@ namespace ThemisClient.Comms
 
         public async Task<bool> SubmitSession(string GUID, string SessionPath)
         {
+            List<unTreatedInput> untreatedInputs = InputTreater.InputTreater.ReadInputs(File.ReadAllText(SessionPath));
+            InputsMetaData metaData = InputTreater.InputTreater.readMetaData(File.ReadAllText(SessionPath + "_metadata"));
+            foreach (unTreatedInput input in untreatedInputs)
+            {
+                //Debug.WriteLine("UntreatedActionContent: " + input.ActionContent);
+            }
+            Input[] treatedInputs = InputTreater.InputTreater.TreatInputs(untreatedInputs, metaData);
+            foreach(Input input in treatedInputs)
+            {
+                //Debug.WriteLine("TreatedActionContent: " + input.ActionContent);
+            }
+            return false;
             MultipartFormDataContent form = new MultipartFormDataContent();
             var fs = File.OpenRead(SessionPath);
             var stream = new StreamContent(fs);

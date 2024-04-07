@@ -1,12 +1,11 @@
 .BottomRightContainerButton{
     position: absolute;
-    gap: 12px;
-    margin-left: 1060px;
+    margin-left: 1093px;
     margin-top: 749px;
 }
 @media screen and (max-width: 1250px) {
     .BottomRightContainerButton{
-        margin-left: 760px;
+        margin-left: 793px;
     }
   }
   @media screen and (max-width: 900px) {

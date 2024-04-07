@@ -1,5 +1,7 @@
 ﻿
 
+using static ThemisWeb.Server.Common.ThemistTextConverter;
+
 namespace ThemisWeb.Server.Common
 {
     public enum MomentOfInterestReason
@@ -44,8 +46,7 @@ namespace ThemisWeb.Server.Common
             return 0;
         }
 
-        public 
-        ThemisDetector(IEnumerable<Input> inputs) { 
+        public ThemisDetector(IEnumerable<Input> inputs) { 
 
             _inputs = inputs;
 

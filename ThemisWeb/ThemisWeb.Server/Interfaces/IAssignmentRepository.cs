@@ -1,4 +1,5 @@
-﻿using ThemisWeb.Server.Models;
+﻿using Amazon.S3.Model;
+using ThemisWeb.Server.Models;
 
 namespace ThemisWeb.Server.Interfaces
 {
@@ -7,9 +8,12 @@ namespace ThemisWeb.Server.Interfaces
         public Task<IEnumerable<Assignment>> GetByGroupIdAsync(int groupId);
         public Task<IEnumerable<Assignment>> GetUserAssignmentsAsync(ApplicationUser user);
         public Task<Assignment> GetByIdAsync(int id);
+        public Task<PutObjectResponse> UploadAssignmentPictureAsync(Assignment assignment, IFormFile assignmentPicture);
+        public Task<DeleteObjectResponse> DeletAssignmentPictureAsync(Assignment assignment);
+        public string GetSignedAssignmentImgUrl(Assignment assignment);
         public bool Add(Assignment assignment);
         public bool Update(Assignment assignment);
-        public bool Delete(Assignment assignment);
+        public Task<bool> Delete(Assignment assignment);
         public bool Save();
     }
 }

@@ -76,13 +76,13 @@ namespace ThemisClient
             string[] unsyncedSessions = Directory.GetFiles(themisDir + "/Sessions/");
             foreach(string sessionPath in unsyncedSessions)
             {
-                Debug.WriteLine(Path.GetFileName(sessionPath));
-
-                if (await serverComms.SubmitSession(Path.GetFileName(sessionPath), sessionPath))
+                if (!sessionPath.EndsWith("_metadata"))
                 {
-                    File.Delete(sessionPath);
-            }
-    
+                    if (await serverComms.SubmitSession(Path.GetFileName(sessionPath), sessionPath))
+                    {
+                        File.Delete(sessionPath);
+                    }
+                }
             }
         }
         private void OnWordExit()

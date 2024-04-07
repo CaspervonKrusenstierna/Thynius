@@ -94,6 +94,19 @@
           }
         }
       },
+      "FileHelpers/3.5.2": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/FileHelpers.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/FileHelpers.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "FluentValidation/11.9.0": {
         "type": "package",
         "compile": {
@@ -1873,6 +1886,23 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "FileHelpers/3.5.2": {
+      "sha512": "Z0jwjF4AmDBzRWfHFMdrcuBgmoQ2ChLaTmhRjnmReoUPUkT/+5StzWCB0N0RpslYeXiSyvcntcZNLtY58todFw==",
+      "type": "package",
+      "path": "filehelpers/3.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "filehelpers.3.5.2.nupkg.sha512",
+        "filehelpers.nuspec",
+        "lib/net40/FileHelpers.dll",
+        "lib/net40/FileHelpers.xml",
+        "lib/net45/FileHelpers.dll",
+        "lib/net45/FileHelpers.xml",
+        "lib/netstandard2.0/FileHelpers.dll",
+        "lib/netstandard2.0/FileHelpers.xml"
       ]
     },
     "FluentValidation/11.9.0": {
@@ -4926,6 +4956,7 @@
     "net8.0": [
       "AWSSDK.Extensions.NETCore.Setup >= 3.7.300",
       "AWSSDK.S3 >= 3.7.307.1",
+      "FileHelpers >= 3.5.2",
       "FluentValidation >= 11.9.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.3",
       "Microsoft.AspNetCore.SpaProxy >= 8.0.3",
@@ -4995,6 +5026,10 @@
           "AWSSDK.S3": {
             "target": "Package",
             "version": "[3.7.307.1, )"
+          },
+          "FileHelpers": {
+            "target": "Package",
+            "version": "[3.5.2, )"
           },
           "FluentValidation": {
             "target": "Package",

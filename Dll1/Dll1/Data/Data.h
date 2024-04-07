@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include "../MemUtils/MemUtils.h"
+#include "../Hooks//Hooks.h"
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -19,7 +20,8 @@ class Data {
 public:
 	Data();
 	Selection GetSelection();
+	UINT64 GetCp();
 private:
-	UINT32* SelectionStartAddy;
-	UINT32* SelectionEndAddy;
+	PVOID selAddy;
+	INT32 CpRODOffset;
 };

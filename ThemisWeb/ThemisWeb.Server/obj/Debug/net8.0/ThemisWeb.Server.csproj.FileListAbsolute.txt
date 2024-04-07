@@ -295,3 +295,4 @@ C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\Th
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\AWSSDK.Extensions.NETCore.Setup.dll
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\runtimes\win\lib\net8.0\Microsoft.Win32.SystemEvents.dll
 C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThemisWeb\ThemisWeb.Server\bin\Debug\net8.0\FileHelpers.dll

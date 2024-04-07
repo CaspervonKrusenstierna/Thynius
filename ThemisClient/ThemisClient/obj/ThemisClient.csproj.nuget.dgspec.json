@@ -49,9 +49,9 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "Newtonsoft.Json": {
+            "FileHelpers": {
               "target": "Package",
-              "version": "[13.0.3, )"
+              "version": "[3.5.2, )"
             }
           },
           "imports": [

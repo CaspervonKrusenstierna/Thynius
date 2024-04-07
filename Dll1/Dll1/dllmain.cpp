@@ -4,13 +4,12 @@
 #include "Hooks/Hooks.h"
 #include "Data/Data.h"
 #include "ThemisSessionData/ThemisSessionData.h"
-#include "./Nlohmann/json.hpp"
 
 Comms* comms;
 Hooks* hooks;
 ThemisSessionData* themisSessionData;
 Data* data;
-
+std::ofstream DebugOutput("C:\\Program Files\\Themis\\DebugMain");
 
 void OnTextInputFunc(wchar_t input) {
     if (input == 8) {
@@ -24,37 +23,58 @@ void OnPasteFunc(std::wstring PastedText){
     themisSessionData->LogInput(ActionType::PASTE, PastedText, data->GetSelection());
 }
 
-void OnSaveFunc(unsigned long GUID) {
-    std::vector<Input> inputs = themisSessionData->GetSessionData().SessionInputs;
+UINT64 stashedUndoValue = 0;
+void OnUndoFunc(UINT64 isUndo) {
+    if (stashedUndoValue == 0 || _abs64(stashedUndoValue - isUndo) >= 2) {
+        stashedUndoValue = isUndo;
+    }
+    if (stashedUndoValue == isUndo) {
+        themisSessionData->LogInput(ActionType::UNDO, L"", data->GetSelection());
+    }
+    else {
+        themisSessionData->LogInput(ActionType::REDO, L"", data->GetSelection());
+    }
+}
 
-    nlohmann::json result;
-    for (int i = 0; inputs.size() > i; i++) {
-        Input currInput = inputs[i];
-        nlohmann::json j;
-        j["ActionContent"] = to_utf8(currInput.ActionContent);
-        j["ActionType"] = currInput._ActionType;
-        j["SelectionStart"] = currInput._Selection.SelectionStart;
-        j["SelectionEnd"] = currInput._Selection.SelectionEnd;
-        j["RelativeTimeMs"] = currInput.relativeTimePointMs;
-        result.push_back(j);
+void OnSaveFunc(unsigned long GUID) {
+    SessionData sessionData = themisSessionData->GetSessionData();
+    std::wofstream Output("C:\\Program Files\\Themis\\Sessions\\" + std::to_string(GUID));
+    std::wofstream MetaOutput("C:\\Program Files\\Themis\\Sessions\\" + std::to_string(GUID) + "_metadata");
+
+    for (int i = 0; sessionData.inputs.size() > i; i++) {
+        Input currInput = sessionData.inputs[i];
+        
+        Output << L'"' << currInput.ActionContent << L'"' << L",";
+        Output << currInput._ActionType << ',';
+        Output << currInput._Selection.SelectionStart << ',';
+        Output << currInput._Selection.SelectionEnd << ',';
+        Output << currInput.Cp << ',';
+        Output << currInput.relativeTimePointMs << '\n';
     }
 
-    std::ofstream Content("C:\\Program Files\\Themis\\Sessions\\" + std::to_string(GUID));
-
-    Content << result;
-
-    Content.close();
+    MetaOutput << sessionData.endCp;
+    Output.close();
+    MetaOutput.close();
 }
 
 DWORD WINAPI MainThread(HMODULE hModule){
     comms = new Comms();
     hooks = new Hooks();
     data = new Data();
-    themisSessionData = new ThemisSessionData();
+    themisSessionData = new ThemisSessionData(data);
 
-    hooks->HookOnPasteText(OnPasteFunc);
-    hooks->HookOnTextInput(OnTextInputFunc);
-    hooks->HookSave(OnSaveFunc);
+    if (!hooks->HookOnPasteText(OnPasteFunc)) {
+        DebugOutput << "Fatal error: Failed to hook paste" << std::endl;
+    }
+    if (!hooks->HookOnTextInput(OnTextInputFunc)) {
+        DebugOutput << "Fatal error: Failed to hook textinput" << std::endl;
+    }
+    if (!hooks->HookSave(OnSaveFunc)) {
+        DebugOutput << "Fatal error: Failed to hook save" << std::endl;
+    }
+    if (!hooks->HookUndo(OnUndoFunc)) {
+        DebugOutput << "Fatal error: Failed to hook undo" << std::endl;
+    }
 
     return 0;
 }

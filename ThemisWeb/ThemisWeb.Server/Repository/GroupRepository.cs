@@ -80,9 +80,9 @@ namespace ThemisWeb.Server.Repository
                 BucketName = _configurationManager["BucketName"],
                 Key = $"group_images/{group.Id}",
                 Verb = HttpVerb.GET,
-                Expires = DateTime.Now.AddMinutes(5)
-               
-        };
+                Expires = DateTime.Now.AddHours(1)
+
+            };
             return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
         }
     }

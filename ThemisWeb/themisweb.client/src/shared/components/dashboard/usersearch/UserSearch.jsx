@@ -45,14 +45,14 @@ const UserSearch = (props) => {
     <div onClick={() => {setShowInput(true)}} className='UserSearch'>
         {showInput ? 
         <div className='SearchBarContainer'><input id="SearchInput" autoComplete="off" onBlur={onInputBlur} value={textInput} autoFocus={true} onChange={(s) => {onInputChange(s.target.value)}} className='UserSearch-Input'></input>
-            <Button onClick={onAddUser} className="UserSearchAddButton">Lägg till</Button>
+            <Button onClick={onAddUser} className="UserSearchAddButton text-black"><p>Lägg till</p></Button>
         </div>
         : <div className='SearchBarContainer'>
         <div className='SearchBar'>
             <img className="UserSearch-Img" src={MagnifyingClass}></img>
             <p className='UserSearch-Text'>Sök</p>
         </div>
-        <Button onClick={onAddUser} className="UserSearchAddButton">Lägg till</Button></div>
+        <Button onClick={onAddUser} className="text-black hover:text-black">Lägg till</Button></div>
         }
         {!disableSearchSuggestions ? <SearchSuggestionContainer textInput={textInput} onChoose={onSearchSuggestionSelect} searchSuggestions={searchSuggestions}></SearchSuggestionContainer> : <></>}
     </div>

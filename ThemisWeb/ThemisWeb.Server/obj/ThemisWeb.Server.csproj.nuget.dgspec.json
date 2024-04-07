@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[3.7.307.1, )"
             },
+            "FileHelpers": {
+              "target": "Package",
+              "version": "[3.5.2, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.9.0, )"

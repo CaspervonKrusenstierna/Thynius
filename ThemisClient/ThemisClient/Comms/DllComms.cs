@@ -39,6 +39,7 @@ namespace ThemisClient.Comms
                 Thread.Sleep(SleepBetweenCommsCheck);
             }
 
+
         }
         public DllComms(ushort SleepBetweenCommsCheck = 100)
         {
