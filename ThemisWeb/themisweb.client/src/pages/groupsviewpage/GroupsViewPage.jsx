@@ -6,7 +6,7 @@ const GroupsViewPage = () => {
   return (
     <>
     <DashboardHeader></DashboardHeader>
-    <div className='flex flex-column justify-center w-full'>
+    <div className='flex flex-column justify-center w-[100vw]'>
       <GroupsView></GroupsView>
     </div>    
     </>

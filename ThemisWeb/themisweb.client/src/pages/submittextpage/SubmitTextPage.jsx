@@ -6,7 +6,7 @@ const SubmitTextPage = () => {
   return (
     <>
         <DashboardHeader></DashboardHeader>
-        <div className="flex justify-center">
+        <div className='flex flex-column justify-center w-[100vw]'>
             <SubmitTextPageView></SubmitTextPageView>
         </div>
     </>

@@ -992,6 +992,10 @@ video {
   width: 100%;
 }
 
+.w-\[100vw\] {
+  width: 100vw;
+}
+
 .min-w-\[12rem\] {
   min-width: 12rem;
 }
