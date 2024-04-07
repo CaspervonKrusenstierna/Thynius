@@ -24,15 +24,21 @@ void OnPasteFunc(std::wstring PastedText){
 }
 
 UINT64 stashedUndoValue = 0;
-void OnUndoFunc(UINT64 isUndo) {
+bool OnUndoFunc(UINT64 isUndo) {
+    ActionType lastActionType = themisSessionData->GetLastActionType();
+    if (lastActionType != ActionType::PASTE && lastActionType != ActionType::DELETESELECTION) {
+        return false;
+    }
     if (stashedUndoValue == 0 || _abs64(stashedUndoValue - isUndo) >= 2) {
         stashedUndoValue = isUndo;
     }
     if (stashedUndoValue == isUndo) {
         themisSessionData->LogInput(ActionType::UNDO, L"", data->GetSelection());
+        themisSessionData->IncUndoDepth();
     }
     else {
         themisSessionData->LogInput(ActionType::REDO, L"", data->GetSelection());
+        themisSessionData->DecUndoDepth();
     }
 }
 

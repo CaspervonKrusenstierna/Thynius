@@ -31,8 +31,9 @@ FUndoCore pUndo = nullptr;
 PVOID pUndoTarget;
 UndoCallback funcToRunOnUndo;
 void __fastcall detourUndo(PVOID isUndo, struct DOD* a2, int a3, int a4) {
-	funcToRunOnUndo(reinterpret_cast<UINT64>(isUndo));
-	return pUndo(isUndo, a2, a3, a4);
+	if (funcToRunOnUndo(reinterpret_cast<UINT64>(isUndo))) {
+		return pUndo(isUndo, a2, a3, a4);
+	}
 }
 
 CpFirstDocCp pCp;

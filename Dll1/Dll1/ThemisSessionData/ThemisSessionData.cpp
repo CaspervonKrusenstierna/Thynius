@@ -15,6 +15,31 @@ SessionData ThemisSessionData::GetSessionData() {
 	return toReturn;
 }
 
+ActionType ThemisSessionData::GetLastActionType() {
+	int i = this->inputs.size() - 1;
+	int UndoDepthCopy = this->UndoDepth;
+	while (true) {
+		if (0 > i) {
+			return ActionType::INVALID;
+		}
+		Input currInput = inputs[i];
+		ActionType currInputActionType = currInput._ActionType;
+		if (currInputActionType != ActionType::UNDO && currInputActionType != ActionType::REDO) {
+			if (UndoDepthCopy == 0) {
+				return currInputActionType;
+			}
+			UndoDepthCopy--;
+		}
+	}
+}
+
+void ThemisSessionData::IncUndoDepth() {
+	UndoDepth++;
+}
+
+void ThemisSessionData::DecUndoDepth() {
+	UndoDepth--;
+}
 
 void ThemisSessionData::LogInput(ActionType _ActionType, std::wstring ActionContent, Selection _Selection) {
 	Input toPush;
@@ -23,6 +48,6 @@ void ThemisSessionData::LogInput(ActionType _ActionType, std::wstring ActionCont
 	toPush.relativeTimePointMs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>(std::chrono::system_clock::now() - this->startTime)).count();
 	toPush._Selection = _Selection;
 	toPush.Cp = data->GetCp();
-	Output2 << "CP: " << data->GetCp() << std::endl;
 	this->inputs.push_back(toPush);
+	this->UndoDepth = 0;
 }

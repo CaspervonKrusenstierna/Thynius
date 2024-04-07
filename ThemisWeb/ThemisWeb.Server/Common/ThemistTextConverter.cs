@@ -32,14 +32,6 @@ namespace ThemisWeb.Server.Common
             Console.WriteLine(fileContent);
             var fileHelperEngine = new FileHelperEngine<Input>();
             var inputs = fileHelperEngine.ReadString(fileContent);
-            foreach (var input in inputs)
-            {
-                Console.WriteLine("CONTENT: " + input.ActionContent);
-                Console.WriteLine("TYPE: " + input.ActionType);
-                Console.WriteLine("SELECTSTART: " + input.SelectionStart);
-                Console.WriteLine("SELECTEND: " + input.SelectionEnd);
-                Console.WriteLine("RELATIVETIME: " + input.RelativeTimeMs);
-            }
             reader.Dispose();
 
             return inputs;
@@ -53,18 +45,24 @@ namespace ThemisWeb.Server.Common
             IEnumerable<Input> inputs = ReadInputs(inputsFile);
             foreach (Input input in inputs)
             {
-                Console.WriteLine("CONTENT: " + input.ActionContent);
-                Console.WriteLine("TYPE: " + input.ActionType);
-                Console.WriteLine("SELECTSTART: " + input.SelectionStart);
-                Console.WriteLine("SELECTEND: " + input.SelectionEnd);
-                Console.WriteLine("RELATIVETIME: " + input.RelativeTimeMs);
                 switch (input.ActionType)
                 {
-                    case ActionType.ADDCHAR: toReturn = toReturn.Insert((int)input.SelectionStart, input.ActionContent); break;
-                    case ActionType.DELETESELECTION: toReturn = toReturn.Remove((int)input.SelectionStart, (int)input.SelectionEnd - (int)input.SelectionStart); break;
-                    case ActionType.PASTE: toReturn = toReturn.Insert((int)input.SelectionStart, input.ActionContent); break;
+                    case ActionType.ADDCHAR: 
+                        toReturn = toReturn.Insert((int)input.SelectionStart, input.ActionContent); 
+                        break;
+
+                    case ActionType.DELETESELECTION: 
+                        toReturn = toReturn.Remove((int)input.SelectionStart, (int)input.SelectionEnd - (int)input.SelectionStart);
+                        break;
+
+                    case ActionType.PASTE: 
+                        if(input.SelectionStart != input.SelectionEnd) // REPLACE OPERATION
+                        {
+                            toReturn = toReturn.Remove((int)input.SelectionStart, (int)input.SelectionEnd - (int)input.SelectionStart);
+                        }
+                        toReturn = toReturn.Insert((int)input.SelectionStart, input.ActionContent); 
+                        break;
                 }
-                Console.WriteLine("TORETURN: " + toReturn);
             }
             return toReturn;
         }

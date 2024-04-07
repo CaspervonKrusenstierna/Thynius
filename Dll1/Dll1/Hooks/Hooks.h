@@ -22,7 +22,7 @@ typedef __int64(__fastcall* CpFirstDocCp)(struct DOD* a1, int a2);
 INT64 GetCpCount(UINT32 CpOffset);
 
 typedef void (__fastcall* FUndoCore)(PVOID isUndo, struct DOD* a2, int a3, int a4);
-typedef void(__cdecl* UndoCallback)(UINT64 isUndo);
+typedef bool(__cdecl* UndoCallback)(UINT64 isUndo);
 
 class Hooks {
 	private:
