@@ -57,23 +57,11 @@ namespace ThemisClient
 
         public DllInjector() { }
 
-        public DllInjectionResult Inject(string sProcName, string sDllPath)
+        public DllInjectionResult Inject(uint _procId, string sDllPath)
         {
             if (!File.Exists(sDllPath))
             {
                 return DllInjectionResult.DllNotFound;
-            }
-
-            uint _procId = 0;
-
-            Process[] _procs = Process.GetProcesses();
-            for (int i = 0; i < _procs.Length; i++)
-            {
-                if (_procs[i].ProcessName == sProcName)
-                {
-                    _procId = (uint)_procs[i].Id;
-                    break;
-                }
             }
 
             if (_procId == 0)

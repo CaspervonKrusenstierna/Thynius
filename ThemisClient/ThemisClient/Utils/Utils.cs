@@ -46,7 +46,6 @@ namespace ThemisClient.Utils
         private static void RemoveStringInDict(Dictionary<UInt32, char> dict) { }
         public static string ConvertDllData(string Data)
         {
-            Debug.WriteLine(Data);
             Dictionary<UInt32, char> keyValuePairs = new Dictionary<UInt32, char>();
             IEnumerable<Input> inputs = ReadInputs(Data);
 

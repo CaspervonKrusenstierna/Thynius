@@ -8,6 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { X } from 'lucide-react';
 import useInitializeAccount from './useInitializeAccount';
 
+const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
 const RegisterBox = () => {
     const [error, setError] = useState();
     const Username = useRef("");
@@ -17,10 +25,36 @@ const RegisterBox = () => {
     const navigate = useNavigate();
 
     async function onSubmit() {
-        if (Password.current != ConfirmPassword.current) {
-            setError("Passwords do not match.")
+        let submittedPassword = Password.current;
+        if (submittedPassword != ConfirmPassword.current) {
+            setError("Dina lösenord matchar inte.")
             return;
         }
+        if (!validateEmail(Email.current)){
+            setError("Var vänlig och ange en giltig email.");
+            return;
+        }
+        if (submittedPassword < 8){
+            setError("Ditt lösenord måste innehålla minst 8 karaktärer.")
+            return;
+        }
+        if (submittedPassword > 24){
+            setError("Ditt lösenord får inte innehålla mer än 24 karaktärer")
+            return;
+        }
+        if(!/\d/.test(submittedPassword)){
+            setError("Ditt lösenord måste innehålla minst en siffra.")
+            return;
+        }
+        if(!/[A-Z]/.test(submittedPassword)){
+            setError("Ditt lösenord måste innehålla minst en stor bokstav.")
+            return;
+        }
+        if(!/[a-z]/.test(submittedPassword)){
+            setError("Ditt lösenord måste innehålla minst en liten bokstav.")
+            return;
+        }
+
         const response = await useRegister(Password.current, Email.current);
         if (response.ok) {
             useInitializeAccount();

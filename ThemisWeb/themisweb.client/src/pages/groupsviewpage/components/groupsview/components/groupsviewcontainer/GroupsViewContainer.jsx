@@ -10,8 +10,9 @@ const GroupsViewContainer = () => {
   const groupsPerRow = useDynamicGroupsRowCount(); // changes group per row count depending on the width of viewport
   const groupsInfo = useGroupsInfo();
 
-  return (<div className="GroupsViewContainer">
-      {<RowedItemsContainer ItemsPerRow={groupsPerRow} Items={groupsInfo?.map(j => <GroupView key={j.Id} groupId={j.Id} managerId={j.ManagerId} img={j.PictureLink} name={j.Name}></GroupView>)} Filler={<div className="GroupFiller"></div>}></RowedItemsContainer>}
+  return (
+      <div className="GroupsViewContainer">
+        {<RowedItemsContainer ItemsPerRow={groupsPerRow} Items={groupsInfo?.map(j => <GroupView key={j.Id} groupId={j.Id} managerId={j.ManagerId} img={j.PictureLink} name={j.Name}></GroupView>)} Filler={<div className="GroupFiller"></div>}></RowedItemsContainer>}
       </div>
       )
 }

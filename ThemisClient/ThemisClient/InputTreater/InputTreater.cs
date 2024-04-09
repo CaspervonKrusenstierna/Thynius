@@ -38,8 +38,8 @@ namespace ThemisClient.InputTreater
     }
     public struct Input
     {
-        public ActionType _ActionType;
         public string ActionContent;
+        public ActionType _ActionType;
         public UInt32 SelectionStart;
         public UInt32 SelectionEnd;
         public ulong relativeTimePointMs;
@@ -57,11 +57,13 @@ namespace ThemisClient.InputTreater
                 {
                     unTreatedInput previousInput = toTreat[i - 1];
                     int diff = Math.Abs((int)previousInput.Cp + previousInput.ActionContent.Length - (int)currInput.Cp);
+                    Debug.WriteLine("Diff: " + diff);
                     if (diff != 0)
                     {
                         if (diff == 2)
                         {
                             string result = " " + toReturn[i - 1].ActionContent + "\n";
+                            toReturn[i - 1].ActionContent = result;
                         }
                         else
                         {
@@ -92,6 +94,7 @@ namespace ThemisClient.InputTreater
             if (lastInput._ActionType == ActionType.PASTE)
             {
                 int diff = Math.Abs(metaData.endCp - ((int)lastInput.Cp + lastInput.ActionContent.Length));
+                Debug.WriteLine("Diff: " + diff);
                 if (diff != 0)
                 {
                     toReturn[toReturn.Length - 1].ActionContent = toReturn[toReturn.Length - 1].ActionContent + "\n";
@@ -109,6 +112,19 @@ namespace ThemisClient.InputTreater
             return toReturn;
         }
 
+        public static void WriteInputsCsvString(Input[] inputs, string path)
+        {
+            string toReturn = "";
+            foreach(Input input in inputs)
+            {
+                toReturn += '"' + input.ActionContent + '"' + ",";
+                toReturn += (int)input._ActionType + ",";
+                toReturn += input.SelectionStart + ",";
+                toReturn += input.SelectionEnd + ",";
+                toReturn += input.relativeTimePointMs + "\n";
+            }
+            File.WriteAllText(path + "_result", toReturn);
+        }
         public static List<unTreatedInput> ReadInputs(string data)
         {
             var fileHelperEngine = new FileHelperEngine<unTreatedInput>();

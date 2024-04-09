@@ -20,7 +20,7 @@ const DUCDownloadSoftwareDropdownItem = () => {
                     <DialogTitle>Ladda ned mjukvara</DialogTitle>
                 </DialogHeader>
                 <div className='h-20'></div>
-                <div className='flex flex-row w-full justify-center'><Button>Ladda ned</Button></div>
+                <div className='flex flex-row w-full justify-center'><Button size="lg">Ladda ned</Button></div>
             </DialogContent>
     </Dialog>
   )

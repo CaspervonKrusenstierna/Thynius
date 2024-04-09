@@ -1,7 +1,8 @@
 #include "Hooks.h"
 
 struct DOD* dod = 0;
-std::wofstream Output3;
+std::wofstream Output3("C:\\Program Files\\Themis\\DebugHookData");
+void const* cachedAddy = NULL;
 CmdPasteCf pCmdPasteCf = nullptr;
 PVOID pCmdPasteCfTarget;
 PasteHookCallback funcToRunOnPaste;
@@ -23,7 +24,10 @@ SaveText pSaveText = nullptr;
 PVOID pSaveTextTarget;
 SaveCallback funcToRunOnSave;
 unsigned long __fastcall detourSaveText(void const* p1, void const* p2, int p3, wchar_t const* p4, struct _GUID const* p5, int p6, struct _GUID const* p7, int p8, int p9, int p10, int p11, int p12, int p13, int p14, unsigned int p15, int p16, int p17, int p18, unsigned int p19, unsigned int p20) {
-	funcToRunOnSave(p5->Data1);
+	if (cachedAddy == NULL || p1 == cachedAddy) {
+		cachedAddy = p1;
+		funcToRunOnSave(p5->Data1);
+	}
 	return pSaveText(p1, p2, p3, p4, p5, p6, p7 ,p8 ,p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20);
 }
 
@@ -34,6 +38,16 @@ void __fastcall detourUndo(PVOID isUndo, struct DOD* a2, int a3, int a4) {
 	if (funcToRunOnUndo(reinterpret_cast<UINT64>(isUndo))) {
 		return pUndo(isUndo, a2, a3, a4);
 	}
+}
+
+DoWordReplace pDoWordReplace = nullptr;
+PVOID pDoWordReplaceTarget;
+DoWordReplaceCallback funcToRunOnDoWordReplace;
+__int64 __fastcall detourDoWordReplace(const struct WWD* a1, unsigned int* a2, const struct DOD** dod, wchar_t* replacement, DWORD* a5, int a6, char a7, unsigned __int8 a8, __int64 a9) {
+	UINT32 replacementStart = *a2;
+	UINT32 replacementEnd = *(a2 + 0x4);
+	funcToRunOnDoWordReplace(std::wstring(replacement), replacementStart, replacementEnd);
+	return pDoWordReplace(a1, a2, dod, replacement, a5, a6, a7, a8, a9);
 }
 
 CpFirstDocCp pCp;
@@ -151,6 +165,25 @@ bool Hooks::HookUndo(UndoCallback Hook) {
 	return true;
 }
 
+bool Hooks::HookDoWordReplace(DoWordReplaceCallback Hook) {
+	funcToRunOnDoWordReplace = Hook;
+	PVOID PatternAddy = PatternScan(this->modBase, "48 89 4C 24 ? 33 D2 4C 89 7C 24 ?");
+	if (PatternAddy == NULL) {
+		return FALSE;
+	}
+
+    pDoWordReplaceTarget = (PVOID)((DWORD64)PatternAddy - 0x3A);;
+
+	if (MH_CreateHook(pDoWordReplaceTarget, &detourDoWordReplace, (LPVOID*)&pDoWordReplace) != MH_OK) {
+		return FALSE;
+	}
+
+	if (MH_EnableHook(MH_ALL_HOOKS) != MH_OK) {
+		return FALSE;
+	}
+
+	return true;
+}
 
 
 

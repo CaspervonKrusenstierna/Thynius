@@ -58,11 +58,11 @@ namespace ThemisWeb.Server.Common
 
             foreach (Input input in inputs)
             {
-                switch (input.ActionType)
+                switch (input._ActionType)
                 {
                     case ActionType.ADDCHAR:
                         addChars.Append(input);
-                        int timeDiff = (int)input.RelativeTimeMs - previousAddCharRelativeTime;
+                        int timeDiff = (int)input.relativeTimePointMs - previousAddCharRelativeTime;
                         if (timeDiff >= 60000)
                         {
                             extendedTypingBreaksCount++;

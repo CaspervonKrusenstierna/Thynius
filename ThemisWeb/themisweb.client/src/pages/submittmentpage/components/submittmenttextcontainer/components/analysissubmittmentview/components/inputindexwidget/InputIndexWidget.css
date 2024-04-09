@@ -1,0 +1,19 @@
+.InputIndexWidget{
+    background: transparent;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 45%;
+    align-self: center;
+    margin-top: 740px;
+}
+
+.InputIndexWidget-Option{
+    height: 50px;
+    width: 50px;
+}
+
+.InputIndexWidget-OptionImg{
+    width: 30px;
+}

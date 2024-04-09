@@ -17,28 +17,14 @@ SessionData ThemisSessionData::GetSessionData() {
 
 ActionType ThemisSessionData::GetLastActionType() {
 	int i = this->inputs.size() - 1;
-	int UndoDepthCopy = this->UndoDepth;
-	while (true) {
-		if (0 > i) {
-			return ActionType::INVALID;
-		}
-		Input currInput = inputs[i];
-		ActionType currInputActionType = currInput._ActionType;
-		if (currInputActionType != ActionType::UNDO && currInputActionType != ActionType::REDO) {
-			if (UndoDepthCopy == 0) {
-				return currInputActionType;
-			}
-			UndoDepthCopy--;
-		}
+	if (i == -1) {
+		return ActionType::INVALID;
 	}
+	return this->inputs[i]._ActionType;
 }
 
-void ThemisSessionData::IncUndoDepth() {
-	UndoDepth++;
-}
-
-void ThemisSessionData::DecUndoDepth() {
-	UndoDepth--;
+void ThemisSessionData::PopInput() {
+	this->inputs.pop_back();
 }
 
 void ThemisSessionData::LogInput(ActionType _ActionType, std::wstring ActionContent, Selection _Selection) {
@@ -49,5 +35,4 @@ void ThemisSessionData::LogInput(ActionType _ActionType, std::wstring ActionCont
 	toPush._Selection = _Selection;
 	toPush.Cp = data->GetCp();
 	this->inputs.push_back(toPush);
-	this->UndoDepth = 0;
 }

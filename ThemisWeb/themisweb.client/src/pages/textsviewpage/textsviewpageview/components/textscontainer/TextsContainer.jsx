@@ -10,7 +10,7 @@ const TextsContainer = () => {
     const textsRowCount = useDynamicTextsRowCount();
     return (
         <div className='TextsContainer'>
-            {<RowedItemsContainer ItemsPerRow={textsRowCount} Items={textsInfo?.map(j =><TextView Id={j.Id} Title={j.Title}></TextView>)} Filler={<div className="TextFiller"></div>}></RowedItemsContainer>}
+            {<RowedItemsContainer ItemsPerRow={textsRowCount} Items={textsInfo?.toReversed().map(j =><TextView Id={j.Id} Title={j.Title}></TextView>)} Filler={<div className="TextFiller"></div>}></RowedItemsContainer>}
         </div>
     )
 }

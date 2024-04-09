@@ -14,7 +14,8 @@ enum ActionType {
     UNDO = 3,
     REDO = 4,
     END = 5,
-    INVALID = 6
+    INVALID = 6,
+    SPELLINGREPLACE = 7
 };
 
 struct Input {
@@ -35,13 +36,11 @@ class ThemisSessionData {
         ThemisSessionData(Data* data);
         SessionData GetSessionData();
         ActionType GetLastActionType();
-        void IncUndoDepth();
-        void DecUndoDepth();
         void LogInput(ActionType _ActionType, std::wstring ActionContent, Selection _Selection);
+        void PopInput();
     private:
         std::vector<Input> inputs = std::vector<Input>();
         Data* data;
         std::chrono::system_clock::time_point startTime;
-        int UndoDepth = 0;
 
 };

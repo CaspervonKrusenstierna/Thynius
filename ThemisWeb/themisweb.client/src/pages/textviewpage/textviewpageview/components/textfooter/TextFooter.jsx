@@ -2,10 +2,10 @@ import React from 'react'
 import "./TextFooter.css"
 import DeleteTextButton from './DeleteTextButton/DeleteTextButton'
 
-const TextFooter = () => {
+const TextFooter = (props) => {
   return (
     <div className='TextFooter'>
-        <DeleteTextButton></DeleteTextButton>
+        <DeleteTextButton textId={props.textId}></DeleteTextButton>
     </div>
   )
 }

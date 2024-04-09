@@ -164,6 +164,7 @@
     <ClInclude Include="MemUtils\MemUtils.h" />
     <ClInclude Include="SystemUtils\SystemUtils.h" />
     <ClInclude Include="ThemisSessionData\ThemisSessionData.h" />
+    <ClInclude Include="WordFeatureDisabler\WordFeatureDisabler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Comms\Comms.cpp" />
@@ -173,6 +174,7 @@
     <ClCompile Include="MemUtils\MemUtils.cpp" />
     <ClCompile Include="SystemUtils\SystemUtils.cpp" />
     <ClCompile Include="ThemisSessionData\ThemisSessionData.cpp" />
+    <ClCompile Include="WordFeatureDisabler\WordFeatureDisabler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

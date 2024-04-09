@@ -7,7 +7,11 @@ using ThemisWeb.Server.Common;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
 using ThemisWeb.Server.Models.Dtos;
+using ThemisWeb.Server.Common;
 using static ThemisWeb.Server.Common.DataClasses;
+using static ThemisWeb.Server.Common.ThemistTextConverter;
+using Amazon.S3.Model;
+using System.Text;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -44,21 +48,9 @@ namespace ThemisWeb.Server.Controllers
             {
                 return Ok();
             }
+
             HttpContext.Response.StatusCode = 500;
             return null;
-        }
-
-        [HttpGet]
-        [Route("detectiondata")]
-        [Authorize(Roles = "Admin, OrganizationAdmin, Teacher")]
-        public async Task<string> GetUserText(int textId)
-        {
-            UserText text = await _userTextRepository.GetByIdAsync(textId);
-            ApplicationUser textOwner = await _userRepository.GetByIdAsync(text.OwnerId);
-            Assignment assignment = await _assignmentRepository.GetByIdAsync(textId);
-
-            var detectionDataUrl = await _userTextRepository.S3GetDetectionDataSignedUrlAsync(text);
-            return JsonSerializer.Serialize(new {textOwner.UserName, textOwner.Id, assignment.Name, detectionDataUrl});
         }
 
         [HttpPut]
@@ -71,19 +63,83 @@ namespace ThemisWeb.Server.Controllers
             }
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
             UserText text = await _userTextRepository.GetByTextData(user, model.guid);
+
+            IEnumerable<Input> sessionInputs = ReadInputs(model.sessionData);
             if (text == null)
             {
                 text = new UserText();
                 text.OwnerId = user.Id;
                 text.guid = model.guid;
-                text.Title = "";
-                _userTextRepository.Add(text);
-            }
-            string RawText = ThemistTextConverter.GetInputsRawText(model.sessionData);
 
-            _userTextRepository.S3RawContentUpload(text, RawText);
+                string RawText = GetInputsRawText(sessionInputs);
+                Console.WriteLine("Before: " + RawText);
+                byte[] byteArray = Encoding.Unicode.GetBytes(RawText);
+                MemoryStream stream = new MemoryStream(byteArray);
+
+                using (StreamReader reader = new StreamReader(stream, leaveOpen: true))
+                {
+                    Console.WriteLine("FINAL: ");
+                    string line;
+                    // Read line by line
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        Console.WriteLine(line);
+                    }
+                }
+                stream.Dispose();
+
+                text.Title = ThemistTextConverter.GetTextTitle(RawText);
+                _userTextRepository.Add(text);
+
+                //await _userTextRepository.S3RawContentUpload(text, RawText);
+
+                Stream stream2 = model.sessionData.OpenReadStream();
+                await _userTextRepository.S3InputDataUpload(text, stream);
+                stream.Dispose();
+                return Ok();
+            }
+            else
+            {
+
+                GetObjectResponse previousInputsRes = await _userTextRepository.S3GetInputDataAsync(text);
+                Stream newInputs = model.sessionData.OpenReadStream();
+
+                MemoryStream output = new MemoryStream();
+
+                previousInputsRes.ResponseStream.CopyTo(output);
+                newInputs.CopyTo(output);
+
+                string RawText = GetInputsRawText(ReadInputsStream(output));
+                await _userTextRepository.S3RawContentDelete(text);
+                await _userTextRepository.S3RawContentUpload(text, RawText);
+                text.Title = ThemistTextConverter.GetTextTitle(RawText);
+                _userTextRepository.Update(text);
+
+                await _userTextRepository.S3InputDataUpload(text, output);
+                previousInputsRes.ResponseStream.Dispose();
+                newInputs.Dispose();
+                output.Dispose();
+
+            }
 
             return Ok();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Admin, OrganizationAdmin, Teacher")]
+        public async Task<string> GetSubmittmentInfo(int textId)
+        {
+            UserText text = await _userTextRepository.GetByIdAsync(textId);
+            if(text == null)
+            {
+                HttpContext.Response.StatusCode = 400;
+                return null;
+            }
+            return JsonSerializer.Serialize(new { 
+                inputDataURL = _userTextRepository.S3GetInputDataSignedUrl(text),
+                rawTextURL = _userTextRepository.S3GetRawContentSignedUrl(text),
+                detectionDataURL = _userTextRepository.S3GetDetectionDataSignedUrl(text)
+            });
         }
 
         [HttpGet]
@@ -102,8 +158,7 @@ namespace ThemisWeb.Server.Controllers
                 HttpContext.Response.StatusCode = 401;
                 return null;
             }
-            string signedUrl = await _userTextRepository.S3GetRawContentSignedUrlAsync(textToAccess);
-            return JsonSerializer.Serialize(new { rawdatalink = signedUrl });
+            return JsonSerializer.Serialize(new { rawdatalink = _userTextRepository.S3GetRawContentSignedUrl(textToAccess)});
         }
 
         [Route("/user/usertexts")]
@@ -118,6 +173,7 @@ namespace ThemisWeb.Server.Controllers
                 return null;
             }
             IEnumerable<UserText> texts =  await _userTextRepository.GetUserTexts(userToAccess);
+            texts = texts.Where(s => s.AssignmentId == null);
             return System.Text.Json.JsonSerializer.Serialize(texts.Select(i => new { i.Id, i.Title}));
         }
 

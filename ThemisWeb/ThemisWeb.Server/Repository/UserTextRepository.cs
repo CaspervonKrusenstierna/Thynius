@@ -1,13 +1,11 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
 using ReactApp1.Server.Data;
 using System.Text;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
+
 
 namespace ThemisWeb.Server.Repository
 {
@@ -44,8 +42,21 @@ namespace ThemisWeb.Server.Repository
 
         public async Task<PutObjectResponse> S3RawContentUpload(UserText text, string rawContent)
        {
+            Console.WriteLine("Before: " + rawContent);
             byte[] byteArray = Encoding.Unicode.GetBytes(rawContent);
             MemoryStream stream = new MemoryStream(byteArray);
+
+            using (StreamReader reader = new StreamReader(stream, leaveOpen: true))
+            {
+                Console.WriteLine("FINAL: ");
+                string line;
+                // Read line by line
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+            }
+            
             var putObjectRequest = new PutObjectRequest
            {
                BucketName = _configurationManager["BucketName"],
@@ -64,7 +75,7 @@ namespace ThemisWeb.Server.Repository
            };
            return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
        }
-       public async Task<string> S3GetRawContentSignedUrlAsync(UserText text)
+       public string S3GetRawContentSignedUrl(UserText text)
        {
            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
            {
@@ -73,17 +84,17 @@ namespace ThemisWeb.Server.Repository
                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
 
        };
-           return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
+           return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
        }
 
-        public async Task<PutObjectResponse> S3InputDataUpload(UserText text, IFormFile inputData)
+        public async Task<PutObjectResponse> S3InputDataUpload(UserText text, Stream stream)
         {
            var putObjectRequest = new PutObjectRequest
            {
                BucketName = _configurationManager["BucketName"],
                Key = $"text_inputdata/{text.Id}",
-               ContentType = inputData.ContentType,
-               InputStream = inputData.OpenReadStream()
+               ContentType = "text/plain",
+               InputStream = stream
            };
            return await _amazonS3.PutObjectAsync(putObjectRequest);
         }
@@ -96,7 +107,7 @@ namespace ThemisWeb.Server.Repository
            };
            return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
         }
-        public async Task<string> S3GetInputDataSignedUrlAsync(UserText text)
+        public string S3GetInputDataSignedUrl(UserText text)
         {
            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
            {
@@ -105,9 +116,17 @@ namespace ThemisWeb.Server.Repository
                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
 
         };
-           return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
+           return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
         }
-
+        public async Task<GetObjectResponse> S3GetInputDataAsync(UserText text)
+        {
+            GetObjectRequest getObjectRequest = new GetObjectRequest
+            {
+                BucketName = _configurationManager["BucketName"],
+                Key = $"text_inputdata/{text.Id}",
+            };
+            return await _amazonS3.GetObjectAsync(getObjectRequest);
+        }
         public async Task<PutObjectResponse> S3DetectionDataUpload(UserText text, IFormFile detectionData){
            var putObjectRequest = new PutObjectRequest
            {
@@ -128,7 +147,7 @@ namespace ThemisWeb.Server.Repository
            return await _amazonS3.DeleteObjectAsync(deleteObjectRequest);
         }
 
-        public async Task<string> S3GetDetectionDataSignedUrlAsync(UserText text){
+        public string S3GetDetectionDataSignedUrl(UserText text){
            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
            {
                BucketName = _configurationManager["BucketName"],
@@ -136,7 +155,7 @@ namespace ThemisWeb.Server.Repository
                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
 
            };
-           return await _amazonS3.GetPreSignedURLAsync(getPreSignedUrlRequest);
+           return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
         }
         
         public bool Add(UserText text)

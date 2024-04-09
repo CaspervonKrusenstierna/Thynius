@@ -1,7 +1,5 @@
 ﻿
-using Microsoft.VisualBasic.FileIO;
-using System.Collections.Generic;
-using System.IO;
+using Amazon.S3.Model;
 using FileHelpers;
 namespace ThemisWeb.Server.Common
 {
@@ -10,7 +8,8 @@ namespace ThemisWeb.Server.Common
         ADDCHAR = 0,
         DELETESELECTION = 1,
         PASTE = 2,
-        DELETECHAR = 3
+        DELETECHAR = 3,
+        SPELLINGREPLACE = 7
     };
 
     public static class ThemistTextConverter
@@ -18,53 +17,81 @@ namespace ThemisWeb.Server.Common
         [DelimitedRecord(",")]
         public class Input
         {
-            [FieldQuoted('"')]
+            [FieldQuoted()]
             public string ActionContent;
-            public ActionType ActionType;
-            public UInt32 SelectionStart;
-            public UInt32 SelectionEnd;
-            public UInt64 RelativeTimeMs;
+            public ActionType _ActionType;
+            public int SelectionStart;
+            public int SelectionEnd;
+            public ulong relativeTimePointMs;
         }
-        public static IEnumerable<Input> ReadInputs(IFormFile file)
+        public static IEnumerable<Input> ReadInputsStream(Stream stream)
         {
-            var reader = new StreamReader(file.OpenReadStream());
+            stream.Position = 0;
+            var reader = new StreamReader(stream, leaveOpen: true);
             string fileContent = reader.ReadToEnd();
             Console.WriteLine(fileContent);
             var fileHelperEngine = new FileHelperEngine<Input>();
             var inputs = fileHelperEngine.ReadString(fileContent);
             reader.Dispose();
-
             return inputs;
         }
+        public static IEnumerable<Input> ReadInputs(IFormFile file)
+        {
+            return ReadInputsStream(file.OpenReadStream());
+        }
+        public static IEnumerable<Input> ReadInputsResponse(GetObjectResponse response) {
+            return ReadInputsStream(response.ResponseStream);
+        }
 
-
-        public static string GetInputsRawText(IFormFile inputsFile)
+        public static string GetInputsRawText(IEnumerable<Input> inputs)
         {
             string toReturn = "";
 
-            IEnumerable<Input> inputs = ReadInputs(inputsFile);
             foreach (Input input in inputs)
             {
-                switch (input.ActionType)
+                Console.WriteLine("Content: " + input.ActionContent);
+                Console.WriteLine("Selstart: " + input.SelectionStart);
+                Console.WriteLine("Selend: " + input.SelectionEnd);
+                switch (input._ActionType)
                 {
                     case ActionType.ADDCHAR: 
-                        toReturn = toReturn.Insert((int)input.SelectionStart, input.ActionContent); 
+                        toReturn = toReturn.Insert(input.SelectionStart, input.ActionContent); 
                         break;
 
-                    case ActionType.DELETESELECTION: 
-                        toReturn = toReturn.Remove((int)input.SelectionStart, (int)input.SelectionEnd - (int)input.SelectionStart);
+                    case ActionType.DELETESELECTION:
+                        if (input.SelectionStart == input.SelectionEnd)
+                        {
+                            toReturn = toReturn.Remove(input.SelectionStart-1, 1);
+                        }
+                        else
+                        {
+                            toReturn = toReturn.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
+                        }
                         break;
 
                     case ActionType.PASTE: 
                         if(input.SelectionStart != input.SelectionEnd) // REPLACE OPERATION
                         {
-                            toReturn = toReturn.Remove((int)input.SelectionStart, (int)input.SelectionEnd - (int)input.SelectionStart);
+                            toReturn = toReturn.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
                         }
-                        toReturn = toReturn.Insert((int)input.SelectionStart, input.ActionContent); 
+                        toReturn = toReturn.Insert(input.SelectionStart, input.ActionContent); 
+                        break;
+                    case ActionType.SPELLINGREPLACE:
+                        toReturn = toReturn.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
+                        toReturn = toReturn.Insert(input.SelectionStart, input.ActionContent);
                         break;
                 }
+                Console.WriteLine("CurrToReturn: " + toReturn);
             }
             return toReturn;
+        }
+        public static string GetTextTitle(string text)
+        {
+            if(text.Length < 14)
+            {
+                return text;
+            }
+            return text.Substring(0, 13);
         }
     }
 }

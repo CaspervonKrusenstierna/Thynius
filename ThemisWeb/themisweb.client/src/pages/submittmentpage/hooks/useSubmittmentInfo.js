@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useFetch from "../../../../shared/hooks/useFetch";
+import useFetch from "../../../shared/hooks/useFetch";
 
 export default function useSubmittmentInfo(textId) {
     const [submittmentInfo, setSubmittmentInfo] = useState();

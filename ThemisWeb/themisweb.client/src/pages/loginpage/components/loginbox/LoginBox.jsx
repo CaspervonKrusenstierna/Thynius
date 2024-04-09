@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./LoginBox.css"
 import { Input, SubmitButton, CheckBoxButton, AnchorButton} from "../../../../shared/components/homepage"
-import { UserImg, UnlockImg } from "../../../../shared/assets"
+import { UserImg, UnlockImg, EnvelopeImg } from "../../../../shared/assets"
 import useLogin from './useLogin';
 import { useNavigate } from "react-router-dom";
 import { X } from 'lucide-react';
@@ -34,7 +34,7 @@ const LoginBox = () => {
             </div>
             <div className='inputcontainer-login'>
                 <p className="text-base text-red-500 h-5">{error}</p>
-                <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={UserImg}></Input>
+                <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={EnvelopeImg}></Input>
                 <Input hide={true} onChange={(e) => { Password.current = e.target.value }} label="Lösenord" img={UnlockImg}></Input>
                 <div className='LoginBox-BottomContainer'>
                     <CheckBoxButton onChange={(value) => { RememberMe.current = value }} text="Kom ihåg mig"></CheckBoxButton>
