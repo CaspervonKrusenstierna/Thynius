@@ -1,6 +1,12 @@
+let Sleeps = [];;
 export async function sleep(msec) {
-    return new Promise(resolve => setTimeout(resolve, msec));
+    return new Promise(resolve => {let t = setTimeout(resolve, msec); Sleeps.push(t); return t;});
   }
+export async function clearSleeps(){
+    for (var i=0; i<Sleeps.length; i++) {
+        clearTimeout(Sleeps[i]);
+      }
+}
 export function parseCsv(data, fieldSep, newLine) {
     var nSep = '\x1D';
     var qSep = '\x1E';
@@ -23,7 +29,6 @@ export function parseCsv(data, fieldSep, newLine) {
 
 export function ThemisInputsAdvance(rawText, input){
     let toReturn = rawText;
-    console.log(input);
     let content = input[0];
     let type = parseInt(input[1]);
     let selStart = parseInt(input[2]);
@@ -31,16 +36,16 @@ export function ThemisInputsAdvance(rawText, input){
     switch (parseInt(input[1]))
     {
         case 0: 
-            toReturn = toReturn.slice(0, selStart) + content + toReturn.slice(selStart, toReturn.length-1)
+            toReturn = toReturn.slice(0, selStart) + content + toReturn.slice(selStart, toReturn.length)
             break;
 
         case 1:
             if (selStart == selEnd)
             {
-              toReturn = toReturn.slice(0, selStart-1) + toReturn.slice(selStart, toReturn.length-1);
+              toReturn = toReturn.slice(0, selStart-1) + toReturn.slice(selStart, toReturn.length);
             }
             else{
-              toReturn = toReturn.slice(0, selStart) + toReturn.slice(selEnd, toReturn.length-1);
+              toReturn = toReturn.slice(0, selStart) + toReturn.slice(selEnd, toReturn.length);
             }
             break;
 
@@ -49,7 +54,7 @@ export function ThemisInputsAdvance(rawText, input){
             {
               toReturn = toReturn.slice(0, selStart) + toReturn.slice(selEnd, toReturn.length-1);
             }
-            toReturn = toReturn.slice(0, selStart) + content + toReturn.slice(selStart, toReturn.length-1);
+            toReturn = toReturn.slice(0, selStart) + content + toReturn.slice(selStart, toReturn.length);
             break;
 
         case 2: 

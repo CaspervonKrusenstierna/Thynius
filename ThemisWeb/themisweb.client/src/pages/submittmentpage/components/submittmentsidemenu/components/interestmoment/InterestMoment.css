@@ -1,0 +1,13 @@
+.InterestMoment{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-self: center;
+    justify-content: space-between;
+}
+.InterestMoment-ReasonText{
+
+}
+.InterestMoment-IndexText{
+
+}

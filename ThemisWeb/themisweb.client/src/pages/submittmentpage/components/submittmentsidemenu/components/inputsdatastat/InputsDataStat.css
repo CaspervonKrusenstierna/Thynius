@@ -1,0 +1,13 @@
+.InputDataStat{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.InputDataStat-InfoType{
+
+}
+.InputDataStat-Info{
+}

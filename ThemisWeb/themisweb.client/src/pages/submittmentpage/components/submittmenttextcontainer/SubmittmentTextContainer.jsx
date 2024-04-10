@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./SubmittmentTextContainer.css"
 import AnalysisSubmittmentView from './components/analysissubmittmentview/AnalysisSubmittmentView'
 import RawSubmittmentView from './components/rawsubmittmentview/RawSubmittmentView'

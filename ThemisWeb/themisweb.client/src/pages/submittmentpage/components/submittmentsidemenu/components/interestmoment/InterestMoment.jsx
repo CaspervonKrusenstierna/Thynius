@@ -3,7 +3,10 @@ import "./InterestMoment.css"
 
 const InterestMoment = (props) => {
   return (
-    <div className='InterestMoment'>InterestMoment</div>
+    <button className='InterestMoment' onClick={() => {props.onClick(props.index)}}>
+      <div className='InterestMoment-ReasonText'>{props.reasonOfInterest}</div>
+      <div className='InterestMoment-IndexText'>{props.index}</div>
+    </button>
   )
 }
 

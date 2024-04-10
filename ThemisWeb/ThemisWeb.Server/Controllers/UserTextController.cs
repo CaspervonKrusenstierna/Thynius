@@ -11,7 +11,6 @@ using ThemisWeb.Server.Common;
 using static ThemisWeb.Server.Common.DataClasses;
 using static ThemisWeb.Server.Common.ThemistTextConverter;
 using Amazon.S3.Model;
-using System.Text;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -72,28 +71,13 @@ namespace ThemisWeb.Server.Controllers
                 text.guid = model.guid;
 
                 string RawText = GetInputsRawText(sessionInputs);
-                Console.WriteLine("Before: " + RawText);
-                byte[] byteArray = Encoding.Unicode.GetBytes(RawText);
-                MemoryStream stream = new MemoryStream(byteArray);
-
-                using (StreamReader reader = new StreamReader(stream, leaveOpen: true))
-                {
-                    Console.WriteLine("FINAL: ");
-                    string line;
-                    // Read line by line
-                    while ((line = reader.ReadLine()) != null)
-                    {
-                        Console.WriteLine(line);
-                    }
-                }
-                stream.Dispose();
 
                 text.Title = ThemistTextConverter.GetTextTitle(RawText);
                 _userTextRepository.Add(text);
 
-                //await _userTextRepository.S3RawContentUpload(text, RawText);
+                await _userTextRepository.S3RawContentUpload(text, RawText);
 
-                Stream stream2 = model.sessionData.OpenReadStream();
+                Stream stream = model.sessionData.OpenReadStream();
                 await _userTextRepository.S3InputDataUpload(text, stream);
                 stream.Dispose();
                 return Ok();
@@ -200,8 +184,13 @@ namespace ThemisWeb.Server.Controllers
 
             text.AssignmentId = assignmentId;
 
-            _userTextRepository.Update(text);
 
+            GetObjectResponse inputsData = await _userTextRepository.S3GetInputDataAsync(text);
+            ThemisDetector detector = new ThemisDetector(inputsData.ResponseStream);
+
+            text.WarningLevel = detector.GetDetectionScore();
+            _userTextRepository.Update(text);
+            _userTextRepository.S3DetectionDataUpload(text, JsonSerializer.Serialize<ThemisDetectionData>(detector.getDetectionData()));
             return Ok();
         }
 

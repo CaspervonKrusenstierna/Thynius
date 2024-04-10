@@ -42,46 +42,49 @@ namespace ThemisWeb.Server.Common
         public static IEnumerable<Input> ReadInputsResponse(GetObjectResponse response) {
             return ReadInputsStream(response.ResponseStream);
         }
+        public static void AdvanceInput(ref string currRawText, Input input)
+        {
+            Console.WriteLine("Content: " + input.ActionContent);
+            Console.WriteLine("Selstart: " + input.SelectionStart);
+            Console.WriteLine("Selend: " + input.SelectionEnd);
+            switch (input._ActionType)
+            {
+                case ActionType.ADDCHAR:
+                    currRawText = currRawText.Insert(input.SelectionStart, input.ActionContent);
+                    break;
 
+                case ActionType.DELETESELECTION:
+                    if (input.SelectionStart == input.SelectionEnd)
+                    {
+                        currRawText = currRawText.Remove(input.SelectionStart - 1, 1);
+                    }
+                    else
+                    {
+                        currRawText = currRawText.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
+                    }
+                    break;
+
+                case ActionType.PASTE:
+                    if (input.SelectionStart != input.SelectionEnd) // REPLACE OPERATION
+                    {
+                        currRawText = currRawText.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
+                    }
+                    currRawText = currRawText.Insert(input.SelectionStart, input.ActionContent);
+                    break;
+                case ActionType.SPELLINGREPLACE:
+                    currRawText = currRawText.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
+                    currRawText = currRawText.Insert(input.SelectionStart, input.ActionContent);
+                    break;
+            }
+            Console.WriteLine("CurrToReturn: " + currRawText);
+        }
         public static string GetInputsRawText(IEnumerable<Input> inputs)
         {
             string toReturn = "";
 
             foreach (Input input in inputs)
             {
-                Console.WriteLine("Content: " + input.ActionContent);
-                Console.WriteLine("Selstart: " + input.SelectionStart);
-                Console.WriteLine("Selend: " + input.SelectionEnd);
-                switch (input._ActionType)
-                {
-                    case ActionType.ADDCHAR: 
-                        toReturn = toReturn.Insert(input.SelectionStart, input.ActionContent); 
-                        break;
-
-                    case ActionType.DELETESELECTION:
-                        if (input.SelectionStart == input.SelectionEnd)
-                        {
-                            toReturn = toReturn.Remove(input.SelectionStart-1, 1);
-                        }
-                        else
-                        {
-                            toReturn = toReturn.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
-                        }
-                        break;
-
-                    case ActionType.PASTE: 
-                        if(input.SelectionStart != input.SelectionEnd) // REPLACE OPERATION
-                        {
-                            toReturn = toReturn.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
-                        }
-                        toReturn = toReturn.Insert(input.SelectionStart, input.ActionContent); 
-                        break;
-                    case ActionType.SPELLINGREPLACE:
-                        toReturn = toReturn.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
-                        toReturn = toReturn.Insert(input.SelectionStart, input.ActionContent);
-                        break;
-                }
-                Console.WriteLine("CurrToReturn: " + toReturn);
+                AdvanceInput(ref toReturn, input);
             }
             return toReturn;
         }

@@ -15,10 +15,14 @@ namespace ThemisClient
     {
         public async void HandleStartup()
         {
+            if (!ThemisInstaller.isInstalled()) { 
+     
+            }
             bool isLoggedIn = await serverComms.isLoggedIn();
             if (isLoggedIn)
             {
-                eventsManager = new SystemEventsManager("C:\\Program Files\\Themis", serverComms);
+                LoggedInWindow loggedInWindow = new LoggedInWindow();
+                loggedInWindow.Show();
                 return;
             }
             MainWindow mainWindow = new MainWindow(serverComms);
@@ -26,7 +30,6 @@ namespace ThemisClient
 
         }
         ServerComms serverComms { get; set; }
-        SystemEventsManager eventsManager { get; set; }
 
         void Main(object sender, StartupEventArgs e)
         {
