@@ -1,14 +1,24 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import React, { createContext } from 'react';
-import { HomePage, LoginPage, RegisterPage, GroupPage, GroupsViewPage,CreateGroupPage, DashboardHomePage, TextsViewPage, TextViewPage, AssignmentPage, SubmitTextPage, SubmittmentPage } from "./pages";
-
+import React, { Suspense, createContext, lazy } from 'react';
+const HomePage = lazy(() => import("./pages/homepage"))
+const GroupPage = lazy(() => import("./pages/grouppage"))
+const GroupsViewPage = lazy(() => import("./pages/groupsviewpage"))
+const CreateGroupPage = lazy(() => import("./pages/creategrouppage"))
+const DashboardHomePage = lazy(() => import("./pages/dashboardhome"))
+const TextsViewPage = lazy(() => import("./pages/textsviewpage"))
+const TextViewPage = lazy(() => import("./pages/textviewpage"))
+const AssignmentPage = lazy(() => import("./pages/assignmentpage"))
+const SubmitTextPage = lazy(() => import("./pages/submittextpage"))
+const SubmittmentPage = lazy(() => import("./pages/submittmentpage"))
 import "./index.css"
 import "./output.css"
 
 import useSessionInfo from "./shared/hooks/useSessionInfo"
 import EditGroupPage from './pages/editgrouppage/EditGroupPage';
+import LoginBox from './pages/homepage/loginbox/LoginBox';
+import RegisterBox from './pages/homepage/registerbox/RegisterBox';
 export const sessionInfoContext = createContext();
 
 function App() {
@@ -18,9 +28,10 @@ function App() {
         <sessionInfoContext.Provider value={{sessionInfo: sessionInfo, updateSessionInfo: updateSessionInfo}}>
             <BrowserRouter>
                 <Routes>
-                        <Route path="/" element={<HomePage></HomePage>}></Route>
-                        <Route path="/register" element={<RegisterPage></RegisterPage>}></Route>
-                        <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+                        <Route path="home" element={<HomePage></HomePage>}>
+                            <Route path="/register" element={<RegisterBox></RegisterBox>}></Route>
+                            <Route path="/login" element={<LoginBox></LoginBox>}></Route>
+                        </Route>
                         <Route path="/dashboard/home" element={<DashboardHomePage></DashboardHomePage>}></Route>
                         <Route path="/dashboard/group/:id/:page" element={<GroupPage></GroupPage>}></Route>
                         <Route path="/dashboard/group/:id/:page/:assignmentid" element={<GroupPage></GroupPage>}></Route>
@@ -33,7 +44,7 @@ function App() {
                         <Route path='/dashboard/submittment/:id' element={<SubmittmentPage></SubmittmentPage>}></Route>
                         <Route path='/dashboard/editgroup/:id/:page' element={<EditGroupPage></EditGroupPage>}></Route>
                 </Routes>
-            </BrowserRouter >
+            </BrowserRouter>
         </sessionInfoContext.Provider>
     )
 }

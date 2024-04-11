@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useRef, useState } from 'react'
 import "./RegisterBox.css"
-import { AnchorButton, Input, SubmitButton} from "../../../../shared/components/homepage"
-import { UserImg, UnlockImg, EnvelopeImg } from "../../../../shared/assets"
+import "../../../shared/styles/HomePageBox.css"
 import useRegister from './useRegister';
 import { useNavigate } from "react-router-dom";
 import { X } from 'lucide-react';
-import useInitializeAccount from './useInitializeAccount';
+import { AnchorButton } from '../../../shared/components/homepage';
+import HomePageBoxHeader from '../../../shared/components/dashboard/homepageboxheader/HomePageBoxHeader';
 
 const validateEmail = (email) => {
     return String(email)
@@ -57,23 +57,20 @@ const RegisterBox = () => {
 
         const response = await useRegister(Password.current, Email.current);
         if (response.ok) {
-            useInitializeAccount();
             navigate("/")
         }
         response.json().then(res => { setError(JSON.stringify(res.error)) })
     }
 
         return (
-            <div className='RegisterBox'>
-                <div className='ExitButtonContainer'>
-                    <button className='h-10 w-10' onClick={() => {navigate("/")}}><X className='w-full h-full'></X></button>
-                </div>
-                <div className='inputcontainer-register'>
+            <div className='HomePageBox RegisterBox'>
+                <HomePageBoxHeader></HomePageBoxHeader>
+                <div className='InputContainer'>
                     <p className="text-base text-red-500 h-5">{error}</p>
                     <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={EnvelopeImg}></Input>
                     <Input hide={true} onChange={(e) => { Password.current = e.target.value }} label="Lösenord" img={UnlockImg}></Input>
                     <Input hide={true} onChange={(e) => { ConfirmPassword.current = e.target.value }} label="Bekräfta lösenord" img={UnlockImg}></Input>
-                    <div className='RegisterBox-BottomContainer'>
+                    <div className='HomePageBox-BottomContainer'>
                         <AnchorButton text="Har du redan ett konto?" onClick={() => { navigate("/login") }}></AnchorButton>
                     </div>
                     <SubmitButton onClick={onSubmit} text="Registrera"></SubmitButton>
