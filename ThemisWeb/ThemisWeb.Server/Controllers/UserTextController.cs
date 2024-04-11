@@ -185,12 +185,13 @@ namespace ThemisWeb.Server.Controllers
             text.AssignmentId = assignmentId;
 
 
-            GetObjectResponse inputsData = await _userTextRepository.S3GetInputDataAsync(text);
-            ThemisDetector detector = new ThemisDetector(inputsData.ResponseStream);
-
+            ThemisDetector detector = new ThemisDetector(_userTextRepository, callingUser);
+            detector.Analyze(text);
             text.WarningLevel = detector.GetDetectionScore();
             _userTextRepository.Update(text);
+
             _userTextRepository.S3DetectionDataUpload(text, JsonSerializer.Serialize<ThemisDetectionData>(detector.getDetectionData()));
+
             return Ok();
         }
 

@@ -1,6 +1,7 @@
 ﻿
 using Amazon.S3.Model;
 using FileHelpers;
+using static ThemisWeb.Server.Common.ThemistTextConverter;
 namespace ThemisWeb.Server.Common
 {
     public enum ActionType
@@ -9,7 +10,8 @@ namespace ThemisWeb.Server.Common
         DELETESELECTION = 1,
         PASTE = 2,
         DELETECHAR = 3,
-        SPELLINGREPLACE = 7
+        SPELLINGREPLACE = 7,
+        SESSIONSTART = 8
     };
 
     public static class ThemistTextConverter
@@ -85,6 +87,39 @@ namespace ThemisWeb.Server.Common
             foreach (Input input in inputs)
             {
                 AdvanceInput(ref toReturn, input);
+            }
+            return toReturn;
+        }
+
+        public static string GetInputsRawTextAtTimePoint(List<Input> inputs, UInt64 timePoint)
+        {
+            if(inputs.Count == 0)
+            {
+                return "";
+            }
+
+            string toReturn = "";
+            UInt64 currTime = inputs[0].relativeTimePointMs;
+
+            for(int i = 1; inputs.Count > i; i++)
+            {
+                if (inputs[i]._ActionType == ActionType.SESSIONSTART)
+                {
+                    currTime = inputs[i].relativeTimePointMs;
+                    continue;
+                }
+                AdvanceInput(ref toReturn, inputs[i]);
+                if (currTime >= timePoint )
+                {
+                    if((currTime - timePoint) >= 21600000) // 6 hours
+                    {
+                        return "";
+                    }
+                    else
+                    {
+                        return toReturn;
+                    }
+                }
             }
             return toReturn;
         }

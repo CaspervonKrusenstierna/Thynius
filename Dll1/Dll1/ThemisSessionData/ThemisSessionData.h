@@ -15,7 +15,8 @@ enum ActionType {
     REDO = 4,
     END = 5,
     INVALID = 6,
-    SPELLINGREPLACE = 7
+    SPELLINGREPLACE = 7,
+    SESSIONSTART = 8
 };
 
 struct Input {
@@ -33,10 +34,11 @@ struct SessionData {
 class ThemisSessionData {
 
     public:
-        ThemisSessionData(Data* data);
+        ThemisSessionData(Data* data, std::chrono::system_clock::time_point startTime);
         SessionData GetSessionData();
         ActionType GetLastActionType();
         void LogInput(ActionType _ActionType, std::wstring ActionContent, Selection _Selection);
+        void LogSessionStart(std::chrono::system_clock::time_point startTime);
         void PopInput();
     private:
         std::vector<Input> inputs = std::vector<Input>();

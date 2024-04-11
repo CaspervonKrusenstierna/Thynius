@@ -1,6 +1,10 @@
 ﻿
 
+using Amazon.S3.Model;
+using Microsoft.AspNetCore.Components.Forms;
 using System.Text.Json;
+using ThemisWeb.Server.Interfaces;
+using ThemisWeb.Server.Models;
 using static ThemisWeb.Server.Common.ThemistTextConverter;
 
 namespace ThemisWeb.Server.Common
@@ -22,6 +26,9 @@ namespace ThemisWeb.Server.Common
     }
     public class ThemisDetector
     {
+        IUserTextRepository _userTextRepository;
+        ApplicationUser _user;
+        UserText _text;
 
         private IEnumerable<Input> pastes;
         public IEnumerable<Input> deleteSelections;
@@ -34,11 +41,30 @@ namespace ThemisWeb.Server.Common
         private int averageTypeSpeed;
         private int detectionScore;
         private List<MomentOfInterest> momentsOfInterest;
-        private bool wasTextTypedByHandBefore(string currRawContent, string Text)
+        private async Task<bool> wasTextTypedByHandBefore(string currRawContent, string Text, UInt64 timePoint)
         {
-            return currRawContent.Contains(Text);
+            if (!currRawContent.Contains(Text))
+            {
+                IEnumerable<UserText> userTexts = await _userTextRepository.GetUserTexts(_user);
+                bool wasTypedInOtherDoc = false;
+                foreach(UserText text in userTexts) //TODO: MAKE A CHECK ON CLIENT SIDE IF MULTIPLE DOCS WERE OPEN TO FILTER OUT MOST OF THESE CHECKS AS THEY VERY HEAVY
+                {
+                    if(text.Id == _text.Id)
+                    {
+                        continue;
+                    }
+                    GetObjectResponse currTextObjResponse = await _userTextRepository.S3GetInputDataAsync(text);
+                    string currTextRawAtTimePoint = GetInputsRawTextAtTimePoint(ReadInputsStream(currTextObjResponse.ResponseStream).ToList(), timePoint);
+                    if (currTextRawAtTimePoint.Contains(Text))
+                    {
+                        wasTypedInOtherDoc = true;
+                    }
+                }
+                return wasTypedInOtherDoc;
+            }
+            return true;
         }
-        private void AnalyzeInputs(IEnumerable<Input> inputs)
+        private async Task<bool> AnalyzeInputs(IEnumerable<Input> inputs)
         {
             int previousAddCharRelativeTime = 0;
             int totalAddCharTime = 0;
@@ -46,6 +72,7 @@ namespace ThemisWeb.Server.Common
             int extendedTypingBreaksCount = 0;
 
             string currRawContent = "";
+            UInt64 currSessionRelativeTime = 0;
 
             foreach (Input input in inputs)
             {
@@ -70,16 +97,21 @@ namespace ThemisWeb.Server.Common
                     case ActionType.DELETESELECTION: deleteSelections.Append(input); break;
 
                     case ActionType.PASTE:
-                        if (!wasTextTypedByHandBefore(currRawContent, input.ActionContent))
+                        bool wasTypedBefore = await wasTextTypedByHandBefore(currRawContent, input.ActionContent, currSessionRelativeTime+input.relativeTimePointMs);
+                        if (!wasTypedBefore)
                         {
                             truePastes.Append(input);
                         }
                         break;
+                case ActionType.SESSIONSTART:
+                    currSessionRelativeTime = input.relativeTimePointMs;
+                    break;
                 }
                 AdvanceInput(ref currRawContent, input);
             }
             averageTypeSpeed = totalAddCharTime / addCharAmount;
             deletesPerAdds = addCharAmount / deleteChars.Count();
+            return true;
         }
         public int GetDetectionScore()
         {
@@ -99,8 +131,15 @@ namespace ThemisWeb.Server.Common
             return toReturn;
         }
 
-        public ThemisDetector(Stream inputData) {
-            AnalyzeInputs(ReadInputsStream(inputData));
+        public async void Analyze(UserText text)
+        {
+            _text = text;
+            GetObjectResponse inputsData = await _userTextRepository.S3GetInputDataAsync(text);
+            await AnalyzeInputs(ReadInputsStream(inputsData.ResponseStream));
+        } 
+        public ThemisDetector(IUserTextRepository userTextRepository, ApplicationUser user) {
+            _user = user;
+            _userTextRepository = userTextRepository;
         }
     }
 }

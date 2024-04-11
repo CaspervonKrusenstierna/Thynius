@@ -75,11 +75,15 @@ void onSpellingReplace(std::wstring replacement, UINT32 replacementStart, UINT32
 }
 
 DWORD WINAPI MainThread(HMODULE hModule){
+    std::chrono::system_clock::time_point startTime = std::chrono::system_clock::now();
+    
+
     comms = new Comms();
     hooks = new Hooks();
     wordFeatureDisabler = new WordFeatureDisabler();
     data = new Data();
-    themisSessionData = new ThemisSessionData(data);
+    themisSessionData = new ThemisSessionData(data, startTime);
+    themisSessionData->LogSessionStart(startTime);
 
     if (!hooks->HookOnPasteText(OnPasteFunc)) {
         DebugOutput << "Fatal error: Failed to hook paste" << std::endl;

@@ -3,11 +3,10 @@ std::wofstream Output1("C:\\Program Files\\Themis\\DebugSessionData1");
 std::wofstream Output2("C:\\Program Files\\Themis\\DebugSessionData2");
 
 
-ThemisSessionData::ThemisSessionData(Data* data) {
-    this->startTime = std::chrono::system_clock::now();
+ThemisSessionData::ThemisSessionData(Data* data, std::chrono::system_clock::time_point startTime) {
+	this->startTime = startTime;
 	this->data = data;
 }
-
 SessionData ThemisSessionData::GetSessionData() {
 	SessionData toReturn;
 	toReturn.inputs = inputs;
@@ -34,5 +33,18 @@ void ThemisSessionData::LogInput(ActionType _ActionType, std::wstring ActionCont
 	toPush.relativeTimePointMs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>(std::chrono::system_clock::now() - this->startTime)).count();
 	toPush._Selection = _Selection;
 	toPush.Cp = data->GetCp();
+	this->inputs.push_back(toPush);
+}
+
+void ThemisSessionData::LogSessionStart(std::chrono::system_clock::time_point startTime) {
+	Input toPush;
+	toPush._ActionType = ActionType::SESSIONSTART;
+	toPush.ActionContent = L"";
+	toPush.relativeTimePointMs = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::duration<double>(startTime.time_since_epoch() - std::chrono::years(54))).count();
+	Selection sel;
+	sel.SelectionStart = 0;
+	sel.SelectionEnd = 0;
+	toPush._Selection = sel;
+	toPush.Cp = 0;
 	this->inputs.push_back(toPush);
 }
