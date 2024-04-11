@@ -5,8 +5,8 @@ import "../../../shared/styles/HomePageBox.css"
 import useRegister from './useRegister';
 import { useNavigate } from "react-router-dom";
 import { X } from 'lucide-react';
-import useInitializeAccount from './useInitializeAccount';
 import { AnchorButton } from '../../../shared/components/homepage';
+import HomePageBoxHeader from '../../../shared/components/dashboard/homepageboxheader/HomePageBoxHeader';
 
 const validateEmail = (email) => {
     return String(email)
@@ -64,9 +64,7 @@ const RegisterBox = () => {
 
         return (
             <div className='HomePageBox RegisterBox'>
-                <div className='ExitButtonContainer'>
-                    <button className='h-10 w-10' onClick={() => {navigate("/")}}><X className='w-full h-full'></X></button>
-                </div>
+                <HomePageBoxHeader></HomePageBoxHeader>
                 <div className='InputContainer'>
                     <p className="text-base text-red-500 h-5">{error}</p>
                     <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={EnvelopeImg}></Input>

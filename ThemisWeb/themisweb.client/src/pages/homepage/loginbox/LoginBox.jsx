@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { X } from 'lucide-react';
 import { sessionInfoContext } from '../../../App'
 import { EnvelopeImg, UnlockImg } from '../../../shared/assets'
+import HomePageBoxHeader from '../../../shared/components/dashboard/homepageboxheader/HomePageBoxHeader';
 
 const LoginBox = () => {
     const sessionInfo = useContext(sessionInfoContext);
@@ -30,9 +31,7 @@ const LoginBox = () => {
 
     return (
         <div className='HomePageBox LoginBox'>
-            <div className='ExitButtonContainer'>
-                <button className='h-10 w-10' onClick={() => {navigate("/")}}><X className='w-full h-full'></X></button>
-            </div>
+            <HomePageBoxHeader></HomePageBoxHeader>
             <div className='InputContainer'>
                 <p className="text-base text-red-500 h-5">{error}</p>
                 <Input onChange={(e) => { Email.current = e.target.value }} label="Email" img={EnvelopeImg}></Input>
