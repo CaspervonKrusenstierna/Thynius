@@ -12,3 +12,7 @@ export function getTextSubmittmentInfo(textId){
     
     return;
 }
+
+export function getAssignmentTexts(assignmentId){
+    return useFetch("/assignment/usertexts?assignmentId="+assignmentId, "GET");
+}

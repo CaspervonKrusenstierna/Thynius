@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import "../../../shared/styles/DashboardContainer.css"
 import { editGroup } from '../../../shared/network/group'
 import { DashboardContainerSidebar } from '../../../shared/components/dashboard'

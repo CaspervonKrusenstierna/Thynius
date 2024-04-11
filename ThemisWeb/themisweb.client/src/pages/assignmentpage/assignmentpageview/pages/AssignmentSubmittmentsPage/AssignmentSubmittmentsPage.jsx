@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import "../../../../../shared/styles/SubmittmentsView.css"
-import { SubmittmentsView } from '../../../../../shared/components/dashboard'
+import SubmittmentsView from './submittmentsview/SubmittmentsView'
 
 export const AssignmentSubmittmentsPage = () => {
   const { id } = useParams();

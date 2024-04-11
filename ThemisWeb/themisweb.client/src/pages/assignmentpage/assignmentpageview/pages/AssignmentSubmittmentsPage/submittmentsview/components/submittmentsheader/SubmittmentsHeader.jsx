@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import SubmittmentsFilter from './components/SubmittmentsFilter/SubmittmentsFilter'
-import SubmittmentsSearch from './components/SubmittmentsSearch/SubmittmentsSearch'
+import SubmittmentsSearch from '../../../../../../../../shared/components/dashboard/SubmittmentsSearch/SubmittmentsSearch'
+import SubmittmentsFilter from './SubmittmentsFilter/SubmittmentsFilter'
 
 //styles from shared/styles/submittmentsview
 const SubmittmentsHeader = (props) => {
