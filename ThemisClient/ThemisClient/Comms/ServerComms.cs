@@ -14,11 +14,6 @@ using System.Threading.Tasks;
 
 namespace ThemisClient.Comms
 {
-    struct sessionMetaData
-    {
-        public int WordCount;
-        public int CharCount;
-    }
     public class ServerComms
     {
         private string cookieDataPath;
