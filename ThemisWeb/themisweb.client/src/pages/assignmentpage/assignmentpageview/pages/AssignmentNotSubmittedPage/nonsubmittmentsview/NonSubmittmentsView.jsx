@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
-import nONs from './components/nONs/nONs'
-import SubmittmentsContainer from './components/submittmentscontainer/SubmittmentsContainer'
 import { Pagination } from '../../../../../../shared/components/dashboard'
-import useNotSubmittedUsers from '../hooks/useNotSubmittedUsers'
 import useNonSubmittmentFilter from './hooks/useNonSubmittmentFilter'
 import NonSubmittmentsHeader from './nonsubmittmentsheader/NonSubmittmentsHeader'
 import NonSubmittmentsContainer from './nonsubmittmentscontainer/NonSubmittmentsContainer'
-
+import useNotSubmittedUsers from "./hooks/useNotSubmittedUsers"
 
 const itemsPerPage = 15;
 const NonSubmittmentsView = (props) => {
@@ -24,8 +21,8 @@ const NonSubmittmentsView = (props) => {
     return (
         <>
             <NonSubmittmentsHeader setSearch={(search) => {setSearch(search)}}></NonSubmittmentsHeader>
-            <NonSubmittmentsContainer currentPage={currentPage} displaySettings={displaySettings} itemsPerPage={itemsPerPage} nonSubmittments={filteredSubmittments.pages}></NonSubmittmentsContainer>
-            <Pagination highestPage={filteredSubmittments.dataEndPage} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} itemCount={filteredSubmittments.pages.length} ></Pagination>
+            <NonSubmittmentsContainer currentPage={currentPage} displaySettings={displaySettings} itemsPerPage={itemsPerPage} nonSubmittments={filteredNonSubmittments.pages}></NonSubmittmentsContainer>
+            <Pagination highestPage={filteredNonSubmittments.dataEndPage} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} itemCount={filteredNonSubmittments.pages.length} ></Pagination>
         </>
     )
 }

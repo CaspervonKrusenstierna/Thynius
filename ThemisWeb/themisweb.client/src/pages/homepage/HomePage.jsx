@@ -1,7 +1,6 @@
 
-import "./HomePage.css"
 import { WaveBackgroundBox, Header, MainContentContainer, Footer } from "../../shared/components/homepage"
-
+import { Outlet } from "react-router-dom"
 const HomePage = () => {
   return (
       <div className="flex-column">
@@ -9,6 +8,7 @@ const HomePage = () => {
           <Header></Header>  
           <MainContentContainer></MainContentContainer>
           <Footer></Footer>
+          <Outlet></Outlet>
       </div>
   )
 }

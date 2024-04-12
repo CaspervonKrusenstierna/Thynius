@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { sessionInfoContext } from '../../../../../../../../App'
 
 const DUCProfileButton = (props) => {
-  const SessionInfo = useContext(sessionInfoContext).sessionInfo;
+  const SessionInfo = useContext(sessionInfoContext)?.sessionInfo;
   const UserRole = useRef("");
   switch(SessionInfo?.RoleLevel){
     case 3:

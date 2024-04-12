@@ -60,7 +60,9 @@ namespace ThemisService
                 {
                     if (await serverComms.SubmitSession(Path.GetFileName(sessionPath), sessionPath))
                     {
-                        File.Delete(sessionPath);
+                        //File.Delete(sessionPath);
+                        //File.Delete(sessionPath + "_metadata");
+                        //File.Delete(sessionPath + "_result");
                     }
                 }
             }

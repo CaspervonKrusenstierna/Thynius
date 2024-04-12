@@ -4,9 +4,9 @@ import "./RegisterBox.css"
 import "../../../shared/styles/HomePageBox.css"
 import useRegister from './useRegister';
 import { useNavigate } from "react-router-dom";
-import { X } from 'lucide-react';
-import { AnchorButton } from '../../../shared/components/homepage';
+import { AnchorButton, Input, SubmitButton } from '../../../shared/components/homepage';
 import HomePageBoxHeader from '../../../shared/components/dashboard/homepageboxheader/HomePageBoxHeader';
+import { EnvelopeImg, UnlockImg } from '../../../shared/assets';
 
 const validateEmail = (email) => {
     return String(email)

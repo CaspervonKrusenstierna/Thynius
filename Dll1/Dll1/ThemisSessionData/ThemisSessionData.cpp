@@ -1,16 +1,23 @@
 #include "ThemisSessionData.h"
 std::wofstream Output1("C:\\Program Files\\Themis\\DebugSessionData1");
 std::wofstream Output2("C:\\Program Files\\Themis\\DebugSessionData2");
-
-
+int endCp;
+bool EndCpListenerThreadReady = false;
+DWORD WINAPI EndCpListenerThread(Data* data) {
+	while (true) {
+		endCp = data->GetCp();
+		Sleep(100);
+	}
+}
 ThemisSessionData::ThemisSessionData(Data* data, std::chrono::system_clock::time_point startTime) {
 	this->startTime = startTime;
 	this->data = data;
+	CloseHandle(CreateThread(nullptr, 0, (LPTHREAD_START_ROUTINE)EndCpListenerThread, data, 0, nullptr));
 }
 SessionData ThemisSessionData::GetSessionData() {
 	SessionData toReturn;
 	toReturn.inputs = inputs;
-	toReturn.endCp = data->GetCp();
+	toReturn.endCp = endCp;
 	return toReturn;
 }
 

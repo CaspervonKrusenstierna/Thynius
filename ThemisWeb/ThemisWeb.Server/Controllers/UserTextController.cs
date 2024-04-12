@@ -99,6 +99,7 @@ namespace ThemisWeb.Server.Controllers
                 text.Title = ThemistTextConverter.GetTextTitle(RawText);
                 _userTextRepository.Update(text);
 
+                await _userTextRepository.S3InputDataDelete(text);
                 await _userTextRepository.S3InputDataUpload(text, output);
                 previousInputsRes.ResponseStream.Dispose();
                 newInputs.Dispose();
@@ -186,11 +187,11 @@ namespace ThemisWeb.Server.Controllers
 
 
             ThemisDetector detector = new ThemisDetector(_userTextRepository, callingUser);
-            detector.Analyze(text);
+            await detector.Analyze(text);
             text.WarningLevel = detector.GetDetectionScore();
             _userTextRepository.Update(text);
 
-            _userTextRepository.S3DetectionDataUpload(text, JsonSerializer.Serialize<ThemisDetectionData>(detector.getDetectionData()));
+            await _userTextRepository.S3DetectionDataUpload(text, Newtonsoft.Json.JsonConvert.SerializeObject(detector.getDetectionData()));
 
             return Ok();
         }
@@ -198,7 +199,7 @@ namespace ThemisWeb.Server.Controllers
         [HttpGet]
         [Route("/assignment/usertexts")]
         [Authorize(Roles = "Admin, OrganizationAdmin, Teacher")]
-        public async Task<string> GetAssignmentUserTexts(int assignmentId, int pageIndex, int pageSize)
+        public async Task<string> GetAssignmentUserTexts(int assignmentId)
         {
             Assignment assignment = await _assignmentRepository.GetByIdAsync(assignmentId);
             if (assignment == null)
@@ -216,7 +217,7 @@ namespace ThemisWeb.Server.Controllers
                 return null;
             }
 
-            IEnumerable<UserText> userTexts = await _userTextRepository.GetAssignmentTextsPage(assignment, pageIndex, pageSize);
+            IEnumerable<UserText> userTexts = await _userTextRepository.GetAssignmentTexts(assignment);
             List<dynamic> userData = [];
             foreach (var userText in userTexts)
             {

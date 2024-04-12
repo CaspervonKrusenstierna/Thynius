@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "../../../shared/styles/HomePageBox.css"
 import "./LoginBox.css"
 import { Input, SubmitButton, CheckBoxButton, AnchorButton} from "../../../shared/components/homepage"
@@ -17,7 +17,6 @@ const LoginBox = () => {
     const Password = useRef("");
     const RememberMe = useRef(false);
     const navigate = useNavigate();
-
 
     async function onLoginSubmit() {
         const response = await useLogin(Email.current, Password.current, RememberMe.current);

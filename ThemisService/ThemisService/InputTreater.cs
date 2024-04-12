@@ -43,96 +43,141 @@ namespace ThemisService
         public uint SelectionEnd;
         public ulong relativeTimePointMs;
     }
-    public static class InputTreater
+    public class InputTreater
     {
-        public static Input[] TreatInputs(List<unTreatedInput> toTreat, InputsMetaData metaData)
+        Input[] treatedInputs;
+        List<unTreatedInput> toTreat;
+        InputsMetaData metaData;
+
+        private Input unTreatedToTreated(unTreatedInput input)
         {
-            bool previousWasPaste = false;
-            Input[] toReturn = new Input[toTreat.Count];
-            for (int i = 0; toTreat.Count > i; i++)
+            return new Input()
+            {
+                ActionContent = input.ActionContent,
+                relativeTimePointMs = input.relativeTimePointMs,
+                _ActionType = input._ActionType,
+                SelectionStart = input.SelectionStart,
+                SelectionEnd = input.SelectionEnd
+            };
+        }
+        private int GetPasteDiff(unTreatedInput previousInput, unTreatedInput currInput)
+        {
+            return Math.Abs((int)previousInput.Cp + previousInput.ActionContent.Length - (int)currInput.Cp);
+        }
+        private int GetDeleteDiff(unTreatedInput previousInput, unTreatedInput currInput)
+        {
+            return Math.Abs((int)previousInput.SelectionEnd - (int)previousInput.SelectionStart + (int)currInput.Cp - (int)previousInput.Cp);
+        }
+        private void TreatFirstInput()
+        {
+            treatedInputs[0] = unTreatedToTreated(toTreat[0]);
+        }
+        private void TreatInputsInMiddle()
+        {
+
+            for (int i = 1; toTreat.Count-1 > i; i++)
             {
                 unTreatedInput currInput = toTreat[i];
-                if (previousWasPaste)
+                unTreatedInput prevInput = toTreat[i - 1];
+
+                if (prevInput._ActionType == ActionType.PASTE)
                 {
-                    unTreatedInput previousInput = toTreat[i - 1];
-                    int diff = Math.Abs((int)previousInput.Cp + previousInput.ActionContent.Length - (int)currInput.Cp);
-                    Debug.WriteLine("Diff: " + diff);
+                    int diff = GetPasteDiff(prevInput, currInput);
+                    Debug.WriteLine("PasteDiff: " + diff);
                     if (diff != 0)
                     {
                         if (diff == 2)
                         {
-                            string result = " " + toReturn[i - 1].ActionContent + "\n";
-                            toReturn[i - 1].ActionContent = result;
+                            string result = " " + treatedInputs[i - 1].ActionContent + "\n";
+                            treatedInputs[i - 1].ActionContent = result;
                         }
                         else
                         {
-                            toReturn[i - 1].ActionContent = toReturn[i - 1].ActionContent + "\n";
+                            treatedInputs[i - 1].ActionContent += "\n";
                         }
                     }
                 }
+                if (prevInput._ActionType == ActionType.DELETESELECTION && !(prevInput.SelectionStart == prevInput.SelectionEnd))
+                {
+                    int diff = GetDeleteDiff(prevInput, currInput);
+                    if (diff != 0)
+                    {
+                        treatedInputs[i - 1].SelectionEnd -= 1;
+                    }
+                }
 
-                if (currInput._ActionType == ActionType.PASTE)
-                {
-                    previousWasPaste = true;
-                }
-                else
-                {
-                    previousWasPaste = false;
-                }
-                Input toPush = new Input()
-                {
-                    ActionContent = currInput.ActionContent,
-                    relativeTimePointMs = currInput.relativeTimePointMs,
-                    _ActionType = currInput._ActionType,
-                    SelectionStart = currInput.SelectionStart,
-                    SelectionEnd = currInput.SelectionEnd
-                };
-                toReturn[i] = toPush;
+                treatedInputs[i] = unTreatedToTreated(currInput);
             }
-            unTreatedInput lastInput = toTreat[toTreat.Count - 1];
-            if (lastInput._ActionType == ActionType.PASTE)
+        }
+        private void TreatLastInput()
+        {
+            unTreatedInput lastInput = toTreat[toTreat.Count() - 1];
+            unTreatedInput inputBeforeLastInput = toTreat[toTreat.Count() - 2];
+
+            if (inputBeforeLastInput._ActionType == ActionType.PASTE)
             {
-                int diff = Math.Abs(metaData.endCp - ((int)lastInput.Cp + lastInput.ActionContent.Length));
-                Debug.WriteLine("Diff: " + diff);
+                int diff = GetPasteDiff(inputBeforeLastInput, lastInput);
                 if (diff != 0)
                 {
-                    toReturn[toReturn.Length - 1].ActionContent = toReturn[toReturn.Length - 1].ActionContent + "\n";
                     if (diff == 2)
                     {
-                        string result = " " + toReturn[toReturn.Length - 1].ActionContent + "\n";
-                        toReturn[toReturn.Length - 1].ActionContent = result;
+                        string result = " " + treatedInputs[treatedInputs.Length - 2].ActionContent + "\n";
+                        treatedInputs[treatedInputs.Length - 2].ActionContent = result;
+                    }
+                    else
+                    {
+                        treatedInputs[treatedInputs.Length - 2].ActionContent += "\n";
                     }
                 }
             }
-            foreach (Input input in toReturn)
+            if(inputBeforeLastInput._ActionType == ActionType.DELETESELECTION && !(inputBeforeLastInput.SelectionStart == inputBeforeLastInput.SelectionEnd))
             {
-                Debug.WriteLine("Content:" + input.ActionContent);
+                int diff = GetDeleteDiff(inputBeforeLastInput, lastInput);
+                if (diff != 0)
+                {
+                    treatedInputs[treatedInputs.Length - 2].SelectionEnd -= 1;
+                }
             }
-            return toReturn;
+
+            if (lastInput._ActionType == ActionType.PASTE)
+            {
+                int diff = Math.Abs((int)lastInput.Cp + lastInput.ActionContent.Length - metaData.endCp);
+                if (diff != 0)
+                {
+                    lastInput.ActionContent = lastInput.ActionContent + "\n";
+                    if (diff == 2)
+                    {
+                        string result = " " + lastInput.ActionContent + "\n";
+                        lastInput.ActionContent = result;
+                    }
+                }
+            }
+            if (lastInput._ActionType == ActionType.DELETESELECTION && !(lastInput.SelectionStart == lastInput.SelectionEnd))
+            {
+                int diff = Math.Abs((int)lastInput.SelectionEnd - (int)lastInput.SelectionStart + metaData.endCp - (int)lastInput.Cp);
+                Debug.WriteLine("DIFFDIFFIDIFF: " + diff);
+                if (diff != 0)
+                {
+                    lastInput.SelectionEnd -= 1;
+                }
+            }
+
+            treatedInputs[treatedInputs.Length - 1] = unTreatedToTreated(lastInput);
         }
 
-        public static void WriteInputsCsvString(Input[] inputs, string path)
+        public InputTreater(List<unTreatedInput> toTreat, InputsMetaData metaData)
         {
-            string toReturn = "";
-            foreach (Input input in inputs)
-            {
-                toReturn += '"' + input.ActionContent + '"' + ",";
-                toReturn += (int)input._ActionType + ",";
-                toReturn += input.SelectionStart + ",";
-                toReturn += input.SelectionEnd + ",";
-                toReturn += input.relativeTimePointMs + "\n";
-            }
-            File.WriteAllText(path + "_result", toReturn);
+            this.treatedInputs = new Input[toTreat.Count];
+            this.toTreat = toTreat;
+            this.metaData = metaData;
         }
-        public static List<unTreatedInput> ReadInputs(string data)
+        public Input[] getTreatedInputs()
         {
-            var fileHelperEngine = new FileHelperEngine<unTreatedInput>();
-            return fileHelperEngine.ReadString(data).ToList();
+            TreatFirstInput();
+            TreatInputsInMiddle();
+            TreatLastInput();
+            return this.treatedInputs;
         }
-        public static InputsMetaData readMetaData(string data)
-        {
-            var fileHelperEngine = new FileHelperEngine<InputsMetaData>();
-            return fileHelperEngine.ReadString(data).ToList()[0];
-        }
+
     }
 }

@@ -166,8 +166,12 @@ namespace ThemisWeb.Server.Controllers
             {
                 return Unauthorized();
             }
-            _groupRepository.DeleteGroupPictureAsync(toDelete);
-            bool result = _groupRepository.Delete(toDelete);
+            IEnumerable<Assignment> groupAssignments = await _assignmentRepository.GetByGroupIdAsync(toDelete.Id);
+            foreach (Assignment assignment in groupAssignments)
+            {
+                await _assignmentRepository.Delete(assignment);
+            }
+            bool result = await _groupRepository.Delete(toDelete);
             if (!result)
             {
                 return StatusCode(500);

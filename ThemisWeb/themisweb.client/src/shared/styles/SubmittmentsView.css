@@ -20,7 +20,7 @@
     font-size: 18px;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
     .SubmittmentsHeader{
         flex-direction: column;
     }

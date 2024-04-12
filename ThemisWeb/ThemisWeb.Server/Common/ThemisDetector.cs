@@ -30,19 +30,13 @@ namespace ThemisWeb.Server.Common
         ApplicationUser _user;
         UserText _text;
 
-        private IEnumerable<Input> pastes;
-        public IEnumerable<Input> deleteSelections;
-        private IEnumerable<Input> addChars;
-        private IEnumerable<Input> deleteChars;
-        private IEnumerable<Input> truePastes;
-
-        private int deletesPerAdds;
         private int editScore;
         private int averageTypeSpeed;
-        private int detectionScore;
-        private List<MomentOfInterest> momentsOfInterest;
+        private int detectionScore = 0;
+        private List<MomentOfInterest> momentsOfInterest = new List<MomentOfInterest>();
         private async Task<bool> wasTextTypedByHandBefore(string currRawContent, string Text, UInt64 timePoint)
         {
+            return currRawContent.Contains(Text);
             if (!currRawContent.Contains(Text))
             {
                 IEnumerable<UserText> userTexts = await _userTextRepository.GetUserTexts(_user);
@@ -64,22 +58,25 @@ namespace ThemisWeb.Server.Common
             }
             return true;
         }
-        private async Task<bool> AnalyzeInputs(IEnumerable<Input> inputs)
+        private async Task<bool> AnalyzeInputs(List<Input> inputs)
         {
             int previousAddCharRelativeTime = 0;
             int totalAddCharTime = 0;
             int addCharAmount = 0;
+            int deleteCharAmount = 0;
+            int deleteSectionAmount = 0;
             int extendedTypingBreaksCount = 0;
 
             string currRawContent = "";
             UInt64 currSessionRelativeTime = 0;
 
-            foreach (Input input in inputs)
+            for (int i = 0; inputs.Count() > i; i++)
             {
+                Input input = inputs[i];
                 switch (input._ActionType)
                 {
                     case ActionType.ADDCHAR:
-                        addChars.Append(input);
+   
                         int timeDiff = (int)input.relativeTimePointMs - previousAddCharRelativeTime;
                         if (timeDiff >= 60000)
                         {
@@ -92,15 +89,15 @@ namespace ThemisWeb.Server.Common
                         }
                         break;
 
-                    case ActionType.DELETECHAR: deleteChars.Append(input); break;
+                    case ActionType.DELETECHAR: deleteCharAmount++; break;
 
-                    case ActionType.DELETESELECTION: deleteSelections.Append(input); break;
+                    case ActionType.DELETESELECTION: deleteSectionAmount++; break;
 
                     case ActionType.PASTE:
                         bool wasTypedBefore = await wasTextTypedByHandBefore(currRawContent, input.ActionContent, currSessionRelativeTime+input.relativeTimePointMs);
                         if (!wasTypedBefore)
                         {
-                            truePastes.Append(input);
+                            momentsOfInterest.Add(new MomentOfInterest{ Index=i, reason="PASTE"});
                         }
                         break;
                 case ActionType.SESSIONSTART:
@@ -109,8 +106,22 @@ namespace ThemisWeb.Server.Common
                 }
                 AdvanceInput(ref currRawContent, input);
             }
-            averageTypeSpeed = totalAddCharTime / addCharAmount;
-            deletesPerAdds = addCharAmount / deleteChars.Count();
+            if(addCharAmount == 0)
+            {
+                averageTypeSpeed = totalAddCharTime;
+            }
+            else
+            {
+                averageTypeSpeed = totalAddCharTime / addCharAmount;
+            }
+            if(deleteCharAmount == 0)
+            {
+                editScore = 0;
+            }
+            else
+            {
+                editScore = addCharAmount / deleteCharAmount;
+            }
             return true;
         }
         public int GetDetectionScore()
@@ -120,8 +131,10 @@ namespace ThemisWeb.Server.Common
         public ThemisDetectionData getDetectionData()
         {
             ThemisDetectionData toReturn = new ThemisDetectionData();
-            toReturn.statistics.Add(new InputsStatistic { infoType = "Genomsnitts skrivhastighet", info = averageTypeSpeed.ToString() });
-            toReturn.statistics.Add(new InputsStatistic { infoType = "Ändrings poäng", info = editScore.ToString() });
+            List<InputsStatistic> temp = new List<InputsStatistic>();
+            temp.Add(new InputsStatistic { infoType = "Genomsnitts skrivhastighet", info = averageTypeSpeed.ToString() });
+            temp.Add(new InputsStatistic { infoType = "Ändrings poäng", info = editScore.ToString() });
+            toReturn.statistics = temp;
             toReturn.momentsOfInterest = momentsOfInterest;
             return toReturn;
         }
@@ -131,11 +144,13 @@ namespace ThemisWeb.Server.Common
             return toReturn;
         }
 
-        public async void Analyze(UserText text)
+        public async Task<bool> Analyze(UserText text)
         {
             _text = text;
             GetObjectResponse inputsData = await _userTextRepository.S3GetInputDataAsync(text);
-            await AnalyzeInputs(ReadInputsStream(inputsData.ResponseStream));
+            IEnumerable<Input> inputs = ReadInputsStream(inputsData.ResponseStream, noHash:true);
+            await AnalyzeInputs(inputs.ToList());
+            return true;
         } 
         public ThemisDetector(IUserTextRepository userTextRepository, ApplicationUser user) {
             _user = user;

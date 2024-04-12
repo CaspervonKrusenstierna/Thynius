@@ -17,6 +17,8 @@ UINT64 Data::GetCp() {
 }
 Selection Data::GetSelection() {
 	Selection toReturn;
+	Output << L"SelStartAddy: " << selAddy << std::endl;
+	Output << L"SelStartAddy: " << (reinterpret_cast<DWORD64>(selAddy)+0x4) << std::endl;
 	toReturn.SelectionStart = *reinterpret_cast<UINT32*>(selAddy);
 	toReturn.SelectionEnd = *reinterpret_cast<UINT32*>(reinterpret_cast<DWORD64>(selAddy) + 0x4);
 	return toReturn;

@@ -12,7 +12,7 @@ namespace ThemisService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            ServerComms serverComms = new ServerComms("https://localhost:7135",themisDir+"CookieData\\CookieData.txt");
+            ServerComms serverComms = new ServerComms("https://localhost:7135",themisDir+"CookieData\\CookieData.txt", _logger);
             SystemEventsManager systemEventsManager = new SystemEventsManager(themisDir, serverComms, _logger);
 
         }

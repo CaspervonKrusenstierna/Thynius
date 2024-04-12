@@ -17,11 +17,13 @@ namespace ThemisWeb.Server.Controllers
         IGroupRepository _groupRepository;
         UserManager<ApplicationUser> _userManager;
         IUserRepository _userRepository;
-        public AssignmentController(IAssignmentRepository assignmentRepository, IUserRepository userRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
+        IUserTextRepository _userTextRepository;
+        public AssignmentController(IAssignmentRepository assignmentRepository, IUserRepository userRepository, IGroupRepository groupRepository, IUserTextRepository userTextRepository, UserManager<ApplicationUser> userManager)
         {
             _assignmentRepository = assignmentRepository;
             _groupRepository = groupRepository;
             _userManager = userManager;
+            _userTextRepository = userTextRepository;
             _userRepository = userRepository;
         }
 

@@ -26,12 +26,14 @@ namespace ThemisWeb.Server.Common
             public int SelectionEnd;
             public ulong relativeTimePointMs;
         }
-        public static IEnumerable<Input> ReadInputsStream(Stream stream)
+        public static IEnumerable<Input> ReadInputsStream(Stream stream, bool noHash=false)
         {
-            stream.Position = 0;
+            if (!noHash)
+            {
+                stream.Position = 0;
+            }
             var reader = new StreamReader(stream, leaveOpen: true);
             string fileContent = reader.ReadToEnd();
-            Console.WriteLine(fileContent);
             var fileHelperEngine = new FileHelperEngine<Input>();
             var inputs = fileHelperEngine.ReadString(fileContent);
             reader.Dispose();
@@ -49,6 +51,7 @@ namespace ThemisWeb.Server.Common
             Console.WriteLine("Content: " + input.ActionContent);
             Console.WriteLine("Selstart: " + input.SelectionStart);
             Console.WriteLine("Selend: " + input.SelectionEnd);
+            input.ActionContent = input.ActionContent.Replace("\r\n", "\n");
             switch (input._ActionType)
             {
                 case ActionType.ADDCHAR:
@@ -73,12 +76,13 @@ namespace ThemisWeb.Server.Common
                     }
                     currRawText = currRawText.Insert(input.SelectionStart, input.ActionContent);
                     break;
+
                 case ActionType.SPELLINGREPLACE:
-                    currRawText = currRawText.Remove(input.SelectionStart, input.SelectionEnd - input.SelectionStart);
+                    Console.WriteLine("CONTENT: " + input.ActionContent);
+                    currRawText = currRawText.Remove(input.SelectionStart, input.SelectionEnd-input.SelectionStart);
                     currRawText = currRawText.Insert(input.SelectionStart, input.ActionContent);
                     break;
             }
-            Console.WriteLine("CurrToReturn: " + currRawText);
         }
         public static string GetInputsRawText(IEnumerable<Input> inputs)
         {
@@ -87,7 +91,9 @@ namespace ThemisWeb.Server.Common
             foreach (Input input in inputs)
             {
                 AdvanceInput(ref toReturn, input);
+                Console.WriteLine("CurrToReturn: " + toReturn);
             }
+            File.WriteAllText("C:\\Program Files\\Themis\\test2.txt", toReturn);
             return toReturn;
         }
 

@@ -10,7 +10,7 @@ const SubmittmentTextContainer = (props) => {
 
   useEffect(() => {
     async function getText(){
-      await fetch(submittmentInfo.links.rawTextURL).then(s => s.text()).then(s => setRawText(s));
+      await fetch(submittmentInfo.links.rawTextURL).then(s => s.text()).then(s => {console.log(s); setRawText(s)});
     }
     getText();
   }, [submittmentInfo.links])

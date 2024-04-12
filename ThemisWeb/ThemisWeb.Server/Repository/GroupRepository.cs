@@ -14,9 +14,9 @@ namespace ThemisWeb.Server.Repository
         private readonly IAmazonS3 _amazonS3;
         public GroupRepository(ApplicationDbContext context, IAmazonS3 amazonS3, IConfiguration configurationManager)
         {
-            this._context = context;
-            this._configurationManager = configurationManager;
-            this._amazonS3 = amazonS3;
+            _context = context;
+            _configurationManager = configurationManager;
+            _amazonS3 = amazonS3;
         }
         public bool Add(Group group)
         {
@@ -28,8 +28,9 @@ namespace ThemisWeb.Server.Repository
             _context.Update(group);
             return Save();
         }
-        public bool Delete(Group group)
+        public async Task<bool> Delete(Group group)
         {
+            await DeleteGroupPictureAsync(group);
             _context.Groups.Remove(group);
             return Save();
         }

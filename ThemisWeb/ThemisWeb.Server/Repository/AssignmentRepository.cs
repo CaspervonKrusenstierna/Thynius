@@ -14,12 +14,14 @@ namespace ThemisWeb.Server.Repository
         private readonly IGroupRepository _groupRepository;
         private readonly IAmazonS3 _amazonS3;
         private readonly IConfiguration _configuration;
-        public AssignmentRepository(ApplicationDbContext context, IGroupRepository groupRepository, IAmazonS3 amazonS3, IConfiguration configuration)
+        private readonly IUserTextRepository _userTextRepository;
+        public AssignmentRepository(ApplicationDbContext context, IGroupRepository groupRepository, IUserTextRepository userTextRepository, IAmazonS3 amazonS3, IConfiguration configuration)
         {
             _context = context;
             _groupRepository = groupRepository;
             _amazonS3 = amazonS3;
             _configuration = configuration; 
+            _userTextRepository = userTextRepository;
         }
 
         public async Task<PutObjectResponse> UploadAssignmentPictureAsync(Assignment assignment, IFormFile assignmentPicture)
@@ -80,6 +82,12 @@ namespace ThemisWeb.Server.Repository
         }
         public async Task<bool> Delete(Assignment assignment)
         {
+            IEnumerable<UserText> assignmentTexts = await _userTextRepository.GetAssignmentTexts(assignment);
+            foreach (UserText text in assignmentTexts)
+            {
+                _userTextRepository.Delete(text);
+            }
+
             await DeletAssignmentPictureAsync(assignment);
             _context.Assignments.Remove(assignment);
             return Save();

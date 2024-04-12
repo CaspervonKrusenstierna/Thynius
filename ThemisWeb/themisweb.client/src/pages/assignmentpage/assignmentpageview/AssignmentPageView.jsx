@@ -5,6 +5,9 @@ import { useLocation, useParams } from 'react-router-dom';
 import useAssignmentTabs from './hooks/useAssignmentTabs';
 import useExtendedAssignmentInfo from './hooks/useExtendedAssignmentInfo';
 import { DashboardContainerSidebar } from '../../../shared/components/dashboard';
+import { createContext } from 'react';
+
+export const assignmentInfoContext = createContext();
 
 const AssignmentPageView = () => {
   const {id} = useParams();
@@ -14,14 +17,16 @@ const AssignmentPageView = () => {
   const extendedAssignmentInfo = useExtendedAssignmentInfo(id);
 
   return (
-    <div className='DashboardContainer-Container'>
-        <div className='DashboardContainer'>
-        <DashboardContainerSidebar sidebartitle={extendedAssignmentInfo?.Name} navigationtitle="Information" tabs={assignmentTabs}></DashboardContainerSidebar>
-        <div className='DashboardContainer-Content'>
-          {pageContent}
-        </div>
-        </div>
-    </div>
+    <assignmentInfoContext.Provider value={extendedAssignmentInfo}>
+      <div className='DashboardContainer-Container'>
+          <div className='DashboardContainer'>
+          <DashboardContainerSidebar sidebartitle={extendedAssignmentInfo?.Name} navigationtitle="Information" tabs={assignmentTabs}></DashboardContainerSidebar>
+          <div className='DashboardContainer-Content'>
+            {pageContent}
+          </div>
+          </div>
+      </div>
+    </assignmentInfoContext.Provider>
   )
 }
 

@@ -2,16 +2,16 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { Suspense, createContext, lazy } from 'react';
-const HomePage = lazy(() => import("./pages/homepage"))
-const GroupPage = lazy(() => import("./pages/grouppage"))
-const GroupsViewPage = lazy(() => import("./pages/groupsviewpage"))
-const CreateGroupPage = lazy(() => import("./pages/creategrouppage"))
-const DashboardHomePage = lazy(() => import("./pages/dashboardhome"))
-const TextsViewPage = lazy(() => import("./pages/textsviewpage"))
-const TextViewPage = lazy(() => import("./pages/textviewpage"))
-const AssignmentPage = lazy(() => import("./pages/assignmentpage"))
-const SubmitTextPage = lazy(() => import("./pages/submittextpage"))
-const SubmittmentPage = lazy(() => import("./pages/submittmentpage"))
+const HomePage = lazy(() => import("./pages/homepage/HomePage"))
+const GroupPage = lazy(() => import("./pages/grouppage/GroupPage"))
+const GroupsViewPage = lazy(() => import("./pages/groupsviewpage/GroupsViewPage"))
+const CreateGroupPage = lazy(() => import("./pages/creategrouppage/CreateGroupPage"))
+const DashboardHomePage = lazy(() => import("./pages/dashboardhome/DashboardHome"))
+const TextsViewPage = lazy(() => import("./pages/textsviewpage/TextsViewPage"))
+const TextViewPage = lazy(() => import("./pages/textviewpage/TextViewPage"))
+const AssignmentPage = lazy(() => import("./pages/assignmentpage/AssignmentPage"))
+const SubmitTextPage = lazy(() => import("./pages/submittextpage/SubmitTextPage"))
+const SubmittmentPage = lazy(() => import("./pages/submittmentpage/SubmittmentPage"))
 import "./index.css"
 import "./output.css"
 
@@ -19,6 +19,7 @@ import useSessionInfo from "./shared/hooks/useSessionInfo"
 import EditGroupPage from './pages/editgrouppage/EditGroupPage';
 import LoginBox from './pages/homepage/loginbox/LoginBox';
 import RegisterBox from './pages/homepage/registerbox/RegisterBox';
+import { DarknessEffect } from './shared/components/homepage';
 export const sessionInfoContext = createContext();
 
 function App() {
@@ -28,21 +29,22 @@ function App() {
         <sessionInfoContext.Provider value={{sessionInfo: sessionInfo, updateSessionInfo: updateSessionInfo}}>
             <BrowserRouter>
                 <Routes>
-                        <Route path="home" element={<HomePage></HomePage>}>
-                            <Route path="/register" element={<RegisterBox></RegisterBox>}></Route>
-                            <Route path="/login" element={<LoginBox></LoginBox>}></Route>
+                        <Route path="/" element={<HomePage/>}>
+                            <Route path="/register" element={<><DarknessEffect/><RegisterBox/></>}></Route>
+                            <Route path="/login" element={<><DarknessEffect/><LoginBox/></>}></Route>
                         </Route>
-                        <Route path="/dashboard/home" element={<DashboardHomePage></DashboardHomePage>}></Route>
-                        <Route path="/dashboard/group/:id/:page" element={<GroupPage></GroupPage>}></Route>
-                        <Route path="/dashboard/group/:id/:page/:assignmentid" element={<GroupPage></GroupPage>}></Route>
-                        <Route path="/dashboard/groups" element={<GroupsViewPage></GroupsViewPage>}></Route>
-                        <Route path="/dashboard/creategroup/:page" element={<CreateGroupPage></CreateGroupPage>}></Route>
-                        <Route path="/dashboard/texts" element={<TextsViewPage></TextsViewPage>}></Route>
-                        <Route path="/dashboard/text/:id" element={<TextViewPage></TextViewPage>}></Route>
-                        <Route path='/dashboard/assignment/:id/:page' element={<AssignmentPage></AssignmentPage>}></Route>
-                        <Route path='/dashboard/text/:id/submit' element={<SubmitTextPage></SubmitTextPage>}></Route>
-                        <Route path='/dashboard/submittment/:id' element={<SubmittmentPage></SubmittmentPage>}></Route>
-                        <Route path='/dashboard/editgroup/:id/:page' element={<EditGroupPage></EditGroupPage>}></Route>
+                        
+                        <Route path="/dashboard/home" element={<Suspense fallback={<></>}><DashboardHomePage/></Suspense>}></Route>
+                        <Route path="/dashboard/group/:id/:page" element={<Suspense fallback={<></>}><GroupPage/></Suspense>}></Route>
+                        <Route path="/dashboard/group/:id/:page/:assignmentid" element={<Suspense fallback={<></>}><GroupPage/></Suspense>}></Route>
+                        <Route path="/dashboard/groups" element={<Suspense fallback={<></>}><GroupsViewPage/></Suspense>}></Route>
+                        <Route path="/dashboard/creategroup/:page" element={<Suspense fallback={<></>}><CreateGroupPage/></Suspense>}></Route>
+                        <Route path="/dashboard/texts" element={<Suspense fallback={<></>}><TextsViewPage/></Suspense>}></Route>
+                        <Route path="/dashboard/text/:id" element={<Suspense fallback={<></>}><TextViewPage/></Suspense>}></Route>
+                        <Route path='/dashboard/assignment/:id/:page' element={<Suspense fallback={<></>}><AssignmentPage/></Suspense>}></Route>
+                        <Route path='/dashboard/text/:id/submit' element={<Suspense fallback={<></>}><SubmitTextPage/></Suspense>}></Route>
+                        <Route path='/dashboard/submittment/:id' element={<Suspense fallback={<></>}><SubmittmentPage/></Suspense>}></Route>
+                        <Route path='/dashboard/editgroup/:id/:page' element={<Suspense fallback={<></>}><EditGroupPage/></Suspense>}></Route>
                 </Routes>
             </BrowserRouter>
         </sessionInfoContext.Provider>

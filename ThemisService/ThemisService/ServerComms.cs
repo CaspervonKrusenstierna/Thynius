@@ -26,8 +26,10 @@ namespace ThemisService
         private CookieContainer cookieContainer;
         private HttpClientHandler clientHandler;
         private HttpClient client;
-        public ServerComms(string baseAddress, string CookieDataPath)
+        ILogger<WindowsBackgroundService> _logger;
+        public ServerComms(string baseAddress, string CookieDataPath, ILogger<WindowsBackgroundService> logger)
         {
+            _logger = logger;
             cookieDataPath = CookieDataPath;
             baseUri = new Uri(baseAddress);
 
@@ -52,30 +54,28 @@ namespace ThemisService
 
         public async Task<bool> SubmitSession(string GUID, string SessionPath)
         {
-            List<unTreatedInput> untreatedInputs = InputTreater.ReadInputs(File.ReadAllText(SessionPath));
-            InputsMetaData metaData = InputTreater.readMetaData(File.ReadAllText(SessionPath + "_metadata"));
+            List<unTreatedInput> untreatedInputs = Utils.ReadInputs(File.ReadAllText(SessionPath));
+            InputsMetaData metaData = Utils.readMetaData(File.ReadAllText(SessionPath + "_metadata"));
             foreach (unTreatedInput input in untreatedInputs)
             {
-                Debug.WriteLine("UntreatedActionContent: " + input.ActionContent);
+                _logger.LogInformation("UntreatedActionContent: " + input.ActionContent);
             }
-            Input[] treatedInputs = InputTreater.TreatInputs(untreatedInputs, metaData);
-            foreach (Input input in treatedInputs)
-            {
-                Debug.WriteLine("TreatedActionContent: " + input.ActionContent);
-            }
-            InputTreater.WriteInputsCsvString(treatedInputs, SessionPath);
+            InputTreater treater = new InputTreater(untreatedInputs, metaData);
+            Input[] treatedInputs = treater.getTreatedInputs();
+
+            Utils.WriteInputsCsvString(treatedInputs, SessionPath);
             MultipartFormDataContent form = new MultipartFormDataContent();
             var fs = File.OpenRead(SessionPath + "_result");
             var stream = new StreamContent(fs);
             form.Add(stream, "sessionData", Path.GetFileName(SessionPath));
             form.Add(new StringContent(GUID), "guid");
             HttpResponseMessage response = await client.PutAsync("/usertext?guid=" + GUID, form);
-            Debug.WriteLine(response.StatusCode);
-            if (response.IsSuccessStatusCode)
+            fs.Dispose();
+            stream.Dispose();
+            if (response.StatusCode == HttpStatusCode.OK)
             {
                 return true;
             }
-
             return false;
         }
 

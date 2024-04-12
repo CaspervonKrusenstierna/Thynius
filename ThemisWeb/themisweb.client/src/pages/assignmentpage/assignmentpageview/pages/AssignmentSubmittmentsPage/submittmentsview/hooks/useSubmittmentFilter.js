@@ -1,16 +1,16 @@
 import { useMemo } from "react";
 
 
-export default function useSubmittmentFilter(paginatedData, displaySettings, itemsPerPage) {
+export default function useSubmittmentFilter(submittmentsData, displaySettings, itemsPerPage) {
     const toReturn =  useMemo(() => {
         let toReturn = [];
         if(displaySettings?.filter == 0){
-            toReturn = paginatedData.pages;
+            toReturn = submittmentsData.pages;
         }
         else{
-            for(let i = 0; paginatedData.pages.length > i; i++){
-                if(paginatedData.pages[i].WarningLevel ==  displaySettings?.filter-1){
-                    toReturn.push(paginatedData.pages[i]);
+            for(let i = 0; submittmentsData.pages.length > i; i++){
+                if(submittmentsData.pages[i].WarningLevel ==  displaySettings?.filter-1){
+                    toReturn.push(submittmentsData.pages[i]);
                 }
             }
         }
@@ -24,7 +24,7 @@ export default function useSubmittmentFilter(paginatedData, displaySettings, ite
             toReturn = temp;
         }
         return {pages: toReturn, dataEndPage: Math.ceil(toReturn.length / itemsPerPage) };
-    }, [displaySettings.filter, displaySettings.search, paginatedData.pages])
+    }, [displaySettings.filter, displaySettings.search, submittmentsData.pages])
 
     return toReturn;
 }

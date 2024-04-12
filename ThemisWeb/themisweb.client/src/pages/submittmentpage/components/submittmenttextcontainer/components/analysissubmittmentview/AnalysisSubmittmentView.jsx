@@ -1,36 +1,48 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
-import "./AnalysisSubmittmentView.css"
 import InputIndexWidget from './components/inputindexwidget/InputIndexWidget';
 import { GetThemisInputIndexRawText, ThemisInputsAdvance, clearSleeps, sleep } from './utilities/Utilities';
 import useInputs from './hooks/useInputs';
-import getIndicatorTextCollection from './utilities/getIndicatorTextCollection';
 import { submittmentInfoContext } from '../../../../SubmittmentPage';
 
-let currIndexDummy = -1;
 const AnalysisSubmittmentView = () => {
   const [indicatorTextCollection, setIndicatorTextCollection] = useState();
   const [rawText, setRawText] = useState("");
   const [isPlaying, setIsPlaying] = useState(false);
   const [currIndex, setCurrIndex] = useState(0);
+  const sleepsStorage = useRef([]);
+  const currIndexDummy = useRef(-1);
+  const currSession = useRef(0);
   const submittmentInfo = useContext(submittmentInfoContext);
   const inputs = useInputs();
 
   useEffect(() => {
     async function runPlay(){
       let rawTextDummy = rawText;
-      currIndexDummy = currIndex;
+      currIndexDummy.current = currIndex;
       let timeOuts = [];
       while(isPlaying){
-        if(currIndexDummy == inputs.length){
+        let currInput = inputs[currIndexDummy.current];
+        if(currIndexDummy.current == inputs.length){
           break;
         }
-        rawTextDummy = ThemisInputsAdvance(rawTextDummy, inputs[currIndexDummy]);
+        if(currInput[1] == 8){
+          currSession.current++;
+          currIndexDummy.current++;
+          continue
+        }
+        
+        rawTextDummy = ThemisInputsAdvance(rawTextDummy, currInput);
         setRawText(rawTextDummy);
-        currIndexDummy++;
         try{
-          await sleep(parseInt(inputs[currIndexDummy+1][4])-parseInt(inputs[currIndexDummy][4]));
+          let nextInput = inputs[currIndexDummy.current+1];
+          if(!(nextInput[1] == 8)){
+            await sleep(parseInt(nextInput[4])-parseInt(currInput[4]), sleepsStorage);
+          }else{
+            await sleep(5000, sleepsStorage);
+          }
         }catch{
         }
+        currIndexDummy.current++;
       }
       setIsPlaying(false);
     }
@@ -41,9 +53,10 @@ const AnalysisSubmittmentView = () => {
       runPlay();
     }
     else{
-      clearSleeps();
-      if(currIndexDummy != -1){
-        setCurrIndex(currIndexDummy);
+      currIndexDummy.current++;
+      clearSleeps(sleepsStorage);
+      if(currIndexDummy.current != -1){
+        setCurrIndex(currIndexDummy.current);
       }
     }
   }, [isPlaying])
@@ -56,22 +69,32 @@ const AnalysisSubmittmentView = () => {
   }, [submittmentInfo.indexIsTouched])
 
   const incIndex = useCallback(() => {
-    setRawText(GetThemisInputIndexRawText(rawText, inputs, currIndex, 1))
+    let currInput = inputs[currIndex];
+    if(currInput[1] == 8){
+      currSession.current++;
+      setCurrIndex(currIndex + 1);
+      return;
+    }
+    let currRaw = ThemisInputsAdvance(rawText, currInput);
+    setRawText(currRaw);
     setCurrIndex(currIndex + 1);
   }, [rawText, currIndex, inputs])
   
   const setIndexBrutally = useCallback((index) => {
-    setRawText(GetThemisInputIndexRawText("", inputs, 0, index));
+    let currRawInfo = GetThemisInputIndexRawText(rawText, inputs, 0, index);
+    currSession.current = currRawInfo.session;
+    setRawText(currRawInfo.text);
     setCurrIndex(index);
   }, [inputs]);
 
 
   return (
     <div className='flex flex-col h-full relative'>
-      <div className='AnalysisSubmittmentView'>
-        {rawText}
+      <div className="w-[90%] ml-[5%] h-full">
+        <div className='h-[50px] text-[26px] font-bold flex flex-row justify-center items-center'>Session {currSession.current}</div>
+        <p className="text-wrap mt-3 whitespace-pre">{rawText}</p>
       </div>
-      <InputIndexWidget setIsPlaying={setIsPlaying} isPlaying={isPlaying} decIndex={() => {if(!isPlaying && !(currIndex==0)){setIndexBrutally(currIndex-1)}}} incIndex={() =>{if(!isPlaying && !(currIndex == inputs.length-1)){incIndex()}}}></InputIndexWidget>
+      <InputIndexWidget setIsPlaying={setIsPlaying} isPlaying={isPlaying} decIndex={() => {if(!isPlaying && !(currIndex==0)){setIndexBrutally(currIndex-1)}}} incIndex={() =>{if(!isPlaying && !(currIndex == inputs.length)){incIndex()}}}></InputIndexWidget>
     </div>
   )
 }

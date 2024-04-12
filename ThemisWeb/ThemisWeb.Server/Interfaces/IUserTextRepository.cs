@@ -20,7 +20,7 @@ namespace ThemisWeb.Server.Interfaces
         public Task<PutObjectResponse> S3DetectionDataUpload(UserText text, string detectionData);
         public Task<DeleteObjectResponse> S3DetectionDataDelete(UserText text);
         public string S3GetDetectionDataSignedUrl(UserText text);
-        public Task<IEnumerable<UserText>> GetAssignmentTextsPage(Assignment assignment, int pageIndex, int pageSize);
+        public Task<IEnumerable<UserText>> GetAssignmentTexts(Assignment assignment);
         public Task<UserText> GetByTextData(ApplicationUser user, UInt64 guid);
         public bool Add(UserText text);
         public bool Update(UserText text);

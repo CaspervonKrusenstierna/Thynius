@@ -7,7 +7,7 @@ namespace ThemisWeb.Server.Interfaces
     {
         public bool Add(Group group);
         public bool Update(Group group);
-        public bool Delete(Group group);
+        public Task<bool> Delete(Group group);
         public Task<IEnumerable<Group>> GetUserGroups(string userId);
         public Task<PutObjectResponse> UploadGroupPictureAsync(Group group, IFormFile groupPicture);
         public Task<DeleteObjectResponse> DeleteGroupPictureAsync(Group group);

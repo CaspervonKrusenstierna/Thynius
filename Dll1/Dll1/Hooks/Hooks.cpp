@@ -2,7 +2,7 @@
 
 struct DOD* dod = 0;
 std::wofstream Output3("C:\\Program Files\\Themis\\DebugHookData");
-void const* cachedAddy = NULL;
+int cachedGUID = NULL;
 CmdPasteCf pCmdPasteCf = nullptr;
 PVOID pCmdPasteCfTarget;
 PasteHookCallback funcToRunOnPaste;
@@ -24,8 +24,8 @@ SaveText pSaveText = nullptr;
 PVOID pSaveTextTarget;
 SaveCallback funcToRunOnSave;
 unsigned long __fastcall detourSaveText(void const* p1, void const* p2, int p3, wchar_t const* p4, struct _GUID const* p5, int p6, struct _GUID const* p7, int p8, int p9, int p10, int p11, int p12, int p13, int p14, unsigned int p15, int p16, int p17, int p18, unsigned int p19, unsigned int p20) {
-	if (cachedAddy == NULL || p1 == cachedAddy) {
-		cachedAddy = p1;
+	if (cachedGUID == NULL || p5->Data1 == cachedGUID) {
+		cachedGUID = p5->Data1;
 		funcToRunOnSave(p5->Data1);
 	}
 	return pSaveText(p1, p2, p3, p4, p5, p6, p7 ,p8 ,p9, p10, p11, p12, p13, p14, p15, p16, p17, p18, p19, p20);
@@ -45,7 +45,7 @@ PVOID pDoWordReplaceTarget;
 DoWordReplaceCallback funcToRunOnDoWordReplace;
 __int64 __fastcall detourDoWordReplace(const struct WWD* a1, unsigned int* a2, const struct DOD** dod, wchar_t* replacement, DWORD* a5, int a6, char a7, unsigned __int8 a8, __int64 a9) {
 	UINT32 replacementStart = *a2;
-	UINT32 replacementEnd = *(a2 + 0x4);
+	UINT32 replacementEnd = *reinterpret_cast<UINT32*>(reinterpret_cast<DWORD64>(a2) + 0x4);
 	funcToRunOnDoWordReplace(std::wstring(replacement), replacementStart, replacementEnd);
 	return pDoWordReplace(a1, a2, dod, replacement, a5, a6, a7, a8, a9);
 }
@@ -188,6 +188,9 @@ bool Hooks::HookDoWordReplace(DoWordReplaceCallback Hook) {
 
 
 INT64 GetCpCount(UINT32 CpOffset) {
+	if (dod == 0) {
+		return 0;
+	}
 	return *reinterpret_cast<INT64*>(reinterpret_cast<DWORD64>(dod) + CpOffset);
 }
 

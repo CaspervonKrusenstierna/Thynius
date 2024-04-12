@@ -4,7 +4,7 @@ import "./RawSubmittmentView.css"
 const RawSubmittmentView = (props) => {
   return (
     <div className='RawSubmittmentView'>
-        {props.rawText}
+        <p style={{whiteSpace: "pre-wrap"}}>{props.rawText}</p>
     </div>
   )
 }

@@ -13,7 +13,7 @@ const TextViewPageView = () => {
     async function getText(){
       let textLink;
       await getTextRawText(id).then(s => s.json()).then(s => textLink = s.rawdatalink);
-      await fetch(textLink).then(s => s.text()).then(s => setText(s));
+      await fetch(textLink).then(s => s.text()).then(s => {setText(s)});
     }
     getText();
   }, [])

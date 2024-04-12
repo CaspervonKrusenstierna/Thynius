@@ -3,6 +3,7 @@ using Amazon.S3.Model;
 using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
 using System.Text;
+using System.Text.Unicode;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
 
@@ -35,33 +36,20 @@ namespace ThemisWeb.Server.Repository
 
         }
 
-        public async Task<IEnumerable<UserText>> GetAssignmentTextsPage(Assignment assignment, int pageIndex, int pageSize)
+        public async Task<IEnumerable<UserText>> GetAssignmentTexts(Assignment assignment)
         {
-            return await _context.UserTexts.Where(i => i.AssignmentId == assignment.Id).Skip((pageIndex-1)*pageSize).Take(pageSize).ToListAsync();
+            return await _context.UserTexts.Where(i => i.AssignmentId == assignment.Id).ToListAsync();
         }
 
         public async Task<PutObjectResponse> S3RawContentUpload(UserText text, string rawContent)
        {
-            Console.WriteLine("Before: " + rawContent);
-            byte[] byteArray = Encoding.Unicode.GetBytes(rawContent);
+            byte[] byteArray = Encoding.UTF8.GetBytes(rawContent);
             MemoryStream stream = new MemoryStream(byteArray);
 
-            using (StreamReader reader = new StreamReader(stream, leaveOpen: true))
-            {
-                Console.WriteLine("FINAL: ");
-                string line;
-                // Read line by line
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-            }
-            
             var putObjectRequest = new PutObjectRequest
            {
                BucketName = _configurationManager["BucketName"],
                Key = $"text_rawcontent/{text.Id}",
-               ContentType = "multipart/form-data",
                InputStream = stream
            };
            return await _amazonS3.PutObjectAsync(putObjectRequest);
@@ -146,7 +134,7 @@ namespace ThemisWeb.Server.Repository
            {
                BucketName = _configurationManager["BucketName"],
                Key = $"text_detectiondata/{text.Id}",
-               ContentType = "multipart/form-data",
+               ContentType = "application/json",
                InputStream = stream
            };
            return await _amazonS3.PutObjectAsync(putObjectRequest);
@@ -185,6 +173,7 @@ namespace ThemisWeb.Server.Repository
         }
         public bool Delete(UserText text)
         {
+
             S3RawContentDelete(text);
             S3InputDataDelete(text);
             _context.Remove(text);

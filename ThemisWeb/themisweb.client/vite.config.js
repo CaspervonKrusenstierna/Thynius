@@ -105,7 +105,10 @@ export default defineConfig({
             }, '^/usertext/rawcontent': {
                 target,
                 secure: false
-            }
+            },'^/assignment/usertexts': {
+                target,
+                secure: false
+            },
         },
         port: 5173,
         https: {

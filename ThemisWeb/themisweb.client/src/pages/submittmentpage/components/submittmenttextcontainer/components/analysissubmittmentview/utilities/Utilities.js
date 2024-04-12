@@ -1,10 +1,10 @@
-let Sleeps = [];;
-export async function sleep(msec) {
-    return new Promise(resolve => {let t = setTimeout(resolve, msec); Sleeps.push(t); return t;});
+
+export async function sleep(msec, sleepsStorage) {
+    return new Promise(resolve => {let t = setTimeout(resolve, msec); sleepsStorage.current.push(t); return t;});
   }
-export async function clearSleeps(){
-    for (var i=0; i<Sleeps.length; i++) {
-        clearTimeout(Sleeps[i]);
+export async function clearSleeps(sleepsStorage){
+    for (var i=0; i<sleepsStorage.current.length; i++) {
+        clearTimeout(sleepsStorage.current[i]);
       }
 }
 export function parseCsv(data, fieldSep, newLine) {
@@ -52,23 +52,22 @@ export function ThemisInputsAdvance(rawText, input){
         case 2: 
             if(selStart != selEnd) // REPLACE OPERATION
             {
-              toReturn = toReturn.slice(0, selStart) + toReturn.slice(selEnd, toReturn.length-1);
+              toReturn = toReturn.slice(0, selStart) + toReturn.slice(selEnd, toReturn.length);
             }
             toReturn = toReturn.slice(0, selStart) + content + toReturn.slice(selStart, toReturn.length);
             break;
-
-        case 2: 
-          toReturn = toReturn.slice(0, selStart) + toReturn.slice(selEnd, toReturn.length-1);
-          toReturn = toReturn.slice(0, selStart) + content + toReturn.slice(selStart, toReturn.length-1);
-          break;
     }
     return toReturn;
 }
 
 export function GetThemisInputIndexRawText(startingPointText, inputs, startIndex, length){
     let toReturn = startingPointText;
+    let currSession = 0;
     for(let i = 0; length > i; i++){
+        if(inputs[i][1] == 8){
+            currSession++;
+        }
         toReturn = ThemisInputsAdvance(toReturn, inputs[startIndex+i]);
     }
-    return toReturn;
+    return {text: toReturn, session: currSession};
 }
