@@ -4,10 +4,13 @@ import SubmittmentSideMenu from './components/submittmentsidemenu/SubmittmentSid
 import SubmittmentTextContainer from './components/submittmenttextcontainer/SubmittmentTextContainer'
 import { useParams } from "react-router-dom"
 import useSubmittmentInfo from './hooks/useSubmittmentInfo'
+import "./SubmittmentPage.css"
+import AssureLoggedIn from '../../shared/hooks/useAssureLoggedIn'
 
 export const submittmentInfoContext = createContext();
 
 const SubmittmentView = () => {
+  AssureLoggedIn();
   const [analysisActivated, setAnalysisActivated] = useState(false);
   const currIndex = useRef(-1);
   const [indexIsTouched, setIndexIsTouched] = useState(false);
@@ -16,7 +19,7 @@ const SubmittmentView = () => {
   return (
     <submittmentInfoContext.Provider value={{links: submittmentInfo, analysisActivated: analysisActivated, setAnalysisActivated: setAnalysisActivated, currIndex: currIndex, indexIsTouched: indexIsTouched, setIndexIsTouched: setIndexIsTouched}}>
       <DashboardHeader></DashboardHeader>
-      <div className='flex flex-row justify-center w-[100vw] mt-[70px] h-[800px] mb-1'>
+      <div className='SubmittmentPage'>
         <SubmittmentSideMenu></SubmittmentSideMenu>
         <SubmittmentTextContainer></SubmittmentTextContainer>
       </div>

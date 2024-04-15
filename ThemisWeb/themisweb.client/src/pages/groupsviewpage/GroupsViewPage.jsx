@@ -1,8 +1,10 @@
 import React from 'react'
 import GroupsView from './components/groupsview/GroupsView'
 import { DashboardHeader } from '../../shared/components/dashboard'
+import AssureLoggedIn from '../../shared/hooks/useAssureLoggedIn'
 
 const GroupsViewPage = () => {
+  AssureLoggedIn();
   return (
     <>
     <DashboardHeader></DashboardHeader>

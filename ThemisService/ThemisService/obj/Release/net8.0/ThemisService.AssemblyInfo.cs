@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThemisService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67115a5fcb6327fd76dfecc5c19eb9b393d162d1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4f3dc7e3359774449520ae7a852f284328a6affd")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThemisService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThemisService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

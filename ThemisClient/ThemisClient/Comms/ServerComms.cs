@@ -55,6 +55,43 @@ namespace ThemisClient.Comms
             return false;
         }
 
+        public async Task<bool> downloadService(string directory)
+        {
+            var response = await client.GetAsync("/service");
+            if(!(response.StatusCode == HttpStatusCode.OK))
+            {
+                return false;
+            }
+            string ServiceUrl = await response.Content.ReadAsStringAsync();
+            Debug.WriteLine("ServiceUrl: " + ServiceUrl);
+            return true;
+            /*
+            var stream = await client.GetStreamAsync(ServiceUrl);
+            var fileStream = new FileStream(directory+ "\\ThemisService.dll", FileMode.OpenOrCreate);
+            await stream.CopyToAsync(fileStream);
+            stream.Dispose();
+            fileStream.Dispose();
+            return true;*/
+        }
+
+        public async Task<bool> downloadDll(string directory)
+        {
+            var response = await client.GetAsync("/dll");
+            if (!(response.StatusCode == HttpStatusCode.OK))
+            {
+                return false;
+            }
+            string DllUrl = await response.Content.ReadAsStringAsync();
+            return true;
+            Debug.WriteLine("DllUrl: " + DllUrl);
+            /*var stream = await client.GetStreamAsync(DllUrl);
+            var fileStream = new FileStream(directory + "\\ThemisDll.dll", FileMode.OpenOrCreate);
+            await stream.CopyToAsync(fileStream);
+            stream.Dispose();
+            fileStream.Dispose();
+            return true;*/
+        }
+
         private bool LoadCookieData(string baseAddress)
         {
             List<string> cookies;

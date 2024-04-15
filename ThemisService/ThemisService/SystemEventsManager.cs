@@ -9,7 +9,9 @@ namespace ThemisService
     class SystemEventsManager
     {
         private Process thisProcess { get; set; }
-        private string themisDir { get; set; }
+        private string installationDir { get; set; }
+
+        private string dataDir { get; set; }
         private Thread wordListenerThread { get; set; }
         private ushort wordCheckDelayMs { get; set; }
 
@@ -22,38 +24,26 @@ namespace ThemisService
         private string dllPath;
         List<int> openWordProcesses = new List<int>();
 
-        public SystemEventsManager(string themisDir, ServerComms serverComms, ILogger<WindowsBackgroundService> logger, ushort wordCheckDelayMs = 1000)
+        public SystemEventsManager(string InstallationDir, string DataDir, ServerComms serverComms, ILogger<WindowsBackgroundService> logger, ushort wordCheckDelayMs = 1000)
         {
             thisProcess = Process.GetCurrentProcess();
-            this.themisDir = themisDir;
+            this.installationDir = InstallationDir;
+            this.dataDir = DataDir;
             this.wordCheckDelayMs = wordCheckDelayMs;
             this.serverComms = serverComms;
             this.logger = logger;
             injector = new DllInjector();
-            dllPath = themisDir + "\\Dll1.dll";
+            dllPath = installationDir + "\\ThemisDll.dll";
             wordListenerThread = new Thread(WordListenerThreadMain);
             wordListenerThread.Start();
             SyncSessions();
-        }
-
-        private string GetSessionMetaDataPath(string SessionFileName)
-        {
-            string[] SessionMetaDatas = Directory.GetFiles(themisDir + "/SessionsMetaData/");
-            foreach (string metaDataPath in SessionMetaDatas)
-            {
-                if (Path.GetFileName(metaDataPath) == SessionFileName)
-                {
-                    return metaDataPath;
-                }
-            }
-            return null;
         }
 
         //runs on word exit to sync with servers
         //also runs on computer start to check if there is any unsynced sessions from abrupt exit
         private async void SyncSessions()
         {
-            string[] unsyncedSessions = Directory.GetFiles(themisDir + "/Sessions/");
+            string[] unsyncedSessions = Directory.GetFiles(dataDir + "Sessions/");
             foreach (string sessionPath in unsyncedSessions)
             {
                 if (!sessionPath.EndsWith("_metadata") && !sessionPath.EndsWith("_result"))

@@ -5,7 +5,9 @@ module.exports = {
   darkMode: ["class"],
   content: [
     './src/**/*.{js,jsx,tsx}',
-    "./node_modules/@nextui-org/theme/dist/components/input.js"
+    "./node_modules/@nextui-org/theme/dist/components/input.js",
+    "./node_modules/@nextui-org/theme/dist/components/skeleton.js",
+    "./node_modules/@nextui-org/theme/dist/components/spinner.js",
   ],
   prefix: "",
   theme: {

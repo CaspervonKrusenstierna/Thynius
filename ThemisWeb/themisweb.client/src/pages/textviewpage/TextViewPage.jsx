@@ -1,8 +1,10 @@
 import React from 'react'
 import TextViewPageView from './textviewpageview/TextViewPageView'
 import { DashboardHeader } from '../../shared/components/dashboard'
+import AssureLoggedIn from '../../shared/hooks/useAssureLoggedIn'
 
 const TextViewPage = () => {
+  AssureLoggedIn();
   return (
     <>
       <DashboardHeader></DashboardHeader>

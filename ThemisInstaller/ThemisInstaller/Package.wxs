@@ -1,0 +1,10 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Themis" Compressed="yes"  Manufacturer="Themis Software AB" Version="1.0.0.0" UpgradeCode="5a3fc184-3c81-461c-8fa1-53094528c81e">
+        <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+	    <MediaTemplate EmbedCab="yes" />
+
+        <Feature Id="Main">
+          <ComponentGroupRef Id="AppComponents" />
+        </Feature>
+  </Package>
+</Wix>

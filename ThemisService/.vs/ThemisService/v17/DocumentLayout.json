@@ -3,44 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisservice\\themisservice\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisservice\\themisservice\\themisservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\themisservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\systemeventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisservice\\themisservice\\systemeventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\systemeventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\windowsbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\windowsbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\inputtreater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\inputtreater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\themisservice.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\themisservice.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\windowsbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\windowsbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\inputtreater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\inputtreater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisservice\\themisservice\\themisservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\themisservice.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\themisservice.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\themisservice.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|solutionrelative:themisservice\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThemisService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -49,33 +49,68 @@
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 252,
       "DocumentGroups": [
         {
-          "DockedHeight": 173,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 1687,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SystemEventsManager.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\SystemEventsManager.cs",
+              "RelativeDocumentMoniker": "ThemisService\\SystemEventsManager.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\SystemEventsManager.cs",
+              "RelativeToolTip": "ThemisService\\SystemEventsManager.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAUwCAAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-10T15:48:56.396Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Utils.cs",
+              "RelativeDocumentMoniker": "ThemisService\\Utils.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Utils.cs",
+              "RelativeToolTip": "ThemisService\\Utils.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADAAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-11T15:56:36.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ThemisService",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
+              "RelativeDocumentMoniker": "ThemisService\\ThemisService.csproj",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
+              "RelativeToolTip": "ThemisService\\ThemisService.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-10T18:44:10.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ServerComms.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ServerComms.cs",
               "RelativeDocumentMoniker": "ThemisService\\ServerComms.cs",
               "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ServerComms.cs",
               "RelativeToolTip": "ThemisService\\ServerComms.cs",
-              "ViewState": "AQIAAEwAAAAAAAAAAAAAAF8AAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFoAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T16:08:13.366Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T16:08:13.366Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "InputTreater.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\InputTreater.cs",
               "RelativeDocumentMoniker": "ThemisService\\InputTreater.cs",
@@ -83,33 +118,7 @@
               "RelativeToolTip": "ThemisService\\InputTreater.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAwwBYAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T16:06:59.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Utils.cs",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Utils.cs",
-              "RelativeDocumentMoniker": "ThemisService\\Utils.cs",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Utils.cs",
-              "RelativeToolTip": "ThemisService\\Utils.cs",
-              "ViewState": "AQIAACgAAAAAAAAAAAAIwDAAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-11T15:56:36.185Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ThemisService",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
-              "RelativeDocumentMoniker": "ThemisService\\ThemisService.csproj",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
-              "RelativeToolTip": "ThemisService\\ThemisService.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-04-10T18:44:10.685Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T16:06:59.212Z"
             },
             {
               "$type": "Document",
@@ -121,12 +130,11 @@
               "RelativeToolTip": "ThemisService\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T15:49:37.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T15:49:37.625Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\appsettings.json",
               "RelativeDocumentMoniker": "ThemisService\\appsettings.json",
@@ -158,25 +166,11 @@
               "RelativeToolTip": "ThemisService\\DllInjector.cs",
               "ViewState": "AQIAABcAAAAAAAAAAAAQwFEAAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T15:56:11.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T15:56:11.938Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SystemEventsManager.cs",
-              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\SystemEventsManager.cs",
-              "RelativeDocumentMoniker": "ThemisService\\SystemEventsManager.cs",
-              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\SystemEventsManager.cs",
-              "RelativeToolTip": "ThemisService\\SystemEventsManager.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAA1wEAAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T15:48:56.396Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "WindowsBackgroundService.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\WindowsBackgroundService.cs",
               "RelativeDocumentMoniker": "ThemisService\\WindowsBackgroundService.cs",
@@ -184,13 +178,12 @@
               "RelativeToolTip": "ThemisService\\WindowsBackgroundService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T15:48:45.252Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-10T15:48:45.252Z"
             }
           ]
         },
         {
-          "DockedHeight": 77,
+          "DockedWidth": 42,
           "SelectedChildIndex": 2,
           "Children": [
             {
@@ -203,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "ThemisService.csproj",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
               "RelativeDocumentMoniker": "ThemisService\\ThemisService.csproj",

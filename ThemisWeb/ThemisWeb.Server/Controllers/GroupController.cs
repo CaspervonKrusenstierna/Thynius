@@ -211,7 +211,7 @@ namespace ThemisWeb.Server.Controllers
 
         [HttpGet]
         [Route("getusergroups")]
-        [Authorize(Roles = "VerifiedUser")]
+        [Authorize]
         public async Task<string> GetUserGroups(string userId)
         {
             IEnumerable<Group> Groups = await _groupRepository.GetUserGroups(userId);

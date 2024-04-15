@@ -1,6 +1,6 @@
 
 export async function sleep(msec, sleepsStorage) {
-    return new Promise(resolve => {let t = setTimeout(resolve, msec); sleepsStorage.current.push(t); return t;});
+    return new Promise(resolve => {let t = setTimeout(resolve, msec); sleepsStorage?.current.push(t); return t;});
   }
 export async function clearSleeps(sleepsStorage){
     for (var i=0; i<sleepsStorage.current.length; i++) {

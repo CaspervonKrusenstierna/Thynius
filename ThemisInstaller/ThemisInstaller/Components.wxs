@@ -1,0 +1,21 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+	  <ComponentGroup Id="AppComponents" Directory="INSTALLFOLDER">
+		  
+		  <Component Id='ThemisClientComponent' Guid='5e4b8c9c-0970-4f2e-b076-16fc5ed9366c'>
+			  <File Source="ThemisClient.exe">
+				  <Shortcut Name="Themis" Directory="DesktopFolder" Advertise="yes" WorkingDirectory="INSTALLFOLDER" />
+			  </File>
+			  <File Source="ThemisClient.dll" />
+			  <File Source="ThemisClient.runtimeconfig.json"/>
+		  </Component>
+		  
+		  <Component Id='ThemisServiceComponent' Guid='77863bb8-e7ca-47fd-b5f0-7eaeac11e31c'>
+			  <File Id="ThemisService.exe" Name="ThemisService.exe" Source="..\..\ThemisService\ThemisService\bin\Release\net8.0\publish\win-x64\ThemisService.exe"/>
+			  <ServiceInstall Id="ThemisService.exe" Name="ThemisService" DisplayName="ThemisService" Account="NT AUTHORITY\LocalService" Description="Themis Service" Start="auto" Type="ownProcess" ErrorControl="normal" Vital="yes" Interactive="no"/>
+			  <ServiceControl Id="ThemisService.exe" Name="ThemisService" Start="install" Stop="uninstall" Remove="both"  Wait="no"></ServiceControl>
+		  </Component>
+
+	  </ComponentGroup>
+  </Fragment>
+</Wix>

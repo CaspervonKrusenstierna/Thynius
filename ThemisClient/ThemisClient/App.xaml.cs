@@ -15,9 +15,6 @@ namespace ThemisClient
     {
         public async void HandleStartup()
         {
-            if (!ThemisInstaller.isInstalled()) { 
-     
-            }
             bool isLoggedIn = await serverComms.isLoggedIn();
             if (isLoggedIn)
             {

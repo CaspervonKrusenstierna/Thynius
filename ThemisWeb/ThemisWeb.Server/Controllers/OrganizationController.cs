@@ -11,7 +11,7 @@ namespace ThemisWeb.Server.Controllers
 {
 
     [Route("/organization")]
-    [Authorize(Roles = "VerifiedUser")]
+    [Authorize]
     public class OrganizationController : Controller
     {
         IOrganizationRepository _organizationRepository;

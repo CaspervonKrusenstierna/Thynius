@@ -5,9 +5,11 @@ import "./ForgotPasswordBox.css"
 import useForgotPassword from './useForgotPassword';
 import { EnvelopeImg} from '../../../shared/assets'
 import HomePageBoxHeader from '../../../shared/components/dashboard/homepageboxheader/HomePageBoxHeader';
+import useScrollTop from '../useScrollTop';
 
 const ForgotPasswordBox = () => {
     const Email = useRef("");
+    useScrollTop();
 
     async function onSubmit() {
         const response = await useLogin(Email.current, Password.current, RememberMe.current);

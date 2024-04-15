@@ -1,26 +1,37 @@
-import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { GroupAssignmentsView, GroupHomeView } from "../pages";
 import GroupManageAssignmentView from "../pages/groupmanageassignmentview/GroupManageAssignmentView";
 import { createAssignment, editAssignment, getAssignmentinfo } from "../../../../shared/network/assignment";
+import { groupinfoContext } from "../GroupPageView";
 
 
 
-export default function ResolveGroupContent() {
+export default function ResolveGroupContent(groupInfoTouched, setGroupInfoTouched) {
   const { page } = useParams();
   const [pageContent, setPageContent] = useState(<></>);
   const { id, assignmentid } = useParams();
   const initialImage = useRef();
+  const navigate = useNavigate();
 
-  function onCreateAssignment(ref, state){
-    createAssignment(id, ref.name, ref.description, state.date, state.image);
+  async function onCreateAssignment(ref, state){
+    let response = await createAssignment(id, ref.name, ref.description, state.date, state.image);
+    if(response.ok){
+      setGroupInfoTouched(!groupInfoTouched);
+      navigate(-1);
+    }
   }
-  function onEditAssignment(ref, state){
+  async function onEditAssignment(ref, state){
+    let response;
     if(initialImage.current == state.image){
-      editAssignment(assignmentid, ref.name, ref.description, state.date, null)
+      response = await editAssignment(assignmentid, ref.name, ref.description, state.date, null)
     }
     else{
-      editAssignment(assignmentid, ref.name, ref.description, state.date, state.image)
+      response = await editAssignment(assignmentid, ref.name, ref.description, state.date, state.image)
+    }
+    if(response.ok){
+      setGroupInfoTouched(!groupInfoTouched);
+      navigate(-1);
     }
   }
 

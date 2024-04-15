@@ -4,14 +4,19 @@ import useDynamicGroupsRowCount from '../../../groupsviewpage/components/groupsv
 import ChooseableAssignment from './chooseableassignment/ChooseableAssignment';
 import "./ChooseableAssignments.css"
 import { RowedItemsContainer } from '../../../../shared/components/dashboard';
+import getGroupSkeletonItems from '../../../groupsviewpage/components/groupsview/components/groupsviewcontainer/utils/getGroupSkeletonItems';
 
 const ChooseableAssignments = (props) => {
   const chooseableAssignments = useChooseableAssignments();
   const rowCount = useDynamicGroupsRowCount(); // can use same here
   return (
-    <div className=''>
+    <>
+        {chooseableAssignments ? 
         <RowedItemsContainer ItemsPerRow={rowCount} Items={chooseableAssignments?.map(j => <ChooseableAssignment onClick={(id) => {props.onSelectAssignment(id)}} name={j.Name} Id={j.Id}></ChooseableAssignment>)} Filler={<div className="Filler"></div>}></RowedItemsContainer>
-    </div>
+         :
+         <RowedItemsContainer ItemsPerRow={rowCount} Items={getGroupSkeletonItems(rowCount)}></RowedItemsContainer> // just use same here
+         }
+    </>
   )
 }
 

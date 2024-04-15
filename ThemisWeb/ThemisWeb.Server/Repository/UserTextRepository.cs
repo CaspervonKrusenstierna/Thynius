@@ -116,19 +116,8 @@ namespace ThemisWeb.Server.Repository
             return await _amazonS3.GetObjectAsync(getObjectRequest);
         }
         public async Task<PutObjectResponse> S3DetectionDataUpload(UserText text, string detectionData){
-            Console.WriteLine("Before: " + detectionData);
-            byte[] byteArray = Encoding.Unicode.GetBytes(detectionData);
+            byte[] byteArray = Encoding.UTF8.GetBytes(detectionData);
             MemoryStream stream = new MemoryStream(byteArray);
-            using (StreamReader reader = new StreamReader(stream, leaveOpen: true))
-            {
-                Console.WriteLine("FINAL: ");
-                string line;
-                // Read line by line
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-            }
 
             var putObjectRequest = new PutObjectRequest
            {

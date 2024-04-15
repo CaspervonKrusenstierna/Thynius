@@ -8,7 +8,8 @@ const Submittment = (props) => {
     switch(props.warningLevel){
       case 0: return <div className="text-green-600 mr-7 text-sm sm:text-base">Inga tecken på fusk</div>
       case 1: return <div className="text-yellow-400 mr-7 text-sm sm:text-base">Tecken på fusk</div>
-      case 2: return <div className="text-red-500 mr-7 text-sm sm:text-base">Stora tecken på fusk</div>
+      case 2: return <div className="text-red-500 mr-7 text-sm sm:text-base">Tecken på fusk</div>
+      case 3: return <div className="text-red-500 mr-7 text-sm sm:text-base">Stora tecken på fusk</div>
       default: return <div className='text-red-500 mr-7 text-sm sm:text-base'>ERROR NO DATA</div>
     }
   }, [props.warningLevel])

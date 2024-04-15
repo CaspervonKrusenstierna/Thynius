@@ -13,6 +13,9 @@ using static ThemisWeb.Server.Common.Utilities;
 using ThemisWeb.Server.Models.Dtos;
 using System.Text.Json;
 using FluentValidation;
+using Amazon.S3;
+using Amazon.S3.Model;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ThemisWeb.Server.Controllers
 {
@@ -23,8 +26,12 @@ namespace ThemisWeb.Server.Controllers
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IUserRepository _userRepository;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOrganizationRepository organizationRepository, IUserRepository userRepository)
+        private readonly IAmazonS3 _amazonS3;
+        private readonly IConfiguration _configuration;
+        public AccountController(IAmazonS3 amazonS3, IConfiguration configuration, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IOrganizationRepository organizationRepository, IUserRepository userRepository)
         {
+            _configuration = configuration;
+            _amazonS3 = amazonS3;
             _userManager = userManager;
             _organizationRepository = organizationRepository;
             _userRepository = userRepository;
@@ -144,5 +151,50 @@ namespace ThemisWeb.Server.Controllers
             return Ok();
         }
 
+        [Route("/dll")]
+        [HttpGet]
+        [Authorize]
+        public async Task<String> GetDllUrl()
+        {
+            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
+            {
+                BucketName = _configuration["BucketName"],
+                Key = $"downloads/ThemisService.dll",
+                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
+
+            };
+            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
+        }
+
+        [Route("/service")]
+        [HttpGet]
+        [Authorize]
+        public String GetServiceUrl()
+        {
+            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
+            {
+                BucketName = _configuration["BucketName"],
+                Key = $"downloads/ThemisDll.dll",
+                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
+
+            };
+            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
+        }
+
+
+        [Route("/client")]
+        [HttpGet]
+        [Authorize]
+        public String GetClientUrl()
+        {
+            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
+            {
+                BucketName = _configuration["BucketName"],
+                Key = $"downloads/ThemisDll.dll",
+                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
+
+            };
+            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
+        }
     }
 }

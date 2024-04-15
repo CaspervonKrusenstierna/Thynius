@@ -1,5 +1,5 @@
 .DarknessEffect {
-    z-index: 1000;
+    z-index: 900;
     position: fixed;
     left: 0;
     top: 0;

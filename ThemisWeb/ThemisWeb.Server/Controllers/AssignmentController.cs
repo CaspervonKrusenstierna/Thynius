@@ -150,7 +150,7 @@ namespace ThemisWeb.Server.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "VerifiedUser")]
+        [Authorize]
         [Route("getuserassignments")]
         public async Task<string> getUserAssignments()
         {

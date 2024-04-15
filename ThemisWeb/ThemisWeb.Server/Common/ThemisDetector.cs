@@ -1,8 +1,6 @@
 ﻿
 
 using Amazon.S3.Model;
-using Microsoft.AspNetCore.Components.Forms;
-using System.Text.Json;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
 using static ThemisWeb.Server.Common.ThemistTextConverter;
@@ -21,6 +19,7 @@ namespace ThemisWeb.Server.Common
     }
     public class ThemisDetectionData
     {
+        public List<String> remarks;
         public List<MomentOfInterest> momentsOfInterest;
         public List<InputsStatistic> statistics;
     }
@@ -30,10 +29,16 @@ namespace ThemisWeb.Server.Common
         ApplicationUser _user;
         UserText _text;
 
-        private int editScore;
-        private int averageTypeSpeed;
+        private float editScore;
+        private float averageTypeSpeed;
         private int detectionScore = 0;
+
+        private int smallPasteCount = 0;
+        private int totalExternalPasteChars = 0;
         private List<MomentOfInterest> momentsOfInterest = new List<MomentOfInterest>();
+        private List<String> remarks = new List<String>();
+
+        string RawContent = "";
         private async Task<bool> wasTextTypedByHandBefore(string currRawContent, string Text, UInt64 timePoint)
         {
             return currRawContent.Contains(Text);
@@ -67,7 +72,6 @@ namespace ThemisWeb.Server.Common
             int deleteSectionAmount = 0;
             int extendedTypingBreaksCount = 0;
 
-            string currRawContent = "";
             UInt64 currSessionRelativeTime = 0;
 
             for (int i = 0; inputs.Count() > i; i++)
@@ -94,9 +98,15 @@ namespace ThemisWeb.Server.Common
                     case ActionType.DELETESELECTION: deleteSectionAmount++; break;
 
                     case ActionType.PASTE:
-                        bool wasTypedBefore = await wasTextTypedByHandBefore(currRawContent, input.ActionContent, currSessionRelativeTime+input.relativeTimePointMs);
+                        if(input.ActionContent.Length <= 10) // probably just pasting in some external one word or char that user could not type on their keyboard
+                        {
+                            smallPasteCount++;
+                            break;
+                        }
+                        bool wasTypedBefore = await wasTextTypedByHandBefore(RawContent, input.ActionContent, currSessionRelativeTime+input.relativeTimePointMs);
                         if (!wasTypedBefore)
                         {
+                            totalExternalPasteChars += input.ActionContent.Length;
                             momentsOfInterest.Add(new MomentOfInterest{ Index=i, reason="PASTE"});
                         }
                         break;
@@ -104,7 +114,7 @@ namespace ThemisWeb.Server.Common
                     currSessionRelativeTime = input.relativeTimePointMs;
                     break;
                 }
-                AdvanceInput(ref currRawContent, input);
+                AdvanceInput(ref RawContent, input);
             }
             if(addCharAmount == 0)
             {
@@ -112,7 +122,7 @@ namespace ThemisWeb.Server.Common
             }
             else
             {
-                averageTypeSpeed = totalAddCharTime / addCharAmount;
+                averageTypeSpeed = totalAddCharTime/1000/addCharAmount;
             }
             if(deleteCharAmount == 0)
             {
@@ -126,16 +136,64 @@ namespace ThemisWeb.Server.Common
         }
         public int GetDetectionScore()
         {
-            return detectionScore;
+            float score = 0;
+            if(editScore <= 0.5)
+            {
+                if(editScore <= 0.2)
+                {
+                    remarks.Add("Användaren reviderade sin text ovanligt lite.");
+                    score += 1;
+                }
+                else
+                {
+                    score += (float)0.5 - editScore;
+                }
+            }
+            if(smallPasteCount >= 20)
+            {
+                remarks.Add("Användaren uppvisade besynnerligt beteende i form av många små inklistringar. Totalt antal små inklistringar: " + smallPasteCount);
+                score += 1;
+            }
+            if(totalExternalPasteChars >= RawContent.Length / 10)
+            {
+                score += 1;
+                if(totalExternalPasteChars >= RawContent.Length / 4)
+                {
+                    remarks.Add("Användaren har kopierat en stor del av sin text från externa källor.");
+                    score += 1;
+                }
+                else
+                {
+                    remarks.Add("Användaren har kopierat delar av sin text från externa källor." + smallPasteCount);
+                }
+            }
+            if(score >= 3)
+            {
+                return 3;
+            }
+            if(score >= 2)
+            {
+                return 2;
+            }
+            if(score >= 1)
+            {
+                return 1;
+            }
+            return 0;
+        }
+        private List<InputsStatistic> GetInputsStatistics()
+        {
+            List<InputsStatistic> toReturn = new List<InputsStatistic>();
+            toReturn.Add(new InputsStatistic { infoType = "Genomsnittlig skrivhastighet", info = averageTypeSpeed.ToString() });
+            toReturn.Add(new InputsStatistic { infoType = "Ändrings poäng", info = editScore.ToString() });
+            return toReturn;
         }
         public ThemisDetectionData getDetectionData()
         {
             ThemisDetectionData toReturn = new ThemisDetectionData();
-            List<InputsStatistic> temp = new List<InputsStatistic>();
-            temp.Add(new InputsStatistic { infoType = "Genomsnitts skrivhastighet", info = averageTypeSpeed.ToString() });
-            temp.Add(new InputsStatistic { infoType = "Ändrings poäng", info = editScore.ToString() });
-            toReturn.statistics = temp;
+            toReturn.statistics = GetInputsStatistics();
             toReturn.momentsOfInterest = momentsOfInterest;
+            toReturn.remarks = remarks;
             return toReturn;
         }
         public string getDescription()

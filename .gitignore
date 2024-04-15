@@ -22,3 +22,7 @@ Dll1/.vs/Dll1/v17/ipch/e1ebe561346b5ea9.ipch
 /ThemisWeb/ThemisWeb.Server/obj
 /ThemisWeb/ThemisWeb.Server/obj
 /ThemisWeb/ThemisWeb.Server/obj
+/ThemisInstaller/.vs
+/ThemisService/ThemisService/bin
+/ThemisService/ThemisService/obj
+/ThemisInstaller/ThemisInstaller/obj

@@ -1,9 +1,10 @@
 import React from 'react'
 import GroupPageView from './grouppageview/GroupPageView';
 import { DashboardHeader } from '../../shared/components/dashboard';
-import BottomRightContainerButton from '../../shared/components/dashboard/bottomrightcontainerbutton/BottomRightContainerButton';
+import AssureLoggedIn from '../../shared/hooks/useAssureLoggedIn';
 
 const GroupPage = () => {
+  AssureLoggedIn();
     return (
       <>
         <DashboardHeader className></DashboardHeader>

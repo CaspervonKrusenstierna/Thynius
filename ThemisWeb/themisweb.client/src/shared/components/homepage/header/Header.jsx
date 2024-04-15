@@ -32,8 +32,8 @@ const Header = (props) => {
                     <div className='Header-ButtonContainer'>
                         {sessionInfo?.ID ? <NavBarButtonRedirect text="Dashboard" onClick={() => { navigate("/dashboard/home") }}></NavBarButtonRedirect> :
                             <>
-                            <NavBarButtonRedirect onClick={() => { navigate("/login") }} text="Login"></NavBarButtonRedirect>
-                            <NavBarButtonRedirect onClick={() => { navigate("/register") }} text="Register"></NavBarButtonRedirect>
+                            <NavBarButtonRedirect onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'instant'}); navigate("/login")}} text="Login"></NavBarButtonRedirect>
+                            <NavBarButtonRedirect onClick={() => {window.scrollTo({top: 0, left: 0, behavior: 'instant'}); navigate("/register")}} text="Register"></NavBarButtonRedirect>
                             </>
                         }
                     </div>
@@ -42,5 +42,4 @@ const Header = (props) => {
         )
 
 }
-
 export default Header

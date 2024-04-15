@@ -13,7 +13,7 @@ using static ThemisWeb.Server.Common.DataClasses;
 namespace ThemisWeb.Server.Controllers
 {
     [Route("/users")]
-    [Authorize(Roles = "VerifiedUser")]
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;

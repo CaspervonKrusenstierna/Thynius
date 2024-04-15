@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useExtendedGroupInfo from './hooks/useExtendedGroupInfo'
 import "../../../shared/styles/DashboardContainer.css"
@@ -10,10 +10,10 @@ export const groupinfoContext = createContext();
 
 const GroupPageView = () => {
   let { id } = useParams();
-  const groupInfo = useExtendedGroupInfo(id);
-  const pageContent = ResolveGroupContent();
+  const [groupInfoTouched, setGroupInfoTouched] = useState(false);
+  const groupInfo = useExtendedGroupInfo(id, groupInfoTouched);
+  const pageContent = ResolveGroupContent(groupInfoTouched, setGroupInfoTouched);
   const GroupTabs = useGroupTabs(id);
-
   return (
     <groupinfoContext.Provider value={groupInfo}>
       <div className='DashboardContainer-Container'>

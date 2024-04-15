@@ -25,6 +25,7 @@ const AnalysisSubmittmentView = () => {
         if(currIndexDummy.current == inputs.length){
           break;
         }
+        console.log(currIndexDummy.current);
         if(currInput[1] == 8){
           currSession.current++;
           currIndexDummy.current++;
@@ -52,12 +53,10 @@ const AnalysisSubmittmentView = () => {
       }
       runPlay();
     }
-    else{
+    else if(currIndexDummy.current != -1){
       currIndexDummy.current++;
       clearSleeps(sleepsStorage);
-      if(currIndexDummy.current != -1){
-        setCurrIndex(currIndexDummy.current);
-      }
+      setCurrIndex(currIndexDummy.current);
     }
   }, [isPlaying])
 
@@ -68,7 +67,7 @@ const AnalysisSubmittmentView = () => {
     }
   }, [submittmentInfo.indexIsTouched])
 
-  const incIndex = useCallback(() => {
+  const incIndex = useCallback(() => { // much more nice on the processor because only need to advance one input.
     let currInput = inputs[currIndex];
     if(currInput[1] == 8){
       currSession.current++;
@@ -80,7 +79,7 @@ const AnalysisSubmittmentView = () => {
     setCurrIndex(currIndex + 1);
   }, [rawText, currIndex, inputs])
   
-  const setIndexBrutally = useCallback((index) => {
+  const setIndexBrutally = useCallback((index) => { // "Brutally" because doing this requires all the inputs to be advanced trough up to this index. 
     let currRawInfo = GetThemisInputIndexRawText(rawText, inputs, 0, index);
     currSession.current = currRawInfo.session;
     setRawText(currRawInfo.text);
@@ -89,12 +88,12 @@ const AnalysisSubmittmentView = () => {
 
 
   return (
-    <div className='flex flex-col h-full relative'>
+    <div className='flex flex-col w-full h-full relative'>
       <div className="w-[90%] ml-[5%] h-full">
         <div className='h-[50px] text-[26px] font-bold flex flex-row justify-center items-center'>Session {currSession.current}</div>
-        <p className="text-wrap mt-3 whitespace-pre">{rawText}</p>
+        <p className="text-wrap break-words mt-3 whitespace-pre min-h-[1000px]">{rawText}</p>
       </div>
-      <InputIndexWidget setIsPlaying={setIsPlaying} isPlaying={isPlaying} decIndex={() => {if(!isPlaying && !(currIndex==0)){setIndexBrutally(currIndex-1)}}} incIndex={() =>{if(!isPlaying && !(currIndex == inputs.length)){incIndex()}}}></InputIndexWidget>
+      <InputIndexWidget setIsPlaying={(toSet) => {if(!(currIndex-1==inputs.length)){setIsPlaying(toSet)}}} isPlaying={isPlaying} decIndex={() => {if(!isPlaying && !(currIndex==0)){setIndexBrutally(currIndex-1)}}} incIndex={() =>{if(!isPlaying && !(currIndex == inputs.length)){incIndex()}}}></InputIndexWidget>
     </div>
   )
 }

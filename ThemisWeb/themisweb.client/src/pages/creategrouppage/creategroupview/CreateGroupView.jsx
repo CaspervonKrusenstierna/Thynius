@@ -5,18 +5,21 @@ import { DashboardContainerSidebar } from '../../../shared/components/dashboard'
 import BottomRightContainerButton from '../../../shared/components/dashboard/bottomrightcontainerbutton/BottomRightContainerButton'
 import useManageGroupTabs from '../../../shared/hooks/useManageGroupTabs'
 import useResolveCreateGroupContent from '../../../shared/hooks/useResolveManageGroupContent'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const CreateGroupView = (props) => {
   const { id } = useParams();
-
+  const navigate = useNavigate();
   const tabs = useManageGroupTabs(true, id);
   const groupData = useRef({groupMembers: [], currentMembersPage: 1, groupName: "", groupImg: null});
   const pageContent = useResolveCreateGroupContent(groupData);
 
-  function onCreateGroupClick(){
+  async function onCreateGroupClick(){
     let data = groupData.current;
-    createGroup(data.groupName, data.groupMembers, data.groupImg)
+    let response = await createGroup(data.groupName, data.groupMembers, data.groupImg);
+    if(response.ok){
+      navigate("/dashboard/groups");
+    }
   }
   
   return (

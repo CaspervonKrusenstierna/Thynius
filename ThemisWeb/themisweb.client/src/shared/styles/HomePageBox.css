@@ -4,7 +4,7 @@
     align-items: center;
     pointer-events: all;
     position: absolute;
-    z-index: 1001;
+    z-index: 901;
     border-radius: 10px;
     background: white;
 }

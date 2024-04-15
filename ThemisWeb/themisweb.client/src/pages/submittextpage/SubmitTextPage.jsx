@@ -1,8 +1,10 @@
 import React from 'react'
 import SubmitTextPageView from './submittextpageview/SubmitTextPageView'
 import { DashboardHeader } from '../../shared/components/dashboard'
+import AssureLoggedIn from '../../shared/hooks/useAssureLoggedIn'
 
 const SubmitTextPage = () => {
+  AssureLoggedIn();
   return (
     <>
         <DashboardHeader></DashboardHeader>

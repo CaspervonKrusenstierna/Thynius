@@ -1,0 +1,15 @@
+.SubmittmentPage{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    margin-top: 70px;
+    height: 800px;
+    margin-bottom: 2px;
+}
+
+@media screen and (max-width: 900px) {
+    .SubmittmentPage{
+        flex-direction: column;
+    }
+  }
+  

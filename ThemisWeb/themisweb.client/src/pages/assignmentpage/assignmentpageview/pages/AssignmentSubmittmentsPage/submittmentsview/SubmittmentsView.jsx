@@ -24,11 +24,11 @@ const SubmittmentsView = (props) => {
     }
 
     return (
-        <>
+        <div className='flex flex-col items-center'>
             <SubmittmentsHeader setFilter={(filter) => {setFilter(filter)}} setSearch={(search) => {setSearch(search)}}></SubmittmentsHeader>
             <SubmittmentsContainer currentPage={currentPage} displaySettings={displaySettings} itemsPerPage={itemsPerPage} submittments={filteredSubmittments.pages}></SubmittmentsContainer>
             <Pagination highestPage={filteredSubmittments.dataEndPage} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage} itemCount={filteredSubmittments.pages.length} ></Pagination>
-        </>
+        </div>
     )
 }
 

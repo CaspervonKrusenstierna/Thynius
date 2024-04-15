@@ -10,5 +10,5 @@ export default function useGroupsInfo() {
             useFetch("/group/getusergroups?userId=" + sessionInfo.ID, "GET").then(i => i.json()).then(i => {setGroupsInfo(i)});
         }
     }, [sessionInfo])
-    return groupsInfo
+    return [groupsInfo, setGroupsInfo];
 }

@@ -17,7 +17,7 @@ const AssignmentView = (props) => {
   , {type: "DialogTrigger", text:"Ta Bort", onSelect: () => {deleteAssignment(props.assignmentId)}}]
 
   return (
-  <div className='relative flex flex-column rounded w-[280px] h-[260px] md:w-[225px] md:h-[200px] mt-[15px] shadow-light'>
+  <div className='relative flex flex-col rounded w-[280px] h-[260px] md:w-[225px] md:h-[200px] mt-[15px] shadow-light'>
     {groupInfo?.ManagerData?.Id == sessionInfo?.ID ? <RowedItemOptions title="Ändra" items={optionsItems} className="absolute ml-[200px] md:ml-[160px]"></RowedItemOptions> : <></>}
     <Link className='AssignmentView-Link' state={{userDatas: groupInfo.userDatas, assignmentName: props.assignmentName}} to={`/dashboard/Assignment/${props.assignmentId}/general`}>
       <img className='size-[170px] md:size-[115px] rounded mt-[20px] md:mt-[25px]' src={props.img}></img>

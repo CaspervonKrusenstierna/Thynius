@@ -1,7 +1,19 @@
 .SubmittmentTextContainer{
-    margin-right: 375px;
-    width: 750px;
+    width: 40%;
+    min-width: 700px;
     height: 100%;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
+
+
+@media screen and (max-width: 900px) {
+    .SubmittmentTextContainer{
+        margin-right: auto;
+        width: calc(100vw - 20px);
+        margin-top: 20px;
+        margin-left: 10px;
+        min-width: 0px;
+    }
+  }
+  
