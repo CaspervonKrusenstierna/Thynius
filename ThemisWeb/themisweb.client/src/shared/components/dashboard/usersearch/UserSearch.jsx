@@ -29,6 +29,10 @@ const UserSearch = (props) => {
   }
 
   function onAddUser(){
+    if(props.nonStrictMode){
+      props.onSubmit(textInput)
+      return;
+    }
     if(currUser.current){
       props.onSubmit(currUser.current);
       setSearchSuggestions([]);

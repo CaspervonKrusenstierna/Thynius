@@ -3,5 +3,8 @@
     <StandardDirectory Id="ProgramFiles6432Folder">
 		<Directory Id="INSTALLFOLDER" Name="Themis"/>
     </StandardDirectory>
+	  <Directory Id="ProgramMenuFolder" Name="Programs">
+		  <Directory Id="ApplicationProgramsFolder" Name="WixSingleSetup" />
+	  </Directory>
   </Fragment>
 </Wix>

@@ -3,10 +3,15 @@
 	  <ComponentGroup Id="AppComponents" Directory="INSTALLFOLDER">
 		  
 		  <Component Id='ThemisClientComponent' Guid='5e4b8c9c-0970-4f2e-b076-16fc5ed9366c'>
-			  <File Source="ThemisClient.exe">
+			  <File Source="ThemisClient.exe" KeyPath="yes">
 				  <Shortcut Name="Themis" Directory="DesktopFolder" Advertise="yes" WorkingDirectory="INSTALLFOLDER" />
+				  <Shortcut Id="startMenuShotcut" Directory="ApplicationProgramsFolder"
+				  Name="Themis" WorkingDirectory="INSTALLFOLDER"
+				  Advertise="yes" />
 			  </File>
+			  <RemoveFolder Id="ProgramMenuDir" Directory="ApplicationProgramsFolder" On="uninstall"/>
 			  <File Source="ThemisClient.dll" />
+			  <File Source="Dll1.dll" />
 			  <File Source="ThemisClient.runtimeconfig.json"/>
 		  </Component>
 		  

@@ -108,7 +108,13 @@ export default defineConfig({
             },'^/assignment/usertexts': {
                 target,
                 secure: false
-            },
+            },'^/organization/organizationteachers': {
+                target,
+                secure: false
+            },'^/installer': {
+                target,
+                secure: false
+            }
         },
         port: 5173,
         https: {

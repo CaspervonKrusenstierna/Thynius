@@ -6,6 +6,8 @@ int cachedGUID = NULL;
 CmdPasteCf pCmdPasteCf = nullptr;
 PVOID pCmdPasteCfTarget;
 PasteHookCallback funcToRunOnPaste;
+
+
 enum CMD __cdecl detourCmdPasteCf(struct IDataObject* p1, struct _SEL* p2, unsigned short p3, struct CA* p4, enum TBPK p5, unsigned short p6, int p7, unsigned short* p8, int* p9, int p10) {
 	std::wstring clipboardText = GetClipboardText();
 	funcToRunOnPaste(clipboardText);

@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
 import "./GroupsViewHeader.css"
 import { sessionInfoContext } from '../../../../../../App'
-import { buttonVariants } from "@/components/ui/button"
 import { Link } from 'react-router-dom';
-import { ArrowRight } from '../../../../../../shared/assets';
 import {UserRoundPlus} from "lucide-react";
 
 const GroupsViewHeader = () => {

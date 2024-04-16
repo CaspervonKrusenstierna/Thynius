@@ -12,6 +12,6 @@ export default function useResolveCreateGroupContent(groupInfo) {
           case "general": setContent(<ManageGroupMainPage groupInfo={groupInfo}></ManageGroupMainPage>); break;
           case "members": setContent(<ManageGroupMembersPage groupInfo={groupInfo}></ManageGroupMembersPage>); break;
         }
-      }, [page])
+      }, [groupInfo.current.nameError, groupInfo.current.pictureError, page])
       return content;
 }

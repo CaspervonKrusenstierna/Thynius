@@ -5,7 +5,7 @@ import { getGroupMembers } from "../../../shared/network/group";
 
 export default function useEditGroupData(id) {
     const location = useLocation();
-    const [groupData, setGroupData] = useState({groupMembers: location.state.members ? location.state.members : null, currentMembersPage: 1, groupName: location.state.name, groupImg: location.state.img});
+    const [groupData, setGroupData] = useState({groupMembers: location.state.members ? location.state.members : null, currentMembersPage: 1, groupName: location.state.name, groupImg: location.state.img, nameError: false, pictureError: false});
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {

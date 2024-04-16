@@ -9,6 +9,8 @@ using System.Text.Json.Serialization;
 using ThemisWeb.Server.Common;
 using ThemisWeb.Server.Interfaces;
 using ThemisWeb.Server.Models;
+using ThemisWeb.Server.Models.Dtos;
+using ThemisWeb.Server.Repository;
 using static ThemisWeb.Server.Common.DataClasses;
 namespace ThemisWeb.Server.Controllers
 {
@@ -20,47 +22,18 @@ namespace ThemisWeb.Server.Controllers
         private readonly IGroupRepository _groupRepository;
         UserManager<ApplicationUser> _userManager;
         private readonly IAssignmentRepository _assignmentRepository;
-        public UserController(IUserRepository userRepository, IAssignmentRepository assignmentRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
+        private readonly IOrganizationRepository _organizationRepository;
+        public UserController(IUserRepository userRepository, IOrganizationRepository organizationRepository, IAssignmentRepository assignmentRepository, IGroupRepository groupRepository, UserManager<ApplicationUser> userManager)
         {
             _userRepository = userRepository;
             _groupRepository = groupRepository;
             _userManager = userManager;
             _assignmentRepository = assignmentRepository;
-
-        }
-        
-        [HttpGet]
-        [Route("organizationusers")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IEnumerable<string>> GetOrganizationUsers(string Organization)
-        {
-            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
-            if (user.OrganizationEmailExtension != Organization)
-            {
-                HttpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                return null;
-            }
-            IEnumerable<ApplicationUser> ToReturn = await _userRepository.GetOrganizationUsers(Organization);
-            return ToReturn.Select(C => JsonConvert.SerializeObject(new UserData {ID = C.Id, Username = C.UserName}));
+            _organizationRepository = organizationRepository;
         }
 
         [HttpGet]
-        [Route("groupids")]
-        public async Task<IEnumerable<string>> GetGroupIds(int GroupId)
-        {
-            Group group = await _groupRepository.GetByIdAsync(GroupId);
-            if (group == null)
-            {
-                HttpContext.Response.StatusCode = 400;
-                return null;
-            }
-            
-            IEnumerable<ApplicationUser> ToReturn =  await _userRepository.GetGroupUsers(group);
-            return ToReturn.Select(i => JsonConvert.SerializeObject(new UserData{ Username = i.UserName, ID = i.Id  }));
-        }
-
-        [HttpGet]
+        [Authorize(Roles = "Admin, OrganizationAdmin, Teacher")]
         [Route("searchusers")]
         public async Task<string> GetSearchUsers(string Search, int Max=3, bool includeSelf = false)
         {
@@ -82,6 +55,65 @@ namespace ThemisWeb.Server.Controllers
             Group group = await _groupRepository.GetByIdAsync(groupId);
             var groupUsers = await _userRepository.GetGroupUsers(group);
             return System.Text.Json.JsonSerializer.Serialize(groupUsers.Select(i => new {username=i.UserName, i.Id}));
+        }
+
+        [HttpPost]
+        [Route("/organization/organizationteachers")]
+        [Authorize(Roles = "OrganizationAdmin")]
+        public async Task<IActionResult> SetOrganizationTeachers([FromForm] SetOrganizationTeachersDto model)
+        {
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+
+            IEnumerable<ApplicationUser> OldTeachers = await _userRepository.getOrganizationTeachers(callingUser.OrganizationEmailExtension);
+            List<ApplicationUser> NewTeachers = [];
+            if (model.Teachers == null)
+            {
+                foreach (ApplicationUser oldTeacher in OldTeachers)
+                {
+                    await _userManager.RemoveFromRoleAsync(oldTeacher, "Teacher");
+                }
+            }
+            else
+            {
+                foreach (string teacherId in model.Teachers)
+                {
+                    ApplicationUser currTeacher = await _userRepository.GetByIdAsync(teacherId);
+                    if (currTeacher == null)
+                    {
+                        return BadRequest();
+                    }
+                    if (currTeacher.OrganizationEmailExtension != currTeacher.OrganizationEmailExtension)
+                    {
+                        return Unauthorized();
+                    }
+                    NewTeachers.Add(currTeacher);
+                }
+
+                foreach (ApplicationUser oldTeacher in OldTeachers)
+                {
+                    if (!NewTeachers.Contains(oldTeacher))
+                    {
+                        await _userManager.RemoveFromRoleAsync(oldTeacher, "Teacher");
+                    }
+                }
+                foreach (ApplicationUser newTeacher in NewTeachers)
+                {
+                    await _userManager.AddToRoleAsync(newTeacher, "Teacher");
+                }
+            }
+            return Ok();
+        }
+
+        [HttpGet]
+        [Route("/organization/organizationteachers")]
+        [Authorize(Roles = "OrganizationAdmin")]
+        public async Task<string> GetOrganizationTeachers()
+        {
+            ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);
+            var teachers = await _userRepository.getOrganizationTeachers(callingUser.OrganizationEmailExtension);
+            
+
+            return System.Text.Json.JsonSerializer.Serialize(teachers.Select(i => new { username = i.UserName, email = i.Email, id = i.Id }));
         }
     }
 }

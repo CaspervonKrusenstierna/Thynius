@@ -23,6 +23,21 @@ namespace ThemisWeb.Server.Repository
             _amazonS3 = amazonS3;
             _configurationManager = configurationManager;
         }
+
+        public async Task<IEnumerable<ApplicationUser>> getOrganizationTeachers(string organization)
+        {
+            List<ApplicationUser> toReturn = new List<ApplicationUser>();
+            var users = _context.Users.Include(u => u.Organization).Where(i => i.Organization.EmailExtension == organization);
+            foreach(ApplicationUser user in users)
+            {
+                IEnumerable<String> roles = await _userManager.GetRolesAsync(user);
+                if (roles.Contains("Teacher"))
+                {
+                    toReturn.Add(user);
+                }
+            }
+            return toReturn;
+        }
         public async Task<IEnumerable<ApplicationUser>> GetOrganizationUsers(string organization)
         {
             return _context.Users.Include(u => u.Organization).Where(i => i.Organization.EmailExtension == organization);

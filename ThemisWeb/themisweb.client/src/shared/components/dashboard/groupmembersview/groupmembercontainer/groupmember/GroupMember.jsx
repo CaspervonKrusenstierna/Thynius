@@ -5,7 +5,7 @@ import { TrashSolid } from '../../../../../assets'
 const GroupMember = (props) => {
   return (
     <div className='GroupMember'>
-        <p className='GroupMember-Text'>{props.User.username}</p>
+        <p className='GroupMember-Text'>{props.nonStrictMode ? props.User : props.User.username}</p>
         <button className='GroupMember-DeleteButton' onClick={() => {props.onDelete(props.User)}}>
             <img className="GroupMember-DeleteImg" src={TrashSolid}></img>
         </button>

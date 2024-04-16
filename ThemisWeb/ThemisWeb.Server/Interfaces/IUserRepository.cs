@@ -9,6 +9,7 @@ namespace ThemisWeb.Server.Interfaces
         public bool RemoveUserFromGroup(ApplicationUser user, Group group);
         public Task<IEnumerable<ApplicationUser>> GetAllAsync();
         public Task<ApplicationUser> GetByIdAsync(string id);
+        public Task<IEnumerable<ApplicationUser>> getOrganizationTeachers(string organization);
         public Task<IEnumerable<ApplicationUser>> GetOrganizationUsers(string organization);
         public Task<IEnumerable<ApplicationUser>> GetSearchUsers(string search, string organization, int max);
         public Task<IEnumerable<ApplicationUser>> GetGroupUsers(Group group);

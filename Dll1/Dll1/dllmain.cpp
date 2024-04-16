@@ -5,6 +5,10 @@
 #include "Data/Data.h"
 #include "WordFeatureDisabler/WordFeatureDisabler.h"
 #include "ThemisSessionData/ThemisSessionData.h"
+#pragma comment(lib,"shlwapi.lib")
+#include "shlobj.h"
+
+char path[MAX_PATH];
 
 Comms* comms;
 Hooks* hooks;
@@ -48,8 +52,8 @@ bool OnUndoFunc(UINT64 isUndo) {
 
 void OnSaveFunc(unsigned long GUID) {
     SessionData sessionData = themisSessionData->GetSessionData();
-    std::wofstream Output("C:\\Program Files\\Themis\\Sessions\\" + std::to_string(GUID));
-    std::wofstream MetaOutput("C:\\Program Files\\Themis\\Sessions\\" + std::to_string(GUID) + "_metadata");
+    std::wofstream Output(path + std::string("\\Themis\\Sessions\\") + std::to_string(GUID));
+    std::wofstream MetaOutput(path + std::string("\\Themis\\Sessions\\") + std::to_string(GUID) + "_metadata");
 
     for (int i = 0; sessionData.inputs.size() > i; i++) {
         Input currInput = sessionData.inputs[i];
@@ -76,7 +80,7 @@ void onSpellingReplace(std::wstring replacement, UINT32 replacementStart, UINT32
 
 DWORD WINAPI MainThread(HMODULE hModule){
     std::chrono::system_clock::time_point startTime = std::chrono::system_clock::now();
-    
+   SHGetFolderPathA(NULL, CSIDL_COMMON_APPDATA, NULL, 0, path);
 
     comms = new Comms();
     hooks = new Hooks();

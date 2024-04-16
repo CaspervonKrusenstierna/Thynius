@@ -151,46 +151,15 @@ namespace ThemisWeb.Server.Controllers
             return Ok();
         }
 
-        [Route("/dll")]
+        [Route("/installer")]
         [HttpGet]
         [Authorize]
-        public async Task<String> GetDllUrl()
+        public String GetInstallerUrl()
         {
             GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
             {
                 BucketName = _configuration["BucketName"],
-                Key = $"downloads/ThemisService.dll",
-                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
-
-            };
-            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
-        }
-
-        [Route("/service")]
-        [HttpGet]
-        [Authorize]
-        public String GetServiceUrl()
-        {
-            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
-            {
-                BucketName = _configuration["BucketName"],
-                Key = $"downloads/ThemisDll.dll",
-                Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
-
-            };
-            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
-        }
-
-
-        [Route("/client")]
-        [HttpGet]
-        [Authorize]
-        public String GetClientUrl()
-        {
-            GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
-            {
-                BucketName = _configuration["BucketName"],
-                Key = $"downloads/ThemisDll.dll",
+                Key = $"downloads/ThemisInstaller.msi",
                 Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
 
             };

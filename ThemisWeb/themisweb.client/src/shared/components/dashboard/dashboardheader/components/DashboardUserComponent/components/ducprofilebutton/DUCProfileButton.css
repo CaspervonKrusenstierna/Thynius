@@ -19,6 +19,7 @@
     gap: 2px;
 }
 .DUCProfileButton-Text{
+    text-align: start;
     font-size: 16px;
 }
 .DUCProfileButton-Icon{

@@ -16,5 +16,6 @@ namespace ThemisWeb.Server.Models
         ApplicationUser? Owner;
 
         public ICollection<ApplicationUser> Users = [];
+
     }
 }

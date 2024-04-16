@@ -11,6 +11,7 @@ const ManageGroupMembersPage = (props) => {
     const highestPage = useMemo(() => {
         return Math.ceil(groupMembers.length / itemsPerPage);
     }, [groupMembers])
+    
     const updateGroupMembers = (newGroupMembers) => {
         props.groupInfo.current.groupMembers = newGroupMembers;
         setGroupMembers(newGroupMembers);

@@ -12,19 +12,24 @@ const TextViewPage = lazy(() => import("./pages/textviewpage/TextViewPage"))
 const AssignmentPage = lazy(() => import("./pages/assignmentpage/AssignmentPage"))
 const SubmitTextPage = lazy(() => import("./pages/submittextpage/SubmitTextPage"))
 const SubmittmentPage = lazy(() => import("./pages/submittmentpage/SubmittmentPage"))
+const OrganizationsPage = lazy(() => import("./pages/organizationspage/OrganizationsPage"))
+const EditGroupPage = lazy(() => import('./pages/editgrouppage/EditGroupPage'))
+const TeachersPage = lazy(() => import('./pages/teacherspage/TeachersPage'))
+
 import "./index.css"
 import "./output.css"
 
 import useSessionInfo from "./shared/hooks/useSessionInfo"
-import EditGroupPage from './pages/editgrouppage/EditGroupPage';
 import LoginBox from './pages/homepage/loginbox/LoginBox';
 import RegisterBox from './pages/homepage/registerbox/RegisterBox';
 import { DarknessEffect } from './shared/components/homepage';
 export const sessionInfoContext = createContext();
 
 function App() {
-    const [sessionInfo, updateSessionInfo] = useSessionInfo();
-
+    const [loading, sessionInfo, updateSessionInfo] = useSessionInfo();
+    if(loading){
+        return <></>
+    }
     return (
         <sessionInfoContext.Provider value={{sessionInfo: sessionInfo, updateSessionInfo: updateSessionInfo}}>
             <BrowserRouter>
@@ -33,7 +38,6 @@ function App() {
                             <Route path="/register" element={<><DarknessEffect/><RegisterBox/></>}></Route>
                             <Route path="/login" element={<><DarknessEffect/><LoginBox/></>}></Route>
                         </Route>
-                        
                         <Route path="/dashboard/home" element={<Suspense fallback={<></>}><DashboardHomePage/></Suspense>}></Route>
                         <Route path="/dashboard/group/:id/:page" element={<Suspense fallback={<></>}><GroupPage/></Suspense>}></Route>
                         <Route path="/dashboard/group/:id/:page/:assignmentid" element={<Suspense fallback={<></>}><GroupPage/></Suspense>}></Route>
@@ -45,6 +49,8 @@ function App() {
                         <Route path='/dashboard/text/:id/submit' element={<Suspense fallback={<></>}><SubmitTextPage/></Suspense>}></Route>
                         <Route path='/dashboard/submittment/:id' element={<Suspense fallback={<></>}><SubmittmentPage/></Suspense>}></Route>
                         <Route path='/dashboard/editgroup/:id/:page' element={<Suspense fallback={<></>}><EditGroupPage/></Suspense>}></Route>
+                        <Route path='/dashboard/organizations' element={<Suspense fallback={<></>}><OrganizationsPage/></Suspense>}></Route>
+                        <Route path='/dashboard/teachers' element={<Suspense fallback={<></>}><TeachersPage/></Suspense>}></Route>
                 </Routes>
             </BrowserRouter>
         </sessionInfoContext.Provider>

@@ -31,7 +31,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> CreateGroup([FromForm]CreateGroupDto model)
         {
             CreateGroupValidator validator = new CreateGroupValidator();
@@ -78,7 +78,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> EditGroup([FromForm]EditGroupDto model)
         {
             EditGroupValidator validator = new EditGroupValidator();
@@ -152,7 +152,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Admin,OrganizationAdmin,Teacher")]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> DeleteGroup(int groupId)
         {
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);

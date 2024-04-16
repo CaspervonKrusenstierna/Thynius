@@ -6,8 +6,13 @@ export default function AssureLoggedIn(){
     let sessionInfo = useContext(sessionInfoContext);
     const navigate = useNavigate();
     useEffect(() => {
-        if(!sessionInfo.sessionInfo){
-            navigate("/login");
+        try{
+            if(!sessionInfo.sessionInfo){
+                navigate("/login");
+            }
+        }
+        catch{
+            navigate(0);
         }
     }, [])
 }

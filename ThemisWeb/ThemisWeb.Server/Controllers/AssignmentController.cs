@@ -49,6 +49,7 @@ namespace ThemisWeb.Server.Controllers
             return JsonSerializer.Serialize(new { assignment.Description, assignment.Name, assignment.DueDate, imageURL=_assignmentRepository.GetSignedAssignmentImgUrl(assignment)});
         }
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> CreateAssignment([FromForm]CreateAssignmentDto model)
         {
             CreateAssignmentValidator validator = new CreateAssignmentValidator();
@@ -85,6 +86,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> EditAssignment([FromForm]EditAssignmentDto model)
         {
             EditAssignmentValidator validator = new EditAssignmentValidator();
@@ -124,6 +126,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Teacher")]
         public async Task<IActionResult> DeleteAssignment(int assignmentId)
         {
             ApplicationUser callingUser = await _userManager.GetUserAsync(HttpContext.User);

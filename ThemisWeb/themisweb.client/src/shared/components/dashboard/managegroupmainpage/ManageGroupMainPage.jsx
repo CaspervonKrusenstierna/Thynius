@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import "./ManageGroupMainPage.css"
 import {Input} from "@nextui-org/input";
 
@@ -16,10 +16,14 @@ const ManageGroupMainPage = (props) => {
 
   return (
     <div className='ManageGroupMainPage'>
-          <Input type="name" label="Gruppnamn" radius="sm" className="w-60 h-15" onChange={(e) => {updateName(e.target.value)}}defaultValue={props.groupInfo.current.groupName}></Input>
+      {props.groupInfo.current.nameError ? 
+       <Input color='danger' isRequired type="name" label="Gruppnamn" radius="sm" className="w-60 h-15" onChange={(e) => {updateName(e.target.value)}}defaultValue={props.groupInfo.current.groupName}></Input> 
+       :
+       <Input type="name" label="Gruppnamn" radius="sm" className="w-60 h-15" onChange={(e) => {updateName(e.target.value)}}defaultValue={props.groupInfo.current.groupName}></Input>
+       }
         <div className="ml-[0.75rem]">
-          <p className="text-xl">Gruppbild</p>
-          <input type="file"  accept=".jpg,.img" className="mt-3" onChange={(e) => {updateImg(e.target.files[0])}}></input>
+          <p className={props.groupInfo.current.pictureError ? "text-red-600 text-xl" : "text-xl"}>Gruppbild</p>
+          <input type="file"  accept=".jpg,.img" className="mt-" onChange={(e) => {updateImg(e.target.files[0])}}></input>
           {image ? <img src={image} className='w-[230px] h-[230px] sm:w-[275px] sm:h-[275px]'></img> : <></>}
         </div>
 

@@ -6,11 +6,13 @@ using System.Net;
 using Microsoft.AspNetCore.Identity;
 using ThemisWeb.Server.Repository;
 using Microsoft.AspNetCore.Authorization;
+using ThemisWeb.Server.Models.Dtos;
+using System.Text.Json;
 
 namespace ThemisWeb.Server.Controllers
 {
 
-    [Route("/organization")]
+    [Route("organization")]
     [Authorize]
     public class OrganizationController : Controller
     {
@@ -25,6 +27,7 @@ namespace ThemisWeb.Server.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateOrganization(string EmailExtension)
         {
             Organization org = await _organizationRepository.GetByEmailExtensionAsync(EmailExtension);

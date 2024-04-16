@@ -1,9 +1,9 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GroupAssignmentsView, GroupHomeView } from "../pages";
 import GroupManageAssignmentView from "../pages/groupmanageassignmentview/GroupManageAssignmentView";
 import { createAssignment, editAssignment, getAssignmentinfo } from "../../../../shared/network/assignment";
-import { groupinfoContext } from "../GroupPageView";
+import { getManageAssignmentErrors } from "../pages/groupmanageassignmentview/useManageAssignmentErrors";
 
 
 
@@ -13,21 +13,32 @@ export default function ResolveGroupContent(groupInfoTouched, setGroupInfoTouche
   const { id, assignmentid } = useParams();
   const initialImage = useRef();
   const navigate = useNavigate();
+  const [submitCount, setSubmitCount] = useState(0);
 
-  async function onCreateAssignment(ref, state){
-    let response = await createAssignment(id, ref.name, ref.description, state.date, state.image);
+  async function onCreateAssignment(state){
+    if(getManageAssignmentErrors(state.description, state.name, state.date, state.image) != null){
+      setSubmitCount(submitCount + 1)
+      return;
+    }
+    let response = await createAssignment(id, state.name, state.description, state.date, state.image);
     if(response.ok){
       setGroupInfoTouched(!groupInfoTouched);
       navigate(-1);
     }
   }
-  async function onEditAssignment(ref, state){
+
+  async function onEditAssignment(state){
+    if(getManageAssignmentErrors(state.description, state.name, state.date, state.image) != null){
+      setSubmitCount(submitCount + 1)
+      return;
+    }
+
     let response;
     if(initialImage.current == state.image){
-      response = await editAssignment(assignmentid, ref.name, ref.description, state.date, null)
+      response = await editAssignment(assignmentid, state.name, state.description, state.date, null)
     }
     else{
-      response = await editAssignment(assignmentid, ref.name, ref.description, state.date, state.image)
+      response = await editAssignment(assignmentid, state.name, state.description, state.date, state.image)
     }
     if(response.ok){
       setGroupInfoTouched(!groupInfoTouched);
@@ -44,13 +55,13 @@ export default function ResolveGroupContent(groupInfoTouched, setGroupInfoTouche
         setPageContent(<GroupAssignmentsView></GroupAssignmentsView>); break;
 
       case "CreateAssignment":
-        setPageContent(<GroupManageAssignmentView onSubmit={onCreateAssignment}></GroupManageAssignmentView>); break;
+        setPageContent(<GroupManageAssignmentView hasClickedSubmit={submitCount >= 1} onSubmit={onCreateAssignment}></GroupManageAssignmentView>); break;
 
       case "EditAssignment":
            getAssignmentinfo(assignmentid).then(s => s.json()).then(
-            s => {initialImage.current = s.imageURL; setPageContent(<GroupManageAssignmentView onSubmit={onEditAssignment} initialRef={{name: s.Name, description: s.Description}} initialState={{date: s.DueDate, image: s.imageURL}}></GroupManageAssignmentView>)});
+            s => {initialImage.current = s.imageURL; setPageContent(<GroupManageAssignmentView hasClickedSubmit={submitCount >= 1} onSubmit={onEditAssignment} initialState={{name: s.Name, description: s.Description, date: s.DueDate, image: s.imageURL}}></GroupManageAssignmentView>)});
             break;
     }
-  }, [page]);
+  }, [page, submitCount]);
   return pageContent;
 }

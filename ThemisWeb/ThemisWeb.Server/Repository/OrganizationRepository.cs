@@ -21,6 +21,7 @@ namespace ThemisWeb.Server.Repository
         {
             return await _context.Organizations.FirstOrDefaultAsync(i => i.EmailExtension == EmailExtension);
         }
+        
         public bool Add(Organization organization)
         {
             _context.Add(organization);

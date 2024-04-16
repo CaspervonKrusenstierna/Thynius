@@ -1,9 +1,13 @@
-import React, { useMemo, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import "./GroupMembersView.css"
 import UserSearch from '../usersearch/UserSearch'
 import GroupMemberContainer from './groupmembercontainer/GroupMemberContainer'
+import { sessionInfoContext } from '../../../../App';
+
 
 const GroupMembersView = (props) => {
+  const sessionInfo = useContext(sessionInfoContext)?.sessionInfo;
+
   function onAddMember(Member){
     let memberAlreadyInList = false;
     for(let i = 0; props.groupMembers.length > i; i++){
@@ -17,6 +21,7 @@ const GroupMembersView = (props) => {
         props.setGroupMembers(temp);
     }
   }
+
   function onDeleteMember(Member){
     for(let i = 0; props.groupMembers.length > i; i++){
         if(props.groupMembers[i].username == Member.username){
@@ -26,17 +31,17 @@ const GroupMembersView = (props) => {
   }
   const currentPageMembers = useMemo(() => {
     if(props.highestPage == props.currentPage){
-      return props.groupMembers.slice((props.currentPage-1)*10)
+      return props.groupMembers?.slice((props.currentPage-1)*10)
     }
     else{
-      return props.groupMembers.slice((props.currentPage-1)*10, props.currentPage*10)
+      return props.groupMembers?.slice((props.currentPage-1)*10, props.currentPage*10)
     }
   }, [props.groupMembers, props.currentPage, props.itemsPerPage])
 
   return (
     <div className='GroupMembersView'>
       <div className='GroupMembersView-Header'>
-        <p className='GroupMembersView-Title'>Medlemmar</p>
+        <p className='GroupMembersView-Title'>{props.title ? props.title : "Medlemmar"}</p>
         <UserSearch onSubmit={(submission) => {onAddMember(submission)}}></UserSearch>
       </div>
         <GroupMemberContainer members={currentPageMembers} onMemberDelete={onDeleteMember}></GroupMemberContainer>

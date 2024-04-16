@@ -25,7 +25,7 @@ const DUCProfileButton = (props) => {
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <div className='DUCProfileButton-TextContainer'>
+          <div className={SessionInfo?.Username?.length > 24 ? 'DUCProfileButton-TextContainer leading-[16px]' :  'DUCProfileButton-TextContainer'}>
             <p className='DUCProfileButton-Text'>{SessionInfo?.Username}</p>
             <p className='DUCProfileButton-Text'>{UserRole.Current}</p>
           </div>
