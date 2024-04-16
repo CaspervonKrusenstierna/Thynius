@@ -710,6 +710,10 @@ video {
   margin-left: 0.75rem;
 }
 
+.ml-\[20\%\] {
+  margin-left: 20%;
+}
+
 .ml-\[200px\] {
   margin-left: 200px;
 }
@@ -754,6 +758,14 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-6 {
+  margin-top: 1.5rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .mt-\[120px\] {
   margin-top: 120px;
 }
@@ -774,16 +786,16 @@ video {
   margin-top: 5px;
 }
 
-.mt-\[108px\] {
-  margin-top: 108px;
-}
-
-.mt-\[96px\] {
-  margin-top: 96px;
-}
-
 .mt-\[70px\] {
   margin-top: 70px;
+}
+
+.mt-\[9px\] {
+  margin-top: 9px;
+}
+
+.mt-\[150px\] {
+  margin-top: 150px;
 }
 
 .box-border {
@@ -888,6 +900,10 @@ video {
   height: 100%;
 }
 
+.h-\[1000px\] {
+  height: 1000px;
+}
+
 .h-\[100px\] {
   height: 100px;
 }
@@ -920,6 +936,10 @@ video {
   height: 50px;
 }
 
+.h-\[600px\] {
+  height: 600px;
+}
+
 .h-\[var\(--radix-select-trigger-height\)\] {
   height: var(--radix-select-trigger-height);
 }
@@ -944,32 +964,16 @@ video {
   height: var(--nextui-spacing-unit-8);
 }
 
-.h-6 {
-  height: 1.5rem;
+.h-\[1500px\] {
+  height: 1500px;
 }
 
-.h-\[12px\] {
-  height: 12px;
+.h-\[1300px\] {
+  height: 1300px;
 }
 
-.h-\[auto\] {
-  height: auto;
-}
-
-.h-\[200px\] {
-  height: 200px;
-}
-
-.h-\[24px\] {
-  height: 24px;
-}
-
-.h-\[34px\] {
-  height: 34px;
-}
-
-.h-\[40px\] {
-  height: 40px;
+.h-\[1200px\] {
+  height: 1200px;
 }
 
 .max-h-96 {
@@ -994,10 +998,6 @@ video {
 
 .min-h-unit-8 {
   min-height: var(--nextui-spacing-unit-8);
-}
-
-.min-h-\[24px\] {
-  min-height: 24px;
 }
 
 .w-10 {
@@ -1044,6 +1044,10 @@ video {
   width: 2.25rem;
 }
 
+.w-\[100\%\] {
+  width: 100%;
+}
+
 .w-\[100px\] {
   width: 100px;
 }
@@ -1080,6 +1084,10 @@ video {
   width: 70%;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
 .w-\[82\.45px\] {
   width: 82.45px;
 }
@@ -1088,20 +1096,16 @@ video {
   width: 90%;
 }
 
+.w-\[93\%\] {
+  width: 93%;
+}
+
 .w-auto {
   width: auto;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-\[100\%\] {
-  width: 100%;
-}
-
-.w-\[80\%\] {
-  width: 80%;
 }
 
 .min-w-\[12rem\] {
@@ -1323,6 +1327,10 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.justify-self-center {
+  justify-self: center;
 }
 
 .overflow-hidden {
@@ -1670,12 +1678,12 @@ video {
   padding-bottom: 0.375rem;
 }
 
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-
 .pb-3 {
   padding-bottom: 0.75rem;
+}
+
+.pb-\[200px\] {
+  padding-bottom: 200px;
 }
 
 .pe-2 {
@@ -1722,6 +1730,10 @@ video {
   padding-top: 0.75rem;
 }
 
+.pt-\[11px\] {
+  padding-top: 11px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1734,8 +1746,40 @@ video {
   font-size: 0.8rem;
 }
 
+.text-\[15px\] {
+  font-size: 15px;
+}
+
+.text-\[17px\] {
+  font-size: 17px;
+}
+
+.text-\[18px\] {
+  font-size: 18px;
+}
+
+.text-\[24px\] {
+  font-size: 24px;
+}
+
+.text-\[25px\] {
+  font-size: 25px;
+}
+
 .text-\[26px\] {
   font-size: 26px;
+}
+
+.text-\[28px\] {
+  font-size: 28px;
+}
+
+.text-\[40px\] {
+  font-size: 40px;
+}
+
+.text-\[48px\] {
+  font-size: 48px;
 }
 
 .text-base {
@@ -1802,6 +1846,50 @@ video {
   line-height: 1;
 }
 
+.leading-6 {
+  line-height: 1.5rem;
+}
+
+.leading-4 {
+  line-height: 1rem;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
+}
+
+.leading-8 {
+  line-height: 2rem;
+}
+
+.leading-10 {
+  line-height: 2.5rem;
+}
+
+.leading-\[48px\] {
+  line-height: 48px;
+}
+
+.leading-\[44px\] {
+  line-height: 44px;
+}
+
+.leading-\[52px\] {
+  line-height: 52px;
+}
+
+.leading-\[56px\] {
+  line-height: 56px;
+}
+
+.leading-\[28px\] {
+  line-height: 28px;
+}
+
+.leading-\[30px\] {
+  line-height: 30px;
+}
+
 .tracking-tight {
   letter-spacing: -0.025em;
 }
@@ -1809,6 +1897,10 @@ video {
 .\!text-danger {
   --tw-text-opacity: 1 !important;
   color: hsl(var(--nextui-danger) / var(--nextui-danger-opacity, var(--tw-text-opacity))) !important;
+}
+
+.text-\[var\(--themeMainColor\)\] {
+  color: var(--themeMainColor);
 }
 
 .text-accent-foreground {
@@ -3606,12 +3698,12 @@ video {
     height: 200px;
   }
 
-  .md\:h-\[250px\] {
-    height: 250px;
-  }
-
   .md\:h-\[24px\] {
     height: 24px;
+  }
+
+  .md\:h-\[250px\] {
+    height: 250px;
   }
 
   .md\:max-h-\[600px\] {

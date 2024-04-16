@@ -23,11 +23,10 @@
     font-size: 18px;
 }
 
-
-  @media screen and (max-width: 550px) {
+  @media screen and (max-width: 800px) {
     .NavBarButtonRedirect{
-        height:45px;
-        width: 100px;
+        height:40px;
+        width: 90px;
     }
     .NavBarButtonRedirect-png{
         width:15px

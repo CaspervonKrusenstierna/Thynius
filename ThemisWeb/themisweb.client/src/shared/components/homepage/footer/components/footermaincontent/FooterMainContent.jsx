@@ -2,7 +2,7 @@ import React from 'react'
 import "./FooterMainContent.css"
 import InfoRowsContainer from './components/inforowscontainer/InfoRowsContainer'
 
-const FooterItemsTitleRowOne = "Om Themis";
+const FooterItemsTitleRowOne = "Om Thynius";
 const FooterItemsRowOne = [
     {ItemName: "Om oss", ItemLink: "/about"},
 ]

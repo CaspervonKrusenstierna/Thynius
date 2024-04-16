@@ -15,6 +15,10 @@ const SubmittmentPage = lazy(() => import("./pages/submittmentpage/SubmittmentPa
 const OrganizationsPage = lazy(() => import("./pages/organizationspage/OrganizationsPage"))
 const EditGroupPage = lazy(() => import('./pages/editgrouppage/EditGroupPage'))
 const TeachersPage = lazy(() => import('./pages/teacherspage/TeachersPage'))
+const PrivacyPolicyPage = lazy(() => import("./pages/privacypolicypage/PrivacyPolicyPage"))
+const CookiesPage = lazy(() => import("./pages/cookiespage/CookiesPage"))
+const ContactPage = lazy(() => import("./pages/contactpage/ContactPage"))
+const AboutPage = lazy(() => import("./pages/aboutpage/AboutPage"))
 
 import "./index.css"
 import "./output.css"
@@ -51,6 +55,10 @@ function App() {
                         <Route path='/dashboard/editgroup/:id/:page' element={<Suspense fallback={<></>}><EditGroupPage/></Suspense>}></Route>
                         <Route path='/dashboard/organizations' element={<Suspense fallback={<></>}><OrganizationsPage/></Suspense>}></Route>
                         <Route path='/dashboard/teachers' element={<Suspense fallback={<></>}><TeachersPage/></Suspense>}></Route>
+                        <Route path='/contact' element={<Suspense fallback={<></>}><ContactPage/></Suspense>}></Route>
+                        <Route path='/privacy-policy' element={<Suspense fallback={<></>}><PrivacyPolicyPage/></Suspense>}></Route>
+                        <Route path='/cookie-policy' element={<Suspense fallback={<></>}><CookiesPage/></Suspense>}></Route>
+                        <Route path='/about' element={<Suspense fallback={<></>}><AboutPage/></Suspense>}></Route>
                 </Routes>
             </BrowserRouter>
         </sessionInfoContext.Provider>

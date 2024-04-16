@@ -1,5 +1,6 @@
 .TosContainer{
     display: flex;
     flex-direction: row;
-    gap: 18px;
+    gap: 25px;
+    font-weight:600;
 }
