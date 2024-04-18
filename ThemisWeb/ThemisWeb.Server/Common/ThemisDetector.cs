@@ -169,18 +169,15 @@ namespace ThemisWeb.Server.Common
             return (int)(score);
         }
         private inline void factorInPastes(){
-            if(totalExternalPasteChars >= RawContent.Length / 10)
+            if(totalExternalPasteChars >= RawContent.Length / 4)
+            {
+                remarks.Add("Användaren har kopierat en stor del av sin text från externa källor.");
+                score += 2;
+            }
+            else if(totalExternalPasteChars >= RawContent.Length / 10)
             {
                 score += 1;
-                if(totalExternalPasteChars >= RawContent.Length / 4)
-                {
-                    remarks.Add("Användaren har kopierat en stor del av sin text från externa källor.");
-                    score += 1;
-                }
-                else
-                {
-                    remarks.Add("Användaren har kopierat delar av sin text från externa källor." + smallPasteCount);
-                }
+                remarks.Add("Användaren har kopierat delar av sin text från externa källor." + smallPasteCount);
             }
         }
         private inline void factorInSmallPastes(){
@@ -191,17 +188,14 @@ namespace ThemisWeb.Server.Common
             }
         }
         private inline void factorInEditScore(){
-            if(editScore <= 0.5)
+            if(editScore <= 0.2)
             {
-                if(editScore <= 0.2)
-                {
-                    remarks.Add("Användaren reviderade sin text ovanligt lite.");
-                    score += 1;
-                }
-                else
-                {
-                    score += (float)0.5 - editScore;
-                }
+                remarks.Add("Användaren reviderade sin text ovanligt lite.");
+                score += 1;
+            }
+            else if(editScore <= 0.5)
+            {
+                score += (float)0.5 - editScore;
             }
         }
         
