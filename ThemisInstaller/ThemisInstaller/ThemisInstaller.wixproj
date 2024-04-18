@@ -1,5 +1,8 @@
 ﻿<Project Sdk="WixToolset.Sdk/5.0.0">
   <ItemGroup>
+    <None Include="settings.reg" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Dll1\Dll1\Dll1.vcxproj" />
     <ProjectReference Include="..\..\ThemisClient\ThemisClient\ThemisClient.csproj" />
   </ItemGroup>

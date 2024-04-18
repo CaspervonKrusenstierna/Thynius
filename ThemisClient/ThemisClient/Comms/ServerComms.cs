@@ -23,6 +23,7 @@ namespace ThemisClient.Comms
         private HttpClient client;
         public ServerComms(string baseAddress, string CookieDataPath)
         {
+            loadWordSettings();
             cookieDataPath = CookieDataPath;
             baseUri = new Uri(baseAddress);
 
@@ -32,7 +33,13 @@ namespace ThemisClient.Comms
 
             client = new HttpClient(clientHandler);
             client.BaseAddress = baseUri;
+        }
 
+        private void loadWordSettings()
+        {
+            string themisInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Themis\\";
+            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + themisInstallationDir + "settings.reg" + "\"");
+            regeditProcess.WaitForExit();
         }
         public async Task<bool> LoginAsync(string _email, string _password)
         {
@@ -53,43 +60,6 @@ namespace ThemisClient.Comms
                 return true;
             }
             return false;
-        }
-
-        public async Task<bool> downloadService(string directory)
-        {
-            var response = await client.GetAsync("/service");
-            if(!(response.StatusCode == HttpStatusCode.OK))
-            {
-                return false;
-            }
-            string ServiceUrl = await response.Content.ReadAsStringAsync();
-            Debug.WriteLine("ServiceUrl: " + ServiceUrl);
-            return true;
-            /*
-            var stream = await client.GetStreamAsync(ServiceUrl);
-            var fileStream = new FileStream(directory+ "\\ThemisService.dll", FileMode.OpenOrCreate);
-            await stream.CopyToAsync(fileStream);
-            stream.Dispose();
-            fileStream.Dispose();
-            return true;*/
-        }
-
-        public async Task<bool> downloadDll(string directory)
-        {
-            var response = await client.GetAsync("/dll");
-            if (!(response.StatusCode == HttpStatusCode.OK))
-            {
-                return false;
-            }
-            string DllUrl = await response.Content.ReadAsStringAsync();
-            return true;
-            Debug.WriteLine("DllUrl: " + DllUrl);
-            /*var stream = await client.GetStreamAsync(DllUrl);
-            var fileStream = new FileStream(directory + "\\ThemisDll.dll", FileMode.OpenOrCreate);
-            await stream.CopyToAsync(fileStream);
-            stream.Dispose();
-            fileStream.Dispose();
-            return true;*/
         }
 
         private bool LoadCookieData(string baseAddress)

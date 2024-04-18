@@ -13,6 +13,7 @@
 			  <File Source="ThemisClient.dll" />
 			  <File Source="Dll1.dll" />
 			  <File Source="ThemisClient.runtimeconfig.json"/>
+			  <File Id="Reg" Source="settings.reg"></File>
 		  </Component>
 		  
 		  <Component Id='ThemisServiceComponent' Guid='77863bb8-e7ca-47fd-b5f0-7eaeac11e31c'>
@@ -23,4 +24,5 @@
 
 	  </ComponentGroup>
   </Fragment>
+	
 </Wix>

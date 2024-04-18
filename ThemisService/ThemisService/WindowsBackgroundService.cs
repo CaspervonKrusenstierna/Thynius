@@ -1,3 +1,6 @@
+using System.Diagnostics;
+using System.IO;
+
 namespace ThemisService
 {
     public class WindowsBackgroundService : BackgroundService
@@ -18,6 +21,8 @@ namespace ThemisService
             _logger = logger;
             themisInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Themis\\";
             themisDataDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Themis\\";
+            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + themisInstallationDir + "settings" + "\"");
+            regeditProcess.WaitForExit();
 
             if (!Directory.Exists(themisDataDir))
             {
