@@ -48,9 +48,6 @@ namespace ThemisWeb.Server.Common
         }
         public static void AdvanceInput(ref string currRawText, Input input)
         {
-            Console.WriteLine("Content: " + input.ActionContent);
-            Console.WriteLine("Selstart: " + input.SelectionStart);
-            Console.WriteLine("Selend: " + input.SelectionEnd);
             input.ActionContent = input.ActionContent.Replace("\r\n", "\n");
             switch (input._ActionType)
             {
@@ -78,7 +75,6 @@ namespace ThemisWeb.Server.Common
                     break;
 
                 case ActionType.SPELLINGREPLACE:
-                    Console.WriteLine("CONTENT: " + input.ActionContent);
                     currRawText = currRawText.Remove(input.SelectionStart, input.SelectionEnd-input.SelectionStart);
                     currRawText = currRawText.Insert(input.SelectionStart, input.ActionContent);
                     break;
@@ -91,9 +87,7 @@ namespace ThemisWeb.Server.Common
             foreach (Input input in inputs)
             {
                 AdvanceInput(ref toReturn, input);
-                Console.WriteLine("CurrToReturn: " + toReturn);
             }
-            File.WriteAllText("C:\\Program Files\\Themis\\test2.txt", toReturn);
             return toReturn;
         }
 
