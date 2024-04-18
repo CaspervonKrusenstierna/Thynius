@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
-using ThemisWeb.Server.Common;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
-using ThemisWeb.Server.Models.Dtos;
-using ThemisWeb.Server.Repository;
-using static ThemisWeb.Server.Common.DataClasses;
-namespace ThemisWeb.Server.Controllers
+using ThyniusWeb.Server.Common;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
+using ThyniusWeb.Server.Models.Dtos;
+using ThyniusWeb.Server.Repository;
+using static ThyniusWeb.Server.Common.DataClasses;
+namespace ThyniusWeb.Server.Controllers
 {
     [Route("/users")]
     [Authorize]

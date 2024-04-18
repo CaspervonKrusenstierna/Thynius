@@ -3,16 +3,16 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json;
-using ThemisWeb.Server.Common;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
-using ThemisWeb.Server.Models.Dtos;
-using ThemisWeb.Server.Common;
-using static ThemisWeb.Server.Common.DataClasses;
-using static ThemisWeb.Server.Common.ThemistTextConverter;
+using ThyniusWeb.Server.Common;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
+using ThyniusWeb.Server.Models.Dtos;
+using ThyniusWeb.Server.Common;
+using static ThyniusWeb.Server.Common.DataClasses;
+using static ThyniusWeb.Server.Common.ThyniustTextConverter;
 using Amazon.S3.Model;
 
-namespace ThemisWeb.Server.Controllers
+namespace ThyniusWeb.Server.Controllers
 {
     [Route("/usertext")]
     [Authorize]
@@ -72,7 +72,7 @@ namespace ThemisWeb.Server.Controllers
 
                 string RawText = GetInputsRawText(sessionInputs);
 
-                text.Title = ThemistTextConverter.GetTextTitle(RawText);
+                text.Title = ThyniustTextConverter.GetTextTitle(RawText);
                 _userTextRepository.Add(text);
 
                 await _userTextRepository.S3RawContentUpload(text, RawText);
@@ -96,7 +96,7 @@ namespace ThemisWeb.Server.Controllers
                 string RawText = GetInputsRawText(ReadInputsStream(output));
                 await _userTextRepository.S3RawContentDelete(text);
                 await _userTextRepository.S3RawContentUpload(text, RawText);
-                text.Title = ThemistTextConverter.GetTextTitle(RawText);
+                text.Title = ThyniustTextConverter.GetTextTitle(RawText);
                 _userTextRepository.Update(text);
 
                 await _userTextRepository.S3InputDataDelete(text);
@@ -186,7 +186,7 @@ namespace ThemisWeb.Server.Controllers
             text.AssignmentId = assignmentId;
 
 
-            ThemisDetector detector = new ThemisDetector(_userTextRepository, callingUser);
+            ThyniusDetector detector = new ThyniusDetector(_userTextRepository, callingUser);
             await detector.Analyze(text);
             text.WarningLevel = detector.GetDetectionScore();
             _userTextRepository.Update(text);

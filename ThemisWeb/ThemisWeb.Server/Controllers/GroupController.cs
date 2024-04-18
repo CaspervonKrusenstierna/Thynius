@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
 using System.Text.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Security.Claims;
-using ThemisWeb.Server.Repository;
-using ThemisWeb.Server.Common;
-using static ThemisWeb.Server.Common.DataClasses;
-using ThemisWeb.Server.Models.Dtos;
+using ThyniusWeb.Server.Repository;
+using ThyniusWeb.Server.Common;
+using static ThyniusWeb.Server.Common.DataClasses;
+using ThyniusWeb.Server.Models.Dtos;
 using FluentValidation;
 
-namespace ThemisWeb.Server.Controllers
+namespace ThyniusWeb.Server.Controllers
 {
     [Route("group")]
     public class GroupController : Controller

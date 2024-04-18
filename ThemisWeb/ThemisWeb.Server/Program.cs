@@ -2,14 +2,14 @@
 using ReactApp1.Server.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Models;
 using Microsoft.Extensions.DependencyInjection;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Repository;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Repository;
 using Amazon.S3;
 
 
-namespace ThemisWeb.Server
+namespace ThyniusWeb.Server
 {
     public class Program
     {

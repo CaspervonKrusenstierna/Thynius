@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fHBh7sxfLW2wtywj+8skkX6Kn4bLdJHilmlgpvPMwj4C5PtS3R8y93OSzyiE+yNjlfEBn1TImLGxpiqWDcl5wA==",
+  "dgSpecHash": "Lc9l4mzW2yFF7DAy3ILsPZDAyJMPHVpBVuYL6HlBgvNpUO+lSNBSW/efkeyAScCftBzXy1wUR6LioBF9xdpMfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThemisWeb.Server.csproj",
+  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\ThemisWeb.Server\\ThyniusWeb.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cappe\\.nuget\\packages\\awssdk.core\\3.7.303\\awssdk.core.3.7.303.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\awssdk.extensions.netcore.setup\\3.7.300\\awssdk.extensions.netcore.setup.3.7.300.nupkg.sha512",

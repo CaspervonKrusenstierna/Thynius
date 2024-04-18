@@ -1,30 +1,30 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ThemisService
+namespace ThyniusService
 {
     public class WindowsBackgroundService : BackgroundService
     {
         private readonly ILogger<WindowsBackgroundService> _logger;
-        private readonly string themisInstallationDir;
-        private readonly string themisDataDir;
+        private readonly string thyniusInstallationDir;
+        private readonly string thyniusDataDir;
 
         private void CreateDirs()
         {
             string RoamingDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-            Directory.CreateDirectory(RoamingDir + "\\Themis");
-            Directory.CreateDirectory(RoamingDir + "\\Themis\\Sessions");
-            Directory.CreateDirectory(RoamingDir + "\\Themis\\CookieData");
+            Directory.CreateDirectory(RoamingDir + "\\Thynius");
+            Directory.CreateDirectory(RoamingDir + "\\Thynius\\Sessions");
+            Directory.CreateDirectory(RoamingDir + "\\Thynius\\CookieData");
         }
         public WindowsBackgroundService(ILogger<WindowsBackgroundService> logger)
         {
             _logger = logger;
-            themisInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Themis\\";
-            themisDataDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Themis\\";
-            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + themisInstallationDir + "settings" + "\"");
+            thyniusInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Thynius\\";
+            thyniusDataDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Thynius\\";
+            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + thyniusInstallationDir + "settings" + "\"");
             regeditProcess.WaitForExit();
 
-            if (!Directory.Exists(themisDataDir))
+            if (!Directory.Exists(thyniusDataDir))
             {
                 CreateDirs();
             }
@@ -34,8 +34,8 @@ namespace ThemisService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            ServerComms serverComms = new ServerComms("https://localhost:7135", themisDataDir + "CookieData\\CookieData.txt", _logger);
-            SystemEventsManager systemEventsManager = new SystemEventsManager(themisInstallationDir, themisDataDir, serverComms, _logger);
+            ServerComms serverComms = new ServerComms("https://localhost:7135", thyniusDataDir + "CookieData\\CookieData.txt", _logger);
+            SystemEventsManager systemEventsManager = new SystemEventsManager(thyniusInstallationDir, thyniusDataDir, serverComms, _logger);
 
         }
     }

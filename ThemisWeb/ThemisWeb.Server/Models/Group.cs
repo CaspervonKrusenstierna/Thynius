@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ThemisWeb.Server.Models
+namespace ThyniusWeb.Server.Models
 {
     public class Group
     {

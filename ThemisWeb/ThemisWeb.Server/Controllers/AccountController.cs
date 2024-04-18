@@ -1,23 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
 using System.Net;
 using Microsoft.AspNetCore.Identity;
-using ThemisWeb.Server.Repository;
+using ThyniusWeb.Server.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
-using ThemisWeb.Server.Common;
-using static ThemisWeb.Server.Common.DataClasses;
-using static ThemisWeb.Server.Common.Utilities;
-using ThemisWeb.Server.Models.Dtos;
+using ThyniusWeb.Server.Common;
+using static ThyniusWeb.Server.Common.DataClasses;
+using static ThyniusWeb.Server.Common.Utilities;
+using ThyniusWeb.Server.Models.Dtos;
 using System.Text.Json;
 using FluentValidation;
 using Amazon.S3;
 using Amazon.S3.Model;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace ThemisWeb.Server.Controllers
+namespace ThyniusWeb.Server.Controllers
 {
     [Route("/account")]
     public class AccountController : Controller
@@ -159,7 +159,7 @@ namespace ThemisWeb.Server.Controllers
             GetPreSignedUrlRequest getPreSignedUrlRequest = new GetPreSignedUrlRequest
             {
                 BucketName = _configuration["BucketName"],
-                Key = $"downloads/ThemisInstaller.msi",
+                Key = $"downloads/ThyniusInstaller.msi",
                 Expires = DateTime.Today.AddHours(DateTime.Now.Hour + 1)
 
             };

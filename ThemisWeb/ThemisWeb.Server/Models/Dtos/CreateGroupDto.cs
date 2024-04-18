@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using System.Drawing;
 
-namespace ThemisWeb.Server.Models.Dtos
+namespace ThyniusWeb.Server.Models.Dtos
 {
     public class CreateGroupDto
     {

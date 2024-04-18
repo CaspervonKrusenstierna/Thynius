@@ -1,8 +1,8 @@
 ﻿
 using Amazon.S3.Model;
 using FileHelpers;
-using static ThemisWeb.Server.Common.ThemistTextConverter;
-namespace ThemisWeb.Server.Common
+using static ThyniusWeb.Server.Common.ThyniustTextConverter;
+namespace ThyniusWeb.Server.Common
 {
     public enum ActionType
     {
@@ -14,7 +14,7 @@ namespace ThemisWeb.Server.Common
         SESSIONSTART = 8
     };
 
-    public static class ThemistTextConverter
+    public static class ThyniustTextConverter
     {
         [DelimitedRecord(",")]
         public class Input

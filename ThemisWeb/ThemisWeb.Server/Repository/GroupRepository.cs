@@ -2,10 +2,10 @@
 using Amazon.S3.Model;
 using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
 
-namespace ThemisWeb.Server.Repository
+namespace ThyniusWeb.Server.Repository
 {
     public class GroupRepository : IGroupRepository
     {

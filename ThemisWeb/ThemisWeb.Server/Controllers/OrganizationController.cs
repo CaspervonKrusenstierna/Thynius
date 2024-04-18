@@ -1,15 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
 using System.Net;
 using Microsoft.AspNetCore.Identity;
-using ThemisWeb.Server.Repository;
+using ThyniusWeb.Server.Repository;
 using Microsoft.AspNetCore.Authorization;
-using ThemisWeb.Server.Models.Dtos;
+using ThyniusWeb.Server.Models.Dtos;
 using System.Text.Json;
 
-namespace ThemisWeb.Server.Controllers
+namespace ThyniusWeb.Server.Controllers
 {
 
     [Route("organization")]

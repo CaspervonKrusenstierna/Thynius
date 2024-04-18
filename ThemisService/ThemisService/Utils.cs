@@ -1,6 +1,6 @@
 ﻿using FileHelpers;
 
-namespace ThemisService
+namespace ThyniusService
 {
     public static class Utils
     {

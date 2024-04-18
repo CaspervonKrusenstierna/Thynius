@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
 using System.Data;
 using System.Reflection.Metadata.Ecma335;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
 
-namespace ThemisWeb.Server.Repository
+namespace ThyniusWeb.Server.Repository
 {
     public class UserRepository : IUserRepository
     {

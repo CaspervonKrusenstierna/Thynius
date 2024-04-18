@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging.Configuration;
 using Microsoft.Extensions.Logging.EventLog;
 
-namespace ThemisService
+namespace ThyniusService
 {
     public class Program
     {
@@ -11,7 +11,7 @@ namespace ThemisService
             HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
             builder.Services.AddWindowsService(options =>
             {
-                options.ServiceName = "ThemisService";
+                options.ServiceName = "ThyniusService";
             });
 
             LoggerProviderOptions.RegisterProviderOptions<

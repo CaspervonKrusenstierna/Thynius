@@ -11,11 +11,11 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-ThemisService-84632916-257a-4f6d-942d-e2e0485d5d6e")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-ThyniusService-84632916-257a-4f6d-942d-e2e0485d5d6e")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThemisService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f41d5c65004410282ef38047336ebc19e4ef8512")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c4166570ab1fb0836ffd96ab18baf9b9ea1a955")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThemisService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThemisService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

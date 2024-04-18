@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ThemisWeb.Server.Migrations
+namespace ThyniusWeb.Server.Migrations
 {
     /// <inheritdoc />
     public partial class tatatatata : Migration

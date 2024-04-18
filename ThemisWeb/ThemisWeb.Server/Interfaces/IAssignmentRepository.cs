@@ -1,7 +1,7 @@
 ﻿using Amazon.S3.Model;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Models;
 
-namespace ThemisWeb.Server.Interfaces
+namespace ThyniusWeb.Server.Interfaces
 {
     public interface IAssignmentRepository
     {

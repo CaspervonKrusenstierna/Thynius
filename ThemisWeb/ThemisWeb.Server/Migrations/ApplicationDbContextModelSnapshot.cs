@@ -8,7 +8,7 @@ using ReactApp1.Server.Data;
 
 #nullable disable
 
-namespace ThemisWeb.Server.Migrations
+namespace ThyniusWeb.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -170,7 +170,7 @@ namespace ThemisWeb.Server.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.ApplicationUser", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -245,7 +245,7 @@ namespace ThemisWeb.Server.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Assignment", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.Assignment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -274,7 +274,7 @@ namespace ThemisWeb.Server.Migrations
                     b.ToTable("Assignments");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Group", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.Group", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -297,7 +297,7 @@ namespace ThemisWeb.Server.Migrations
                     b.ToTable("Groups");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Organization", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.Organization", b =>
                 {
                     b.Property<string>("EmailExtension")
                         .HasColumnType("nvarchar(450)");
@@ -310,7 +310,7 @@ namespace ThemisWeb.Server.Migrations
                     b.ToTable("Organizations");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.UserText", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.UserText", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -349,13 +349,13 @@ namespace ThemisWeb.Server.Migrations
 
             modelBuilder.Entity("ApplicationUserGroup", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.Group", null)
+                    b.HasOne("ThyniusWeb.Server.Models.Group", null)
                         .WithMany()
                         .HasForeignKey("GroupsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ThemisWeb.Server.Models.ApplicationUser", null)
+                    b.HasOne("ThyniusWeb.Server.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -373,7 +373,7 @@ namespace ThemisWeb.Server.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.ApplicationUser", null)
+                    b.HasOne("ThyniusWeb.Server.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -382,7 +382,7 @@ namespace ThemisWeb.Server.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.ApplicationUser", null)
+                    b.HasOne("ThyniusWeb.Server.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -397,7 +397,7 @@ namespace ThemisWeb.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ThemisWeb.Server.Models.ApplicationUser", null)
+                    b.HasOne("ThyniusWeb.Server.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -406,16 +406,16 @@ namespace ThemisWeb.Server.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.ApplicationUser", null)
+                    b.HasOne("ThyniusWeb.Server.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.ApplicationUser", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.ApplicationUser", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.Organization", "Organization")
+                    b.HasOne("ThyniusWeb.Server.Models.Organization", "Organization")
                         .WithMany()
                         .HasForeignKey("OrganizationEmailExtension")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -424,22 +424,22 @@ namespace ThemisWeb.Server.Migrations
                     b.Navigation("Organization");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Assignment", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.Assignment", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.Group", null)
+                    b.HasOne("ThyniusWeb.Server.Models.Group", null)
                         .WithMany("Tasks")
                         .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.UserText", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.UserText", b =>
                 {
-                    b.HasOne("ThemisWeb.Server.Models.Assignment", "AssignmentSubmittedTo")
+                    b.HasOne("ThyniusWeb.Server.Models.Assignment", "AssignmentSubmittedTo")
                         .WithMany("Submittments")
                         .HasForeignKey("AssignmentId");
 
-                    b.HasOne("ThemisWeb.Server.Models.ApplicationUser", "Owner")
+                    b.HasOne("ThyniusWeb.Server.Models.ApplicationUser", "Owner")
                         .WithMany()
                         .HasForeignKey("OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -450,12 +450,12 @@ namespace ThemisWeb.Server.Migrations
                     b.Navigation("Owner");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Assignment", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.Assignment", b =>
                 {
                     b.Navigation("Submittments");
                 });
 
-            modelBuilder.Entity("ThemisWeb.Server.Models.Group", b =>
+            modelBuilder.Entity("ThyniusWeb.Server.Models.Group", b =>
                 {
                     b.Navigation("Tasks");
                 });

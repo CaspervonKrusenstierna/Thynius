@@ -12,7 +12,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace ThemisClient.Comms
+namespace ThyniusClient.Comms
 {
     public class ServerComms
     {
@@ -37,8 +37,8 @@ namespace ThemisClient.Comms
 
         private void loadWordSettings()
         {
-            string themisInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Themis\\";
-            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + themisInstallationDir + "settings.reg" + "\"");
+            string thyniusInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Thynius\\";
+            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + thyniusInstallationDir + "settings.reg" + "\"");
             regeditProcess.WaitForExit();
         }
         public async Task<bool> LoginAsync(string _email, string _password)

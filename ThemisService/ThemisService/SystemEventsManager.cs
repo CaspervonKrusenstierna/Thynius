@@ -4,7 +4,7 @@
 using System.Diagnostics;
 using System.IO;
 
-namespace ThemisService
+namespace ThyniusService
 {
     class SystemEventsManager
     {
@@ -33,7 +33,7 @@ namespace ThemisService
             this.serverComms = serverComms;
             this.logger = logger;
             injector = new DllInjector();
-            dllPath = installationDir + "\\ThemisDll.dll";
+            dllPath = installationDir + "\\ThyniusDll.dll";
             wordListenerThread = new Thread(WordListenerThreadMain);
             wordListenerThread.Start();
             SyncSessions();
@@ -57,15 +57,27 @@ namespace ThemisService
                 }
             }
         }
+
+        private bool HasUserDisabledThynius()
+        {
+            int temp = 0;
+            int.TryParse(File.ReadAllText(installationDir + "\\Enabled"),out temp);
+            return temp > 0;
+        }
         private void OnWordExit(int processId)
         {
-            logger.LogInformation("Word process exited. Process Id: " + processId);
+            if (HasUserDisabledThynius())
+            {
+                return;
+            }
             SyncSessions();
         }
         private void OnWordStartUp(int processId)
         {
+            if (HasUserDisabledThynius()) {
+                return;
+            }
             Thread.Sleep(300);
-           logger.LogInformation("Word process started. Process Id: " + processId);
             injector.Inject((uint)processId, dllPath);
         }
         private void WordListenerThreadMain()

@@ -9,10 +9,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ThemisClient.Comms;
+using ThyniusClient.Comms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace ThemisClient
+namespace ThyniusClient
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

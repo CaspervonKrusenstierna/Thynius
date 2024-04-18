@@ -3,12 +3,12 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
-using ThemisWeb.Server.Models.Dtos;
-using static ThemisWeb.Server.Common.DataClasses;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
+using ThyniusWeb.Server.Models.Dtos;
+using static ThyniusWeb.Server.Common.DataClasses;
 
-namespace ThemisWeb.Server.Controllers
+namespace ThyniusWeb.Server.Controllers
 {
     [Route("/assignment")]
     public class AssignmentController : Controller

@@ -1,10 +1,10 @@
 ﻿using Amazon.S3.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ThemisWeb.Server.Models;
-using static ThemisWeb.Server.Common.ThemistTextConverter;
+using ThyniusWeb.Server.Models;
+using static ThyniusWeb.Server.Common.ThyniustTextConverter;
 
-namespace ThemisWeb.Server.Interfaces
+namespace ThyniusWeb.Server.Interfaces
 {
     public interface IUserTextRepository
     {

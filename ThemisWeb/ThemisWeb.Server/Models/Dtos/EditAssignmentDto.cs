@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace ThemisWeb.Server.Models.Dtos
+namespace ThyniusWeb.Server.Models.Dtos
 {
 
     public class EditAssignmentDto

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace ThemisWeb.Server.Models
+namespace ThyniusWeb.Server.Models
 {
     public class UserText
     {

@@ -1,23 +1,11 @@
 {
   "Version": 1,
-  "Hash": "rZIVR0DVAMY6F4jeHPJ3Ai1ePoV4yuogWtPbeMxNgRU=",
-  "Source": "ThemisWeb.Server",
-  "BasePath": "_content/ThemisWeb.Server",
+  "Hash": "+vNF+gT67AWzy4XuoDYkGcReOuYnSW+AOEF3RwvcqgI=",
+  "Source": "ThyniusWeb.Server",
+  "BasePath": "_content/ThyniusWeb.Server",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [
-    {
-      "Identity": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisWeb\\themisweb.client\\themisweb.client.esproj",
-      "Version": 2,
-      "Source": "themisweb.client",
-      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
-      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
-      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
-      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
-      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
-    }
-  ],
+  "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
   "Assets": []
 }

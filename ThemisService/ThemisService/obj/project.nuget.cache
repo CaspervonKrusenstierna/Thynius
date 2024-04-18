@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "urL2g8jFsNKqdG3qrgSjYkgsSaJKhNjo2g8gGTVQQwY7uCDMyWyhLrjqktcb9KhnyqJvR8RiSOclf6CP94+1fA==",
+  "dgSpecHash": "h9vSm25b+/TuBzkD3XAgJT9LFJ9NMHhypzu68d9YDvbbmZOQks8PgCH0oIcbcOqcbErPIGqz3nlA82lYhals4Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
+  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThyniusService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cappe\\.nuget\\packages\\filehelpers\\3.5.2\\filehelpers.3.5.2.nupkg.sha512",
     "C:\\Users\\Cappe\\.nuget\\packages\\microsoft.extensions.configuration\\8.0.0\\microsoft.extensions.configuration.8.0.0.nupkg.sha512",

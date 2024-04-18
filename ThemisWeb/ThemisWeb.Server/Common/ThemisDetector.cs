@@ -1,11 +1,12 @@
 ﻿
 
 using Amazon.S3.Model;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
-using static ThemisWeb.Server.Common.ThemistTextConverter;
+using System.Xml.Linq;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
+using static ThyniusWeb.Server.Common.ThyniustTextConverter;
 
-namespace ThemisWeb.Server.Common
+namespace ThyniusWeb.Server.Common
 {
     public struct MomentOfInterest //This data is outputted to the teacher so the teacher can quickly navigate and look at the moment of interest. Example of this is a paste.
     {
@@ -17,57 +18,57 @@ namespace ThemisWeb.Server.Common
         public string infoType;
         public string info;
     }
-    public class ThemisDetectionData //Data thats interesting to the teacher or analyzer in question
+    public class ThyniusDetectionData //Data thats interesting to the teacher or analyzer in question
     {
         public List<String> remarks;
         public List<MomentOfInterest> momentsOfInterest;
         public List<InputsStatistic> statistics;
     }
     
-    private struct InternalThemisDetectorInputsData{ //This is the data that the inputs analyzer outputs for further processing
-            int totalAddCharTime;
-            int addCharAmount;
-            int deleteCharAmount;
-            int deleteSectionAmount;
-            int extendedTypingBreaksCount;
-            int smallPasteCount;
-            int totalExternalPasteChars;
-            List<MomentOfInterest> momentsOfInterest;
+    struct InternalThyniusDetectorInputsData{ //This is the data that the inputs analyzer outputs for further processing
+            public int totalAddCharTime;
+            public int addCharAmount;
+            public int deleteCharAmount;
+            public int deleteSectionAmount;
+            public int extendedTypingBreaksCount;
+            public int smallPasteCount;
+            public int totalExternalPasteChars;
+            public List<MomentOfInterest> momentsOfInterest;
     }
-    private struct InternalThemisDetectorInputsProcessingData{ //Data used by the algo to process the inputs
-        UInt64 currSessionRelativeTime;
-        int previousAddCharRelativeTime;
-        string currRawContent;
-        IUserTextRepository userTextRepository;
-        ApplicationUser user;
-        UserText text;
+    struct InternalThyniusDetectorInputsProcessingData{ //Data used by the algo to process the inputs
+        public UInt64 currSessionRelativeTime;
+        public int previousAddCharRelativeTime;
+        public IUserTextRepository userTextRepository;
+        public string currRawContent;
+        public ApplicationUser user;
+        public UserText text;
     }
-    private struct InternalThemisDetectorTextData{ //the final processed data.
-        private float editScore;
-        private float averageTypeSpeed;
-        private int detectionScore;
-        private List<String> remarks;
+    struct InternalThyniusDetectorTextData{ //the final processed data.
+        public float editScore;
+        public float averageTypeSpeed;
+        public float detectionScore;
+        public List<String> remarks;
     }
-    public class ThemisDetector
+    public class ThyniusDetector
     {
-        private InternalThemisDetectorInputsData inputsData = new InternalThemisDetectorInputsData();
-        private InternalThemisDetectorInputsProcessingData inputsProcessingData  = new InternalThemisDetectorInputsProcessingData();
-        private InternalThemisDetectorTextData textData = new InternalThemisDetectorTextData();
+        private InternalThyniusDetectorInputsData inputsData = new InternalThyniusDetectorInputsData();
+        private InternalThyniusDetectorInputsProcessingData inputsProcessingData  = new InternalThyniusDetectorInputsProcessingData();
+        private InternalThyniusDetectorTextData textData = new InternalThyniusDetectorTextData();
         
         private async Task<bool> wasTextTypedByHandBefore(string Text, UInt64 timePoint)
         {
-            return currRawContent.Contains(Text);
-            if (!currRawContent.Contains(Text))
+            return inputsProcessingData.currRawContent.Contains(Text);
+            if (!inputsProcessingData.currRawContent.Contains(Text))
             {
-                IEnumerable<UserText> userTexts = await _userTextRepository.GetUserTexts(_user);
+                IEnumerable<UserText> userTexts = await inputsProcessingData.userTextRepository.GetUserTexts(inputsProcessingData.user);
                 bool wasTypedInOtherDoc = false;
                 foreach(UserText text in userTexts) //TODO: MAKE A CHECK ON CLIENT SIDE IF MULTIPLE DOCS WERE OPEN TO FILTER OUT MOST OF THESE CHECKS AS THEY VERY HEAVY
                 {
-                    if(text.Id == _text.Id)
+                    if(text.Id == inputsProcessingData.text.Id)
                     {
                         continue;
                     }
-                    GetObjectResponse currTextObjResponse = await _userTextRepository.S3GetInputDataAsync(text);
+                    GetObjectResponse currTextObjResponse = await inputsProcessingData.userTextRepository.S3GetInputDataAsync(text);
                     string currTextRawAtTimePoint = GetInputsRawTextAtTimePoint(ReadInputsStream(currTextObjResponse.ResponseStream).ToList(), timePoint);
                     if (currTextRawAtTimePoint.Contains(Text))
                     {
@@ -79,63 +80,61 @@ namespace ThemisWeb.Server.Common
             return true;
         }
 
-        private inline void onAdd(Input input){
-                int timeDiff = (int)input.relativeTimePointMs - previousAddCharRelativeTime;
+        private void onAdd(Input input){
+                int timeDiff = (int)input.relativeTimePointMs - inputsProcessingData.previousAddCharRelativeTime;
                 if (timeDiff >= 60000)
                 {
-                    extendedTypingBreaksCount++;
+                    inputsData.extendedTypingBreaksCount++;
                 }
                 else
                 {
-                    addCharAmount++;
-                    totalAddCharTime += timeDiff;
+                    inputsData.addCharAmount++;
+                    inputsData.totalAddCharTime += timeDiff;
                 }
-                break;
         }
         
-        private inline void onDelete(Input input){
-             deleteCharAmount++; 
+        private void onDelete(Input input){
+             inputsData.deleteCharAmount++; 
         }
         
-        private inline void onPaste(Input input){
+        private async void onPaste(Input input, int index){
             if(input.ActionContent.Length <= 10) // probably just pasting in some external one word or char that user could not type on their keyboard
             {
-                smallPasteCount++;
-                break;
+                inputsData.smallPasteCount++;
             }
-            bool wasTypedBefore = await wasTextTypedByHandBefore(RawContent, input.ActionContent, currSessionRelativeTime+input.relativeTimePointMs);
+            bool wasTypedBefore = await wasTextTypedByHandBefore(input.ActionContent, inputsProcessingData.currSessionRelativeTime+input.relativeTimePointMs);
             if (!wasTypedBefore)
             {
-                totalExternalPasteChars += input.ActionContent.Length;
-                momentsOfInterest.Add(new MomentOfInterest{ Index=i, reason="PASTE"});
+                inputsData.totalExternalPasteChars += input.ActionContent.Length;
+                inputsData.momentsOfInterest.Add(new MomentOfInterest{ Index=index, reason="PASTE"});
             }
         }
         
-        private inline void onSessionStart(Input input){
-            currSessionRelativeTime = input.relativeTimePointMs;
+        private void onSessionStart(Input input){
+            inputsProcessingData.currSessionRelativeTime = input.relativeTimePointMs;
         }
 
-        private inline void processAverageTypeSpeed(){
-            if(addCharAmount == 0)
+        private void processAverageTypeSpeed(){
+            if(inputsData.addCharAmount == 0)
             {
-                averageTypeSpeed = totalAddCharTime;
+                textData.averageTypeSpeed = inputsData.totalAddCharTime;
             }
             else
             {
-                averageTypeSpeed = totalAddCharTime/1000/addCharAmount;
+                textData.averageTypeSpeed = inputsData.totalAddCharTime /1000/ inputsData.addCharAmount;
             }
         }
-        private inlinevoid processEditScore(){
-            if(deleteCharAmount == 0)
+        private void processEditScore(){
+            if(inputsData.deleteCharAmount == 0)
             {
-                editScore = 0;
+                textData.editScore = 0;
             }
             else
             {
-                editScore = addCharAmount / deleteCharAmount;
+                textData.editScore = inputsData.addCharAmount / inputsData.deleteCharAmount;
             }
         }
-        private inline void processAnalyzerData(){
+        private void processAnalyzerData(){
             processAverageTypeSpeed();
             processEditScore();
         }
@@ -151,51 +150,51 @@ namespace ThemisWeb.Server.Common
 
                     case ActionType.DELETECHAR: onDelete(input); break;
 
-                    case ActionType.PASTE: onPaste(input); break;
+                    case ActionType.PASTE: onPaste(input, i); break;
                         
                     case ActionType.SESSIONSTART: onSessionStart(input); break;
                 }
-                AdvanceInput(ref RawContent, input);
+                AdvanceInput(ref inputsProcessingData.currRawContent, input);
             }
             processAnalyzerData();
             return;
         }
 
-        private inline int getRoundedDetectionScore(){
+        private int getRoundedDetectionScore(float score){
             if(score >= 3)
             {
                 return 3;
             }
             return (int)(score);
         }
-        private inline void factorInPastes(){
-            if(totalExternalPasteChars >= RawContent.Length / 4)
+        private void factorInPastes(){
+            if(inputsData.totalExternalPasteChars >= inputsProcessingData.currRawContent.Length / 4)
             {
-                remarks.Add("Användaren har kopierat en stor del av sin text från externa källor.");
-                score += 2;
+                textData.remarks.Add("Användaren har kopierat en stor del av sin text från externa källor.");
+                textData.detectionScore += 2;
             }
-            else if(totalExternalPasteChars >= RawContent.Length / 10)
+            else if(inputsData.totalExternalPasteChars >= inputsProcessingData.currRawContent.Length / 10)
             {
-                score += 1;
-                remarks.Add("Användaren har kopierat delar av sin text från externa källor." + smallPasteCount);
-            }
-        }
-        private inline void factorInSmallPastes(){
-            if(smallPasteCount >= 20)
-            {
-                remarks.Add("Användaren uppvisade besynnerligt beteende i form av många små inklistringar. Totalt antal små inklistringar: " + smallPasteCount);
-                score += 1;
+                textData.detectionScore += 1;
+                textData.remarks.Add("Användaren har kopierat delar av sin text från externa källor." + inputsData.smallPasteCount);
             }
         }
-        private inline void factorInEditScore(){
-            if(editScore <= 0.2)
+        private void factorInSmallPastes(){
+            if(inputsData.smallPasteCount >= 20)
             {
-                remarks.Add("Användaren reviderade sin text ovanligt lite.");
-                score += 1;
+                textData.remarks.Add("Användaren uppvisade besynnerligt beteende i form av många små inklistringar. Totalt antal små inklistringar: " + inputsData.smallPasteCount);
+                textData.detectionScore += 1;
             }
-            else if(editScore <= 0.5)
+        }
+        private void factorInEditScore(){
+            if(textData.editScore <= 0.2)
             {
-                score += (float)0.5 - editScore;
+                textData.remarks.Add("Användaren reviderade sin text ovanligt lite.");
+                textData.detectionScore += 1;
+            }
+            else if(textData.editScore <= 0.5)
+            {
+                textData.detectionScore += (float)0.5 - textData.editScore;
             }
         }
         
@@ -205,36 +204,36 @@ namespace ThemisWeb.Server.Common
             factorInSmallPastes();
             factorInPastes();
             
-            return getRoundedDetectionScore();
+            return getRoundedDetectionScore(textData.detectionScore);
         }
         private List<InputsStatistic> GetInputsStatistics()
         {
             List<InputsStatistic> toReturn = new List<InputsStatistic>();
-            toReturn.Add(new InputsStatistic { infoType = "Genomsnittlig skrivhastighet", info = averageTypeSpeed.ToString() });
-            toReturn.Add(new InputsStatistic { infoType = "Ändrings poäng", info = editScore.ToString() });
+            toReturn.Add(new InputsStatistic { infoType = "Genomsnittlig skrivhastighet", info = textData.averageTypeSpeed.ToString() });
+            toReturn.Add(new InputsStatistic { infoType = "Ändrings poäng", info = textData.editScore.ToString() });
             return toReturn;
         }
         
-        public ThemisDetectionData getDetectionData()
+        public ThyniusDetectionData getDetectionData()
         {
-            ThemisDetectionData toReturn = new ThemisDetectionData();
+            ThyniusDetectionData toReturn = new ThyniusDetectionData();
             toReturn.statistics = GetInputsStatistics();
-            toReturn.momentsOfInterest = momentsOfInterest;
-            toReturn.remarks = remarks;
+            toReturn.momentsOfInterest = inputsData.momentsOfInterest;
+            toReturn.remarks = textData.remarks;
             return toReturn;
         }
 
         public async Task<bool> Analyze(UserText text)
         {
-            _text = text;
-            GetObjectResponse inputsData = await _userTextRepository.S3GetInputDataAsync(text);
+            inputsProcessingData.text = text;
+            GetObjectResponse inputsData = await inputsProcessingData.userTextRepository.S3GetInputDataAsync(text);
             IEnumerable<Input> inputs = ReadInputsStream(inputsData.ResponseStream, noHash:true);
             await AnalyzeInputs(inputs.ToList());
             return true;
         } 
-        public ThemisDetector(IUserTextRepository userTextRepository, ApplicationUser user) {
-            _user = user;
-            _userTextRepository = userTextRepository;
+        public ThyniusDetector(IUserTextRepository userTextRepository, ApplicationUser user) {
+            inputsProcessingData.user = user;
+            inputsProcessingData.userTextRepository = userTextRepository;
         }
     }
 }

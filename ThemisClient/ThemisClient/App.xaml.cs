@@ -2,9 +2,9 @@
 using System.Data;
 using System.Diagnostics;
 using System.Windows;
-using ThemisClient.Comms;
+using ThyniusClient.Comms;
 
-namespace ThemisClient
+namespace ThyniusClient
 {
     /// <summary>
     /// Interaction logic for App.xaml
@@ -30,7 +30,7 @@ namespace ThemisClient
 
         void Main(object sender, StartupEventArgs e)
         {
-            serverComms = new ServerComms("https://localhost:7135", "C:\\Program Files\\Themis\\CookieData\\CookieData.txt");
+            serverComms = new ServerComms("https://localhost:7135", "C:\\Program Files\\Thynius\\CookieData\\CookieData.txt");
             HandleStartup();
         }
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ThemisClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f41d5c65004410282ef38047336ebc19e4ef8512")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c4166570ab1fb0836ffd96ab18baf9b9ea1a955")]
 [assembly: System.Reflection.AssemblyProductAttribute("ThemisClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ThemisClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using ReactApp1.Server.Data;
 using System.Text;
 using System.Text.Unicode;
-using ThemisWeb.Server.Interfaces;
-using ThemisWeb.Server.Models;
+using ThyniusWeb.Server.Interfaces;
+using ThyniusWeb.Server.Models;
 
 
-namespace ThemisWeb.Server.Repository
+namespace ThyniusWeb.Server.Repository
 {
     public class UserTextRepository : IUserTextRepository
     {

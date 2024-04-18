@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1FiK+Bi9+nPuScmqPpklGr/E5tfqedGwGZamTmqKbgR5OEL9CstAhRDDesMbsioDEzvs8Lfrm9oLM6FP7xxUSA==",
+  "dgSpecHash": "zTwU6c3oqba/GMBHvmT4EcEpK+7lx9M0BAoA2iqC7f48mnnZJvichC2aDHDuoCRoQfgzP2eYul8iSBQ/gHLYYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\ThemisClient.csproj",
+  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\ThyniusClient.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cappe\\.nuget\\packages\\filehelpers\\3.5.2\\filehelpers.3.5.2.nupkg.sha512"
   ],

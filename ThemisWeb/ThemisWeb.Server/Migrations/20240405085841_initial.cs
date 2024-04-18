@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ThemisWeb.Server.Migrations
+namespace ThyniusWeb.Server.Migrations
 {
     /// <inheritdoc />
     public partial class initial : Migration

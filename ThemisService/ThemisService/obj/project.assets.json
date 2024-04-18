@@ -1893,9 +1893,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
-      "projectName": "ThemisService",
-      "projectPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThemisService.csproj",
+      "projectUniqueName": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThyniusService.csproj",
+      "projectName": "ThyniusService",
+      "projectPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThyniusService.csproj",
       "packagesPath": "C:\\Users\\Cappe\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\obj\\",
       "projectStyle": "PackageReference",

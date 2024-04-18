@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ThemisWeb.Server.Common
+namespace ThyniusWeb.Server.Common
 {
     public class DataClasses
     {
