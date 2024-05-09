@@ -21,9 +21,6 @@
     <ClInclude Include="MemUtils\MemUtils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Comms\Comms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Hooks\Hooks.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -45,9 +42,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MemUtils\MemUtils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Comms\Comms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Hooks\Hooks.cpp">

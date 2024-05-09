@@ -1,0 +1,16 @@
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\bin\Release\net472\CustomAction.config
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\bin\Release\net472\ThyniusInstallCustomAction.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\bin\Release\net472\ThyniusInstallCustomAction.CA.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\bin\Release\net472\ThyniusInstallCustomAction.pdb
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\bin\Release\net472\WixToolset.Dtf.WindowsInstaller.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.csproj.AssemblyReference.cache
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.AssemblyInfoInputs.cache
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.AssemblyInfo.cs
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.csproj.CoreCompileInputs.cache
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.sourcelink.json
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.CA.rsp
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusI.7BC8293C.Up2Date
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.dll
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\obj\Release\net472\ThyniusInstallCustomAction.pdb
+C:\Users\Cappe\OneDrive\Skrivbord\HP Fusket v2\hpfuskhemsida\Themis\ThyniusInstallCustomAction\bin\Release\net472\System.CodeDom.dll

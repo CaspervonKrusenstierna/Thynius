@@ -1,0 +1,16 @@
+.TosContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    font-weight:600;
+}
+
+@media screen and (max-width: 600px) {
+    .TosContainer{
+        flex-direction: column;
+        width: 100%;
+        justify-content: left;
+        padding-bottom: 15px;
+        gap: 15px;
+    }
+}

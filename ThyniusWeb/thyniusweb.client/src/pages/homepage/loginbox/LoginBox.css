@@ -1,0 +1,25 @@
+.LoginBox {
+    left: calc(50vw - 250px);
+    top: calc(50vh - 300px);
+    width: 500px;
+}
+@media screen and (max-height: 800px) {
+    .LoginBox {
+        top: calc(50vh - 250px);
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .LoginBox {
+        top: 0px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .LoginBox {
+        width: 95%;
+        left: 2.5%;
+        top: calc(50vh - 250px);
+    }
+}

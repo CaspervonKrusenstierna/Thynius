@@ -1,0 +1,12 @@
+.InfoRow{
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+    .InfoRow{
+        font-size: 15px;
+    }
+}

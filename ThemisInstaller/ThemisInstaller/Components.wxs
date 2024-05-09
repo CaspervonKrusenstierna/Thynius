@@ -1,28 +1,78 @@
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
   <Fragment>
+	  <Directory Id="ProgramFilesFolder">
+		  <Directory Id="Thynius32" Name="Thynius"></Directory>
+	  </Directory>
+
+	  <Directory Id="ProgramFiles64Folder">
+		  <Directory Id="INSTALLFOLDER" Name="Thynius">
+			  <Directory Id="Application Files" Name="Application Files">
+				  <Directory Id="ThyniusAddin_1_0_0_3" Name="ThyniusAddin_1_0_0_3"/>
+			  </Directory>
+		  </Directory>
+	  </Directory>
+
+
+	  <Directory Id="ProgramMenuFolder" Name="Programs">
+		  <Directory Id="ApplicationProgramsFolder" Name="WixSingleSetup" />
+	  </Directory>
+	  
+	  <Property Id="WORDISX64">
+			  <DirectorySearch Id='MicrosoftOffice64Search' Path='[ProgramFiles64Folder]Microsoft Office' AssignToProperty='yes'>
+			  </DirectorySearch>
+	  </Property>
+	  
+	  <Property Id="WORDISX32">
+		  <DirectorySearch Id='MicrosoftOffice32Search' Path='[ProgramFilesFolder]Microsoft Office' AssignToProperty='yes'>
+		  </DirectorySearch>
+	  </Property>
+
+	  <SetDirectory Id="INSTALLFOLDER" Value="[Thynius32]" Condition="WORDISX32 AND NOT WORDISX64"></SetDirectory>
+	  
 	  <ComponentGroup Id="AppComponents" Directory="INSTALLFOLDER">
-		  
-		  <Component Id='ThemisClientComponent' Guid='5e4b8c9c-0970-4f2e-b076-16fc5ed9366c'>
-			  <File Source="ThemisClient.exe" KeyPath="yes">
-				  <Shortcut Name="Themis" Directory="DesktopFolder" Advertise="yes" WorkingDirectory="INSTALLFOLDER" />
+		  <Component Id='ThyniusClientComponent' Guid='5e4b8c9c-0970-4f2e-b076-16fc5ed9366c'>
+			  <File Source="ThyniusClient.exe" KeyPath="yes">
+				  <Shortcut Name="Thynius" Directory="DesktopFolder" Advertise="yes" WorkingDirectory="INSTALLFOLDER" />
 				  <Shortcut Id="startMenuShotcut" Directory="ApplicationProgramsFolder"
-				  Name="Themis" WorkingDirectory="INSTALLFOLDER"
+				  Name="Thynius" WorkingDirectory="INSTALLFOLDER"
 				  Advertise="yes" />
 			  </File>
 			  <RemoveFolder Id="ProgramMenuDir" Directory="ApplicationProgramsFolder" On="uninstall"/>
-			  <File Source="ThemisClient.dll" />
-			  <File Source="Dll1.dll" />
-			  <File Source="ThemisClient.runtimeconfig.json"/>
+			  <File Source="ThyniusClient.dll" />
+			  <File Source="SharpVectors.Converters.Wpf.dll" />
+			  <File Source="SharpVectors.Core.dll" />
+			  <File Source="SharpVectors.Css.dll" />
+			  <File Source="SharpVectors.Dom.dll" />
+			  <File Source="SharpVectors.Model.dll" />
+			  <File Source="SharpVectors.Rendering.Wpf.dll" />
+			  <File Source="SharpVectors.Runtime.Wpf.dll" />
+			  <File Source="ThyniusClient.runtimeconfig.json"/>
+			  <File Source="..\..\ThyniusAddin\publish\setup.exe"/>
+			  <File Source="..\..\ThyniusAddin\publish\ThyniusAddin.vsto"/>
 			  <File Id="Reg" Source="settings.reg"></File>
+			  
 		  </Component>
 		  
-		  <Component Id='ThemisServiceComponent' Guid='77863bb8-e7ca-47fd-b5f0-7eaeac11e31c'>
-			  <File Id="ThemisService.exe" Name="ThemisService.exe" Source="..\..\ThemisService\ThemisService\bin\Release\net8.0\publish\win-x64\ThemisService.exe"/>
-			  <ServiceInstall Id="ThemisService.exe" Name="ThemisService" DisplayName="ThemisService" Account="NT AUTHORITY\LocalService" Description="Themis Service" Start="auto" Type="ownProcess" ErrorControl="normal" Vital="yes" Interactive="no"/>
-			  <ServiceControl Id="ThemisService.exe" Name="ThemisService" Start="install" Stop="uninstall" Remove="both"  Wait="no"></ServiceControl>
+		  
+		  <Component Directory="ThyniusAddin_1_0_0_3" Guid='77863bb8-e7ca-45fd-b5f0-7eaeac11e31c'>
+			  <File Source="..\..\ThyniusAddin\publish\Application Files\ThyniusAddin_1_0_0_3\Microsoft.Office.Tools.Common.v4.0.Utilities.dll.deploy"></File>
+			  <File Source="..\..\ThyniusAddin\publish\Application Files\ThyniusAddin_1_0_0_3\ThyniusAddin.dll.deploy"></File>
+			  <File Source="..\..\ThyniusAddin\publish\Application Files\ThyniusAddin_1_0_0_3\ThyniusAddin.dll.manifest"></File>
+			  <File Source="..\..\ThyniusAddin\publish\Application Files\ThyniusAddin_1_0_0_3\ThyniusAddin.vsto"></File>
 		  </Component>
-
+		  
+		  <Component Id='ThyniusBackgroundProcessComponentX64' Guid='77863bb8-e7ca-47fd-b5f0-7eaeac11e31c' Condition='WORDISX64 AND NOT WORDISX32'>
+			  <File Source="..\..\Dll1\x64\Release\Thynius64.dll" Name="ThyniusDll.dll" Id="thyniusdllone"/>
+			  <File Id="ThyniusBackgroundProcess64.exe" Name="ThyniusBackgroundProcess.exe" Source="..\..\ThyniusBackgroundProcess\bin\Release\net8.0\publish\win-x64\ThyniusBackgroundProcess.exe"/>
+		  </Component>
+		  
+		  <Component Id="ThyniusBackgroundProcessComponentX32" Guid="77863bb8-e7ca-47fd-b5f0-7eaeac11e31b" Condition="WORDISX32 AND NOT WORDISX64">
+			  <File Source="..\..\Dll1\Release\Thynius32.dll" Name="ThyniusDll.dll" Id="thyniusdlltwo"/>
+			  <File Id="ThyniusBackgroundProcess32.exe" Name="ThyniusBackgroundProcess.exe" Source="..\..\ThyniusBackgroundProcess\bin\Release\net8.0\publish\win-x86\ThyniusBackgroundProcess.exe"></File>
+		  </Component>
 	  </ComponentGroup>
+
+	 
   </Fragment>
 	
 </Wix>

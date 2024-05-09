@@ -1,10 +1,35 @@
 ﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-  <Package Name="Themis" Compressed="yes" Scope="perMachine"  Manufacturer="Themis Software AB" Version="1.0.0.0" UpgradeCode="5a3fc184-3c81-461c-8fa1-53094528c81e">
-        <MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
-	    <MediaTemplate EmbedCab="yes" />
-
-        <Feature Id="Main">
-          <ComponentGroupRef Id="AppComponents" />
-        </Feature>
+  <Package Name="Thynius" Compressed="yes" Scope="perMachine"  Manufacturer="Thynius AB" Version="1.0.0.0" UpgradeCode="5a3fc184-3c81-461c-8fa1-53094528c81e">
+	  <Upgrade Id="5a3fc184-3c81-461c-8fa1-53094528c81e" >
+		<UpgradeVersion
+			IncludeMaximum ="yes"
+			IncludeMinimum="yes"
+			Maximum="5.0.0.0"
+			Minimum="1.0.0.0"
+			MigrateFeatures="no"
+			Property="PRODUCTBISINSTALLED"
+			OnlyDetect="yes" />
+	</Upgrade>
+    <Launch Condition="NOT PRODUCTBISINSTALLED OR Installed" Message="!(loc.CannotInstallWithProductBInstalled)"/>
+	<MajorUpgrade DowngradeErrorMessage="!(loc.DowngradeError)" />
+	 
+	<MediaTemplate EmbedCab="yes" />
+    <Feature Id="Main">
+        <ComponentGroupRef Id="AppComponents" />
+    </Feature>
+	  <Binary Id="CustomActionBinary" SourceFile="$(var.ThyniusInstallCustomAction.TargetDir)$(var.ThyniusInstallCustomAction.TargetName).CA.dll" />
+	  
+	  <CustomAction Id="SetupThynius" Impersonate="no" BinaryRef="CustomActionBinary" DllEntry="CustomActionInstall" Return="check" />
+	  <CustomAction Id="UninstallThynius" Impersonate="no" BinaryRef="CustomActionBinary" DllEntry="CustomActionUninstall"/>
+	  
+	  <CustomAction Id="LaunchApp" Directory="INSTALLFOLDER" ExeCommand="[SystemFolder]cmd.exe /C start ThyniusBackgroundProcess.exe" />
+	  <CustomAction Id="LaunchAddinInstaller" Directory="INSTALLFOLDER" ExeCommand="[SystemFolder]cmd.exe /C start setup.exe"/>
+	  
+	  <InstallExecuteSequence>
+		  <Custom Action="SetupThynius"  Before="InstallFinalize" Condition="NOT Installed AND NOT REMOVE"/>
+		  <Custom Action="LaunchApp" After="InstallFinalize" Condition="NOT Installed"/>
+		  <Custom Action="LaunchAddinInstaller" After="InstallFinalize" Condition="NOT Installed"/>
+		  <Custom Action="UninstallThynius"  Before="RemoveFiles" Condition="Installed AND NOT UPGRADINGPRODUCTCODE"/>
+	  </InstallExecuteSequence>
   </Package>
 </Wix>

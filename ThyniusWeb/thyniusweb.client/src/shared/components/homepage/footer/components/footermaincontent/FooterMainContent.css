@@ -1,0 +1,19 @@
+.FooterMainContent{
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+    width: 80%;
+    gap: 130px;
+    padding-bottom: 190px;
+}
+
+@media screen and (max-width: 600px) {
+    .FooterMainContent{
+        height: 80px;
+        width: 80%;
+        gap: 0px;
+        padding-top: 15px;
+        padding-bottom: 140px;
+        justify-content: space-between;
+    }
+}

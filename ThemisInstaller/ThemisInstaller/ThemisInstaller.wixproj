@@ -4,6 +4,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Dll1\Dll1\Dll1.vcxproj" />
-    <ProjectReference Include="..\..\ThemisClient\ThemisClient\ThemisClient.csproj" />
+    <ProjectReference Include="..\..\ThemisClient\ThemisClient\ThyniusClient.csproj" />
+    <ProjectReference Include="..\..\ThyniusAddin\ThyniusAddin.csproj" />
+    <ProjectReference Include="..\..\ThyniusBackgroundProcess\ThyniusBackgroundProcess.csproj" />
+    <ProjectReference Include="..\..\ThyniusClient\ThyniusClient\ThyniusClient.csproj" />
+    <ProjectReference Include="..\..\ThyniusClient\ThyniusClient\ThyniusClient.csproj" />
+    <ProjectReference Include="..\..\ThyniusInstallCustomAction\ThyniusInstallCustomAction.csproj" />
+    <ProjectReference Include="..\..\ThyniusService\ThyniusService\ThyniusService.csproj" />
   </ItemGroup>
 </Project>

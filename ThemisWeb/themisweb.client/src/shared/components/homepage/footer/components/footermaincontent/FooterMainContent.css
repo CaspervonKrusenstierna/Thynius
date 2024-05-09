@@ -1,8 +1,0 @@
-.FooterMainContent{
-    display: flex;
-    flex-direction: row;
-    height: 150px;
-    width: 80%;
-    gap: 130px;
-    padding-bottom: 190px;
-}

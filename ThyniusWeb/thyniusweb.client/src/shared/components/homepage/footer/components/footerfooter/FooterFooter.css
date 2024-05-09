@@ -1,0 +1,17 @@
+.FooterFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+    height: 100px;
+    padding-bottom: 50px;
+}
+
+@media screen and (max-width: 600px) {
+    .FooterFooter{
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 20px;
+    }
+}

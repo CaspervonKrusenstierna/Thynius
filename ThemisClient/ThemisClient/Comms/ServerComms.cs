@@ -23,7 +23,6 @@ namespace ThyniusClient.Comms
         private HttpClient client;
         public ServerComms(string baseAddress, string CookieDataPath)
         {
-            loadWordSettings();
             cookieDataPath = CookieDataPath;
             baseUri = new Uri(baseAddress);
 
@@ -35,31 +34,26 @@ namespace ThyniusClient.Comms
             client.BaseAddress = baseUri;
         }
 
-        private void loadWordSettings()
-        {
-            string thyniusInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Thynius\\";
-            Process regeditProcess = Process.Start("regedit.exe", "/s \"" + thyniusInstallationDir + "settings.reg" + "\"");
-            regeditProcess.WaitForExit();
-        }
         public async Task<bool> LoginAsync(string _email, string _password)
         {
             var body = JsonContent.Create(new { email = _email, password = _password });
-            var response = await client.PostAsync("/login?useCookies=true", body);
-
-            response.EnsureSuccessStatusCode();
-
+            var response = await client.PostAsync("/account/login?useCookies=true", body);
+            if (!response.StatusCode.Equals(HttpStatusCode.OK))
+            {
+                return false;
+            }
             File.WriteAllText(cookieDataPath, JsonSerializer.Serialize(cookieContainer.GetCookies(baseUri).Select(i => i.ToString())));
             return true;
         }
 
         public async Task<bool> isLoggedIn()
         {
-            var response = await client.GetAsync("/getsessioninfo");
-            if (response.IsSuccessStatusCode)
+            var response = await client.GetAsync("/account/getsessioninfo");
+            if ((int)response.StatusCode == 401)
             {
-                return true;
+                return false;
             }
-            return false;
+            return true;
         }
 
         private bool LoadCookieData(string baseAddress)
@@ -70,7 +64,7 @@ namespace ThyniusClient.Comms
                 cookies = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(cookieDataPath));
             }
             catch {
-                File.Create(cookieDataPath);
+                File.Create(cookieDataPath).Close();
                 return false;
             }
 

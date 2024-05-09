@@ -18,7 +18,7 @@ namespace ThyniusClient
             bool isLoggedIn = await serverComms.isLoggedIn();
             if (isLoggedIn)
             {
-                LoggedInWindow loggedInWindow = new LoggedInWindow();
+                LoggedInWindow loggedInWindow = new LoggedInWindow(serverComms);
                 loggedInWindow.Show();
                 return;
             }
@@ -30,7 +30,7 @@ namespace ThyniusClient
 
         void Main(object sender, StartupEventArgs e)
         {
-            serverComms = new ServerComms("https://localhost:7135", "C:\\Program Files\\Thynius\\CookieData\\CookieData.txt");
+            serverComms = new ServerComms("https://thynius.com", Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Thynius\\CookieData.txt");
             HandleStartup();
         }
 

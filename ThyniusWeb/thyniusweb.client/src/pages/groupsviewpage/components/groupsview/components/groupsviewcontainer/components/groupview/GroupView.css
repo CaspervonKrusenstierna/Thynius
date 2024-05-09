@@ -1,0 +1,15 @@
+
+  .GroupView-Link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 100%;
+    font-weight: 600;
+  }
+  @media screen and (max-width: 768px) {
+    .GroupView-Link{
+        height: 275px;
+      }
+  }

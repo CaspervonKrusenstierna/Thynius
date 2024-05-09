@@ -18,23 +18,33 @@ std::wstring GetClipboardText()
     return text;
 }
 
-std::string gen_random(const int len) {
-    static const char alphanum[] =
-        "0123456789"
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-        "abcdefghijklmnopqrstuvwxyz";
-    std::string tmp_s;
-    tmp_s.reserve(len);
-
-    for (int i = 0; i < len; ++i) {
-        tmp_s += alphanum[rand() % (sizeof(alphanum) - 1)];
-    }
-
-    return tmp_s;
-}
-
 std::string to_utf8(std::wstring& wide_string)
 {
     static std::wstring_convert<std::codecvt_utf8<wchar_t>> utf8_conv;
     return utf8_conv.to_bytes(wide_string);
+}
+
+BOOL CALLBACK EnumWindowsCallback(HWND hwnd, LPARAM lParam) {
+    WindowFinderParams& params = *(WindowFinderParams*)lParam;
+    
+    wchar_t className[MAX_CLASSNAME] = L"";
+    GetClassName(hwnd, className, MAX_CLASSNAME);
+    std::wstring classNameWstr = className;
+    if (params.className == classNameWstr) {
+        DWORD hwndProcId;
+        GetWindowThreadProcessId(
+            hwnd,
+            &hwndProcId
+        );
+        if (hwndProcId == GetCurrentProcessId()) {
+            params.hwnds.push_back(hwnd);
+        }
+    }
+}
+std::vector<HWND> GetCurrProcWindowsByClassName(std::wstring className) {
+    WindowFinderParams params = WindowFinderParams();
+    params.className = className;
+    params.hwnds = std::vector<HWND>();
+    EnumWindows(EnumWindowsCallback, (LPARAM)&params);
+    return params.hwnds;
 }

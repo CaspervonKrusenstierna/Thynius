@@ -1,0 +1,388 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\systemeventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\systemeventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\treater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\treater.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\servercomms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\utils.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|c:\\users\\cappe\\onedrive\\skrivbord\\hp fusket v2\\hpfuskhemsida\\themis\\themisservice\\themisservice\\windowsbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\windowsbackgroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\thyniusservice.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\thyniusservice.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\themisservice\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A4B7-3E87-4BBD-B1AE-7830FF185A8F}|ThemisService\\ThyniusService.csproj|solutionrelative:themisservice\\dllinjector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\ab28f4528ca6ae3323ecb0ad0c3b7a5133f06150c7cb111d8e93c5c75ccf69c0\\src\\libraries\\System.Private.CoreLib\\src\\Microsoft\\Win32\\SafeHandles\\SafeFileHandle.Windows.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\53c8c9975fb42dad0de9401b567438424ec5ced07161393c6fe89cf24fbd69e4\\ConnectHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\1825482c844efbb2f18c5956d4baed21b17dc39fa7d3bb1c76884242ed2253e9\\HttpConnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\f2f77c3462b097a215e9d7663c19155e1e6d0f7e5de6fade7c8294c5c9ad567b\\HttpConnectionPool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\c10625cc4001a861ac2f7889d5e1301696204698bbb50b4ba289e872464a05d1\\src\\libraries\\System.Private.CoreLib\\src\\System\\ThrowHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\831bb6fb7436afef77ad022d389bb24f109b13745d352a70a3fe7bacb1735d51\\DelimitedField.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\b7fe1c7d8ad05d96e6a940d969bacf5fe01fee8b92e8ef01fe1aa02d27f123e2\\RecordInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\ba2a4cbe1aa3f153862f7303c5f7658c2016e8fa815d4995e01605e6300bfffc\\HttpClient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\d453388fea237573f44ed0b93188111a577d05a50beae44726828d54c207aa2d\\Process.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\365af0975efab538f5cdae19755699b1772611444e1a6146c987bfcf3974f194\\SafeFileHandle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\12fca88b4dae7295efbd71c92b5563263b964bcc9a42ec47ed4ac7039128ffdc\\FieldBase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\90793c3eb31d7122de8c9fc198b40ef620e753d16ec471ad4ebd91d387ca3092\\ThrowHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\1ace537a70871b5fc11ee81f6f4ddf1f90407cdb1c30fda59f883b9e0d67efce\\src\\libraries\\System.Net.Http\\src\\System\\Net\\Http\\SocketsHttpHandler\\HttpConnectionPool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\5ebe568a8d66fba677f8b5a4e4ec1693fec59099cdbd1116ceab1a04f66c4d42\\src\\libraries\\System.Private.CoreLib\\src\\System\\IO\\Enumeration\\FileSystemEnumerableFactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 195,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1395,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WindowsBackgroundService.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\WindowsBackgroundService.cs",
+              "RelativeDocumentMoniker": "ThemisService\\WindowsBackgroundService.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\WindowsBackgroundService.cs",
+              "RelativeToolTip": "ThemisService\\WindowsBackgroundService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T16:58:52.769Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Utils.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Utils.cs",
+              "RelativeDocumentMoniker": "ThemisService\\Utils.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Utils.cs",
+              "RelativeToolTip": "ThemisService\\Utils.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T07:02:01.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ConnectHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\53c8c9975fb42dad0de9401b567438424ec5ced07161393c6fe89cf24fbd69e4\\ConnectHelper.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\53c8c9975fb42dad0de9401b567438424ec5ced07161393c6fe89cf24fbd69e4\\ConnectHelper.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\53c8c9975fb42dad0de9401b567438424ec5ced07161393c6fe89cf24fbd69e4\\ConnectHelper.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\53c8c9975fb42dad0de9401b567438424ec5ced07161393c6fe89cf24fbd69e4\\ConnectHelper.cs [Read Only]",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAtwFIAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-05T10:30:05.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "HttpConnection.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\1825482c844efbb2f18c5956d4baed21b17dc39fa7d3bb1c76884242ed2253e9\\HttpConnection.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\1825482c844efbb2f18c5956d4baed21b17dc39fa7d3bb1c76884242ed2253e9\\HttpConnection.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\1825482c844efbb2f18c5956d4baed21b17dc39fa7d3bb1c76884242ed2253e9\\HttpConnection.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\1825482c844efbb2f18c5956d4baed21b17dc39fa7d3bb1c76884242ed2253e9\\HttpConnection.cs [Read Only]",
+              "ViewState": "AQIAAJIHAAAAAAAAAAAtwKQHAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-05T10:14:43.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServerComms.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ServerComms.cs",
+              "RelativeDocumentMoniker": "ThemisService\\ServerComms.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ServerComms.cs",
+              "RelativeToolTip": "ThemisService\\ServerComms.cs",
+              "ViewState": "AQIAAFMAAAAAAAAAAAAqwHwAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T07:02:22.576Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SystemEventsManager.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\SystemEventsManager.cs",
+              "RelativeDocumentMoniker": "ThemisService\\SystemEventsManager.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\SystemEventsManager.cs*",
+              "RelativeToolTip": "ThemisService\\SystemEventsManager.cs*",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAACQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T07:01:56.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Treater.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Treater.cs",
+              "RelativeDocumentMoniker": "ThemisService\\Treater.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Treater.cs",
+              "RelativeToolTip": "ThemisService\\Treater.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T07:01:57.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RecordInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\b7fe1c7d8ad05d96e6a940d969bacf5fe01fee8b92e8ef01fe1aa02d27f123e2\\RecordInfo.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b7fe1c7d8ad05d96e6a940d969bacf5fe01fee8b92e8ef01fe1aa02d27f123e2\\RecordInfo.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\b7fe1c7d8ad05d96e6a940d969bacf5fe01fee8b92e8ef01fe1aa02d27f123e2\\RecordInfo.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\b7fe1c7d8ad05d96e6a940d969bacf5fe01fee8b92e8ef01fe1aa02d27f123e2\\RecordInfo.cs [Read Only]",
+              "ViewState": "AQIAAKkAAAAAAAAAAAAjwLkAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T14:06:53.188Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HttpClient.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\ba2a4cbe1aa3f153862f7303c5f7658c2016e8fa815d4995e01605e6300bfffc\\HttpClient.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ba2a4cbe1aa3f153862f7303c5f7658c2016e8fa815d4995e01605e6300bfffc\\HttpClient.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\ba2a4cbe1aa3f153862f7303c5f7658c2016e8fa815d4995e01605e6300bfffc\\HttpClient.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\ba2a4cbe1aa3f153862f7303c5f7658c2016e8fa815d4995e01605e6300bfffc\\HttpClient.cs [Read Only]",
+              "ViewState": "AQIAAGgCAAAAAAAAAAAjwIcCAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T16:18:49.074Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "HttpConnectionPool.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\f2f77c3462b097a215e9d7663c19155e1e6d0f7e5de6fade7c8294c5c9ad567b\\HttpConnectionPool.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\f2f77c3462b097a215e9d7663c19155e1e6d0f7e5de6fade7c8294c5c9ad567b\\HttpConnectionPool.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\f2f77c3462b097a215e9d7663c19155e1e6d0f7e5de6fade7c8294c5c9ad567b\\HttpConnectionPool.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\f2f77c3462b097a215e9d7663c19155e1e6d0f7e5de6fade7c8294c5c9ad567b\\HttpConnectionPool.cs [Read Only]",
+              "ViewState": "AQIAAI4FAAAAAAAAAAAtwKEFAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-29T15:13:41.181Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ThrowHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\c10625cc4001a861ac2f7889d5e1301696204698bbb50b4ba289e872464a05d1\\src\\libraries\\System.Private.CoreLib\\src\\System\\ThrowHelper.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\c10625cc4001a861ac2f7889d5e1301696204698bbb50b4ba289e872464a05d1\\src\\libraries\\System.Private.CoreLib\\src\\System\\ThrowHelper.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\c10625cc4001a861ac2f7889d5e1301696204698bbb50b4ba289e872464a05d1\\src\\libraries\\System.Private.CoreLib\\src\\System\\ThrowHelper.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\c10625cc4001a861ac2f7889d5e1301696204698bbb50b4ba289e872464a05d1\\src\\libraries\\System.Private.CoreLib\\src\\System\\ThrowHelper.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAjwHUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-28T09:19:06.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Process.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\d453388fea237573f44ed0b93188111a577d05a50beae44726828d54c207aa2d\\Process.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\d453388fea237573f44ed0b93188111a577d05a50beae44726828d54c207aa2d\\Process.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\d453388fea237573f44ed0b93188111a577d05a50beae44726828d54c207aa2d\\Process.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\d453388fea237573f44ed0b93188111a577d05a50beae44726828d54c207aa2d\\Process.cs [Read Only]",
+              "ViewState": "AQIAAF8HAAAAAAAAAAAjwG8HAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T16:58:44.112Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "SafeFileHandle.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\365af0975efab538f5cdae19755699b1772611444e1a6146c987bfcf3974f194\\SafeFileHandle.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\365af0975efab538f5cdae19755699b1772611444e1a6146c987bfcf3974f194\\SafeFileHandle.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\365af0975efab538f5cdae19755699b1772611444e1a6146c987bfcf3974f194\\SafeFileHandle.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\365af0975efab538f5cdae19755699b1772611444e1a6146c987bfcf3974f194\\SafeFileHandle.cs [Read Only]",
+              "ViewState": "AQIAAA8BAAAAAAAAAIAwwB8BAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T14:31:28.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "FieldBase.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\12fca88b4dae7295efbd71c92b5563263b964bcc9a42ec47ed4ac7039128ffdc\\FieldBase.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\12fca88b4dae7295efbd71c92b5563263b964bcc9a42ec47ed4ac7039128ffdc\\FieldBase.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\12fca88b4dae7295efbd71c92b5563263b964bcc9a42ec47ed4ac7039128ffdc\\FieldBase.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\12fca88b4dae7295efbd71c92b5563263b964bcc9a42ec47ed4ac7039128ffdc\\FieldBase.cs [Read Only]",
+              "ViewState": "AQIAALQBAAAAAAAAAAAuwM4BAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T14:26:16.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DelimitedField.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\831bb6fb7436afef77ad022d389bb24f109b13745d352a70a3fe7bacb1735d51\\DelimitedField.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\831bb6fb7436afef77ad022d389bb24f109b13745d352a70a3fe7bacb1735d51\\DelimitedField.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\831bb6fb7436afef77ad022d389bb24f109b13745d352a70a3fe7bacb1735d51\\DelimitedField.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\831bb6fb7436afef77ad022d389bb24f109b13745d352a70a3fe7bacb1735d51\\DelimitedField.cs [Read Only]",
+              "ViewState": "AQIAAIEAAAAAAAAAAAAjwJEAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T13:44:20.681Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ThrowHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\90793c3eb31d7122de8c9fc198b40ef620e753d16ec471ad4ebd91d387ca3092\\ThrowHelper.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\90793c3eb31d7122de8c9fc198b40ef620e753d16ec471ad4ebd91d387ca3092\\ThrowHelper.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\Temp\\.vsdbgsrc\\90793c3eb31d7122de8c9fc198b40ef620e753d16ec471ad4ebd91d387ca3092\\ThrowHelper.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\Temp\\.vsdbgsrc\\90793c3eb31d7122de8c9fc198b40ef620e753d16ec471ad4ebd91d387ca3092\\ThrowHelper.cs [Read Only]",
+              "ViewState": "AQIAAEUAAAAAAAAAAAApwE8AAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-27T07:24:48.539Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "HttpConnectionPool.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\1ace537a70871b5fc11ee81f6f4ddf1f90407cdb1c30fda59f883b9e0d67efce\\src\\libraries\\System.Net.Http\\src\\System\\Net\\Http\\SocketsHttpHandler\\HttpConnectionPool.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\1ace537a70871b5fc11ee81f6f4ddf1f90407cdb1c30fda59f883b9e0d67efce\\src\\libraries\\System.Net.Http\\src\\System\\Net\\Http\\SocketsHttpHandler\\HttpConnectionPool.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\1ace537a70871b5fc11ee81f6f4ddf1f90407cdb1c30fda59f883b9e0d67efce\\src\\libraries\\System.Net.Http\\src\\System\\Net\\Http\\SocketsHttpHandler\\HttpConnectionPool.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\1ace537a70871b5fc11ee81f6f4ddf1f90407cdb1c30fda59f883b9e0d67efce\\src\\libraries\\System.Net.Http\\src\\System\\Net\\Http\\SocketsHttpHandler\\HttpConnectionPool.cs",
+              "ViewState": "AQIAAEEGAAAAAAAAAAAEwHIGAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T17:43:33.692Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DllInjector.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\DllInjector.cs",
+              "RelativeDocumentMoniker": "ThemisService\\DllInjector.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\DllInjector.cs",
+              "RelativeToolTip": "ThemisService\\DllInjector.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T15:46:59.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ThyniusService",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThyniusService.csproj",
+              "RelativeDocumentMoniker": "ThemisService\\ThyniusService.csproj",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\ThyniusService.csproj",
+              "RelativeToolTip": "ThemisService\\ThyniusService.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-04-25T16:52:32.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "FileSystemEnumerableFactory.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\5ebe568a8d66fba677f8b5a4e4ec1693fec59099cdbd1116ceab1a04f66c4d42\\src\\libraries\\System.Private.CoreLib\\src\\System\\IO\\Enumeration\\FileSystemEnumerableFactory.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\5ebe568a8d66fba677f8b5a4e4ec1693fec59099cdbd1116ceab1a04f66c4d42\\src\\libraries\\System.Private.CoreLib\\src\\System\\IO\\Enumeration\\FileSystemEnumerableFactory.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\5ebe568a8d66fba677f8b5a4e4ec1693fec59099cdbd1116ceab1a04f66c4d42\\src\\libraries\\System.Private.CoreLib\\src\\System\\IO\\Enumeration\\FileSystemEnumerableFactory.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\5ebe568a8d66fba677f8b5a4e4ec1693fec59099cdbd1116ceab1a04f66c4d42\\src\\libraries\\System.Private.CoreLib\\src\\System\\IO\\Enumeration\\FileSystemEnumerableFactory.cs [Read Only]",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAqwHUAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T17:09:36.978Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "SafeFileHandle.Windows.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\ab28f4528ca6ae3323ecb0ad0c3b7a5133f06150c7cb111d8e93c5c75ccf69c0\\src\\libraries\\System.Private.CoreLib\\src\\Microsoft\\Win32\\SafeHandles\\SafeFileHandle.Windows.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\ab28f4528ca6ae3323ecb0ad0c3b7a5133f06150c7cb111d8e93c5c75ccf69c0\\src\\libraries\\System.Private.CoreLib\\src\\Microsoft\\Win32\\SafeHandles\\SafeFileHandle.Windows.cs",
+              "ToolTip": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\ab28f4528ca6ae3323ecb0ad0c3b7a5133f06150c7cb111d8e93c5c75ccf69c0\\src\\libraries\\System.Private.CoreLib\\src\\Microsoft\\Win32\\SafeHandles\\SafeFileHandle.Windows.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\AppData\\Local\\SourceServer\\ab28f4528ca6ae3323ecb0ad0c3b7a5133f06150c7cb111d8e93c5c75ccf69c0\\src\\libraries\\System.Private.CoreLib\\src\\Microsoft\\Win32\\SafeHandles\\SafeFileHandle.Windows.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAtwHEAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T17:01:56.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Program.cs",
+              "RelativeDocumentMoniker": "ThemisService\\Program.cs",
+              "ToolTip": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisService\\ThemisService\\Program.cs",
+              "RelativeToolTip": "ThemisService\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T07:02:23.125Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 679,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

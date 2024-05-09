@@ -26,9 +26,33 @@ namespace ThyniusClient
         public string ButtonMessage { get; set; }
 
         public bool isActivated;
+
+        private void UpdateLoginMsgContent()
+        {
+            if (HasUserDisabledThynius())
+            {
+                LoginMsg.Text = "Vill du aktivera Thynius igen?";
+            }
+            else
+            {
+                LoginMsg.Text = "Vill du avaktivera Thynius temporärt?";
+            }
+        }
+        private void UpdateEnableDisableButtonContent()
+        {
+            if (HasUserDisabledThynius())
+            {
+                LoginBtn.Content = "Aktivera";
+            }
+            else
+            {
+                LoginBtn.Content = "Avaktivera";
+            }
+        }
         private async void ActivateDeactivate_Clicked(object sender, RoutedEventArgs e)
         {
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Thynius\\Enabled";
+
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Thynius\\Enabled";
             if (isActivated)
             {
                 File.WriteAllText(filePath, "1");
@@ -37,11 +61,20 @@ namespace ThyniusClient
             {
                 File.WriteAllText(filePath, "0");
             }
-            Process.GetCurrentProcess().Kill();
+            UpdateLoginMsgContent();
+            UpdateEnableDisableButtonContent();
+        }
+        private async void Logout_Clicked(object sender, RoutedEventArgs e)
+        {
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Thynius\\CookieData.txt";
+            File.Delete(filePath);
+            MainWindow mainWindow = new MainWindow(_serverComms);
+            mainWindow.Show();
+            this.Close();
         }
         private bool HasUserDisabledThynius()
         {
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Thynius\\Enabled";
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Thynius\\Enabled";
             try
             {
                 int temp = 0;
@@ -58,20 +91,15 @@ namespace ThyniusClient
                 return false;
             }
         }
-        public LoggedInWindow()
+
+        private readonly ServerComms _serverComms;
+        public LoggedInWindow(ServerComms serverComms)
         {
-            if (HasUserDisabledThynius())
-            {
-                ActivateDeactivateMessage = "Vill du aktivera Thynius igen?";
-                ButtonMessage = "Aktivera";
-            }
-            else
-            {
-                ActivateDeactivateMessage = "Vill du avaktivera Thynius temporärt?";
-                ButtonMessage = "Avaktivera";
-            }
+            _serverComms = serverComms;
             this.DataContext = this;
             InitializeComponent();
+            UpdateLoginMsgContent();
+            UpdateEnableDisableButtonContent();
         }
     }
 }

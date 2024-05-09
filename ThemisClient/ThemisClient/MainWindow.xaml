@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ThyniusClient"
+        WindowStartupLocation="CenterScreen"
+        xmlns:local="clr-namespace:ThyniusClient" xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="Thynius" 
         Width="400"
@@ -23,13 +24,20 @@
                               Color ="Gray" />
         </Border.Effect>
         <StackPanel Orientation="Vertical"
-                    Margin="20">
+                    Margin="0">
             <TextBlock Text="Logga In" 
                        FontSize="26"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Top"
                        FontWeight="Bold"
-                       Padding="10"
+                       Padding="15"
+                       />
+            <TextBlock
+                       Name="ErrorMessage"
+                       FontSize="16"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontWeight="Bold"
                        />
             <Grid VerticalAlignment="Center">
                 <Grid.RowDefinitions>
@@ -49,13 +57,12 @@
                        Visibility="Visible" Grid.Row="0" 
                        HorizontalAlignment="Center"
                        Background="#2E475D"
-                       Width="250"
+                       Width="300"
                        Height="50"
                        Orientation="Horizontal"
                        >
-                        <Rectangle Margin="5, 0, 0, 0" Width="40" Height="40" VerticalAlignment="Center" Fill="#FA5B35" RadiusX="5" RadiusY="5">
-
-                        </Rectangle>
+                        <Rectangle Margin="5, 0, 0, 0" Width="40" Height="40" VerticalAlignment="Center" Fill="#FA5B35" RadiusX="5" RadiusY="5"/>
+                        <svgc:SvgViewbox Margin="-40, 0, 0, 0" Height="18" Width="18" Source="/Icons/envelopeimg.svg"/>
                         <TextBox 
                          Name="UsernameTextBox"
                          Grid.Row="2"
@@ -70,39 +77,39 @@
                          />
                     </StackPanel>
                 </StackPanel>
-                <StackPanel Name="PasswordPanel" Visibility="Visible" Grid.Row="2" HorizontalAlignment="Center">
-                   <TextBlock Text="Lösenord" 
-                   Grid.Row="1"
-                   Margin="0,15"
-                   FontSize="15"     
-                   HorizontalAlignment="Left"/>
-                    <StackPanel 
-                        Name="PasswordInputContainer" 
-                        Visibility="Visible" Grid.Row="0" 
-                        HorizontalAlignment="Center"
-                        Background="#2E475D"
-                        Width="250"
-                        Height="50"
-                        Orientation="Horizontal"
-                        >
-                        <Rectangle Margin="5, 0, 0, 0" Width="40" Height="40" VerticalAlignment="Center" Fill="#FA5B35" RadiusX="5" RadiusY="5">
-                        </Rectangle>
-                        <PasswordBox 
-                          Name="PasswordTextBox"
-                          Grid.Row="2"
-                          Password=""
-                          Margin="5, 0, 0, 0"       
-                          Height="50"
-                          VerticalContentAlignment="Center"
-                          Width="250"
-                          FontSize="16"
-                          BorderThickness="0,0,0,0"
-                          Foreground="White"
-                          Background="#2E475D"
-                          />
-                    </StackPanel>
-        </StackPanel>
 
+                <StackPanel Name="PasswordPanel" Visibility="Visible" Grid.Row="2" HorizontalAlignment="Center">
+                    <TextBlock Text="Lösenord" 
+                       Grid.Row="1"
+                       Margin="0,15"
+                       FontSize="15"     
+                       HorizontalAlignment="Left"/>
+                    <StackPanel 
+                            Name="PasswordInputContainer" 
+                            Visibility="Visible" Grid.Row="0" 
+                            HorizontalAlignment="Center"
+                            Background="#2E475D"
+                            Width="300"
+                            Height="50"
+                            Orientation="Horizontal"
+                            >
+                        <Rectangle Margin="5, 0, 0, 0" Width="40" Height="40" VerticalAlignment="Center" Fill="#FA5B35" RadiusX="5" RadiusY="5"/>
+                        <svgc:SvgViewbox Margin="-40, 0, 0, 0" Height="18" Width="18" Source="/Icons/unlockimg.svg"/>
+                        <PasswordBox 
+                              Name="PasswordTextBox"
+                              Grid.Row="2"
+                              Password=""
+                              Margin="5, 0, 0, 0"       
+                              Height="50"
+                              VerticalContentAlignment="Center"
+                              Width="250"
+                              FontSize="16"
+                              BorderThickness="0,0,0,0"
+                              Foreground="White"
+                              Background="#2E475D"
+                              />
+                    </StackPanel>
+                </StackPanel>
             </Grid>
             <Button x:Name="LoginBtn" 
                     Content="Bekräfta" 
@@ -112,7 +119,7 @@
                     Background="#FA5B35"
                     Margin="0,25"
                     Height="40"
-                    Width="250"
+                    Width="300"
                     Click="LoginButton_Clicked"
                     >
                 <Button.Style>

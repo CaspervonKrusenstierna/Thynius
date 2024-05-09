@@ -22,7 +22,15 @@ namespace ThyniusClient
         private async void LoginButton_Clicked(object sender, RoutedEventArgs e)
         {
             bool Result = await serverComms.LoginAsync(UsernameTextBox.Text, PasswordTextBox.Password);
-            
+            if (!Result)
+            {
+                ErrorMessage.Text = "Felaktig information";
+                ErrorMessage.Foreground = Brushes.Red;
+                return;
+            }
+            LoggedInWindow loggedInWindow = new LoggedInWindow(serverComms);
+            loggedInWindow.Show();
+            this.Close();
         }
 
         private ServerComms serverComms;

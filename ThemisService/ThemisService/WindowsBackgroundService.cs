@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.IO;
 
 namespace ThyniusService
 {
@@ -11,16 +10,16 @@ namespace ThyniusService
 
         private void CreateDirs()
         {
-            string RoamingDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData);
-            Directory.CreateDirectory(RoamingDir + "\\Thynius");
-            Directory.CreateDirectory(RoamingDir + "\\Thynius\\Sessions");
-            Directory.CreateDirectory(RoamingDir + "\\Thynius\\CookieData");
+            string AppdataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            Directory.CreateDirectory(AppdataDir + "\\Thynius");
+            Directory.CreateDirectory(AppdataDir + "\\Thynius\\Sessions");
         }
         public WindowsBackgroundService(ILogger<WindowsBackgroundService> logger)
         {
             _logger = logger;
+            _logger.LogInformation("yOOO");
             thyniusInstallationDir = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles) + "\\Thynius\\";
-            thyniusDataDir = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\Thynius\\";
+            thyniusDataDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Thynius\\";
             Process regeditProcess = Process.Start("regedit.exe", "/s \"" + thyniusInstallationDir + "settings" + "\"");
             regeditProcess.WaitForExit();
 
@@ -28,15 +27,13 @@ namespace ThyniusService
             {
                 CreateDirs();
             }
-
-
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            ServerComms serverComms = new ServerComms("https://localhost:7135", thyniusDataDir + "CookieData\\CookieData.txt", _logger);
+             CreateDirs();
+            ServerComms serverComms = new ServerComms("https://thynius.com", thyniusDataDir + "CookieData.txt", _logger);
             SystemEventsManager systemEventsManager = new SystemEventsManager(thyniusInstallationDir, thyniusDataDir, serverComms, _logger);
-
         }
     }
 }

@@ -1,0 +1,229 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C6387",
+          "message": {
+            "text": "'CreateThread(0, 0, (unsigned long (void *) *)MainThread, hModule, 0, 0)' could be '0':  this does not adhere to the specification for the function 'CloseHandle'. "
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+                },
+                "region": {
+                  "startLine": 137,
+                  "startColumn": 9,
+                  "endLine": 137,
+                  "endColumn": 94
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "DllMain",
+                  "decoratedName": "DllMain@12",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+                          },
+                          "region": {
+                            "startLine": 134,
+                            "startColumn": 13
+                          }
+                        },
+                        "message": {
+                          "text": "Assume switch ( 'ul_reason_for_call' ) resolves to case 1: "
+                        }
+                      },
+                      "kinds": [
+                        "branch"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+                          },
+                          "region": {
+                            "startLine": 136,
+                            "startColumn": 5
+                          }
+                        }
+                      },
+                      "importance": "unimportant"
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'<symbol>' receives the Return value from 'CreateThread' (declared at c:\\program files (x86)\\windows kits\\10\\include\\10.0.22621.0\\um\\processthreadsapi.h:194)"
+                        }
+                      },
+                      "kinds": [
+                        "declaration"
+                      ]
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+                          },
+                          "region": {
+                            "startLine": 137,
+                            "startColumn": 20
+                          }
+                        },
+                        "message": {
+                          "text": "'CreateThread(0, 0, (unsigned long (void *) *)MainThread, hModule, 0, 0)' should not be NULL, because this is not consistent with the SAL annotation on 'CloseHandle'"
+                        }
+                      },
+                      "kinds": [
+                        "usage"
+                      ],
+                      "importance": "essential"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26819",
+          "message": {
+            "text": "Unannotated fallthrough between switch labels (es.78)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+                },
+                "region": {
+                  "startLine": 138,
+                  "startColumn": 10
+                }
+              },
+              "logicalLocations": [
+                {
+                  "fullyQualifiedName": "DllMain",
+                  "decoratedName": "DllMain@12",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.39.33523.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Users/Cappe/OneDrive/Skrivbord/HP Fusket v2/hpfuskhemsida/Themis/Dll1/Dll1/dllmain.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "sha-256": "750d37ef01d9c2cd0a2e0a4592947b973d5fb05370085862cd6875ab301ddcca"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/hooks/hooks.h"
+          },
+          "hashes": {
+            "sha-256": "45d8c5e754c4097cd45ac130f569c76ae6a9b1b5cf58bef0664d550a8ab542f1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/systemutils/systemutils.h"
+          },
+          "hashes": {
+            "sha-256": "d98b268bf6dd77edd49236e207691e491f708c76b65f8dad97d51bebcfe1db46"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/memutils/memutils.h"
+          },
+          "hashes": {
+            "sha-256": "d98d920090c3647bf0e7277110ce0a30feca192c62da09022570cc457467b2c8"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/data/data.h"
+          },
+          "hashes": {
+            "sha-256": "1ef91d77a31acafa53d34d10e1b878295d291f939dd7e0e32d5cbfaecdbafcfe"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/minhook/include/minhook.h"
+          },
+          "hashes": {
+            "sha-256": "62dff05e63155c6bf8135c36a0d79dedbdcaaede9da26fe38daf0bea34323e38"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/wordfeaturedisabler/wordfeaturedisabler.h"
+          },
+          "hashes": {
+            "sha-256": "b130a21dc55ccfd0586db64c5a533b0b23b5272503bf8d31b73f8c7b6f9e131e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/cappe/onedrive/skrivbord/hp fusket v2/hpfuskhemsida/themis/dll1/dll1/themissessiondata/themissessiondata.h"
+          },
+          "hashes": {
+            "sha-256": "dec935312c37e828cfdb070278707b46ae6c0a6d672882aebbf4b5e9db15701d"
+          }
+        }
+      ]
+    }
+  ]
+}

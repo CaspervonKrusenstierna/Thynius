@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "LBUK0GrZeBz5h6ng+GJ93rUINZQHF9IM0PVcOCkG0olUIHdJ5MDDVeNyCtCATFvbbUH0ehwAcjNxChnLNGPeGw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThyniusInstallCustomAction\\ThyniusInstallCustomAction.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Cappe\\.nuget\\packages\\system.codedom\\8.0.0\\system.codedom.8.0.0.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\system.management\\8.0.0\\system.management.8.0.0.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\wixtoolset.dtf.customaction\\5.0.0\\wixtoolset.dtf.customaction.5.0.0.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\wixtoolset.dtf.windowsinstaller\\5.0.0\\wixtoolset.dtf.windowsinstaller.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

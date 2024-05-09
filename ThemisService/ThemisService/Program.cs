@@ -14,8 +14,7 @@ namespace ThyniusService
                 options.ServiceName = "ThyniusService";
             });
 
-            LoggerProviderOptions.RegisterProviderOptions<
-                EventLogSettings, EventLogLoggerProvider>(builder.Services);
+            LoggerProviderOptions.RegisterProviderOptions<EventLogSettings, EventLogLoggerProvider>(builder.Services);
 
             builder.Services.AddHostedService<WindowsBackgroundService>();
 

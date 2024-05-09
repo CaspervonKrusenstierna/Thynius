@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "zTwU6c3oqba/GMBHvmT4EcEpK+7lx9M0BAoA2iqC7f48mnnZJvichC2aDHDuoCRoQfgzP2eYul8iSBQ/gHLYYQ==",
+  "dgSpecHash": "lU2tNeVrouTxrwdWPvooRUuh7GDORKxgXQVhkwwsx2y3jdPibNEpJbc9NCRzbJAsBC2XqoJeEl+eEspbsXY6PQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\HP Fusket v2\\hpfuskhemsida\\Themis\\ThemisClient\\ThemisClient\\ThyniusClient.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Cappe\\.nuget\\packages\\filehelpers\\3.5.2\\filehelpers.3.5.2.nupkg.sha512"
+    "C:\\Users\\Cappe\\.nuget\\packages\\filehelpers\\3.5.2\\filehelpers.3.5.2.nupkg.sha512",
+    "C:\\Users\\Cappe\\.nuget\\packages\\sharpvectors.wpf\\1.8.4\\sharpvectors.wpf.1.8.4.nupkg.sha512"
   ],
   "logs": []
 }

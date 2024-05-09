@@ -33,9 +33,7 @@ namespace ThyniusService
             this.serverComms = serverComms;
             this.logger = logger;
             injector = new DllInjector();
-            dllPath = installationDir + "\\ThyniusDll.dll";
-            wordListenerThread = new Thread(WordListenerThreadMain);
-            wordListenerThread.Start();
+            dllPath = installationDir + "Dll1.dll";
             SyncSessions();
         }
 
@@ -43,16 +41,22 @@ namespace ThyniusService
         //also runs on computer start to check if there is any unsynced sessions from abrupt exit
         private async void SyncSessions()
         {
-            string[] unsyncedSessions = Directory.GetFiles(dataDir + "Sessions/");
+            bool isLoggedIn = await serverComms.isLoggedIn();
+            if (!isLoggedIn)
+            {
+                Utils.StartThyniusClient(installationDir);
+                return;
+            }
+            string[] unsyncedSessions = Directory.GetFiles(dataDir + "Sessions\\");
             foreach (string sessionPath in unsyncedSessions)
             {
-                if (!sessionPath.EndsWith("_metadata") && !sessionPath.EndsWith("_result"))
+                if (!sessionPath.EndsWith("_metadata") && !sessionPath.EndsWith("_addindata") && !sessionPath.EndsWith("_result"))
                 {
                     if (await serverComms.SubmitSession(Path.GetFileName(sessionPath), sessionPath))
                     {
-                        //File.Delete(sessionPath);
-                        //File.Delete(sessionPath + "_metadata");
-                        //File.Delete(sessionPath + "_result");
+                        File.Delete(sessionPath);
+                        File.Delete(sessionPath + "_metadata");
+                        File.Delete(sessionPath + "_result");
                     }
                 }
             }
@@ -61,7 +65,15 @@ namespace ThyniusService
         private bool HasUserDisabledThynius()
         {
             int temp = 0;
-            int.TryParse(File.ReadAllText(installationDir + "\\Enabled"),out temp);
+            try
+            {
+                int.TryParse(File.ReadAllText(dataDir + "\\Enabled"), out temp);
+            }
+            catch
+            {
+                File.Create(dataDir + "\\Enabled").Close();
+                return false;
+            }
             return temp > 0;
         }
         private void OnWordExit(int processId)
@@ -74,6 +86,7 @@ namespace ThyniusService
         }
         private void OnWordStartUp(int processId)
         {
+            logger.LogInformation("Word started");
             if (HasUserDisabledThynius()) {
                 return;
             }
