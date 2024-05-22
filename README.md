@@ -7,7 +7,7 @@ How it works:
 4. Word closes and the background process sends the inputs file to the server
 5. The student finishes their text and submits it to an assignment created by the teacher in the web app.
 6. The server recreates the text content trough looping trough the inputs file and also determines if the user has cheated or not.
-7. The teacher then views the text and the results of the cheat detection algorithms. The teacher may also view how the text was written with millisecond precision.
+7. The teacher then views the text and the result of the cheat detection algorithm. The teacher may also view how the text was written with millisecond precision.
 
 Video visualising the process from a teacher/user perspective:
 
