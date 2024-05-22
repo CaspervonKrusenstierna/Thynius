@@ -96,8 +96,8 @@ namespace ThyniusWeb.Server
                     }
                 }
 
-                string AdminAccEmail = "cappelappe@outlook.com";
-                string AdminAccPassword = "Dalmas0099!";
+                string AdminAccEmail = "";
+                string AdminAccPassword = "";
  
                 if (await userManager.FindByEmailAsync(AdminAccEmail) == null)
                 {
