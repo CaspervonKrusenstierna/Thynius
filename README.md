@@ -1,1 +1,1 @@
-This project prevents cheating in schools with Chat-GPT in a new way trough analyzing how the text is written instead of looking at the result. 
+This project prevents cheating in schools with ChatGPT in a new way by analyzing how the text is written instead of looking at the result. Students write their texts in Word and then submit the text to an assignment created by the teacher in the web app. The teacher can then see the results of the cheat detection algorithms and also see how the text was written with millisecond precision.
