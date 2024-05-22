@@ -2,5 +2,6 @@ This project prevents cheating in schools with ChatGPT in a new way by analyzing
 
 Video demonstrating how it works:
 
-https://github.com/CaspervonKrusenstierna/Thynius/assets/136915966/97097c83-2af4-4eae-8329-bc532df06e6e
+https://github.com/CaspervonKrusenstierna/Thynius/assets/136915966/56668f27-77ec-4b40-ba62-62d4218dab48
+
 
