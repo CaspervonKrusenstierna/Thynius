@@ -1,4 +1,4 @@
-This project prevents cheating in schools with ChatGPT in a new way by analyzing how the text is written instead of looking at the result. 
+This project prevents cheating in schools with ChatGPT in a new way by analyzing how a text was written instead of looking at the result. 
 
 How it works:
 1. The background process waits for Word to open.
