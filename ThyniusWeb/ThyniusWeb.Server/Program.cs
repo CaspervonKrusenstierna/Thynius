@@ -19,67 +19,47 @@ namespace ThyniusWeb.Server
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        private static void AddRepositories(WebApplicationBuilder builder)
         {
-            var builder = WebApplication.CreateBuilder(args);
-
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'Defaultconnection' not found.");
-
-            object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
-            builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddAuthorization();
-            builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
-            builder.Services.Configure<RequestLocalizationOptions>(
-            opts =>
-            {
-            var supportedCultures = new List<CultureInfo>
-            {
-                new CultureInfo("en"),
-                new CultureInfo("sv-SE"),
-            };
-
-            opts.DefaultRequestCulture = new RequestCulture("en");
-            opts.SupportedCultures = supportedCultures;
-            opts.SupportedUICultures = supportedCultures;
-            });
-
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<IOrganizationRepository, OrganizationRepository>();
             builder.Services.AddScoped<IGroupRepository, GroupRepository>();
             builder.Services.AddScoped<IAssignmentRepository, AssignmentRepository>();
             builder.Services.AddScoped<IUserTextRepository, UserTextRepository>();
+        }
 
+        private static void SetupAWS(WebApplicationBuilder builder)
+        {
             builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
             builder.Services.AddAWSService<IAmazonS3>();
+        }
 
+        private static void ConfigureLocalization(WebApplicationBuilder builder)
+        {
+            builder.Services.Configure<RequestLocalizationOptions>(
+             opts =>
+             {
+                 var supportedCultures = new List<CultureInfo>
+             {
+                new CultureInfo("en"),
+                new CultureInfo("sv-SE"),
+             };
 
-            var app = builder.Build();
+                 opts.DefaultRequestCulture = new RequestCulture("en");
+                 opts.SupportedCultures = supportedCultures;
+                 opts.SupportedUICultures = supportedCultures;
+             });
+        }
 
-            app.UseRequestLocalization();
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
-            app.MapCustomIdentityApi<ApplicationUser>();
+        private static void SetupDatabase(WebApplicationBuilder builder)
+        {
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'Defaultconnection' not found.");
+            object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+        }
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
-
-            app.MapControllers();
-
-            app.MapFallbackToFile("/index.html");
-
-            using(var scope = app.Services.CreateScope())
+        private static async void SeedDatabase(WebApplication app)
+        {
+            using (var scope = app.Services.CreateScope())
             {
                 await using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                 await dbContext.Database.MigrateAsync();
@@ -90,15 +70,15 @@ namespace ThyniusWeb.Server
 
                 foreach (var role in roles)
                 {
-                    if(!await roleManager.RoleExistsAsync(role))
+                    if (!await roleManager.RoleExistsAsync(role))
                     {
-                        await roleManager.CreateAsync(new IdentityRole(role));      
+                        await roleManager.CreateAsync(new IdentityRole(role));
                     }
                 }
 
                 string AdminAccEmail = "";
                 string AdminAccPassword = "";
- 
+
                 if (await userManager.FindByEmailAsync(AdminAccEmail) == null)
                 {
                     var user = new ApplicationUser();
@@ -119,6 +99,48 @@ namespace ThyniusWeb.Server
                 }
 
             }
+        }
+        public static async Task Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+
+            SetupDatabase(builder);
+            builder.Services.AddIdentityApiEndpoints<ApplicationUser>().AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            builder.Services.AddAuthorization();
+            builder.Services.AddControllers();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+            ConfigureLocalization(builder);
+            AddRepositories(builder);
+            SetupAWS(builder);
+
+            var app = builder.Build();
+
+            app.UseRequestLocalization();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+            app.MapCustomIdentityApi<ApplicationUser>();
+
+            // Configure the HTTP request pipeline.
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseAuthorization();
+
+            app.MapControllers();
+
+            app.MapFallbackToFile("/index.html");
+
+            #if DEBUG
+            SeedDatabase(app);
+            #endif
             app.Run();
 
         }
