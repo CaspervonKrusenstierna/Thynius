@@ -57,49 +57,6 @@ namespace ThyniusWeb.Server
             object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
         }
 
-        private static async void SeedDatabase(WebApplication app)
-        {
-            using (var scope = app.Services.CreateScope())
-            {
-                await using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                await dbContext.Database.MigrateAsync();
-
-                RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                UserManager<ApplicationUser> userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-                var roles = new[] { "Admin", "OrganizationAdmin", "Teacher", "VerifiedUser" };
-
-                foreach (var role in roles)
-                {
-                    if (!await roleManager.RoleExistsAsync(role))
-                    {
-                        await roleManager.CreateAsync(new IdentityRole(role));
-                    }
-                }
-
-                string AdminAccEmail = "";
-                string AdminAccPassword = "";
-
-                if (await userManager.FindByEmailAsync(AdminAccEmail) == null)
-                {
-                    var user = new ApplicationUser();
-                    user.UserName = AdminAccEmail;
-                    user.Email = AdminAccEmail;
-                    user.FullName = "Casper vk";
-                    user.OrganizationEmailExtension = "outlook.com";
-
-                    await userManager.CreateAsync(user, AdminAccPassword);
-                    await userManager.AddToRoleAsync(user, "Admin");
-                    await userManager.AddToRoleAsync(user, "VerifiedUser");
-                }
-
-                ApplicationUser applicationUser = await userManager.FindByEmailAsync("teacher.testaccount@outlook.com");
-                if (applicationUser != null)
-                {
-                    await userManager.AddToRoleAsync(applicationUser, "Teacher");
-                }
-
-            }
-        }
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -139,7 +96,7 @@ namespace ThyniusWeb.Server
             app.MapFallbackToFile("/index.html");
 
             #if DEBUG
-            SeedDatabase(app);
+            await Seeding.SeedDatabase(app);
             #endif
             app.Run();
 

@@ -3,8 +3,9 @@
     "",
     "\\ThyniusWeb",
     "\\ThyniusWeb\\ThyniusWeb.Server",
-    "\\ThyniusWeb\\ThyniusWeb.Server\\Controllers"
+    "\\ThyniusWeb\\ThyniusWeb.Server\\Repository",
+    "\\ThyniusWeb\\ThyniusWeb.Server\\Resources"
   ],
-  "SelectedNode": "\\ThyniusWeb\\ThyniusWeb.Server\\Controllers\\AccountController.cs",
+  "SelectedNode": "\\ThyniusWeb\\ThyniusWeb.sln",
   "PreviewInSolutionExplorer": false
 }
