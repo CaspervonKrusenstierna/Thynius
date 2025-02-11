@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<WixLocalization Culture="sv-SE" xmlns="http://wixtoolset.org/schemas/v4/wxl">
-    <String Id="CannotInstallWithProductBInstalled" Value="Thynius är redan installerad på din dator." />
-	<String Id="DowngradeError" Value="En nyare version av Thynius är redan installerad på din dator." />
-</WixLocalization>
