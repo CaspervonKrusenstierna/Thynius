@@ -10,7 +10,5 @@ export default function useSessionInfo() {
     useEffect(() => {
        updateSessionInfo();
     }, [])
-    
-
     return [sessionInfo, updateSessionInfo];
 }

@@ -41,10 +41,7 @@ export default defineConfig({
         alias: {
             '@': path.resolve(__dirname, "./src"),
         }
-    },
-    build: {
-        outDir: 'build', // if commented out or not set, default is 'dist'
-      }
+    }
     ,  
     server: {
         proxy: {

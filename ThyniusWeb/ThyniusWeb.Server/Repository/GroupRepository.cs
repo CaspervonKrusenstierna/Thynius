@@ -84,7 +84,12 @@ namespace ThyniusWeb.Server.Repository
                 Expires = DateTime.Now.AddHours(1)
 
             };
-            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
+//do this in debug mode for testing with Minio. The https url does not work with our local setup
+#if DEBUG
+            return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest).Replace("https", "http");
+#else
+             return _amazonS3.GetPreSignedURL(getPreSignedUrlRequest);
+#endif
         }
     }
 }

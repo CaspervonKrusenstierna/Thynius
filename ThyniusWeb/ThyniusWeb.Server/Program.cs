@@ -48,7 +48,8 @@ namespace ThyniusWeb.Server
             {
                 RegionEndpoint = RegionEndpoint.GetBySystemName(awsRegion),
                 ServiceURL = minioUrl,
-                ForcePathStyle = true 
+                ForcePathStyle = true,
+                UseHttp = true
             };
 
             builder.Services.AddSingleton<IAmazonS3>(sp =>

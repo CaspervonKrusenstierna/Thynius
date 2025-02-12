@@ -3,7 +3,7 @@ import {X} from "lucide-react"
 import {useNavigate} from "react-router-dom"
 
 const HomePageBoxHeader = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <div className='ExitButtonContainer'>
         <button className='h-10 w-10' onClick={() => {navigate("/")}}><X className='w-full h-full'></X></button>

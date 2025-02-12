@@ -6,7 +6,6 @@ export default function AssureLoggedIn(){
     let sessionInfo = useContext(sessionInfoContext);
     const navigate = useNavigate();
     useEffect(() => {
-        
         try{
             if(!sessionInfo.sessionInfo){
                 navigate("/login");

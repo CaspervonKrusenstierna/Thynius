@@ -2,10 +2,6 @@ import React from 'react'
 import "./FooterMainContent.css"
 import InfoRowsContainer from './components/inforowscontainer/InfoRowsContainer'
 import { useTranslation } from 'react-i18next';
-
-
-
-
 const FooterMainContent = () => {
   const {t, i18n}  = useTranslation();
 

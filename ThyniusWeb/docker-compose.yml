@@ -7,11 +7,22 @@ services:
     environment:
       - MINIO_ACCESS_KEY=123456789adsd32132312
       - MINIO_SECRET_KEY=3021oi3021301230132o0
+      - MINIO_API_CORS_ALLOW_ORIGIN=*
+      - MINIO_API_CORS_ALLOW_METHODS=GET,POST,PUT
+      - MINIO_API_CORS_ALLOW_HEADERS=Content-Type,Authorization
+      - MINIO_API_CORS_EXPOSE_HEADERS=x-amz-request-id,x-amz-id-2
+      - MINIO_API_CORS_MAX_AGE=3600
+      - MINIO_HOST=localhost:8503
+      - MINIO_SERVER_URL=http://localhost:8503  # Force HTTP URL here
+      - MINIO_USE_SSL=false  # Disable SSL
+      - MINIO_HTTP_SERVER=true  # Ensure HTTP server is enabled
     ports:
-      - "8503:8503"
+      - "8503:9000"
     volumes:
       - minio_data:/data
-    command: server /data
+    command: server /data  # Make sure Minio starts as a server with the correct command
+
+
 
   # Combined frontend and backend service (React + ASP.NET Core)
   app:
@@ -20,7 +31,7 @@ services:
     ports:
       - "8080:8080"  # Expose port 80 for the combined service (both frontend and backend)
     environment:
-      - MINIO_URL=http://minio:8503
+      - MINIO_URL=http://localhost:8503
       - MINIO_ACCESS_KEY=123456789adsd32132312
       - MINIO_SECRET_KEY=3021oi3021301230132o0
       - REACT_APP_API_URL=http://localhost:5000  # API URL to the backend
