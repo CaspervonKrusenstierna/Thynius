@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\seeding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\seeding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\seeding.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\repository\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\repository\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\repository\\assignmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\repository\\assignmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\repository\\usertextrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\repository\\usertextrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\models\\usertext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\models\\usertext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\models\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\models\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|c:\\users\\cappe\\desktop\\thynius\\thyniusweb\\thyniusweb.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\repository\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\repository\\grouprepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\repository\\assignmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\repository\\assignmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -49,14 +65,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\resources\\controllers.accountcontroller.sv-se.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
       "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\resources\\controllers.accountcontroller.sv-se.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\models\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\models\\organization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\models\\usertext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|solutionrelative:thyniusweb.server\\models\\usertext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DAC96AC6-A8E9-4320-8FD7-E289F3FED82B}|ThyniusWeb.Server\\ThyniusWeb.Server.csproj|C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\thyniusweb.server\\controllers\\usertextcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -96,11 +104,50 @@
       "DocumentGroups": [
         {
           "DockedHeight": 242,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "UserTextRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Repository\\UserTextRepository.cs",
+              "RelativeDocumentMoniker": "ThyniusWeb.Server\\Repository\\UserTextRepository.cs",
+              "ToolTip": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Repository\\UserTextRepository.cs",
+              "RelativeToolTip": "ThyniusWeb.Server\\Repository\\UserTextRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T09:01:06.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "ThyniusWeb.Server\\Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "ThyniusWeb.Server\\Repository\\UserRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T09:01:06.135Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Program.cs",
+              "RelativeDocumentMoniker": "ThyniusWeb.Server\\Program.cs",
+              "ToolTip": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Program.cs",
+              "RelativeToolTip": "ThyniusWeb.Server\\Program.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAACwAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T10:17:55.641Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "GroupRepository.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Repository\\GroupRepository.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Repository\\GroupRepository.cs",
@@ -108,12 +155,11 @@
               "RelativeToolTip": "ThyniusWeb.Server\\Repository\\GroupRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T19:09:59.731Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-11T19:09:59.731Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "AssignmentRepository.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Repository\\AssignmentRepository.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Repository\\AssignmentRepository.cs",
@@ -121,25 +167,24 @@
               "RelativeToolTip": "ThyniusWeb.Server\\Repository\\AssignmentRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-11T19:09:58.948Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-11T19:09:58.948Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Seeding.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Seeding.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Seeding.cs",
               "ToolTip": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Seeding.cs",
               "RelativeToolTip": "ThyniusWeb.Server\\Seeding.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAwwEUAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-11T18:41:46.105Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Controllers\\AccountController.cs",
@@ -148,19 +193,6 @@
               "ViewState": "AQIAAE0AAAAAAAAAAAAwwFoAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-22T19:50:31.789Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Program.cs",
-              "RelativeDocumentMoniker": "ThyniusWeb.Server\\Program.cs",
-              "ToolTip": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Program.cs",
-              "RelativeToolTip": "ThyniusWeb.Server\\Program.cs",
-              "ViewState": "AQIAAFEAAAAAAAAAAAAAACwAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-21T10:17:55.641Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -172,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "OrganizationController.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Controllers\\OrganizationController.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Controllers\\OrganizationController.cs",
@@ -184,7 +216,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "EditAssignmentDto.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\Dtos\\EditAssignmentDto.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\Dtos\\EditAssignmentDto.cs",
@@ -196,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "EditGroupDto.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\Dtos\\EditGroupDto.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\Dtos\\EditGroupDto.cs",
@@ -208,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "EditProfileDto.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\Dtos\\EditProfileDto.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\Dtos\\EditProfileDto.cs",
@@ -220,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
               "Title": "Organization.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\Organization.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\Organization.cs",
@@ -228,11 +260,12 @@
               "RelativeToolTip": "ThyniusWeb.Server\\Models\\Organization.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T20:21:34.105Z"
+              "WhenOpened": "2024-04-22T20:21:34.105Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 3,
               "Title": "UserText.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\UserText.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\UserText.cs",
@@ -240,11 +273,12 @@
               "RelativeToolTip": "ThyniusWeb.Server\\Models\\UserText.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-22T20:21:32.951Z"
+              "WhenOpened": "2024-04-22T20:21:32.951Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Controllers\\UserController.cs",
@@ -256,7 +290,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "UserTextController.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Controllers\\UserTextController.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Controllers\\UserTextController.cs",
@@ -268,7 +302,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "CreateAssignmentDto.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\Dtos\\CreateAssignmentDto.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\Dtos\\CreateAssignmentDto.cs",
@@ -280,7 +314,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "AssignmentController.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Controllers\\AssignmentController.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Controllers\\AssignmentController.cs",
@@ -292,7 +326,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Models\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Models\\ApplicationUser.cs",
@@ -304,7 +338,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "Controllers.AccountController.sv-SE.resx",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\Resources\\Controllers.AccountController.sv-SE.resx",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\Resources\\Controllers.AccountController.sv-SE.resx",
@@ -315,7 +349,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "ThyniusWeb.Server",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\ThyniusWeb.Server.csproj",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\ThyniusWeb.Server.csproj",
@@ -326,7 +360,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "MySqlConnection.cs",
               "DocumentMoniker": "C:\\Users\\Cappe\\AppData\\Local\\SourceServer\\f51130cb0d590256d7fffd458f4a81c74b126514f9c90f87f553009c9f28007b\\src\\MySqlConnector\\MySqlConnection.cs",
               "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\SourceServer\\f51130cb0d590256d7fffd458f4a81c74b126514f9c90f87f553009c9f28007b\\src\\MySqlConnector\\MySqlConnection.cs",
@@ -338,7 +372,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "ThyniusWeb.Server.csproj",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\ThyniusWeb.Server.csproj",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\ThyniusWeb.Server.csproj",
@@ -350,7 +384,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\Cappe\\OneDrive\\Skrivbord\\ThyniusWeb\\ThyniusWeb.Server\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "..\\..\\..\\OneDrive\\Skrivbord\\ThyniusWeb\\ThyniusWeb.Server\\Properties\\launchSettings.json",
@@ -362,7 +396,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Cappe\\Desktop\\Thynius\\ThyniusWeb\\ThyniusWeb.Server\\appsettings.json",
               "RelativeDocumentMoniker": "ThyniusWeb.Server\\appsettings.json",

@@ -2,6 +2,7 @@ using ReactApp1.Server.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ThyniusWeb.Server.Models;
+using ThyniusWeb.Server.Repository;
 
 namespace ThyniusWeb.Server
 {
@@ -49,6 +50,25 @@ namespace ThyniusWeb.Server
                 }
             }
         }
+
+        private static async Task SeedOrganization(IServiceScope scope, IConfiguration config)
+        {
+            UserManager<ApplicationUser> userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            OrganizationRepository repo = scope.ServiceProvider.GetRequiredService<OrganizationRepository>();
+            if(await repo.GetByEmailExtensionAsync(config["Seeding:Organization"]) == null)
+            {
+                return;
+            }
+            Organization toAdd = new Organization();
+            ApplicationUser admin = await userManager.FindByEmailAsync(config["Seeding:AdminEmail"]);
+            if(admin == null)
+            {
+                throw new Exception("Error: admin account for seeding does not exist when trying to seed organization.");
+            }
+            toAdd.OwnerId = admin.Id;
+            toAdd.EmailExtension = config["Seeding:Organization"];
+            repo.Add(toAdd);
+        }
         public static async Task SeedDatabase(WebApplication app)
         {
             using (var scope = app.Services.CreateScope())
@@ -59,7 +79,7 @@ namespace ThyniusWeb.Server
 
                 await SeedRoles(scope);
                 await SeedUsers(scope, config);
-
+                await SeedOrganization(scope, config);
             }
         }
     }
