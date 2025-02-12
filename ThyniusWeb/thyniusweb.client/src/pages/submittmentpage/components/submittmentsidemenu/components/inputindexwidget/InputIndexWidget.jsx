@@ -1,7 +1,6 @@
 import React from 'react'
 import "./InputIndexWidget.css"
-import { ArrowLeft, ArrowRight, PauseImg, PlayImg } from '../../../../../../../../shared/assets'
-
+import { ArrowLeft, ArrowRight, PauseImg, PlayImg } from '../../../../../../shared/assets'
 const InputIndexWidget = (props) => {
 
   return (

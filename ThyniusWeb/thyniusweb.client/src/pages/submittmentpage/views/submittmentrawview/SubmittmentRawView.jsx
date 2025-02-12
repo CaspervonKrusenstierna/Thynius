@@ -1,5 +1,4 @@
 import React from 'react'
-import "./SubmittmentRawView.css"
 
 const SubmittmentRawView = (props) => {
   return (

@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using System;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Amazon;
 
 
 namespace ThyniusWeb.Server
@@ -30,10 +31,36 @@ namespace ThyniusWeb.Server
 
         private static void SetupAWS(WebApplicationBuilder builder)
         {
-            builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
-            builder.Services.AddAWSService<IAmazonS3>();
-        }
+            var awsAccessKey = Environment.GetEnvironmentVariable("AWS_ACCESS_KEY_ID");
+            var awsSecretKey = Environment.GetEnvironmentVariable("AWS_SECRET_ACCESS_KEY");
+            var awsRegion = Environment.GetEnvironmentVariable("AWS_REGION") ?? "us-west-2";
+            var isProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
 
+            var awsOptions = builder.Configuration.GetAWSOptions();
+
+#if DEBUG
+            // If we're in development (or testing), configure Minio
+            var minioUrl = Environment.GetEnvironmentVariable("MINIO_URL") ?? "http://localhost:9000";
+            var minioAccessKey = Environment.GetEnvironmentVariable("MINIO_ACCESS_KEY") ?? "minioaccesskey";
+            var minioSecretKey = Environment.GetEnvironmentVariable("MINIO_SECRET_KEY") ?? "miniosecretkey";
+
+            var config = new AmazonS3Config
+            {
+                RegionEndpoint = RegionEndpoint.GetBySystemName(awsRegion),
+                ServiceURL = minioUrl,
+                ForcePathStyle = true 
+            };
+
+            builder.Services.AddSingleton<IAmazonS3>(sp =>
+            {
+                return new AmazonS3Client(minioAccessKey, minioSecretKey, config);
+            });
+#else
+            // If we're in production, use AWS default options (either IAM roles or credentials from environment variables)
+            builder.Services.AddAWSService<IAmazonS3>();
+#endif
+
+        }
         private static void ConfigureLocalization(WebApplicationBuilder builder)
         {
             builder.Services.Configure<RequestLocalizationOptions>(
@@ -53,8 +80,16 @@ namespace ThyniusWeb.Server
 
         private static void SetupDatabase(WebApplicationBuilder builder)
         {
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'Defaultconnection' not found.");
-            object value = builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+            var mysqlHost = Environment.GetEnvironmentVariable("MYSQL_HOST") ?? throw new InvalidOperationException("MYSQL_HOST Environment variable not found.");
+            var mysqlPort = Environment.GetEnvironmentVariable("MYSQL_PORT") ?? throw new InvalidOperationException("MYSQL_PORT Environment variable not found.");
+            var mysqlDatabase = Environment.GetEnvironmentVariable("MYSQL_DATABASE") ?? throw new InvalidOperationException("MYSQL_DATABASE Environment variable not found.");
+            var mysqlUser = Environment.GetEnvironmentVariable("MYSQL_USER") ?? throw new InvalidOperationException("MYSQL_USER Environment variable not found.");
+            var mysqlPassword = Environment.GetEnvironmentVariable("MYSQL_PASSWORD") ?? throw new InvalidOperationException("MYSQL_PASSWORD Environment variable not found.");
+
+            var connectionString = $"Server={mysqlHost};Port={mysqlPort};Database={mysqlDatabase};User={mysqlUser};Password={mysqlPassword};SslMode=none;";
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+            );
         }
 
         public static async Task Main(string[] args)
@@ -95,9 +130,9 @@ namespace ThyniusWeb.Server
 
             app.MapFallbackToFile("/index.html");
 
-            #if DEBUG
+#if DEBUG
             await Seeding.SeedDatabase(app);
-            #endif
+#endif
             app.Run();
 
         }

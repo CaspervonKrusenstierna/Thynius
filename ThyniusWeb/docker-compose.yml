@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # Minio service for object storage
+  minio:
+    image: minio/minio:latest
+    environment:
+      - MINIO_ACCESS_KEY=123456789adsd32132312
+      - MINIO_SECRET_KEY=3021oi3021301230132o0
+    ports:
+      - "8503:8503"
+    volumes:
+      - minio_data:/data
+    command: server /data
+
+  # Combined frontend and backend service (React + ASP.NET Core)
+  app:
+    build:
+      context: .  # This points to the root of the project, where the Dockerfile is located
+    ports:
+      - "8080:8080"  # Expose port 80 for the combined service (both frontend and backend)
+    environment:
+      - MINIO_URL=http://minio:8503
+      - MINIO_ACCESS_KEY=123456789adsd32132312
+      - MINIO_SECRET_KEY=3021oi3021301230132o0
+      - REACT_APP_API_URL=http://localhost:5000  # API URL to the backend
+      - MYSQL_HOST=mysql  # Use the 'mysql' service name
+      - MYSQL_PORT=3306  # Default internal port for MySQL
+      - MYSQL_DATABASE=test_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+    depends_on:
+      - minio
+      - mysql
+
+  # MySQL service
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test_db
+      MYSQL_PASSWORD: password
+    ports:
+      - "5506:3306"  # Expose MySQL on port 5506 externally, but internal container uses port 3306
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      start_period: 10s
+      timeout: 5s
+
+volumes:
+  minio_data:

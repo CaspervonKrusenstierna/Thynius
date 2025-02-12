@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
-import { GetThemisInputIndexRawText, ThemisInputsAdvance, clearSleeps, sleep } from './utilities/Utilities';
-import useInputs from './hooks/useInputs';
-import { submittmentInfoContext } from '../../../../SubmittmentPage';
+import { GetThemisInputIndexRawText, ThemisInputsAdvance, clearSleeps, sleep } from '../../components/submittmenttextcontainer/components/analysissubmittmentview/utilities/Utilities';
+import { submittmentInfoContext } from '../../SubmittmentPage';
+import useInputs from '../../components/submittmenttextcontainer/components/analysissubmittmentview/hooks/useInputs';
 
 const SubmittmentAnalysisView = () => {
   const [rawText, setRawText] = useState("");

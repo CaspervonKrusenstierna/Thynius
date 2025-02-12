@@ -35,20 +35,14 @@ namespace ThyniusWeb.Server.Controllers
                 return StatusCode(400);
             }
 
-
-            org = await _organizationRepository.GetByEmailExtensionAsync(EmailExtension);
-            if (org == null)
+            org = new Organization();
+            org.EmailExtension = EmailExtension;
+            if (!_organizationRepository.Add(org))
             {
-                org = new Organization();
-                org.EmailExtension = EmailExtension;
-                if (!_organizationRepository.Add(org))
-                {
-                    return StatusCode(500);
-                }
-                return StatusCode(200);
+                return StatusCode(500);
             }
-
-            return StatusCode(400);
+            return StatusCode(200);
+            
         }
 
         [HttpDelete]

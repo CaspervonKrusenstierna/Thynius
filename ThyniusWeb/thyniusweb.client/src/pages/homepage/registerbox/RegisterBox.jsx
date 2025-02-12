@@ -8,7 +8,7 @@ import { AnchorButton, Input, SubmitButton } from '../../../shared/components/ho
 import HomePageBoxHeader from '../../../shared/components/dashboard/homepageboxheader/HomePageBoxHeader';
 import { EnvelopeImg, UnlockImg } from '../../../shared/assets';
 import { useTranslation } from 'react-i18next';
-import { validateEmail } from './utils/validateMail';
+import validateEmail from './utils/validateMail';
 
 
 const RegisterBox = () => {

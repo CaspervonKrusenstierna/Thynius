@@ -12,6 +12,7 @@ const baseFolder =
         ? `${env.APPDATA}/ASP.NET/https`
         : `${env.HOME}/.aspnet/https`;
 
+/*
 const certificateName = "themisweb.client";
 const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
 const keyFilePath = path.join(baseFolder, `${certificateName}.key`);
@@ -28,7 +29,7 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
     ], { stdio: 'inherit', }).status) {
         throw new Error("Could not create certificate.");
     }
-}
+}*/
 
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
     env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7135';
@@ -40,7 +41,10 @@ export default defineConfig({
         alias: {
             '@': path.resolve(__dirname, "./src"),
         }
-    }
+    },
+    build: {
+        outDir: 'build', // if commented out or not set, default is 'dist'
+      }
     ,  
     server: {
         proxy: {
@@ -120,9 +124,9 @@ export default defineConfig({
             }
         },
         port: 5173,
-        https: {
+        https: false /* {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
-        }
+        }*/
     }
 })
